@@ -12,8 +12,8 @@ export class UserService {
     private http: Http,
     private authenticationService: AuthenticationService) {
 
-    //TODO fill in your heroku-backend URL
-    this.apiUrl = '';
+    //filled with our heroku-backend URL
+    this.apiUrl = 'https://git.heroku.com/sopra-fs17-group11.git';
   }
 
   getUsers(): Observable<User[]> {
