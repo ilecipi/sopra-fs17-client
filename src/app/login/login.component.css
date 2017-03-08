@@ -15,13 +15,13 @@
   margin-top: 350px;
 
   font-weight:normal;
-  color:#000000;
+  color: #411f03;
   border: 5px ridge #FFAC05;
   letter-spacing:2pt;
   word-spacing:2pt;
   font-size:43px;
   text-align:center;
-  font-family:helvetica, sans-serif;
+  font-family:Arial, sans-serif;
   line-height:1;
 }
 .form-signin .checkbox {

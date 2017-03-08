@@ -1,4 +1,7 @@
 .node_modules/
+node_modules
+*node_modules/*
+node_modules/
 # Created by https://www.gitignore.io/api/intellij
 
 ### Intellij ###
@@ -56,3 +59,7 @@ fabric.properties
 # End of https://www.gitignore.io/api/intellij
 .idea/workspace.xml
 /.idea/
+
+node_modules
+*node_modules/*
+node_modules/
