@@ -60,6 +60,5 @@ fabric.properties
 .idea/workspace.xml
 /.idea/
 
-node_modules
-*node_modules/*
-node_modules/
+
+.gradle/
