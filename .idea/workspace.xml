@@ -2,7 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c63ec67d-676b-4e83-829b-56b4ca87c77d" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/maxresdefault.jpg" afterPath="$PROJECT_DIR$/src/assets/img/background.jpg" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/app.component.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/app.component.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/app.component.spec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/app.component.spec.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/app.module.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/app.module.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/app.routing.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/app.routing.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/game/game.component.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/game/game.component.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/game/game.component.spec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/game/game.component.spec.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/login/login.component.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/login/login.component.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/login/login.component.spec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/login/login.component.spec.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/shared/models/user.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/shared/models/user.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/shared/services/auth-guard.service.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/shared/services/auth-guard.service.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/shared/services/auth-guard.service.spec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/shared/services/auth-guard.service.spec.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/shared/services/authentication.service.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/shared/services/authentication.service.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/shared/services/authentication.service.spec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/shared/services/authentication.service.spec.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/shared/services/user.service.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/shared/services/user.service.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/shared/services/user.service.spec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/app/shared/services/user.service.spec.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/environments/environment.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/environments/environment.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/environments/environment.prod.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/environments/environment.prod.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/main.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/polyfills.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/polyfills.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/out-tsc/test.js.map" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/services/authentication.service.ts" afterPath="$PROJECT_DIR$/src/app/shared/services/authentication.service.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/services/user.service.ts" afterPath="$PROJECT_DIR$/src/app/shared/services/user.service.ts" />
@@ -35,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="authentication.service.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="authentication.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/shared/services/authentication.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="16" column="60" lean-forward="false" selection-start-line="16" selection-start-column="60" selection-end-line="16" selection-end-column="60" />
+            <state relative-caret-position="106">
+              <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -59,17 +98,17 @@
         <entry file="file://$PROJECT_DIR$/src/app/shared/services/user.service.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="60" />
+              <caret line="15" column="59" lean-forward="false" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="9" lean-forward="false" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+            <state relative-caret-position="102">
+              <caret line="37" column="32" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -92,11 +131,11 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/dist/index.html" />
-        <option value="$PROJECT_DIR$/src/index.html" />
         <option value="$PROJECT_DIR$/src/app/login/login.component.css" />
         <option value="$PROJECT_DIR$/proxy.conf.json" />
         <option value="$PROJECT_DIR$/src/app/shared/services/user.service.ts" />
         <option value="$PROJECT_DIR$/src/app/shared/services/authentication.service.ts" />
+        <option value="$PROJECT_DIR$/src/index.html" />
       </list>
     </option>
   </component>
@@ -112,7 +151,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="1612" />
+    <option name="width" value="1604" />
     <option name="height" value="867" />
   </component>
   <component name="ProjectView">
@@ -460,34 +499,35 @@
       <workItem from="1489138021405" duration="551000" />
       <workItem from="1489139134487" duration="8225000" />
       <workItem from="1489413035443" duration="596000" />
+      <workItem from="1489491693841" duration="1513000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15881000" />
+    <option name="totallyTimeSpent" value="17394000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1612" height="867" extended-state="0" />
-    <editor active="false" />
+    <frame x="-7" y="0" width="1604" height="867" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25062656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32831737" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,13 +735,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="32" column="25" lean-forward="false" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/index.html" />
     <entry file="file://$PROJECT_DIR$/src/main.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -813,18 +847,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="9" lean-forward="false" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/proxy.conf.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/services/user.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="15" column="59" lean-forward="false" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/services/authentication.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -839,18 +881,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/services/user.service.ts">
+    <entry file="file://$PROJECT_DIR$/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/services/authentication.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="16" column="60" lean-forward="false" selection-start-line="16" selection-start-column="60" selection-end-line="16" selection-end-column="60" />
+        <state relative-caret-position="102">
+          <caret line="37" column="32" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
           <folding />
         </state>
       </provider>

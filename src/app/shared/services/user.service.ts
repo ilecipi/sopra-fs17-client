@@ -13,7 +13,7 @@ export class UserService {
     private authenticationService: AuthenticationService) {
 
     //filled with our heroku-backend URL
-    this.apiUrl = 'https://sopra-fs17-group11.herokuapp.com/';
+    this.apiUrl = 'https://sopra-fs17-group11.herokuapp.com';
 }
 
   getUsers(): Observable<User[]> {
