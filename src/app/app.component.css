@@ -1,0 +1,32 @@
+/*Imported Fonts:*/
+@font-face {
+    font-family: 'sanchezitalic';
+    src: url('../assets/fonts/sanchez-italic.woff2') format('woff2'),
+    url('../assets/fonts/sanchez-italic.woff') format('woff'),
+    url('../assets/fonts/sanchez-italic.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'sanchezregular';
+    src: url('../assets/fonts/sanchez-regular.woff2') format('woff2'),
+    url('../assets/fonts/sanchez-regular.woff') format('woff'),
+    url('../assets/fonts/sanchez-regular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/*
+this is a sample style declaration for simple texts:
+.color1Text {
+   color: white;
+   background-color: tomato;
+   margin: 10px;
+   width: 50px;
+   height: 30px;
+   display: inline-block;
+ }
+*/

@@ -1,40 +1,53 @@
+
 .login-block{
-  opacity: .90; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
+  opacity: .70; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
   filter: alpha(opacity=50); /* IE lt 8 */
   -ms-filter: "alpha(opacity=50)"; /* IE 8 */
   -khtml-opacity: .50; /* Safari 1.x */
   -moz-opacity: .50; /* FF lt 1.5, Netscape */
 }
 .form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
+  max-width: 400px;
+  padding: 0px;
+  margin: auto;
+  font-family: 'sanchezregular';
 
 }
+
+
+/*Heading of login-block*/
 .form-signin .form-signin-heading{
   margin-top: 350px;
-
+  background-color: tomato;
   font-weight:normal;
-  color: #411f03;
-  border: 5px ridge #FFAC05;
+  color: white;
+  border: 2px solid black;
   letter-spacing:2pt;
   word-spacing:2pt;
   font-size:43px;
+  -webkit-text-stroke: 1px;
+  -webkit-text-stroke-color: black;
   text-align:center;
-  font-family:Arial, sans-serif;
-  line-height:1;
+  line-height:1.2;
 }
+
 .form-signin .checkbox {
   font-weight: normal;
 }
+
+/*Fillable text-boxes*/
 .form-signin .form-control {
   position: relative;
+  text-align: center;
   height: auto;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: sanchezregular,serif;
+  font-size: 20px;
   padding: 10px;
-  font-size: 16px;
+  border: 2px solid black;
+
 
 }
 .form-signin .form-control:focus {
@@ -46,7 +59,24 @@
   border-bottom-left-radius: 0;
 }
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
+  margin-bottom: 120px;
+  font-size:10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.row{
+  margin: -15px;
+  padding: -10px;
+}
+
+/*buttons*/
+.btn{
+  background-color: tomato;
+  color: white;
+  border: 3px solid black;
+  font-size: 30px;
+  -webkit-text-stroke: 1px;
+  -webkit-text-stroke-color: black;
+
 }
