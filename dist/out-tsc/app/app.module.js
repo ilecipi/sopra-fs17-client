@@ -18,6 +18,7 @@ import { routing } from "./app.routing";
 import { AuthenticationService } from "./shared/services/authentication.service";
 import { LoginComponent } from "./login/login.component";
 import { GameComponent } from "./game/game.component";
+import { LobbyComponent } from './lobby/lobby.component';
 export var AppModule = (function () {
     function AppModule() {
     }
@@ -26,7 +27,8 @@ export var AppModule = (function () {
             declarations: [
                 AppComponent,
                 LoginComponent,
-                GameComponent
+                GameComponent,
+                LobbyComponent,
             ],
             imports: [
                 BrowserModule,

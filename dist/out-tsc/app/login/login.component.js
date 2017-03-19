@@ -30,7 +30,7 @@ export var LoginComponent = (function () {
         this._service.login(this.user)
             .subscribe(function (result) {
             if (result) {
-                _this.router.navigate(['/']);
+                _this.router.navigate(['/lobby']);
             }
             else {
                 _this.error = 'Username exists';

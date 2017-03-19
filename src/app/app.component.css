@@ -1,22 +1,16 @@
 /*Imported Fonts:*/
-@font-face {
-    font-family: 'sanchezitalic';
-    src: url('../assets/fonts/sanchez-italic.woff2') format('woff2'),
-    url('../assets/fonts/sanchez-italic.woff') format('woff'),
-    url('../assets/fonts/sanchez-italic.ttf') format('ttf');
-    font-weight: normal;
-    font-style: normal;
-}
 
 @font-face {
-    font-family: 'sanchezregular';
-    src: url('../assets/fonts/sanchez-regular.woff2') format('woff2'),
-    url('../assets/fonts/sanchez-regular.woff') format('woff'),
-    url('../assets/fonts/sanchez-regular.ttf') format('ttf');
-    font-weight: normal;
+    font-family: 'Sanchez',serif;
     font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/sanchez-v4-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Sanchez'), local('Sanchez-Regular'),
+    url('../assets/fonts/sanchez-v4-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../assets/fonts/sanchez-v4-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../assets/fonts/sanchez-v4-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('../assets/fonts/sanchez-v4-latin-regular.svg#Sanchez') format('svg'); /* Legacy iOS */
 }
-
 
 
 /*

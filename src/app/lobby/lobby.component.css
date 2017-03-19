@@ -1,0 +1,10 @@
+.lobby-block{
+    opacity: .70; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
+    filter: alpha(opacity=50); /* IE lt 8 */
+    -ms-filter: "alpha(opacity=50)"; /* IE 8 */
+    -khtml-opacity: .50; /* Safari 1.x */
+    -moz-opacity: .50; /* FF lt 1.5, Netscape */
+    font-family: 'Sanchez',serif;
+    font-size:20px;
+
+}

@@ -26,16 +26,16 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this._service.login(this.user)
+  this._service.login(this.user)
       .subscribe(result => {
         if (result) {
-          this.router.navigate(['/']);
+          this.router.navigate(['/lobby']);
         } else {
           this.error = 'Username exists';
           this.loading = false;
         }
       });
-  }
+}
 
   clearfields() {
     this.user.name = '';
