@@ -1,6 +1,3 @@
-/**
- * Created by SaliZumberi on 13.02.2017.
- */
 export var User = (function () {
     function User() {
     }

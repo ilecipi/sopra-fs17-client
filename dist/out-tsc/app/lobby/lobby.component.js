@@ -9,10 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Component } from '@angular/core';
 import { UserService } from "../shared/services/user.service";
+import { GameService } from "../shared/services/game.service";
 export var LobbyComponent = (function () {
-    function LobbyComponent(userService) {
+    function LobbyComponent(userService, gameService) {
         this.userService = userService;
+        this.gameService = gameService;
         this.users = [];
+        this.games = [];
     }
     LobbyComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -21,6 +24,11 @@ export var LobbyComponent = (function () {
             .subscribe(function (users) {
             _this.users = users;
         });
+        //get games from secure api end point
+        this.gameService.getGames()
+            .subscribe(function (games) {
+            _this.games = games;
+        });
     };
     LobbyComponent = __decorate([
         Component({
@@ -28,7 +36,7 @@ export var LobbyComponent = (function () {
             templateUrl: './lobby.component.html',
             styleUrls: ['./lobby.component.css']
         }), 
-        __metadata('design:paramtypes', [UserService])
+        __metadata('design:paramtypes', [UserService, GameService])
     ], LobbyComponent);
     return LobbyComponent;
 }());

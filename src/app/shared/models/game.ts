@@ -1,4 +1,7 @@
-export class User {
+export class Game {
+  public owner:string;
+
+  //needs definitely modifications...
   public id:number;
   public token: string;
   public status: string;

@@ -8,7 +8,7 @@ var appRoutes = [
     { path: 'lobby', component: LobbyComponent, canActivate: [AuthGuardService] },
     { path: 'game', component: GameComponent, canActivate: [AuthGuardService] },
     // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: 'login' }
 ];
 export var routing = RouterModule.forRoot(appRoutes);
 //# sourceMappingURL=C:/Users/Silvo/Dropbox/UZH/FS17/SOPRA/Git repository/sopra-fs17-group11-client/src/app/app.routing.js.map
