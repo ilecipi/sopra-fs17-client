@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  envName: 'prod',
+  production: true,
+  apiUrl : 'https://sopra-fs17-group11.herokuapp.com'
 };

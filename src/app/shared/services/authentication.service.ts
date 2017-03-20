@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Response, Headers, RequestOptions, Jsonp} from "@angular/http";
 import {User} from "../models/user";
 import {Observable} from 'rxjs/Rx';
+import { environment } from "../../../environments/environment";
 
 @Injectable()
 export class AuthenticationService {
@@ -13,8 +14,8 @@ export class AuthenticationService {
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
 
-    //filled with in our heroku-backend URL
-    this.apiUrl = 'https://sopra-fs17-group11.herokuapp.com';
+    //selects correct URL on the basis of the environment mode
+    this.apiUrl = environment.apiUrl;
   }
 
   login(user:User): Observable<User> {
