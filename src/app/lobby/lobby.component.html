@@ -25,9 +25,21 @@
 
             </div>
         </div>
+
+    <a routerLink="/game">Game</a>
+    <div>
+        <ul class="list-users">
+            Users from secure api end point:
+            <li class="list-group-item" *ngFor="let user of users">{{user.name}} - {{user.username}}</li>
+        </ul>
+    </div>
+    <div>
+        <ul class="list-games">
+            Games from secure api end point:
+            <li class="list-group-item" *ngFor="let game of games">{{game.name}} - {{game.owner}}</li>
+        </ul>
+
     </div>
     <button class="btn btn-sm btn-primary btn-bottom" type="submit" [routerLink]="['/login']">Logout</button>
-
-
-
+    </div>
 </div>

@@ -19,6 +19,7 @@ import { LobbyComponent } from './lobby/lobby.component';
     LoginComponent,
     GameComponent,
     LobbyComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
