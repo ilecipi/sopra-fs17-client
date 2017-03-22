@@ -7,8 +7,10 @@ import {LobbyComponent} from "./lobby/lobby.component";
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
-    { path: 'lobby',component: LobbyComponent, canActivate: [AuthGuardService]},
-    { path: 'game', component: GameComponent, canActivate: [AuthGuardService] },
+    { path: 'lobby',component: LobbyComponent},
+    //{ path: 'lobby',component: LobbyComponent, canActivate: [AuthGuardService]},
+    //{ path: 'game', component: GameComponent, canActivate: [AuthGuardService] },
+    { path: 'game', component: GameComponent },
 
 
     // otherwise redirect to home
