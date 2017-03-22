@@ -1,3 +1,15 @@
-body {
-    background-color: lightblue;
+
+
+.col-sm-3{
+    background-color: #8a6d3b;
+    border-style: dotted;
+    border-color: #2e2e2e;
+    height: 500px;
+}
+
+.col{
+    background-color: #8a6d3b;
+    border-style: dotted;
+    border-color: #2e2e2e;
+    height: 150px;
 }

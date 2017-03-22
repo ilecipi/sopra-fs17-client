@@ -1,16 +1,15 @@
-<div class="col-md-6 col-md-offset-1">
-  <h1>GAME</h1>
-  <div>
-    Users from secure api end point:
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let user of users">{{user.name}} - {{user.username}}</li>
-    </ul>
+<h1>GAMEBOARD</h1>
+<div class="container-fluid">
+  <div class="row no-gutters">
+    <div class="col-sm-3">Ship Area</div>
+    <div class="col-sm-3">Siteboards</div>
+    <div class="col-sm-3">Cards/Scoring Track Board</div>
+    <div class="col-sm-3">Opposing Players</div>
   </div>
-
-  <div>
-    <h2>GameBoard</h2>
+  <div class="row no-gutters">
+    <div class="col">Player 1</div>
   </div>
-
-  <button class="btn btn-sm btn-primary btn-block" type="submit" [routerLink]="['/lobby']">Lobby</button>
-
 </div>
+<button class="btn btn-sm btn-primary btn-block" type="submit" [routerLink]="['/lobby']">Lobby</button>
+
+
