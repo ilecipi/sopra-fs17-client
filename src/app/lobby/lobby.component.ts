@@ -3,12 +3,16 @@ import {UserService} from "../shared/services/user.service";
 import {GameService} from "../shared/services/game.service";
 import {User} from "../shared/models/user";
 import {Game} from "../shared/models/game";
+import {LoginComponent} from "../login/login.component";
+import {Input} from "@angular/core";
+
 
 @Component({
   selector: 'app-lobby',
   templateUrl: './lobby.component.html',
   styleUrls: ['./lobby.component.css']
 })
+
 export class LobbyComponent  implements OnInit {
     users: User[] = [];
     games: Game[] = [];
@@ -20,7 +24,7 @@ export class LobbyComponent  implements OnInit {
             .subscribe(users => {
                 this.users = users;
             });
-        
+
         //get games from secure api end point
         this.gameService.getGames()
             .subscribe(games => {

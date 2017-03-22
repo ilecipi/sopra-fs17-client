@@ -18,7 +18,6 @@ export var AuthenticationService = (function () {
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
-        //selects correct URL on the basis of the environment mode
         this.apiUrl = environment.apiUrl;
     }
     AuthenticationService.prototype.login = function (user) {

@@ -16,7 +16,7 @@ export var AppComponent = (function () {
         Component({
             selector: 'app-root',
             templateUrl: './app.component.html',
-            styleUrls: ['./app.component.css']
+            styleUrls: ['./app.component.css'],
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

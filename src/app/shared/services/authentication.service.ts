@@ -14,7 +14,7 @@ export class AuthenticationService {
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
 
-    //selects correct URL on the basis of the environment mode
+
     this.apiUrl = environment.apiUrl;
   }
 
