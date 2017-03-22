@@ -12,7 +12,7 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 import { AuthenticationService } from "./authentication.service";
 import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
-export var GameService = (function () {
+var GameService = (function () {
     function GameService(http, authenticationService) {
         this.http = http;
         this.authenticationService = authenticationService;
@@ -34,10 +34,12 @@ export var GameService = (function () {
             return _this.getGames();
         });
     };
-    GameService = __decorate([
-        Injectable(), 
-        __metadata('design:paramtypes', [Http, AuthenticationService])
-    ], GameService);
     return GameService;
 }());
-//# sourceMappingURL=C:/Users/Silvo/Dropbox/UZH/FS17/SOPRA/Git repository/sopra-fs17-group11-client/src/app/shared/services/game.service.js.map
+GameService = __decorate([
+    Injectable(),
+    __metadata("design:paramtypes", [Http,
+        AuthenticationService])
+], GameService);
+export { GameService };
+//# sourceMappingURL=/Users/sophy/Desktop/Imhotep/sopra-fs17-group11-client/src/app/shared/services/game.service.js.map

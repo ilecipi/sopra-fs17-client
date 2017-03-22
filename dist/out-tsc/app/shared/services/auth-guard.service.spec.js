@@ -11,4 +11,4 @@ describe('AuthGuardService', function () {
         expect(service).toBeTruthy();
     }));
 });
-//# sourceMappingURL=C:/Users/Silvo/Dropbox/UZH/FS17/SOPRA/Git repository/sopra-fs17-group11-client/src/app/shared/services/auth-guard.service.spec.js.map
+//# sourceMappingURL=/Users/sophy/Desktop/Imhotep/sopra-fs17-group11-client/src/app/shared/services/auth-guard.service.spec.js.map

@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Jsonp } from "@angular/http";
 import { Observable } from 'rxjs/Rx';
 import { environment } from "../../../environments/environment";
-export var AuthenticationService = (function () {
+var AuthenticationService = (function () {
     function AuthenticationService(http, jsonp) {
         this.http = http;
         this.jsonp = jsonp;
@@ -50,10 +50,11 @@ export var AuthenticationService = (function () {
         this.token = null;
         localStorage.removeItem('currentUser');
     };
-    AuthenticationService = __decorate([
-        Injectable(), 
-        __metadata('design:paramtypes', [Http, Jsonp])
-    ], AuthenticationService);
     return AuthenticationService;
 }());
-//# sourceMappingURL=C:/Users/Silvo/Dropbox/UZH/FS17/SOPRA/Git repository/sopra-fs17-group11-client/src/app/shared/services/authentication.service.js.map
+AuthenticationService = __decorate([
+    Injectable(),
+    __metadata("design:paramtypes", [Http, Jsonp])
+], AuthenticationService);
+export { AuthenticationService };
+//# sourceMappingURL=/Users/sophy/Desktop/Imhotep/sopra-fs17-group11-client/src/app/shared/services/authentication.service.js.map

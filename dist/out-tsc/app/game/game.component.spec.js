@@ -18,4 +18,4 @@ describe('GameComponent', function () {
         expect(component).toBeTruthy();
     });
 });
-//# sourceMappingURL=C:/Users/Silvo/Dropbox/UZH/FS17/SOPRA/Git repository/sopra-fs17-group11-client/src/app/game/game.component.spec.js.map
+//# sourceMappingURL=/Users/sophy/Desktop/Imhotep/sopra-fs17-group11-client/src/app/game/game.component.spec.js.map

@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Injectable } from '@angular/core';
 import { Router } from "@angular/router";
-export var AuthGuardService = (function () {
+var AuthGuardService = (function () {
     function AuthGuardService(router) {
         this.router = router;
     }
@@ -22,10 +22,11 @@ export var AuthGuardService = (function () {
         this.router.navigate(['/login']);
         return false;
     };
-    AuthGuardService = __decorate([
-        Injectable(), 
-        __metadata('design:paramtypes', [Router])
-    ], AuthGuardService);
     return AuthGuardService;
 }());
-//# sourceMappingURL=C:/Users/Silvo/Dropbox/UZH/FS17/SOPRA/Git repository/sopra-fs17-group11-client/src/app/shared/services/auth-guard.service.js.map
+AuthGuardService = __decorate([
+    Injectable(),
+    __metadata("design:paramtypes", [Router])
+], AuthGuardService);
+export { AuthGuardService };
+//# sourceMappingURL=/Users/sophy/Desktop/Imhotep/sopra-fs17-group11-client/src/app/shared/services/auth-guard.service.js.map

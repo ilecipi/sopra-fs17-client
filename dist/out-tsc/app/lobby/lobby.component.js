@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { UserService } from "../shared/services/user.service";
 import { GameService } from "../shared/services/game.service";
-export var LobbyComponent = (function () {
+var LobbyComponent = (function () {
     function LobbyComponent(userService, gameService) {
         this.userService = userService;
         this.gameService = gameService;
@@ -43,14 +43,15 @@ export var LobbyComponent = (function () {
             _this.users = users;
         });
     };
-    LobbyComponent = __decorate([
-        Component({
-            selector: 'app-lobby',
-            templateUrl: './lobby.component.html',
-            styleUrls: ['./lobby.component.css']
-        }), 
-        __metadata('design:paramtypes', [UserService, GameService])
-    ], LobbyComponent);
     return LobbyComponent;
 }());
-//# sourceMappingURL=C:/Users/Silvo/Dropbox/UZH/FS17/SOPRA/Git repository/sopra-fs17-group11-client/src/app/lobby/lobby.component.js.map
+LobbyComponent = __decorate([
+    Component({
+        selector: 'app-lobby',
+        templateUrl: './lobby.component.html',
+        styleUrls: ['./lobby.component.css']
+    }),
+    __metadata("design:paramtypes", [UserService, GameService])
+], LobbyComponent);
+export { LobbyComponent };
+//# sourceMappingURL=/Users/sophy/Desktop/Imhotep/sopra-fs17-group11-client/src/app/lobby/lobby.component.js.map

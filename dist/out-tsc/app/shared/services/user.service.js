@@ -12,7 +12,7 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 import { AuthenticationService } from "./authentication.service";
 import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
-export var UserService = (function () {
+var UserService = (function () {
     function UserService(http, authenticationService) {
         this.http = http;
         this.authenticationService = authenticationService;
@@ -34,10 +34,12 @@ export var UserService = (function () {
             return _this.getUsers();
         });
     };
-    UserService = __decorate([
-        Injectable(), 
-        __metadata('design:paramtypes', [Http, AuthenticationService])
-    ], UserService);
     return UserService;
 }());
-//# sourceMappingURL=C:/Users/Silvo/Dropbox/UZH/FS17/SOPRA/Git repository/sopra-fs17-group11-client/src/app/shared/services/user.service.js.map
+UserService = __decorate([
+    Injectable(),
+    __metadata("design:paramtypes", [Http,
+        AuthenticationService])
+], UserService);
+export { UserService };
+//# sourceMappingURL=/Users/sophy/Desktop/Imhotep/sopra-fs17-group11-client/src/app/shared/services/user.service.js.map

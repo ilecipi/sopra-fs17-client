@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
 import { AuthenticationService } from "../shared/services/authentication.service";
 import { Router } from "@angular/router";
 import { User } from "../shared/models/user";
-export var LoginComponent = (function () {
+var LoginComponent = (function () {
     function LoginComponent(router, _service, _router) {
         this.router = router;
         this._service = _service;
@@ -42,14 +42,15 @@ export var LoginComponent = (function () {
         this.user.name = '';
         this.user.username = '';
     };
-    LoginComponent = __decorate([
-        Component({
-            selector: 'app-login',
-            templateUrl: './login.component.html',
-            styleUrls: ['./login.component.css']
-        }), 
-        __metadata('design:paramtypes', [Router, AuthenticationService, Router])
-    ], LoginComponent);
     return LoginComponent;
 }());
-//# sourceMappingURL=C:/Users/Silvo/Dropbox/UZH/FS17/SOPRA/Git repository/sopra-fs17-group11-client/src/app/login/login.component.js.map
+LoginComponent = __decorate([
+    Component({
+        selector: 'app-login',
+        templateUrl: './login.component.html',
+        styleUrls: ['./login.component.css']
+    }),
+    __metadata("design:paramtypes", [Router, AuthenticationService, Router])
+], LoginComponent);
+export { LoginComponent };
+//# sourceMappingURL=/Users/sophy/Desktop/Imhotep/sopra-fs17-group11-client/src/app/login/login.component.js.map
