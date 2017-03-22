@@ -27,4 +27,9 @@ export class GameService {
         .map((response: Response) => response.json());
   }
 
+  pollGames(time = 1500) {
+    return Observable.interval(time).flatMap(() => {
+      return this.getGames();
+    })
+  }
 }

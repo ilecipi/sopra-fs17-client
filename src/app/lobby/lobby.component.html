@@ -1,19 +1,33 @@
 <div class="col-md-6 col-md-offset-3">
     <h1>LOBBY</h1>
     <h2>Welcome to IMHOTEP - Cheers from GROUP 11</h2>
-    <div>
-        <ul class="list-users">
-            Users from secure api end point:
-            <li class="list-group-item" *ngFor="let user of users">{{user.name}} - {{user.username}}</li>
-        </ul>
-    </div>
-    <div>
-        <ul class="list-games">
-            Games from secure api end point:
-            <li class="list-group-item" *ngFor="let game of games">{{game.name}} - {{game.owner}}</li>
-        </ul>
-    </div>
 
-    <button class="btn btn-sm btn-primary btn-block" type="submit" [routerLink]="['/login']">Logout</button>
+    <div class="lobby-block">
+
+        <div class="columns-block">
+
+            <div class="left-column">
+
+                <ul class="list-users">
+
+                    Users from "secure" api end point:
+                    <li class="list-group-item" *ngFor="let user of users">{{user.name}} - {{user.username}} - {{user.status}}</li>
+                </ul>
+            </div>
+            <div class="right-column">
+
+                <ul class="list-games">
+                    Games from "secure" api end point:
+                    <li class="list-group-item" *ngFor="let game of games">{{game.name}}  - id:{{game.id}} - {{game.owner}} - {{game.status}}
+                        <button class="btn btn-sm btn-primary btn-list" type="submit">JOIN</button>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-sm btn-primary btn-bottom" type="submit" [routerLink]="['/login']">Logout</button>
+
+
 
 </div>

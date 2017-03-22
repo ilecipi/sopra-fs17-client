@@ -1,5 +1,6 @@
 export class Game {
   public owner:string;
+  public users:number;
 
   //needs definitely modifications...
   public id:number;

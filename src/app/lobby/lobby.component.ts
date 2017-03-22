@@ -26,7 +26,19 @@ export class LobbyComponent  implements OnInit {
             .subscribe(games => {
                 this.games = games;
             })
+
+        this.pollInfo(this.gameService,this.userService);
     }
 
+    //calls polling function for games and users
+    pollInfo(gameService: GameService, userService : UserService){
+        gameService.pollGames()
+            .subscribe(games =>{
+                this.games= games;
+            });
+        userService.pollUsers()
+            .subscribe(users =>{
+                this.users= users;
+            });
+    }
 }
-

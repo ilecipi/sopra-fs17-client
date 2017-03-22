@@ -10,13 +10,33 @@
 .col-md-6{
     margin: 0px;
     width: 800px;
-}
-.list-users{
-    float: left;
-    width: 350px;
-}
-.list-games{
-    float: right;
-    width: 350px;
-}
 
+}
+.columns-block{
+    width: 800px;
+}
+.right-column{
+    float: right;
+    width: 400px;
+    height: px;
+    overflow: auto;
+
+}
+.left-column {
+    float: left;
+    width: 400px;
+    height: 300px;
+    overflow:auto;
+}
+.btn-list{
+    width: 60px;
+    float: right;
+}
+.list-group-item{
+    float: left;
+}
+.btn-bottom{
+    margin: 10px;
+    width:500px;
+    align:center;
+}
