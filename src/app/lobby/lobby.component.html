@@ -1,10 +1,17 @@
 <!-- custom font -->
 <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
-
-<div class="col-md-6 col-md-offset-3">
-    <h1>LOBBY</h1>
+<h1>LOBBY</h1>
+<div class="lobby">
     <h2>Welcome to IMHOTEP - Cheers from GROUP 11</h2>
-
+    <div class="lobby-heading">
+        You are currently logged in as:
+        <div class="name-row">
+            Name: <div class="name">{{currentUser.name}}</div>
+        </div>
+        <div class="username-row">
+            Userame: <div class="username">{{currentUser.username}}</div>
+        </div>
+    </div>
     <div class="lobby-block">
 
         <div class="columns-block">
@@ -14,34 +21,24 @@
                 <ul class="list-users">
 
                     Users from "secure" api end point:
-                    <li class="list-group-item" *ngFor="let user of users">{{user.name}} - {{user.username}} - {{user.status}}</li>
+                    <li class="list-group-item" *ngFor="let user of users">{{user.name}} - {{user.username}} -
+                        {{user.status}}
+                    </li>
                 </ul>
             </div>
             <div class="right-column">
 
                 <ul class="list-games">
                     Games from "secure" api end point:
-                    <li class="list-group-item" *ngFor="let game of games">{{game.name}}  - id:{{game.id}} - {{game.owner}} - {{game.status}}
+                    <li class="list-group-item" *ngFor="let game of games">{{game.name}} - id:{{game.id}} -
+                        {{game.owner}} - {{game.status}}
                         <button class="btn btn-sm btn-primary btn-list" type="submit">JOIN</button>
                     </li>
                 </ul>
 
             </div>
         </div>
-    <a routerLink="/game">Game</a>
-    <div>
-        <ul class="list-users">
-            Users from secure api end point:
-            <li class="list-group-item" *ngFor="let user of users">{{user.name}} - {{user.username}}</li>
-        </ul>
-    </div>
-    <div>
-        <ul class="list-games">
-            Games from secure api end point:
-            <li class="list-group-item" *ngFor="let game of games">{{game.name}} - {{game.owner}}</li>
-        </ul>
-
-    </div>
-    <button class="btn btn-sm btn-primary btn-bottom" type="submit" [routerLink]="['/login']">Logout</button>
+        <a class="gameLink" routerLink="/game">Game</a>
+        <button class="btn btn-sm btn-primary btn-bottom" type="submit" [routerLink]="['/login']">Logout</button>
     </div>
 </div>

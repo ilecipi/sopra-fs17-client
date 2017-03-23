@@ -1,48 +1,66 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../shared/services/user.service";
 import {GameService} from "../shared/services/game.service";
 import {User} from "../shared/models/user";
 import {Game} from "../shared/models/game";
-import {LoginComponent} from "../login/login.component";
-import {Input} from "@angular/core";
-
 
 @Component({
-  selector: 'app-lobby',
-  templateUrl: './lobby.component.html',
-  styleUrls: ['./lobby.component.css']
+    selector: 'app-lobby',
+    templateUrl: './lobby.component.html',
+    styleUrls: ['./lobby.component.css'],
 })
 
-export class LobbyComponent  implements OnInit {
+export class LobbyComponent implements OnInit {
     users: User[] = [];
     games: Game[] = [];
+    currentUser: User;
+    loggedIn: boolean;
 
-    constructor(private userService: UserService,private gameService: GameService) { }
+    constructor(private userService: UserService, private gameService: GameService) {
+    }
+
     ngOnInit() {
-        // get users from secure api end point
+
+        // get all users from the server and put them in the user list
         this.userService.getUsers()
             .subscribe(users => {
                 this.users = users;
             });
 
-        //get games from secure api end point
+        //get all games from the server and put them in the games list
         this.gameService.getGames()
             .subscribe(games => {
                 this.games = games;
-            })
+            });
 
-        this.pollInfo(this.gameService,this.userService);
+        //Automatically retrieve users and games list information from server:
+        this.pollInfo(this.gameService, this.userService);
+
+        //Automatically retrieve currentUser information from UserService:
+        this.loggedIn = this.userService.getLoggedStatus();
+        if (this.loggedIn) {
+            this.currentUser = this.userService.getCurrentUser();
+        }
+        else {
+            //dummy data if the user is not logged in.
+            //(for example if the page gets refreshed for developing purposes)
+            this.currentUser = new User();
+            this.currentUser.name = 'Dummy';
+            this.currentUser.username = 'DonDon';
+        }
+
     }
 
     //calls polling function for games and users
-    pollInfo(gameService: GameService, userService : UserService){
+    pollInfo(gameService: GameService, userService: UserService) {
         gameService.pollGames()
-            .subscribe(games =>{
-                this.games= games;
+            .subscribe(games => {
+                this.games = games;
             });
         userService.pollUsers()
-            .subscribe(users =>{
-                this.users= users;
+            .subscribe(users => {
+                this.users = users;
             });
     }
+
 }

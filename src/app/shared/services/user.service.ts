@@ -8,11 +8,38 @@ import { environment } from "../../../environments/environment";
 @Injectable()
 export class UserService {
     private apiUrl: string;
+    private currentUser: User;
+    private loggedIn: boolean;
+
 
     constructor(private http: Http,
                 private authenticationService: AuthenticationService) {
         //selects correct URL on the basis of the environment mode
         this.apiUrl = environment.apiUrl;
+        this.loggedIn=false;
+    }
+
+
+    loginUser(user:User): void {
+        this.currentUser = user;
+        this.loggedIn = true;
+        //don't know if the following lines are necessary:
+
+        // this
+        //     .http
+        //     .get(this.apiUrl)
+        //     .map((response: Response) => response.json())
+        //     .subscribe((user) => {
+        //         this.currentUser = user;
+        //     })
+    }
+
+    getCurrentUser(): User {
+        return this.currentUser;
+    }
+
+    getLoggedStatus(): boolean{
+        return this.loggedIn;
     }
 
     getUsers(): Observable<User[]> {
