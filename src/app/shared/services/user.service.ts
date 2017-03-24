@@ -23,15 +23,6 @@ export class UserService {
     loginUser(user:User): void {
         this.currentUser = user;
         this.loggedIn = true;
-        //don't know if the following lines are necessary:
-
-        // this
-        //     .http
-        //     .get(this.apiUrl)
-        //     .map((response: Response) => response.json())
-        //     .subscribe((user) => {
-        //         this.currentUser = user;
-        //     })
     }
 
     getCurrentUser(): User {

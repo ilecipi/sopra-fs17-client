@@ -8,9 +8,13 @@
     font-size: 15px;
     margin-left: 20%;
     margin-right: 20%;
+    overflow: hidden;
+
 }
 .lobby-block{
-    margin: auto
+    margin: auto;
+    width: 100%;
+    overflow: hidden;
 }
 
 
@@ -22,7 +26,7 @@
     border: 2px solid black;
     letter-spacing: 2pt;
     word-spacing: 2pt;
-    font-size: 25px;
+    font-size: 20px;
     text-align: center;
     line-height: 1.2;
     border-radius: 5px;
@@ -37,22 +41,45 @@
     border: 2px solid white;
     width: 40%;
     float:right;
-    background-color: black;
+    background-color: #373737;
     border-radius: 5px;
 }
 .username{
     float:right;
     border: 2px solid white;
     width: 40%;
-    background-color: black;
+    background-color: #373737;
     border-radius: 5px;
 
 }
+.list-heading{
+    color:white;
+    background: #373737;
+    border-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-size: 20px;
+    text-align: center;
+}
+.list-users{
+    padding: 0;
+    max-height: 320px;
+    overflow: auto;
+
+
+}
+.list-games{
+    padding: 0;
+    max-height: 320px;
+    overflow: auto;
+}
+
 .list-group-item{
     opacity: .8;
     width: 100%;
     color: white;
-    background: var(--colorOne);
+    background: #373737;
+    border: 1px solid white;
 }
 
 .user-status{
@@ -62,20 +89,22 @@
     float: right;
 }
 .columns-block{
-    width: 800px;
+    width: 100%;
 }
 .right-column{
     float: right;
     width: 50%;
-    height: 300px;
-    overflow: auto;
-
+    margin-bottom: 0;
+    height: auto;
+    overflow: hidden;
 }
 .left-column {
     float: left;
     width: 50%;
-    height: 300px;
-    overflow:auto;
+    margin-bottom: 0;
+    height: auto;
+
+    overflow: hidden;
 }
 .btn-list{
     opacity: .8;
@@ -87,18 +116,28 @@
 
 }
 
+.waiting-room{
+    width: 100%;
+    background: white;
+    position: absolute;
+    height:30px;
+}
+
+
+
+
 
 .btn-bottom {
-    margin-top: 1%;
     width: 100%;
     color: white;
     border: 1px solid black;
     font-size: 35px;
-    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
     opacity: .8;
     background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
 }
+
 
 /*Hover color for button*/
 .btn-bottom:hover {
@@ -112,7 +151,7 @@
 }
 
 
-/*Styles for font colors in lists*/
+/*Styles for font colors in lists and */
 .pending{
     color: var(--colorPending);
 }

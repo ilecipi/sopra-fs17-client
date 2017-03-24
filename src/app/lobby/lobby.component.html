@@ -1,7 +1,6 @@
 <!-- custom font -->
 <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
 <h1>LOBBY</h1>
-
 <div class="lobby">
     <h2>Welcome to IMHOTEP - Cheers from GROUP 11</h2>
     <div class="lobby-heading">
@@ -18,6 +17,7 @@
     <div class="lobby-block">
         <div class="columns-block">
             <div class="left-column">
+                <div class="list-heading">Users</div>
                 <ul class="list-users">
                     <li class="list-group-item" *ngFor="let user of users">{{user.name}} - {{user.username}}
                         <div class="user-status"
@@ -33,7 +33,7 @@
                 </ul>
             </div>
             <div class="right-column">
-
+                <div class="list-heading">Games</div>
                 <ul class="list-games">
                     <li class="list-group-item" *ngFor="let game of games">{{game.name}} - id:{{game.id}} -
                         {{game.owner}}
@@ -50,10 +50,18 @@
                         </button>
                     </li>
                 </ul>
-
             </div>
         </div>
-        <a class="gameLink" routerLink="/game">Game</a>
-        <button class="btn btn-sm btn-primary btn-bottom" type="submit" [routerLink]="['/login']">Logout</button>
     </div>
+    <div class="waiting-room">
+        sabksjbkjdsbagn  AD  a s  fqkj kjew kjew kjd <   dsafjj
+        <div class="game-names">
+
+        </div>
+        <div class="game-buttons">
+
+        </div>
+    </div>
+    <button class="btn btn-sm btn-primary btn-bottom" type="submit" [routerLink]="['/login']">Logout</button>
+    <a class="gameLink" routerLink="/game">Game</a>
 </div>
