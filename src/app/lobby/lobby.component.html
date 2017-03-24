@@ -1,38 +1,53 @@
 <!-- custom font -->
 <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
 <h1>LOBBY</h1>
+
 <div class="lobby">
     <h2>Welcome to IMHOTEP - Cheers from GROUP 11</h2>
     <div class="lobby-heading">
         You are currently logged in as:
         <div class="name-row">
-            Name: <div class="name">{{currentUser.name}}</div>
+            Name:
+            <div class="name">{{currentUser.name}}</div>
         </div>
         <div class="username-row">
-            Userame: <div class="username">{{currentUser.username}}</div>
+            Username:
+            <div class="username">{{currentUser.username}}</div>
         </div>
     </div>
     <div class="lobby-block">
-
         <div class="columns-block">
-
             <div class="left-column">
-
                 <ul class="list-users">
-
-                    Users from "secure" api end point:
-                    <li class="list-group-item" *ngFor="let user of users">{{user.name}} - {{user.username}} -
-                        {{user.status}}
+                    <li class="list-group-item" *ngFor="let user of users">{{user.name}} - {{user.username}}
+                        <div class="user-status"
+                             [ngClass]="
+                        {online: user.status == 'ONLINE',
+                        offline: user.status == 'OFFLINE',
+                        isPlaying: user.status == 'IS_PLAYING',
+                        isReady: user.status == 'IS_READY'
+                         }">
+                            {{user.status}}
+                        </div>
                     </li>
                 </ul>
             </div>
             <div class="right-column">
 
                 <ul class="list-games">
-                    Games from "secure" api end point:
                     <li class="list-group-item" *ngFor="let game of games">{{game.name}} - id:{{game.id}} -
-                        {{game.owner}} - {{game.status}}
-                        <button class="btn btn-sm btn-primary btn-list" type="submit">JOIN</button>
+                        {{game.owner}}
+                        <div class="game-status"
+                             [ngClass]="
+                             {pending: game.status == 'PENDING',
+                             running: game.status == 'RUNNING',
+                             finished: game.status == 'FINISHED'
+                             }">
+                            {{game.status}}
+                        </div>
+                        <button *ngIf=" game.status != 'RUNNING'" class="btn btn-sm btn-primary btn-list" type="submit">
+                            JOIN
+                        </button>
                     </li>
                 </ul>
 

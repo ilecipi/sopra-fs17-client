@@ -1,5 +1,5 @@
 .lobby{
-    opacity: .80; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
+    opacity: 1; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
     filter: alpha(opacity=50); /* IE lt 8 */
     -ms-filter: "alpha(opacity=50)"; /* IE 8 */
     -khtml-opacity: .50; /* Safari 1.x */
@@ -15,7 +15,7 @@
 
 
 .lobby-heading{
-    opacity: .78;
+    opacity: .8;
     background-color: var(--colorFour);
     font-weight: normal;
     color: white;
@@ -25,6 +25,7 @@
     font-size: 25px;
     text-align: center;
     line-height: 1.2;
+    border-radius: 5px;
 }
 .name-row{
     padding:1%;
@@ -37,52 +38,99 @@
     width: 40%;
     float:right;
     background-color: black;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 .username{
     float:right;
     border: 2px solid white;
     width: 40%;
     background-color: black;
-    border-radius: 10px;
+    border-radius: 5px;
 
+}
+.list-group-item{
+    opacity: .8;
+    width: 100%;
+    color: white;
+    background: var(--colorOne);
+}
+
+.user-status{
+    float: right;
+}
+.game-status{
+    float: right;
 }
 .columns-block{
     width: 800px;
 }
 .right-column{
     float: right;
-    width: 400px;
+    width: 50%;
     height: 300px;
     overflow: auto;
 
 }
 .left-column {
     float: left;
-    width: 400px;
+    width: 50%;
     height: 300px;
     overflow:auto;
 }
 .btn-list{
-    width: 60px;
-    float: right;
+    opacity: .8;
+    margin: auto;
+    width: 50px;
+    color: white;
+    border: 1px solid black;
+    background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
+
 }
-.list-group-item{
-    float: left;
-}
+
 
 .btn-bottom {
     margin-top: 1%;
     width: 100%;
     color: white;
-    border: 3px solid black;
+    border: 1px solid black;
     font-size: 35px;
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: black;
+    opacity: .8;
     background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
 }
 
 /*Hover color for button*/
 .btn-bottom:hover {
+    opacity: .8;
     background-image: -webkit-linear-gradient(top, var(--colorFour), #D0D0D0);
+}
+.btn-list:hover{
+    opacity: .8;
+    background-image: -webkit-linear-gradient(top, var(--colorFour), #D0D0D0);
+
+}
+
+
+/*Styles for font colors in lists*/
+.pending{
+    color: var(--colorPending);
+}
+.running{
+    color: var(--colorRunning);
+}
+.finished{
+    color: var(--colorFinished);
+}
+.online{
+    color: var(--colorOnline);
+}
+.offline{
+    color: var(--colorOffline);
+}
+.isReady{
+    color: var(--colorIsReady);
+}
+.isPlaying{
+    color: var(--colorIsPlaying);
 }

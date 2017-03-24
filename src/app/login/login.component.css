@@ -93,3 +93,9 @@
 .btn:hover {
     background-image: -webkit-linear-gradient(top, var(--colorFour), #D0D0D0);
 }
+.credits{
+    text-align: center;
+    font-size: 20px;
+    color: black;
+
+}
