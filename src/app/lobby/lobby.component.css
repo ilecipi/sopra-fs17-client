@@ -9,21 +9,23 @@
     margin-left: 20%;
     margin-right: 20%;
     overflow: hidden;
-
 }
 .lobby-block{
-    margin: auto;
     width: 100%;
     overflow: hidden;
 }
 
 
+
+/*
+    Lobby heading
+*/
 .lobby-heading{
     opacity: .8;
-    background-color: var(--colorFour);
+    background-color: #373737;
     font-weight: normal;
     color: white;
-    border: 2px solid black;
+    border: 1px solid white;
     letter-spacing: 2pt;
     word-spacing: 2pt;
     font-size: 20px;
@@ -31,31 +33,49 @@
     line-height: 1.2;
     border-radius: 5px;
 }
-.name-row{
-    padding:1%;
-}
-.username-row{
-    padding:1%;
+.name-username{
+    display: flex;
 }
 .name{
-    border: 2px solid white;
-    width: 40%;
-    float:right;
-    background-color: #373737;
-    border-radius: 5px;
+    flex-grow: 1;
 }
 .username{
-    float:right;
-    border: 2px solid white;
-    width: 40%;
-    background-color: #373737;
-    border-radius: 5px;
+    flex-grow: 1;
+}
 
+.user-status{
+    float: right;
+}
+.game-status{
+    float: right;
+}
+
+
+
+/*
+    Columns Block:
+*/
+.columns-block{
+    width: 100%;
+    display: flex;
+}
+.right-column{
+    flex-grow:1;
+    width: 50%;
+    margin-bottom: -10px;
+    height: auto;
+    overflow: hidden;
+}
+.left-column {
+    flex-grow:1;
+    width: 50%;
+    margin-bottom: -10px;
+    height: auto;
 }
 .list-heading{
     color:white;
     background: #373737;
-    border-color: white;
+    opacity: .8;
     border: 1px solid white;
     border-radius: 5px;
     font-size: 20px;
@@ -82,33 +102,8 @@
     border: 1px solid white;
 }
 
-.user-status{
-    float: right;
-}
-.game-status{
-    float: right;
-}
-.columns-block{
-    width: 100%;
-}
-.right-column{
-    float: right;
-    width: 50%;
-    margin-bottom: 0;
-    height: auto;
-    overflow: hidden;
-}
-.left-column {
-    float: left;
-    width: 50%;
-    margin-bottom: 0;
-    height: auto;
-
-    overflow: hidden;
-}
 .btn-list{
     opacity: .8;
-    margin: auto;
     width: 50px;
     color: white;
     border: 1px solid black;
@@ -116,39 +111,70 @@
 
 }
 
+
+
+/*
+    Waiting Room
+*/
 .waiting-room{
+    padding: 10px;
+    background-color: #373737;
+    border: 1px solid white;
+    display: flex;
+    color: white;
     width: 100%;
-    background: white;
-    position: absolute;
-    height:30px;
+    opacity: 0.8;
+}
+.player-row{
+    display: flex;
+}
+.player{
+    margin: 3px;
+    font-size: 20px;
+    border: 1px solid white;
+    text-align: center;
+    flex-grow: 1;
+}
+.leave-button{
+    flex-grow: 1;
+    font-size: 25px;
 }
 
+.game-players{
+    flex-grow: 6;
+}
+.bottom-buttons{
+    display: flex;
+}
 
+.ready-button{
+    flex-grow: 1;
+    font-size: 25px;
+}
+.player-row{
+    display: flex;
+}
+.btn{
 
-
-
-.btn-bottom {
-    width: 100%;
     color: white;
-    border: 1px solid black;
-    font-size: 35px;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    border: 1px solid white;
+
+    background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
+
+}
+.btn:hover{
+    opacity: .8;
+    background-image: -webkit-linear-gradient(top, var(--colorFour), #D0D0D0);
+    color:white;
+}
+.btn-bottom {
+    flex-grow: 1;
+    width: 100%;
+    font-size: 25px;
     opacity: .8;
     background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
 }
 
-
-/*Hover color for button*/
-.btn-bottom:hover {
-    opacity: .8;
-    background-image: -webkit-linear-gradient(top, var(--colorFour), #D0D0D0);
-}
-.btn-list:hover{
-    opacity: .8;
-    background-image: -webkit-linear-gradient(top, var(--colorFour), #D0D0D0);
-
-}
 
 
 /*Styles for font colors in lists and */

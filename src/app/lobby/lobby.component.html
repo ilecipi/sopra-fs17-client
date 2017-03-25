@@ -5,13 +5,9 @@
     <h2>Welcome to IMHOTEP - Cheers from GROUP 11</h2>
     <div class="lobby-heading">
         You are currently logged in as:
-        <div class="name-row">
-            Name:
-            <div class="name">{{currentUser.name}}</div>
-        </div>
-        <div class="username-row">
-            Username:
-            <div class="username">{{currentUser.username}}</div>
+        <div class="name-username">
+            <div class="name">Name: {{currentUser.name}}</div>
+            <div class="username">Username: {{currentUser.username}}</div>
         </div>
     </div>
     <div class="lobby-block">
@@ -54,14 +50,25 @@
         </div>
     </div>
     <div class="waiting-room">
-        sabksjbkjdsbagn  AD  a s  fqkj kjew kjew kjd <   dsafjj
-        <div class="game-names">
-
+        <div class="btn leave-button">
+            LEAVE
         </div>
-        <div class="game-buttons">
-
+        <div class="game-players">
+            <div class="player-row">
+                <div class="player">Player1</div>
+                <div class="player">Player2</div>
+            </div>
+            <div class="player-row">
+                <div class="player">Player3</div>
+                <div class="player">Player4</div>
+            </div>
+        </div>
+        <div class="btn ready-button">
+            READY
         </div>
     </div>
-    <button class="btn btn-sm btn-primary btn-bottom" type="submit" [routerLink]="['/login']">Logout</button>
-    <a class="gameLink" routerLink="/game">Game</a>
+    <div class="bottom-buttons">
+        <button class="btn btn-bottom" type="submit" [routerLink]="['/login']">LOGOUT</button>
+        <button class="btn btn-bottom" type="submit">CREATE NEW GAME</button>
+    </div>
 </div>
