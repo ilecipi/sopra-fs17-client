@@ -14,6 +14,7 @@ export class AuthenticationService {
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
 
+        // set url dinamically
         this.apiUrl = environment.apiUrl;
     }
 
@@ -38,7 +39,7 @@ export class AuthenticationService {
                     return null;
                 }
             }) // ...and calling .json() on the response to return data
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error in creating a user')); //...errors if
     }
 
 

@@ -15,6 +15,10 @@ export class LobbyComponent implements OnInit {
     games: Game[] = [];
     currentUser: User;
     loggedIn: boolean;
+    currentGame: Game;
+    loading = false;
+    error = '';
+    inWaitingRoom: boolean;
 
     constructor(private userService: UserService, private gameService: GameService) {
     }
@@ -47,8 +51,10 @@ export class LobbyComponent implements OnInit {
             this.currentUser = new User();
             this.currentUser.name = 'Dummy';
             this.currentUser.username = 'DonDon';
+            this.currentUser.token = "6";
         }
 
+        this.inWaitingRoom = false;
     }
 
     //calls polling function for games and users
@@ -61,6 +67,20 @@ export class LobbyComponent implements OnInit {
             .subscribe(users => {
                 this.users = users;
             });
+    }
+
+    createNewGame() {
+        this.gameService.createNewGame(this.currentUser)
+            .subscribe(result => {
+                if (result) {
+                    //TODO: do something, maybe nothing
+                } else {
+                    this.error = 'Username exists';
+                    this.loading = false;
+                }
+            });
+        this.currentGame = this.gameService.getCurrentGame();
+        this.inWaitingRoom = true;
     }
 
 }
