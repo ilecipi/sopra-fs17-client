@@ -21,7 +21,7 @@
     border-style: ridge;
     height: 599px;
     width: 260px;
-    margin: 0px;
+    margin: auto;
 }
 
 .siteboards.col-xs-4{
@@ -29,7 +29,7 @@
     border-style: ridge;
     height: 599px;
     width: 438px;
-    margin: 0px;
+    margin: auto;
 }
 
 .cards.col-xs-4{
@@ -38,7 +38,7 @@
     height: 599px;
     width: 298px;
     padding-right: 15px;
-    margin: 0px;
+    margin: auto;
 }
 
 .player.row{
@@ -47,7 +47,7 @@
     height: 169px;
     width: 996px;
     padding-left: 15px;
-    margin: 0px;
+    margin: auto;
 }
 
 .opposing-players.col-lg-2{
@@ -58,4 +58,44 @@
     margin: 0px;
 }
 
+.market.row{
+    border: 1px solid;
+    border-color: #080808;
+    height: 185px;
+}
+
+.pyramid.row{
+    border: 1px solid;
+    border-color: #080808;
+    height: 125px;
+}
+
+.temple.row{
+    border: 1px solid;
+    border-color: #080808;
+    height: 79px;
+}
+
+.burial-chamber.row{
+    border: 1px solid;
+    border-color: #080808;
+    height: 110px;
+}
+
+.obelisk.row{
+    border: 1px solid;
+    border-color: #080808;
+    height: 95px;
+}
+
+table#tb1{
+    width: 100%;
+    height: 150px;
+    background-color: #f1f1c1;
+    border: 1px solid;
+}
+
+table#tb1, td{
+    border: 1px solid;
+}
 
