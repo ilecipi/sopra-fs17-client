@@ -89,10 +89,12 @@
 }
 
 table#tb1{
-    width: 100%;
-    height: 150px;
+    width: 210px;
+    height: 160px;
     background-color: #f1f1c1;
     border: 1px solid;
+    margin-left: 60px;
+    margin-top: 10px;
 }
 
 table#tb1, td{
@@ -109,4 +111,12 @@ table#tb3{
 
 p#templeRows{
     margin-left: 90px;
+}
+
+table#tb4{
+    width: 420px;
+    height: 90px;
+    background-color: #f1f1c1;
+    border: 1px solid;
+    margin-top: 5px;
 }
