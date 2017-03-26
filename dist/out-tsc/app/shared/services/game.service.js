@@ -10,7 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { AuthenticationService } from "./authentication.service";
-import { Observable } from "rxjs";
+import { Observable } from "rxjs/Rx";
+import { Game } from "../models/game";
 import { environment } from "../../../environments/environment";
 export var GameService = (function () {
     function GameService(http, authenticationService) {
@@ -23,7 +24,7 @@ export var GameService = (function () {
         // add authorization header with token
         var headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
         var options = new RequestOptions({ headers: headers });
-        // get users from api
+        // get games from api
         return this.http.get(this.apiUrl + '/games', options)
             .map(function (response) { return response.json(); });
     };
@@ -33,6 +34,10 @@ export var GameService = (function () {
         return Observable.interval(time).flatMap(function () {
             return _this.getGames();
         });
+    };
+    GameService.prototype.setDummyGame = function () {
+        this.currentGame = new Game;
+        this.currentGame.name = "DummyGame";
     };
     GameService.prototype.setCurrentGame = function (game) {
         this.currentGame = game;
@@ -50,14 +55,11 @@ export var GameService = (function () {
             .map(function (response) {
             // login successful if there's a jwt token in the response
             var game = response.json() && response.json();
-            console.log("got 'till here");
             if (game) {
                 // set token property
-                _this.token = game.token;
+                _this.currentGame = game;
                 // store username and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentGame', JSON.stringify({ username: user.username, token: _this.token }));
-                //set response
-                _this.currentGame = JSON.parse(localStorage.getItem('currentGame'));
+                localStorage.setItem('currentName', JSON.stringify({ name: game.name, owner: game.owner, id: _this.gameId }));
                 // return true to indicate successful login
                 return game;
             }
@@ -66,7 +68,14 @@ export var GameService = (function () {
                 return null;
             }
         }) // ...and calling .json() on the response to return data
-            .catch(function (error) { return Observable.throw(error.json || 'Server error in creating a game'); }); //...errors if
+            .catch(function (error) { return Observable.throw(error.json().error || 'Server error in creating a user'); }); //...errors if
+    };
+    GameService.prototype.isReady = function (user) {
+        console.log(user.token);
+        console.log(this.currentGame.id);
+        var headers = new Headers(); // ... Set content type to JSON
+        //passed user will have ready state on current game
+        this.http.put(this.apiUrl + '/games/game/' + this.currentGame.id + "?token=" + user.id, headers);
     };
     GameService = __decorate([
         Injectable(), 

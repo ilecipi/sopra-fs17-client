@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.user)
             .subscribe(result => {
                 if (result) {
+                    this.user.token=this.authenticationService.getToken();
                     this.userService.loginUser(this.user);//Saves current user into the service UserService
                     this.router.navigate(['/lobby']);
                 } else {

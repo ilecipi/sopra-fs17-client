@@ -10,15 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { AuthenticationService } from "./authentication.service";
-import { Observable } from "rxjs";
+import { Observable } from "rxjs/Rx";
 import { environment } from "../../../environments/environment";
 export var UserService = (function () {
     function UserService(http, authenticationService) {
         this.http = http;
         this.authenticationService = authenticationService;
+        this.pollTime = 1500;
         //selects correct URL on the basis of the environment mode
         this.apiUrl = environment.apiUrl;
         this.loggedIn = false;
+        this.inWaitingRoom = false;
     }
     UserService.prototype.loginUser = function (user) {
         this.currentUser = user;
@@ -40,7 +42,7 @@ export var UserService = (function () {
     };
     UserService.prototype.pollUsers = function (time) {
         var _this = this;
-        if (time === void 0) { time = 1500; }
+        if (time === void 0) { time = this.pollTime; }
         return Observable.interval(time).flatMap(function () {
             return _this.getUsers();
         });

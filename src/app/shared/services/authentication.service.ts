@@ -9,7 +9,7 @@ export class AuthenticationService {
     public token: string;
     private apiUrl: string;
 
-    constructor(private http: Http, private jsonp: Jsonp) {
+    constructor(private http: Http, private jsonp: Jsonp,) {
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
@@ -42,7 +42,9 @@ export class AuthenticationService {
             .catch((error: any) => Observable.throw(error.json().error || 'Server error in creating a user')); //...errors if
     }
 
-
+    getToken(): string{
+        return this.token;
+}
     logout(): void {
         // clear token remove user from local storage to log user out
         this.token = null;

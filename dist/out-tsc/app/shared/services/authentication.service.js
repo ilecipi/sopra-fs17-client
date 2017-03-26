@@ -45,6 +45,9 @@ export var AuthenticationService = (function () {
         }) // ...and calling .json() on the response to return data
             .catch(function (error) { return Observable.throw(error.json().error || 'Server error in creating a user'); }); //...errors if
     };
+    AuthenticationService.prototype.getToken = function () {
+        return this.token;
+    };
     AuthenticationService.prototype.logout = function () {
         // clear token remove user from local storage to log user out
         this.token = null;

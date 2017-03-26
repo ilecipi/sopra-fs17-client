@@ -7,7 +7,7 @@
         You are currently logged in as:
         <div class="name-username">
             <div class="name">Name: {{currentUser.name}}</div>
-            <div class="username">Username: {{currentUser.username}}</div>
+            <div class="username">Username: {{currentUser.username}}    </div>
         </div>
     </div>
     <div class="lobby-block">
@@ -15,13 +15,14 @@
             <div class="left-column">
                 <div class="list-heading">Users</div>
                 <ul class="list-users">
-                    <li class="list-group-item" *ngFor="let user of users">{{user.name}} - {{user.username}}
+                    <li class="list-group-item" *ngFor="let user of users">{{user.username}}-{{user.token}}
                         <div class="user-status"
                              [ngClass]="
                         {online: user.status == 'ONLINE',
                         offline: user.status == 'OFFLINE',
                         isPlaying: user.status == 'IS_PLAYING',
-                        isReady: user.status == 'IS_READY'
+                        isReady: user.status == 'IS_READY',
+                        inALobby: user.status=='IN_A_LOBBY'
                          }">
                             {{user.status}}
                         </div>
@@ -41,7 +42,7 @@
                              }">
                             {{game.status}}
                         </div>
-                        <button *ngIf=" game.status != 'RUNNING'" class="btn btn-sm btn-primary btn-list" type="submit">
+                        <button *ngIf=" game.status != 'RUNNING' && !inWaitingRoom" class="btn btn-sm btn-primary btn-list" type="submit">
                             JOIN
                         </button>
                     </li>
@@ -49,8 +50,8 @@
             </div>
         </div>
     </div>
-    <div class="waiting-room">
-        <div class="btn leave-button">
+    <div class="waiting-room" *ngIf="inWaitingRoom">
+        <div class="btn leave-button" (click)="leave()">
             LEAVE
         </div>
         <div class="game-players">
@@ -63,7 +64,7 @@
                 <div class="player">Player4</div>
             </div>
         </div>
-        <div class="btn ready-button">
+        <div class="btn ready-button" (click)="ready()">
             READY
         </div>
     </div>

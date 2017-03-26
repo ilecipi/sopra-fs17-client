@@ -51,7 +51,7 @@ export class LobbyComponent implements OnInit {
             this.currentUser = new User();
             this.currentUser.name = 'Dummy';
             this.currentUser.username = 'DonDon';
-            this.currentUser.token = "6";
+            this.currentUser.token = "42";
         }
 
         this.inWaitingRoom = false;
@@ -73,7 +73,6 @@ export class LobbyComponent implements OnInit {
         this.gameService.createNewGame(this.currentUser)
             .subscribe(result => {
                 if (result) {
-                    //TODO: do something, maybe nothing
                 } else {
                     this.error = 'Username exists';
                     this.loading = false;
@@ -83,4 +82,15 @@ export class LobbyComponent implements OnInit {
         this.inWaitingRoom = true;
     }
 
+    ready() {
+        this.gameService.isReady(this.userService.getCurrentUser());
+    }
+    leave(){
+        this.inWaitingRoom=false;
+        this.gameService.setDummyGame();
+    }
+
+    join(){
+
+    }
 }

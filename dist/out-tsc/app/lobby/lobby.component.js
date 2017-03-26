@@ -45,7 +45,7 @@ export var LobbyComponent = (function () {
             this.currentUser = new User();
             this.currentUser.name = 'Dummy';
             this.currentUser.username = 'DonDon';
-            this.currentUser.token = "6";
+            this.currentUser.token = "42";
         }
         this.inWaitingRoom = false;
     };
@@ -74,6 +74,15 @@ export var LobbyComponent = (function () {
         });
         this.currentGame = this.gameService.getCurrentGame();
         this.inWaitingRoom = true;
+    };
+    LobbyComponent.prototype.ready = function () {
+        this.gameService.isReady(this.userService.getCurrentUser());
+    };
+    LobbyComponent.prototype.leave = function () {
+        this.inWaitingRoom = false;
+        this.gameService.setDummyGame();
+    };
+    LobbyComponent.prototype.join = function () {
     };
     LobbyComponent = __decorate([
         Component({

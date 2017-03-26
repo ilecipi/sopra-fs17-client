@@ -31,6 +31,7 @@ export var LoginComponent = (function () {
         this.authenticationService.login(this.user)
             .subscribe(function (result) {
             if (result) {
+                _this.user.token = _this.authenticationService.getToken();
                 _this.userService.loginUser(_this.user); //Saves current user into the service UserService
                 _this.router.navigate(['/lobby']);
             }

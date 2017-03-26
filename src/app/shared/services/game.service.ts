@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers, RequestOptions, Response} from "@angular/http";
 import {AuthenticationService} from "./authentication.service";
-import {Observable} from "rxjs";
+import {Observable} from "rxjs/Rx";
 import {Game} from "../models/game";
 import {User} from "../models/user";
 import {environment} from "../../../environments/environment";
@@ -11,13 +11,12 @@ export class GameService {
     private apiUrl: string;
     private currentGame: Game;
     private token: string;
+    private gameId: number;
 
     constructor(private http: Http,
                 private authenticationService: AuthenticationService) {
         //selects correct URL on the basis of the environment mode
         this.apiUrl = environment.apiUrl;
-
-
 
     }
 
@@ -26,7 +25,7 @@ export class GameService {
         let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token});
         let options = new RequestOptions({headers: headers});
 
-        // get users from api
+        // get games from api
         return this.http.get(this.apiUrl + '/games', options)
             .map((response: Response) => response.json());
     }
@@ -37,10 +36,17 @@ export class GameService {
         })
     }
 
-    setCurrentGame(game: Game){
-        this.currentGame=game;
+    setDummyGame() {
+        this.currentGame = new Game;
+        this.currentGame.name = "DummyGame";
+
     }
-    getCurrentGame(){
+
+    setCurrentGame(game: Game) {
+        this.currentGame = game;
+    }
+
+    getCurrentGame() {
         return this.currentGame;
     }
 
@@ -54,23 +60,27 @@ export class GameService {
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let game = response.json() && response.json();
-                console.log("got 'till here");
-
                 if (game) {
                     // set token property
-                    this.token = game.token;
+                    this.currentGame=game;
                     // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentGame', JSON.stringify({username: user.username, token: this.token}));
-                    //set response
-                    this.currentGame = JSON.parse(localStorage.getItem('currentGame'));
+                    localStorage.setItem('currentName', JSON.stringify({name: game.name, owner: game.owner ,id: this.gameId}));
                     // return true to indicate successful login
-
                     return game;
                 } else {
                     // return false to indicate failed login
                     return null;
                 }
             }) // ...and calling .json() on the response to return data
-            .catch((error: any) => Observable.throw(error.json || 'Server error in creating a game')); //...errors if
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error in creating a user')); //...errors if
+    }
+
+    isReady(user: User): void  {
+        console.log(user.token);
+        console.log(this.currentGame.id);
+        let headers = new Headers();// ... Set content type to JSON
+
+        //passed user will have ready state on current game
+        this.http.put(this.apiUrl + '/games/game/' + this.currentGame.id + "?token=" + user.id, headers);
     }
 }

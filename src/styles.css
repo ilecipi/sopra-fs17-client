@@ -11,11 +11,12 @@
     /*Game status*/
     --colorPending: #00e10d;
     --colorRunning: #e71917;
-    --colorFinished: #2d6fd3;
+    --colorFinished: #18f7ff;
     /*User status*/
-    --colorOnline: #09e495;
-    --colorOffline: #e71917;
-    --colorIsReady: #00e10d;
-    --colorIsPlaying: #ffb90a;
+    --colorInALobby: #18f7ff;
+    --colorOnline: #00e10d;
+    --colorOffline: #fffbfb;
+    --colorIsReady: #ffb90a;
+    --colorIsPlaying: #e71917;
 }
 

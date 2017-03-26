@@ -5,6 +5,6 @@
 export var environment = {
     envName: 'dev',
     production: false,
-    apiUrl: 'http://localhost:8080/'
+    apiUrl: 'http://localhost:8080'
 };
 //# sourceMappingURL=C:/Users/Silvo/Dropbox/UZH/FS17/SOPRA/Git repository/sopra-fs17-group11-client/src/environments/environment.js.map
