@@ -11,7 +11,6 @@ import {UserService} from "../shared/services/user.service";
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    model: any = {};
     loading = false;
     error = '';
     user: User;

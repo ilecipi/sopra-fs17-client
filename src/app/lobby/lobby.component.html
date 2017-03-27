@@ -32,7 +32,7 @@
             <div class="right-column">
                 <div class="list-heading">Games</div>
                 <ul class="list-games">
-                    <li class="list-group-item" *ngFor="let game of games">{{game.name}} - id:{{game.id}} -
+                    <li class="list-group-item" *ngFor="let game of games; let i=index">{{game.name}} - id:{{game.id}} -
                         {{game.owner}}
                         <div class="game-status"
                              [ngClass]="
@@ -42,7 +42,7 @@
                              }">
                             {{game.status}}
                         </div>
-                        <button *ngIf=" game.status != 'RUNNING' && !inWaitingRoom" class="btn btn-sm btn-primary btn-list" type="submit">
+                        <button *ngIf=" game.status != 'RUNNING' && !inWaitingRoom" class="btn btn-sm btn-primary btn-list" (click)="join(i)" type="submit">
                             JOIN
                         </button>
                     </li>

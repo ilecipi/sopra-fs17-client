@@ -85,9 +85,10 @@ export class LobbyComponent implements OnInit {
     ready() {
         this.gameService.isReady(this.userService.getCurrentUser())
             .subscribe(result => {
-                if (result) {
+                if (result) { console.log("user gone ready");
                 } else {
-                    this.error = 'Cannot go ready ';
+                    console.log("user not gone ready");
+                    this.error = 'Cannot go ready';
                     this.loading = false;
                 }
             });
@@ -97,6 +98,15 @@ export class LobbyComponent implements OnInit {
         this.gameService.setDummyGame();
     }
 
-    join(){
+    join(i:number){
+        console.log(i);
+        // this.gameService.joinUser(this.userService.getCurrentUser())
+        //     .subscribe(result => {
+        //         if (result) {
+        //         } else {
+        //             this.error = 'Cannot go ready';
+        //             this.loading = false;
+        //         }
+        //     });
     }
 }

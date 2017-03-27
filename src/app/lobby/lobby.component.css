@@ -62,15 +62,15 @@
     display: flex;
 }
 .right-column{
-    flex-grow:1;
-    width: 50%;
+    flex-grow: 1;
+    width:50%;
     margin-bottom: -10px;
     height: auto;
     overflow: hidden;
 }
 .left-column {
-    flex-grow:1;
-    width: 50%;
+    width:50%;
+    flex-grow: 1;
     margin-bottom: -10px;
     height: auto;
 }
@@ -98,7 +98,6 @@
 
 .list-group-item{
     opacity: .8;
-    width: 100%;
     color: white;
     background: #373737;
     border: 1px solid white;
