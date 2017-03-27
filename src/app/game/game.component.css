@@ -19,7 +19,7 @@
     margin: 0px;
 }
 
-.harbour.col-xs-4{
+.harbour.col-md-4{
     background-color: #1b6d85;
     border-style: ridge;
     height: 599px;
@@ -27,7 +27,7 @@
     margin: 0px;
 }
 
-.siteboards.col-xs-4{
+.siteboards.col-md-4{
     background-color: #d9955f;
     border-style: ridge;
     height: 599px;
@@ -35,7 +35,7 @@
     margin: 0px;
 }
 
-.cards.col-xs-4{
+.cards.col-md-4{
     background-color: #8c6549;
     border-style: ridge;
     height: 599px;
@@ -50,14 +50,6 @@
     height: 169px;
     width: 1010px;
     padding-left: 15px;
-    margin: 0px;
-}
-
-.opposing-players.col-lg-2{
-    background-color: #8c6549;
-    border-style: ridge;
-    height: 768px;
-    width: 356px;
     margin: 0px;
 }
 
@@ -89,4 +81,12 @@
     border: 1px solid;
     border-color: #080808;
     height: 95px;
+}
+
+.opposing-players.col-lg-2{
+    background-color: #8c6549;
+    border-style: ridge;
+    height: 768px;
+    width: 356px;
+    margin: 0px;
 }

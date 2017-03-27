@@ -1,7 +1,28 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 90px 60px 30px;
+    grid-gap: 20px;
+}
+
 table#py1{
     width: 90px;
     height: 90px;
     background-color: #f1f1c1;
+    margin: 10px;
+}
+
+table#py2{
+    width: 60px;
+    height: 60px;
+    background-color: #f1f1c1;
+    margin: 25px;
+}
+
+table#py3{
+    width: 30px;
+    height: 30px;
+    background-color: #f1f1c1;
+    margin: 40px;
 }
 
 table, td{

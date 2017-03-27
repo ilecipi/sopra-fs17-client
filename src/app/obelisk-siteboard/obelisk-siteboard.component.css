@@ -1,0 +1,29 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 30px 30px 30px 30px;
+    grid-gap: 40px;
+    margin-left: 30px;
+}
+
+.box{
+    background-color: #f1f1c1;
+    width: 30px;
+    height: 30px;
+    border: 1px solid;
+}
+
+.box.obelisk1{
+    margin-top: 10px;
+}
+
+.box.obelisk2{
+    margin-top: 25px;
+}
+
+.box.obelisk3{
+    margin-top: 40px;
+}
+
+.box.obelisk4{
+    margin-top: 55px;
+}
