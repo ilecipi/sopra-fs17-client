@@ -3,7 +3,7 @@ import {UserService} from "../shared/services/user.service";
 import {User} from "../shared/models/user";
 
 @Component({
-  selector: 'app-game',
+  selector: 'game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css']
 })

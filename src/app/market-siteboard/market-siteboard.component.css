@@ -1,0 +1,12 @@
+table#market{
+    width: 210px;
+    height: 160px;
+    background-color: #f1f1c1;
+    border: 1px solid;
+    margin-left: 60px;
+    margin-top: 10px;
+}
+
+table#market, td{
+    border: 1px solid;
+}

@@ -1,0 +1,9 @@
+table#py1{
+    width: 90px;
+    height: 90px;
+    background-color: #f1f1c1;
+}
+
+table, td{
+    border: 1px solid;
+}

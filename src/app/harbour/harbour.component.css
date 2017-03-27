@@ -1,0 +1,39 @@
+p#ship1{
+    border: 1px solid;
+    background-color: #8c6549;
+    border-radius: 30px;
+    height: 40px;
+    width: 120px;
+    text-align: center;
+    margin-top: 90px;
+}
+
+p#ship2{
+    border: 1px solid;
+    background-color: #8c6549;
+    border-radius: 30px;
+    height: 40px;
+    width: 120px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+p#ship3{
+    border: 1px solid;
+    background-color: #8c6549;
+    border-radius: 30px;
+    height: 40px;
+    width: 120px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+p#ship4{
+    border: 1px solid;
+    background-color: #8c6549;
+    border-radius: 30px;
+    height: 40px;
+    width: 120px;
+    text-align: center;
+    margin-top: 50px;
+}
