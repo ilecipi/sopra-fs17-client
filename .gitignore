@@ -20,6 +20,9 @@ node_modules/
 .idea/**/sqlDataSources.xml
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
+.idea
+
+dist
 
 # Gradle:
 .idea/**/gradle.xml
