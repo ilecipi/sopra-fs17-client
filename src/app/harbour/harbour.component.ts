@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-harbour',
+  selector: 'harbour',
   templateUrl: './harbour.component.html',
   styleUrls: ['./harbour.component.css']
 })

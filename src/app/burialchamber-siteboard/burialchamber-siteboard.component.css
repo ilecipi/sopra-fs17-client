@@ -1,0 +1,11 @@
+table#burialchamber{
+    width: 420px;
+    height: 90px;
+    background-color: #f1f1c1;
+    border: 1px solid;
+    margin-top: 7px;
+}
+
+table#burialchamber, td{
+    border: 1px solid;
+}

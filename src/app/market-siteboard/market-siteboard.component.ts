@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-market-siteboard',
+  selector: 'market-siteboard',
   templateUrl: './market-siteboard.component.html',
   styleUrls: ['./market-siteboard.component.css']
 })

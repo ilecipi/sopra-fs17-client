@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-pyramid-siteboard',
+  selector: 'pyramid-siteboard',
   templateUrl: './pyramid-siteboard.component.html',
   styleUrls: ['./pyramid-siteboard.component.css']
 })

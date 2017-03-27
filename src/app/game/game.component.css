@@ -19,7 +19,7 @@
     margin: 0px;
 }
 
-.ship-area.col-xs-4{
+.harbour.col-xs-4{
     background-color: #1b6d85;
     border-style: ridge;
     height: 599px;
@@ -89,84 +89,4 @@
     border: 1px solid;
     border-color: #080808;
     height: 95px;
-}
-
-p#ship1{
-    border: 1px solid;
-    background-color: #8c6549;
-    border-radius: 30px;
-    height: 40px;
-    width: 120px;
-    text-align: center;
-    margin-top: 90px;
-}
-
-p#ship2{
-    border: 1px solid;
-    background-color: #8c6549;
-    border-radius: 30px;
-    height: 40px;
-    width: 120px;
-    text-align: center;
-    margin-top: 50px;
-}
-
-p#ship3{
-    border: 1px solid;
-    background-color: #8c6549;
-    border-radius: 30px;
-    height: 40px;
-    width: 120px;
-    text-align: center;
-    margin-top: 50px;
-}
-
-p#ship4{
-    border: 1px solid;
-    background-color: #8c6549;
-    border-radius: 30px;
-    height: 40px;
-    width: 120px;
-    text-align: center;
-    margin-top: 50px;
-}
-
-table#market{
-    width: 210px;
-    height: 160px;
-    background-color: #f1f1c1;
-    border: 1px solid;
-    margin-left: 60px;
-    margin-top: 10px;
-}
-
-table#market, td{
-    border: 1px solid;
-}
-
-table#py1{
-    width: 90px;
-    height: 90px;
-    background-color: #f1f1c1;
-}
-
-table#temple{
-    width: 150px;
-    height: 30px;
-    background-color: #f1f1c1;
-    border: 1px solid;
-    margin-top: 15px;
-    margin-left: 90px;
-}
-
-p#templeRows{
-    margin-left: 90px;
-}
-
-table#burialchamber{
-    width: 420px;
-    height: 90px;
-    background-color: #f1f1c1;
-    border: 1px solid;
-    margin-top: 7px;
 }

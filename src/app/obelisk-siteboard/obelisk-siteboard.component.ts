@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-obelisk-siteboard',
+  selector: 'obelisk-siteboard',
   templateUrl: './obelisk-siteboard.component.html',
   styleUrls: ['./obelisk-siteboard.component.css']
 })
