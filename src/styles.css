@@ -1,0 +1,22 @@
+:root {
+    /*Custom colors for interface*/
+    --colorOne: #85622a;
+    --colorTwo: #e6a644;
+    --colorThree: #e18339;
+    --colorFour: #b6571d;
+    --colorFive: #8c3313;
+
+
+    /*Custom colors for lobby status*/
+    /*Game status*/
+    --colorPending: #00e10d;
+    --colorRunning: #e71917;
+    --colorFinished: #18f7ff;
+    /*User status*/
+    --colorInALobby: #18f7ff;
+    --colorOnline: #00e10d;
+    --colorOffline: #fffbfb;
+    --colorIsReady: #ffb90a;
+    --colorIsPlaying: #e71917;
+}
+

@@ -1,0 +1,112 @@
+.gameboard.row{
+    height: 768px;
+    width: 1366px;
+    margin: 0px;
+}
+
+.player.col-lg-10{
+    height: 768px;
+    width: 1010px;
+    margin: 0px;
+}
+
+.gameboard.row{
+    height: 599px;
+    width: 1010px;
+    margin: 0px;
+}
+
+.ship-area.col-xs-4{
+    background-color: #1b6d85;
+    border-style: ridge;
+    height: 599px;
+    width: 260px;
+    margin: auto;
+}
+
+.siteboards.col-xs-4{
+    background-color: #c0a16b;
+    border-style: ridge;
+    height: 599px;
+    width: 438px;
+    margin: auto;
+}
+
+.cards.col-xs-4{
+    background-color: #8c6549;
+    border-style: ridge;
+    height: 599px;
+    width: 298px;
+    padding-right: 15px;
+    margin: auto;
+}
+
+.player.row{
+    background-color: #8c6549;
+    border-style: ridge;
+    height: 169px;
+    width: 996px;
+    padding-left: 15px;
+    margin: auto;
+}
+
+.opposing-players.col-lg-2{
+    background-color: #8c6549;
+    border-style: ridge;
+    height: 768px;
+    width: 354px;
+    margin: 0px;
+}
+
+.market.row{
+    border: 1px solid;
+    border-color: #080808;
+    height: 185px;
+}
+
+.pyramid.row{
+    border: 1px solid;
+    border-color: #080808;
+    height: 125px;
+}
+
+.temple.row{
+    border: 1px solid;
+    border-color: #080808;
+    height: 79px;
+}
+
+.burial-chamber.row{
+    border: 1px solid;
+    border-color: #080808;
+    height: 110px;
+}
+
+.obelisk.row{
+    border: 1px solid;
+    border-color: #080808;
+    height: 95px;
+}
+
+table#tb1{
+    width: 100%;
+    height: 150px;
+    background-color: #f1f1c1;
+    border: 1px solid;
+}
+
+table#tb1, td{
+    border: 1px solid;
+}
+
+table#tb3{
+    width: 150px;
+    height: 30px;
+    background-color: #f1f1c1;
+    border: 1px solid;
+    margin-left: 90px;
+}
+
+p#templeRows{
+    margin-left: 90px;
+}

@@ -1,0 +1,206 @@
+.lobby{
+    opacity: 1; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
+    filter: alpha(opacity=50); /* IE lt 8 */
+    -ms-filter: "alpha(opacity=50)"; /* IE 8 */
+    -khtml-opacity: .50; /* Safari 1.x */
+    -moz-opacity: .50; /* FF lt 1.5, Netscape */
+    font-family: 'Sanchez',serif;
+    font-size: 15px;
+    margin-left: 20%;
+    margin-right: 20%;
+    overflow: hidden;
+}
+.lobby-block{
+    width: 100%;
+    overflow: hidden;
+}
+
+
+
+/*
+    Lobby heading
+*/
+.lobby-heading{
+    opacity: .8;
+    background-color: #373737;
+    font-weight: normal;
+    color: white;
+    border: 1px solid white;
+    letter-spacing: 2pt;
+    word-spacing: 2pt;
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.2;
+    border-radius: 20px;
+}
+.name-username{
+    display: flex;
+}
+.name{
+    flex-grow: 1;
+    padding: 10px;
+}
+.username{
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.user-status{
+    float: right;
+}
+.game-status{
+    float: right;
+}
+
+
+
+/*
+    Columns Block:
+*/
+.columns-block{
+    width: 100%;
+    display: flex;
+}
+.right-column{
+    flex-grow:1;
+    width: 50%;
+    margin-bottom: -10px;
+    height: auto;
+    overflow: hidden;
+}
+.left-column {
+    flex-grow:1;
+    width: 50%;
+    margin-bottom: -10px;
+    height: auto;
+}
+.list-heading{
+    color:white;
+    background: #373737;
+    opacity: .8;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-size: 20px;
+    text-align: center;
+}
+.list-users{
+    padding: 0;
+    max-height: 320px;
+    overflow: auto;
+
+
+}
+.list-games{
+    padding: 0;
+    max-height: 320px;
+    overflow: auto;
+}
+
+.list-group-item{
+    opacity: .8;
+    width: 100%;
+    color: white;
+    background: #373737;
+    border: 1px solid white;
+}
+
+.btn-list{
+    opacity: .8;
+    width: 50px;
+    color: white;
+    border: 1px solid black;
+    background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
+
+}
+
+
+
+/*
+    Waiting Room
+*/
+.waiting-room{
+    padding: 10px;
+    background-color: #373737;
+    border: 1px solid white;
+    display: flex;
+    color: white;
+    width: 100%;
+    opacity: 0.8;
+}
+.player-row{
+    display: flex;
+}
+.player{
+    margin: 3px;
+    font-size: 20px;
+    border: 1px solid white;
+    text-align: center;
+    flex-grow: 1;
+}
+.leave-button{
+    flex-grow: 1;
+    font-size: 25px;
+}
+
+.game-players{
+    flex-grow: 6;
+}
+.bottom-buttons{
+    display: flex;
+}
+
+.ready-button{
+    flex-grow: 1;
+    font-size: 25px;
+}
+.player-row{
+    display: flex;
+}
+.btn{
+
+    color: white;
+    border: 1px solid white;
+
+    background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
+
+}
+.btn:hover{
+    opacity: .8;
+    background-image: -webkit-linear-gradient(top, var(--colorFour), #D0D0D0);
+    color:white;
+}
+.btn-bottom {
+    flex-grow: 1;
+    width: 100%;
+    font-size: 25px;
+    opacity: .8;
+    background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
+}
+
+
+
+/*Styles for font colors in lists and */
+.pending{
+    color: var(--colorPending);
+}
+.running{
+    color: var(--colorRunning);
+}
+.finished{
+    color: var(--colorFinished);
+}
+.online{
+    color: var(--colorOnline);
+}
+.offline{
+    color: var(--colorOffline);
+}
+.isReady{
+    color: var(--colorIsReady);
+}
+.isPlaying{
+    color: var(--colorIsPlaying);
+}
+.inALobby{
+    color: var(--colorInALobby);
+}
