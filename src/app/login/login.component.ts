@@ -11,8 +11,6 @@ import {UserService} from "../shared/services/user.service";
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    loading = false;
-    error = '';
     user: User;
 
     constructor(private router: Router,
@@ -33,11 +31,11 @@ export class LoginComponent implements OnInit {
             .subscribe(result => {
                 if (result) {
                     this.user.token=this.authenticationService.getToken();
+                    this.user.id = this.authenticationService.getId();
                     this.userService.loginUser(this.user);//Saves current user into the service UserService
                     this.router.navigate(['/lobby']);
                 } else {
-                    this.error = 'Username exists';
-                    this.loading = false;
+                    console.log('Username already exists');
                 }
             });
     }

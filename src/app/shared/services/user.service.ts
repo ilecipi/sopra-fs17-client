@@ -10,8 +10,7 @@ export class UserService {
     private apiUrl: string;
     private currentUser: User;
     private loggedIn: boolean;
-    private inWaitingRoom: boolean;
-    private pollTime=1500;
+    private pollTime = 1500;
 
 
     constructor(private http: Http,
@@ -19,14 +18,18 @@ export class UserService {
         //selects correct URL on the basis of the environment mode
         this.apiUrl = environment.apiUrl;
         this.loggedIn = false;
-        this.inWaitingRoom=false;
     }
 
 
     loginUser(user: User): void {
         this.currentUser = user;
-        this.loggedIn = true;
+        this.loggedIn=true;
     }
+
+    logoutUser(): void {
+        this.currentUser = new User();
+    }
+
 
     getCurrentUser(): User {
         return this.currentUser;
@@ -47,9 +50,12 @@ export class UserService {
     }
 
     pollUsers(time = this.pollTime) {
+
         return Observable.interval(time).flatMap(() => {
             return this.getUsers();
         })
+
+
     }
 
 }

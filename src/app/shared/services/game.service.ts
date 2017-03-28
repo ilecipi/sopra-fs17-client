@@ -20,6 +20,7 @@ export class GameService {
 
     }
 
+
     getGames(): Observable<Game[]> {
         // add authorization header with token
         let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token});
@@ -62,9 +63,13 @@ export class GameService {
                 let game = response.json() && response.json();
                 if (game) {
                     // set token property
-                    this.currentGame=game;
+                    this.currentGame = game;
                     // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentName', JSON.stringify({name: game.name, owner: game.owner ,id: this.gameId}));
+                    localStorage.setItem('currentName', JSON.stringify({
+                        name: game.name,
+                        owner: game.owner,
+                        id: this.gameId
+                    }));
                     // return true to indicate successful login
                     return game;
                 } else {
@@ -75,38 +80,48 @@ export class GameService {
             .catch((error: any) => Observable.throw(error.json().error || 'Server error in creating a user')); //errors
     }
 
-    isReady(user: User): Observable<string>  {
-        console.log(user.token);
-        console.log(this.currentGame.id);
+    isReady(user: User): Observable<string> {
         let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token});// ... Set access rights.
-
-
-
         // let options = new RequestOptions({headers: headers}); // Create a request option
 
         //passed user will have ready state on current game
-        return this.http.put(this.apiUrl + '/games/game/' + this.currentGame.id + "?token=" + user.token,headers)
+        return this.http.put(this.apiUrl + '/games/game/' + this.currentGame.id + "?token=" + user.token, headers)
             .map((response: Response) => {
-            // login successful if there's a jwt token in the response
-            let game = response.json() && response.json();
-            if (game) {
-                // set token property
-                this.currentGame=game;
-                // store username and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentName', JSON.stringify({name: game.name, owner: game.owner ,id: this.gameId}));
-                // return true to indicate successfully gone ready
-                return game;
-            } else {
-                // return false to indicate failed isReady
-                return null;
-            }
-        }) // ...and calling .json() on the response to return data
+                let game = response.json() && response.json();
+                if (game) {
+
+                    this.currentGame = game;
+                    // store username and jwt token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('isReadyResponse', JSON.stringify({
+                        name: game.name,
+                        owner: game.owner,
+                        id: this.gameId
+                    }));
+                    // return true to indicate successfully gone ready
+                    return game;
+                } else {
+                    // return false to indicate failed isReady
+                    return null;
+                }
+            }) // ...and calling .json() on the response to return data
             .catch((error: any) => Observable.throw('Server error by updating status to IS_READY'));
     }
 
 
-    joinUser(user: User){
+    joinGame(game: Game, user: User): Observable<Game> {
         //TODO: add User to current game, then update currentUser in userService
+        let headers = new Headers({'Content-Type': 'application/json'});
+        return this.http.post(this.apiUrl + '/games/game/' + game.id + '/player?token=' + user.id, headers)
+            .map((response: Response) => {
+            let resp = response.json() && response.json();
+            if (resp){
+                this.currentGame=game;
+                return game;
+            } else{
+                return null;
+            }
+            })
+            .catch((error: any) => Observable.throw('Server error in joining a game'));
     }
 
 }

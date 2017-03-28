@@ -7,14 +7,15 @@ import {environment} from "../../../environments/environment";
 @Injectable()
 export class AuthenticationService {
     public token: string;
+    public id; number;
     private apiUrl: string;
 
     constructor(private http: Http, private jsonp: Jsonp,) {
         // set token if saved in local storage
-        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
 
-        // set url dinamically
+        // set dynamic url
         this.apiUrl = environment.apiUrl;
     }
 
@@ -28,10 +29,11 @@ export class AuthenticationService {
                 // login successful if there's a jwt token in the response
                 let user = response.json() && response.json();
                 if (user) {
-                    // set token property
+                    // set token and property
                     this.token = user.token;
+                    this.id= user.id;
                     // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify({username: user.username, token: this.token}));
+                    localStorage.setItem('currentUser', JSON.stringify({username: user.username, token: this.token, id: this.id}));
                     // return true to indicate successful login
                     return user;
                 } else {
@@ -42,13 +44,16 @@ export class AuthenticationService {
             .catch((error: any) => Observable.throw(error.json().error || 'Server error in creating a user')); //...errors if
     }
 
-    getToken(): string{
+    getToken(): string {
         return this.token;
-}
+    }
+    getId(): number {
+        return this.id;
+    }
+
     logout(): void {
         // clear token remove user from local storage to log user out
         this.token = null;
-        localStorage.removeItem('currentUser');
     }
 
 }

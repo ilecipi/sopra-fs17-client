@@ -16,8 +16,6 @@ export class LobbyComponent implements OnInit {
     currentUser: User;
     loggedIn: boolean;
     currentGame: Game;
-    loading = false;
-    error = '';
     inWaitingRoom: boolean;
 
     constructor(private userService: UserService, private gameService: GameService) {
@@ -52,6 +50,7 @@ export class LobbyComponent implements OnInit {
             this.currentUser.name = 'Dummy';
             this.currentUser.username = 'DonDon';
             this.currentUser.token = "42";
+            this.currentUser.id = 42;
         }
 
         this.inWaitingRoom = false;
@@ -69,44 +68,54 @@ export class LobbyComponent implements OnInit {
             });
     }
 
+    //method called when button is pressed.
     createNewGame() {
-        this.gameService.createNewGame(this.currentUser)
-            .subscribe(result => {
-                if (result) {
-                } else {
-                    this.error = 'Cannot create new game';
-                    this.loading = false;
-                }
-            });
-        this.currentGame = this.gameService.getCurrentGame();
-        this.inWaitingRoom = true;
+        if (this.inWaitingRoom) {
+            //not allowed to create a new game while in waiting room, so do nothing.
+        }
+        else {
+            this.gameService.createNewGame(this.currentUser)
+                .subscribe(result => {
+                    this.currentGame=result;
+                    this.gameService.setCurrentGame(this.currentGame);
+                });
+            this.currentGame = this.gameService.getCurrentGame();
+            this.inWaitingRoom = true;
+        }
     }
 
     ready() {
         this.gameService.isReady(this.userService.getCurrentUser())
             .subscribe(result => {
-                if (result) { console.log("user gone ready");
+                if (result) {
+                    console.log("User gone ready");
                 } else {
-                    console.log("user not gone ready");
-                    this.error = 'Cannot go ready';
-                    this.loading = false;
+                    console.log("User not gone ready");
                 }
             });
     }
-    leave(){
-        this.inWaitingRoom=false;
+
+    leave() {
+        this.inWaitingRoom = false;
         this.gameService.setDummyGame();
     }
 
-    join(i:number){
-        console.log(i);
-        // this.gameService.joinUser(this.userService.getCurrentUser())
-        //     .subscribe(result => {
-        //         if (result) {
-        //         } else {
-        //             this.error = 'Cannot go ready';
-        //             this.loading = false;
-        //         }
-        //     });
+    join(index: number) {
+        let selectedGame = this.games[index]; //selects the game from the games list
+        let user = this.userService.getCurrentUser(); //gets currentUser information from userService
+        this.gameService.joinGame(selectedGame,user) //join game
+            .subscribe(result => {
+                if (result) {
+                } else {
+
+                }
+            });
+        this.inWaitingRoom = true;
+        this.gameService.setCurrentGame(selectedGame); //currentGame in gameService is updated
+
+    }
+
+    logout() {
+        this.userService.logoutUser();
     }
 }

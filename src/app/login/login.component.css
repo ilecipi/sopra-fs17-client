@@ -74,6 +74,15 @@
 
 .row {
     margin-top: -4%;
+    display: flex;
+}
+
+.enter-button {
+    flex-grow: 1;
+}
+
+.clear-button {
+    flex-grow: 1;
 }
 
 /*buttons*/
@@ -90,7 +99,8 @@
 .btn:hover {
     background-image: -webkit-linear-gradient(top, var(--colorFour), #D0D0D0);
 }
-.credits{
+
+.credits {
     text-align: center;
     font-size: 20px;
     color: white;

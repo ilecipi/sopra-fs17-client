@@ -69,7 +69,7 @@
         </div>
     </div>
     <div class="bottom-buttons">
-        <button class="btn btn-bottom" type="submit" [routerLink]="['/login']">LOGOUT</button>
+        <button class="btn btn-bottom" type="submit" (click)="logout()" [routerLink]="['/login']">LOGOUT</button>
         <button class="btn btn-bottom" type="submit" (click)="createNewGame()">CREATE NEW GAME</button>
     </div>
 </div>
