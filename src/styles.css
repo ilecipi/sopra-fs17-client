@@ -5,6 +5,7 @@
     --colorThree: #e18339;
     --colorFour: #b6571d;
     --colorFive: #8c3313;
+    --colorSix: #4fb0cb;
 
 
     /*Custom colors for lobby status*/
@@ -20,11 +21,15 @@
     --colorIsPlaying: #e71917;
 }
 
+
 body {
     background-image: url("assets/img/background.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+
+
+    font-family: 'Sanchez',serif;
 }
 
