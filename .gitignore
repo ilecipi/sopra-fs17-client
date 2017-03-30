@@ -63,3 +63,4 @@ fabric.properties
 .idea/workspace.xml
 /.idea/
 
+npm-debug.log

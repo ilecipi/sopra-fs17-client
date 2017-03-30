@@ -21,6 +21,7 @@ export class LobbyComponent implements OnInit {
     inWaitingRoom: boolean;
     index: number;
     waitingRoom: Game;
+    createdGame: boolean;
 
 
     constructor(private userService: UserService, private gameService: GameService) {
@@ -28,13 +29,7 @@ export class LobbyComponent implements OnInit {
 
     ngOnInit() {
 
-        // Get all users from the server and put them in the user list
-        this.userService.getUsers()
-            .subscribe(users => {
-                this.users = users;
-            });
-
-        //Get all games from the server and put them in the games list
+        //Get all games from the server:
         this.gameService.getGames()
             .subscribe(games => {
                 this.games = games;
@@ -59,11 +54,8 @@ export class LobbyComponent implements OnInit {
         }
         //Cannot start a game in
         this.inWaitingRoom = false;
+        this.createdGame = false;
         this.index = -1;
-
-        Observable.interval(1000).subscribe(x => {
-            this.updateWaitingRoom();
-        });
     }
 
     //calls polling function for games and users
@@ -80,18 +72,16 @@ export class LobbyComponent implements OnInit {
 
     //method called when button is pressed.
     createNewGame() {
-        if (this.inWaitingRoom) {
-            //not allowed to create a new game while in waiting room, so do nothing.
-        }
-        else {
+
+
             this.gameService.createNewGame(this.currentUser)
                 .subscribe(result => {
                     this.currentGame = result;
                     this.gameService.setCurrentGame(this.currentGame);
                 });
-            this.inWaitingRoom = true;
             this.index = this.games.length;
-        }
+            this.inWaitingRoom = true;
+            this.createdGame=true;
     }
 
 
@@ -107,12 +97,6 @@ export class LobbyComponent implements OnInit {
         this.gameService.updateCurrentGame();
     }
 
-    leave() {
-        this.inWaitingRoom = false;
-        this.gameService.setDummyGame();
-        this.index = -1;
-        //TODO: Need to inform the server about player leaving a waiting room
-    }
 
     join(index: number) {
         let selectedGame = this.games[index]; //selects the game from the games list
@@ -135,13 +119,4 @@ export class LobbyComponent implements OnInit {
         this.userService.logoutUser();
     }
 
-    updateWaitingRoom(): void {
-        if (this.index < 0) {
-            //do nothing because no game has been selected
-        }
-        else {
-            this.waitingRoom = this.games[this.index];
-            console.log(this.waitingRoom);
-        }
-    }
 }

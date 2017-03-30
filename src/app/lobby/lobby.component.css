@@ -13,6 +13,7 @@
 .lobby-block {
     width: 100%;
     overflow: hidden;
+    margin-bottom: -10px;
 }
 
 /*
@@ -29,19 +30,19 @@
     font-size: 20px;
     text-align: center;
     line-height: 1.2;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 .name-username {
     display: flex;
 }
 
-.name {
+.name-user {
     flex-grow: 1;
     padding: 10px;
 }
 
-.username {
+.username-user {
     flex-grow: 1;
     padding: 10px;
 }
@@ -57,21 +58,8 @@
 /*
     Columns Block:
 */
-.columns-block {
-    width: 100%;
-    display: flex;
-}
 
 .right-column {
-    flex-grow: 1;
-    width: 50%;
-    margin-bottom: -10px;
-    height: auto;
-    overflow: hidden;
-}
-
-.left-column {
-    width: 50%;
     flex-grow: 1;
     margin-bottom: -10px;
     height: auto;
@@ -91,7 +79,6 @@
     padding: 0;
     max-height: 320px;
     overflow: auto;
-
 }
 
 .list-games {
@@ -103,51 +90,93 @@
 .list-group-item {
     opacity: .8;
     color: white;
-    background: #373737;
-    border: 1px solid white;
-}
-
-.btn-list {
-    opacity: .8;
-    width: 50px;
-    color: white;
-    border: 1px solid black;
-    background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
-
+    background: #000000;
+    border: 1px double white;
+    border-radius: 10px;
+    padding: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /*
-    Waiting Room
+    Games list elements:
 */
-.waiting-room {
-    padding: 10px;
-    background-color: #373737;
-    border: 1px solid white;
+.game-heading {
     display: flex;
+}
+
+.game-name {
+    background: #373737;
+    width: 33%;
+    flex-grow: 1;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 3px;
+    height: 30px;
+}
+
+.game-status {
+    background: #373737;
+    width: 33%;
+    flex-grow: 1;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 3px;
+    height: 30px;
+}
+
+.btn-list {
+    flex-grow: 1;
+    opacity: .8;
+    width: 33%;
+    height: 30px;
     color: white;
-    width: 100%;
-    opacity: 0.8;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 3px;
+    font-size: 14px;
+    background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
+}
+
+.players-heading {
+    text-align: center;
 }
 
 .player-row {
     display: flex;
+    margin: 0;
 }
 
 .player {
-    margin: 3px;
-    font-size: 20px;
     border: 1px solid white;
-    text-align: center;
-    flex-grow: 10;
+    border-radius: 5px;
+    margin: 5px;
+    flex-grow: 1;
+    display: flex;
+    width: 50%;
 }
+
+.username {
+    flex-grow: 1;
+    padding: 0;
+    text-align: center;
+}
+
+.status {
+    flex-grow: 1;
+    padding: 0;
+    text-align: center;
+}
+
+/*
+    Bottom buttons
+*/
 
 .leave-button {
     flex-grow: 1;
     font-size: 25px;
-}
-
-.game-players {
-    flex-grow: 6;
 }
 
 .bottom-buttons {
@@ -159,22 +188,10 @@
     font-size: 25px;
 }
 
-.player-row {
-    display: flex;
-}
-
-.status-box {
-    margin: 3px;
-    border: 1px solid white;
-}
-
 .btn {
-
     color: white;
     border: 1px solid white;
-
     background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
-
 }
 
 .btn:hover {
@@ -222,12 +239,4 @@
 
 .inALobby {
     color: var(--colorInALobby);
-}
-
-.ready {
-    background-color: var(--colorIsReady);
-}
-
-.not-ready {
-    background-color: var(--colorInALobby);
 }

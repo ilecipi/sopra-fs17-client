@@ -54,8 +54,6 @@ export class UserService {
         return Observable.interval(time).flatMap(() => {
             return this.getUsers();
         })
-
-
     }
 
 }
