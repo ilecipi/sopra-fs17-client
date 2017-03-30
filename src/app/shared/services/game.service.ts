@@ -20,6 +20,13 @@ export class GameService {
 
     }
 
+    updateCurrentGame(): Observable<Game> {
+        let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token});
+        let options = new RequestOptions({headers: headers});
+        return this.http.get(this.apiUrl + '/games/game/' + this.currentGame.id, options)
+            .map((response: Response) => response.json());
+    }
+
 
     getGames(): Observable<Game[]> {
         // add authorization header with token
@@ -69,6 +76,7 @@ export class GameService {
                         name: game.name,
                         owner: game.owner,
                         id: this.gameId
+
                     }));
                     // return true to indicate successful login
                     return game;
@@ -111,17 +119,20 @@ export class GameService {
     joinGame(game: Game, user: User): Observable<Game> {
         //TODO: add User to current game, then update currentUser in userService
         let headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post(this.apiUrl + '/games/game/' + game.id + '/player?token=' + user.id, headers)
+        let options = new RequestOptions({headers: headers}); // Create a request option
+
+        return this.http.post(this.apiUrl + '/games/game/' + game.id + '/player?token=' + user.id, options)
             .map((response: Response) => {
-            let resp = response.json() && response.json();
-            if (resp){
-                this.currentGame=game;
-                return game;
-            } else{
-                return null;
-            }
+                let resp = response.json() && response.json();
+                if (resp) {
+                    this.currentGame = game;
+                    return game;
+                } else {
+                    return null;
+                }
             })
             .catch((error: any) => Observable.throw('Server error in joining a game'));
     }
+
 
 }

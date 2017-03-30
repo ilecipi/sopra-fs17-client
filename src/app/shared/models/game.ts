@@ -1,3 +1,5 @@
+import {User} from './user';
+
 export class Game {
     public id: number;
     public name: string;
@@ -7,7 +9,7 @@ export class Game {
     //public nextPlayer: type;
     //public colors: type[];
     //public moves: type[];
-    //public players: type[];
+    public players: User[];
     //public siteBoards: type[];
 
     constructor() {

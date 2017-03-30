@@ -16,7 +16,7 @@ var AuthenticationService = (function () {
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
-        //selects correct URL on the basis of the environment mode
+        // set dynamic url
         this.apiUrl = environment_1.environment.apiUrl;
     }
     AuthenticationService.prototype.login = function (user) {
@@ -29,10 +29,11 @@ var AuthenticationService = (function () {
             // login successful if there's a jwt token in the response
             var user = response.json() && response.json();
             if (user) {
-                // set token property
+                // set token and property
                 _this.token = user.token;
+                _this.id = user.id;
                 // store username and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify({ username: user.username, token: _this.token }));
+                localStorage.setItem('currentUser', JSON.stringify({ username: user.username, token: _this.token, id: _this.id }));
                 // return true to indicate successful login
                 return user;
             }
@@ -41,12 +42,17 @@ var AuthenticationService = (function () {
                 return null;
             }
         }) // ...and calling .json() on the response to return data
-            .catch(function (error) { return Rx_1.Observable.throw(error.json().error || 'Server error'); }); //...errors if
+            .catch(function (error) { return Rx_1.Observable.throw(error.json().error || 'Server error in creating a user'); }); //...errors if
+    };
+    AuthenticationService.prototype.getToken = function () {
+        return this.token;
+    };
+    AuthenticationService.prototype.getId = function () {
+        return this.id;
     };
     AuthenticationService.prototype.logout = function () {
         // clear token remove user from local storage to log user out
         this.token = null;
-        localStorage.removeItem('currentUser');
     };
     AuthenticationService = __decorate([
         core_1.Injectable()
