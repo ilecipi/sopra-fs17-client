@@ -5,7 +5,6 @@ p#ship1{
     height: 40px;
     width: 120px;
     text-align: center;
-    margin-top: 90px;
 }
 
 p#ship2{
@@ -15,7 +14,6 @@ p#ship2{
     height: 40px;
     width: 120px;
     text-align: center;
-    margin-top: 50px;
 }
 
 p#ship3{
@@ -25,7 +23,6 @@ p#ship3{
     height: 40px;
     width: 120px;
     text-align: center;
-    margin-top: 50px;
 }
 
 p#ship4{
@@ -35,5 +32,26 @@ p#ship4{
     height: 40px;
     width: 120px;
     text-align: center;
-    margin-top: 50px;
+}
+
+p#marketDock{
+    border: 1px solid;
+    margin-left: 150px;
+    margin-right: 0px;
+}
+
+p#pyramidDock{
+    border: 1px solid;
+}
+
+p#templeDock{
+    border: 1px solid;
+}
+
+p#burialchamberDock{
+    border: 1px solid;
+}
+
+p#obeliskDock{
+    border: 1px solid;
 }

@@ -32,6 +32,27 @@
   <!--  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> -->
 
+  <!-- Ng2-Dragula for drag and drop functionality -->
+  <script src="/node_modules/ng2-dragula/bundles/ng2-dragula.js"></script>
+  <link href="/node_modules/ng2-dragula/src/public/css/dragula.min.css" rel='stylesheet' type='text/css'>
+  <script>
+      System.config({
+          paths:{
+              'dragula'         : '../node_modules/dragula/dist/dragula.min.js'
+          },
+          packages: {
+              app: {
+                  format: 'register',
+                  defaultExtension: 'js'
+              }
+          }
+      });
+
+      System.import('app/main')
+          .then(null, console.error.bind(console));
+  </script>
+
+
 </head>
 
 <body>
