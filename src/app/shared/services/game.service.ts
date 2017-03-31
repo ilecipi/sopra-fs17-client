@@ -117,7 +117,6 @@ export class GameService {
 
 
     joinGame(game: Game, user: User): Observable<Game> {
-        //TODO: add User to current game, then update currentUser in userService
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers}); // Create a request option
 
@@ -134,5 +133,12 @@ export class GameService {
             .catch((error: any) => Observable.throw('Server error in joining a game'));
     }
 
+    startGame(user: User): Observable<string> {
+        let body = new FormData();
+        body.append('token', user.token);
+
+        return this.http.post(this.apiUrl + '/games/game/' + this.currentGame.id + '/start', body)
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error in creating a user' || {})); //errors
+    }
 
 }

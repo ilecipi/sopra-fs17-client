@@ -3,7 +3,6 @@ import {UserService} from "../shared/services/user.service";
 import {GameService} from "../shared/services/game.service";
 import {User} from "../shared/models/user";
 import {Game} from "../shared/models/game";
-import {Observable} from 'rxjs/Rx';
 
 
 @Component({
@@ -13,15 +12,15 @@ import {Observable} from 'rxjs/Rx';
 })
 
 export class LobbyComponent implements OnInit {
-    users: User[] = [];
     games: Game[] = [];
     currentUser: User;
     loggedIn: boolean;
     currentGame: Game;
-    inWaitingRoom: boolean;
+
     index: number;
-    waitingRoom: Game;
+    inWaitingRoom: boolean;
     createdGame: boolean;
+    pressedReady: boolean;
 
 
     constructor(private userService: UserService, private gameService: GameService) {
@@ -36,7 +35,7 @@ export class LobbyComponent implements OnInit {
             });
 
         //Automatically retrieve users and games list information from server:
-        this.pollInfo(this.gameService, this.userService);
+        this.pollInfo(this.gameService);
 
         //Automatically retrieve currentUser information from UserService:
         this.loggedIn = this.userService.getLoggedStatus();
@@ -55,33 +54,28 @@ export class LobbyComponent implements OnInit {
         //Cannot start a game in
         this.inWaitingRoom = false;
         this.createdGame = false;
+        this.pressedReady = false;
         this.index = -1;
     }
 
-    //calls polling function for games and users
-    pollInfo(gameService: GameService, userService: UserService) {
+    //calls polling function for games list
+    pollInfo(gameService: GameService) {
         gameService.pollGames()
             .subscribe(games => {
                 this.games = games;
-            });
-        userService.pollUsers()
-            .subscribe(users => {
-                this.users = users;
             });
     }
 
     //method called when button is pressed.
     createNewGame() {
-
-
-            this.gameService.createNewGame(this.currentUser)
-                .subscribe(result => {
-                    this.currentGame = result;
-                    this.gameService.setCurrentGame(this.currentGame);
-                });
-            this.index = this.games.length;
-            this.inWaitingRoom = true;
-            this.createdGame=true;
+        this.gameService.createNewGame(this.currentUser)
+            .subscribe(result => {
+                this.currentGame = result;
+                this.gameService.setCurrentGame(this.currentGame);
+            });
+        this.index = this.games.length;
+        this.inWaitingRoom = true;
+        this.createdGame = true;
     }
 
 
@@ -95,6 +89,7 @@ export class LobbyComponent implements OnInit {
                 }
             });
         this.gameService.updateCurrentGame();
+        this.pressedReady = true;
     }
 
 
@@ -115,8 +110,22 @@ export class LobbyComponent implements OnInit {
 
     }
 
+    startGame(): void {
+        if (this.createdGame) {
+            this.gameService.startGame(this.userService.getCurrentUser())
+                .subscribe(result => {
+                });
+        }
+        else {
+            //do nothing because not allowed to start the game
+        }
+    }
+
+
     logout() {
         this.userService.logoutUser();
+        this.inWaitingRoom = false;
+        this.createdGame = false;
     }
 
 }

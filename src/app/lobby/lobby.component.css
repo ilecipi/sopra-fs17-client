@@ -174,20 +174,49 @@
     Bottom buttons
 */
 
-.leave-button {
-    flex-grow: 1;
-    font-size: 25px;
-}
-
 .bottom-buttons {
     display: flex;
 }
 
 .ready-button {
+    width: 50%;
     flex-grow: 1;
-    font-size: 25px;
+    font-size: 20px;
 }
 
+.logout-button {
+    width: 50%;
+    flex-grow: 1;
+    font-size: 20px;
+}
+
+.newgame-button {
+    width: 50%;
+    flex-grow: 1;
+    font-size: 20px;
+}
+
+.startgame-button {
+    width: 50%;
+    flex-grow: 1;
+    font-size: 20px;
+}
+
+.wait-info {
+    width: 50%;
+    font-size: 15px;
+    background-color: #373737;
+    color: white;
+    opacity: 0.8;
+    border: 1px solid white;
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+/*
+    Other:
+*/
 .btn {
     color: white;
     border: 1px solid white;
@@ -205,6 +234,7 @@
     width: 100%;
     font-size: 25px;
     opacity: .8;
+    margin-top: 30px;
     background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
 }
 

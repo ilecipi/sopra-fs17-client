@@ -48,12 +48,4 @@ export class UserService {
         return this.http.get(this.apiUrl + '/users', options)
             .map((response: Response) => response.json());
     }
-
-    pollUsers(time = this.pollTime) {
-
-        return Observable.interval(time).flatMap(() => {
-            return this.getUsers();
-        })
-    }
-
 }
