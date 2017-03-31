@@ -20,6 +20,9 @@ import {GameService} from "./shared/services/game.service";
 import {routing} from "./app.routing";
 import {AuthenticationService} from "./shared/services/authentication.service";
 
+//Drag and Drop
+import {Ng2DragDropModule} from "ng2-drag-drop";
+
 
 @NgModule({
     declarations: [
@@ -39,6 +42,7 @@ import {AuthenticationService} from "./shared/services/authentication.service";
         FormsModule,
         HttpModule,
         JsonpModule,
+        Ng2DragDropModule, //Drag and Drop
         routing
     ],
     providers: [AuthenticationService, AuthGuardService, UserService, GameService],

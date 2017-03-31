@@ -3,8 +3,10 @@ import {Http, Headers, RequestOptions, Response} from "@angular/http";
 import {AuthenticationService} from "./authentication.service";
 import {environment} from "../../../environments/environment";
 
+import {Observable} from "rxjs/Rx";
 import {Game} from "../models/game";
-import {Ship} from "../models/ship";
+import {User} from "../models/user";
+import {Ship} from '../models/ship';
 
 @Injectable()
 export class ShipService {
@@ -16,9 +18,13 @@ export class ShipService {
     this.apiUrl = environment.apiUrl;
   }
 
-  createShip(game: Game){
+  getShips(round: number){
     let headers = new Headers({'Content-Type': 'application/json'})
     let options = new RequestOptions({headers: headers});
+
+
+    return this.http.post(this.apiUrl + '/ships/', options)
+
   }
 
 }

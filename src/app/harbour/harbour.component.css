@@ -1,3 +1,19 @@
+.container.dock{
+    border: 1px solid;
+    height: 40px;
+    margin-left: 150px;
+    margin-right: 0px;
+}
+
+.p.draggable{
+    border: 1px solid;
+    background-color: var(--colorOne);
+    border-radius: 30px;
+    height: 40px;
+    width: 120px;
+    text-align: center;
+}
+
 p#ship1{
     border: 1px solid;
     background-color: var(--colorOne);

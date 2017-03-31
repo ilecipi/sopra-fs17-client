@@ -1,9 +1,19 @@
-<p id="marketDock">Dock</p>
-<p id="ship1">Ship1</p>
-<p id="pyramidDock">Dock</p>
-<p id="ship2">Ship2</p>
-<p id="templeDock">Dock</p>
-<p id="ship3">Ship3</p>
-<p id="burialchamberDock">Dock</p>
-<p id="ship4">Ship4</p>
-<p id="obeliskDock">Dock</p>
+<div class = "harbour">
+    <div class="row">
+        <div class="col-xs-6">
+            <ul class="list-group">
+                <li draggable *ngFor="let item of items" [dragData]="item" class="list-group-item">{{item.name}}</li>
+            </ul>
+        </div>
+
+        <div class="col-xs-6">
+            <div class="panel panel-default" droppable (onDrop)="onItemDrop($event)" >
+                <div class="panel-heading">Dock</div>
+                <div class="panel-body">
+                    <li *ngFor="let item of droppedItems" class="list-group-item">{{item.name}}</li>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -17,12 +17,12 @@ export class GameComponent  implements OnInit {
 
   ngOnInit() {
     // get users from secure api end point
-    /*this.userService.getUsers()
+    this.userService.getUsers()
       .subscribe(users => {
         this.users = users;
-      });*/
+      });
 
-
+    // creates a DummyGame
     this.gameService.setDummyGame();
 
   }
