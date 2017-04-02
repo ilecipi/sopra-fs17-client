@@ -23,7 +23,7 @@ export class GameService {
     updateCurrentGame(): Observable<Game> {
         let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token});
         let options = new RequestOptions({headers: headers});
-        return this.http.get(this.apiUrl + '/games/game/' + this.currentGame.id, options)
+        return this.http.get(this.apiUrl + '/games/' + this.currentGame.id, options)
             .map((response: Response) => response.json());
     }
 
@@ -41,7 +41,8 @@ export class GameService {
     pollGames(time = 1500) {
         return Observable.interval(time).flatMap(() => {
             return this.getGames();
-        })
+
+        });
     }
 
     setDummyGame() {
@@ -84,8 +85,10 @@ export class GameService {
                     // return false to indicate failed login
                     return null;
                 }
+                // login successful if there's a jwt token in the response
+
             }) // ...and calling .json() on the response to return data
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error in creating a user')); //errors
+            .catch((error: any) => Observable.throw('Server error in creating a user')); //errors
     }
 
     isReady(user: User): Observable<string> {
@@ -93,7 +96,7 @@ export class GameService {
         // let options = new RequestOptions({headers: headers}); // Create a request option
 
         //passed user will have ready state on current game
-        return this.http.put(this.apiUrl + '/games/game/' + this.currentGame.id + "?token=" + user.token, headers)
+        return this.http.put(this.apiUrl + '/games/' + this.currentGame.id + "?token=" + user.token, headers)
             .map((response: Response) => {
                 let game = response.json() && response.json();
                 if (game) {
@@ -120,7 +123,7 @@ export class GameService {
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers}); // Create a request option
 
-        return this.http.post(this.apiUrl + '/games/game/' + game.id + '/player?token=' + user.id, options)
+        return this.http.post(this.apiUrl + '/games/' + game.id + '/player?token=' + user.id, options)
             .map((response: Response) => {
                 let resp = response.json() && response.json();
                 if (resp) {
@@ -137,7 +140,7 @@ export class GameService {
         let body = new FormData();
         body.append('token', user.token);
 
-        return this.http.post(this.apiUrl + '/games/game/' + this.currentGame.id + '/start', body)
+        return this.http.post(this.apiUrl + '/games/' + this.currentGame.id + '/start', body)
             .catch((error: any) => Observable.throw(error.json().error || 'Server error in creating a user' || {})); //errors
     }
 

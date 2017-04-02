@@ -3,6 +3,9 @@ import {UserService} from "../shared/services/user.service";
 import {GameService} from "../shared/services/game.service";
 import {User} from "../shared/models/user";
 import {Game} from "../shared/models/game";
+import {Router} from "@angular/router";
+
+import {Observable} from "rxjs/Rx"
 
 
 @Component({
@@ -17,13 +20,18 @@ export class LobbyComponent implements OnInit {
     loggedIn: boolean;
     currentGame: Game;
 
+    gamesSubscription: any;
+
     index: number;
     inWaitingRoom: boolean;
     createdGame: boolean;
     pressedReady: boolean;
 
 
-    constructor(private userService: UserService, private gameService: GameService) {
+    constructor(private userService: UserService,
+                private gameService: GameService,
+                private router: Router
+    ) {
     }
 
     ngOnInit() {
@@ -34,8 +42,6 @@ export class LobbyComponent implements OnInit {
                 this.games = games;
             });
 
-        //Automatically retrieve users and games list information from server:
-        this.pollInfo(this.gameService);
 
         //Automatically retrieve currentUser information from UserService:
         this.loggedIn = this.userService.getLoggedStatus();
@@ -56,11 +62,14 @@ export class LobbyComponent implements OnInit {
         this.createdGame = false;
         this.pressedReady = false;
         this.index = -1;
+
+        //Automatically retrieve users and games list information from server:
+        this.pollInfo();
     }
 
     //calls polling function for games list
-    pollInfo(gameService: GameService) {
-        gameService.pollGames()
+    pollInfo() {
+        this.gamesSubscription = this.gameService.pollGames()
             .subscribe(games => {
                 this.games = games;
             });
@@ -90,6 +99,7 @@ export class LobbyComponent implements OnInit {
             });
         this.gameService.updateCurrentGame();
         this.pressedReady = true;
+        this.listenForStart();
     }
 
 
@@ -121,11 +131,24 @@ export class LobbyComponent implements OnInit {
         }
     }
 
-
     logout() {
         this.userService.logoutUser();
         this.inWaitingRoom = false;
         this.createdGame = false;
+        this.gamesSubscription.unsubscribe();
+    }
+
+    listenForStart(time=300){
+        let subscription = Observable.interval(time).subscribe(x => {
+            if(this.index!=-1){
+                if (this.games[this.index].status=='RUNNING'){
+                    this.router.navigate(['/game'])
+                    this.gamesSubscription.unsubscribe();
+                    subscription.unsubscribe();
+
+                }
+            }
+        });
     }
 
 }
