@@ -19,6 +19,13 @@
     --colorOffline: #fffbfb;
     --colorIsReady: #ffb90a;
     --colorIsPlaying: #ff513c;
+
+
+    /*Custom colors for player*/
+    --colorStoneOne: #6e1b00;
+    --colorStoneTwo: #797879;
+    --colorStoneThree: #222122;
+    --colorStoneFour: #fffbfb;
 }
 
 

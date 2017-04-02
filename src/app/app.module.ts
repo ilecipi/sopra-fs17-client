@@ -22,6 +22,7 @@ import {AuthenticationService} from "./shared/services/authentication.service";
 
 //Drag and Drop
 import {Ng2DragDropModule} from "ng2-drag-drop";
+import { Player1Component } from './player1/player1.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import {Ng2DragDropModule} from "ng2-drag-drop";
         TempleSiteboardComponent,
         BurialchamberSiteboardComponent,
         ObeliskSiteboardComponent,
+        Player1Component,
     ],
     imports: [
         BrowserModule,

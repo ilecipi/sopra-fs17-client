@@ -1,11 +1,3 @@
-.container.dock{
-    border: 1px solid;
-    height: 40px;
-    margin-left: 150px;
-    margin-right: 0px;
-}
-
-
 .panel-body{
     background-color: var(--colorSix);
     margin: 0px;
