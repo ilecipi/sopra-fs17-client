@@ -24,11 +24,7 @@ export class LobbyComponent implements OnInit {
     createdGame: boolean;
     pressedReady: boolean;
 
-
     gamesSubscription: any; //need to store the subscription in order to un-subscribe from it later
-
-
-
 
     constructor(private userService: UserService,
                 private gameService: GameService,

@@ -1,47 +1,44 @@
 .game.row {
     height: 768px;
     width: 1366px;
-    margin: 0px;
+    margin: 0;
     font-size: 15px;
 }
 
 .player.col-lg-10 {
     height: 768px;
     width: 1010px;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 .gameboard.row {
     height: 599px;
     width: 1010px;
-    margin: 0px;
+    margin: 0;
 }
 
 .harbour.col-md-4 {
     background-color: var(--colorSix);
-    border-style: ridge;
     height: 599px;
     width: 262px;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
 }
 
 .siteboards.col-md-4 {
     background-color: var(--colorTwo);
-    border-style: ridge;
     height: 599px;
     width: 440px;
-    margin: 0px;
+    margin: 0;
 }
 
 .cards.col-md-4 {
     background-color: var(--colorFour);
-    border-style: ridge;
     height: 599px;
     width: 308px;
     padding-right: 15px;
-    margin: 0px;
+    margin: 0;
 }
 .market.row {
     border: 1px solid;
@@ -64,7 +61,7 @@
 .burial-chamber.row {
     border: 1px solid;
     border-color: #080808;
-    height: 110px;
+    height: 115px;
 }
 
 .obelisk.row {
@@ -78,7 +75,6 @@ Current player
 
 .player.row {
     background-color: var(--colorFour);
-    border-style: ridge;
     height: 169px;
     width: 1010px;
     margin: 0;
@@ -90,7 +86,6 @@ Opposing players
 ***********************************************************************************************************************/
 .opposing-players.col-lg-2 {
     background-color: var(--colorFour);
-    border-style: ridge;
     height: 768px;
     width: 356px;
     margin: 0;

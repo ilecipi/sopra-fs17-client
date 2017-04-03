@@ -1,6 +1,9 @@
 .parent-block {
     height: 256px;
     color: white;
+    background-image: -webkit-linear-gradient(top, var(--colorFour), #373737);
+    border: 1px solid white;
+
 }
 
 /***********************************************************************************************************************
@@ -27,6 +30,7 @@ Heading
     border: 1px solid black;
     height: 65%;
     background-color: #770000;
+    line-height: 4;
 }
 
 .supply-sled {
