@@ -19,13 +19,15 @@ export class LobbyComponent implements OnInit {
     currentUser: User;
     loggedIn: boolean;
     currentGame: Game;
-
-    gamesSubscription: any;
-
     index: number;
     inWaitingRoom: boolean;
     createdGame: boolean;
     pressedReady: boolean;
+
+
+    gamesSubscription: any; //need to store the subscription in order to un-subscribe from it later
+
+
 
 
     constructor(private userService: UserService,
@@ -57,7 +59,7 @@ export class LobbyComponent implements OnInit {
             this.currentUser.token = "42";
             this.currentUser.id = 42;
         }
-        //Cannot start a game in
+        //variables setting on init
         this.inWaitingRoom = false;
         this.createdGame = false;
         this.pressedReady = false;

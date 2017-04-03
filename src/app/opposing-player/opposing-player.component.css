@@ -1,0 +1,64 @@
+.parent-block {
+    height: 256px;
+    color: white;
+}
+
+/***********************************************************************************************************************
+Heading
+***********************************************************************************************************************/
+.heading {
+    border: 1px solid white;
+    display: flex;
+}
+
+.player-info {
+    flex-grow: 3;
+    border: 1px solid white;
+}
+
+.player-username {
+    text-align: center;
+    border: 1px solid black;
+    height: 35%;
+}
+
+.player-quarry {
+    text-align: center;
+    border: 1px solid black;
+    height: 65%;
+    background-color: #770000;
+}
+
+.supply-sled {
+    flex-grow: 1;
+    border: 1px solid white;
+    padding: 10px;
+    height: 100%;
+
+}
+
+.first-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.second-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.stone {
+    flex-grow: 0;
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+}
+
+/***********************************************************************************************************************
+Cards
+***********************************************************************************************************************/

@@ -1,6 +1,5 @@
-<h1>LOBBY</h1>
+<div>LOBBY</div>
 <div class="lobby">
-    <h2>Welcome to IMHOTEP - Cheers from GROUP 11</h2>
     <div class="lobby-heading">
         You are currently logged in as:
         <div class="name-username">
@@ -89,11 +88,11 @@
 
 
     <div class="bottom-buttons">
-        <div class="btn logout-button" (click)="logout()" [routerLink]="['/login']">LOGOUT</div>
-        <div class="btn newgame-button"  (click)="createNewGame()" *ngIf="!inWaitingRoom">CREATE NEW GAME</div>
-        <div class="btn ready-button" (click)="ready()" *ngIf="inWaitingRoom && !pressedReady">READY</div>
-        <div class="btn startgame-button"  (click)="startGame()" *ngIf="inWaitingRoom && createdGame && pressedReady"> START GAME </div>
-        <div class="wait-info" *ngIf="inWaitingRoom && !createdGame && pressedReady">Please wait for the owner <br> to start the game</div>
+        <div class="btn logout-button bottom-button" (click)="logout()" [routerLink]="['/login']">LOGOUT</div>
+        <div class="btn newgame-button bottom-button"  (click)="createNewGame()" *ngIf="!inWaitingRoom">CREATE NEW GAME</div>
+        <div class="btn ready-button bottom-button" (click)="ready()" *ngIf="inWaitingRoom && !pressedReady">READY</div>
+        <div class="btn startgame-button bottom-button"  (click)="startGame()" *ngIf="inWaitingRoom && createdGame && pressedReady"> START GAME </div>
+        <div class="wait-info bottom-button" *ngIf="inWaitingRoom && !createdGame && pressedReady">Please wait for the owner <br> to start the game</div>
     </div>
     <button class="btn btn-bottom" [routerLink]="['/game']">GO TO GAMEBOARD</button>
 </div>

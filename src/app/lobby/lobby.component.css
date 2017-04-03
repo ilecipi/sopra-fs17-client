@@ -75,15 +75,10 @@
     text-align: center;
 }
 
-.list-users {
-    padding: 0;
-    max-height: 320px;
-    overflow: auto;
-}
 
 .list-games {
     padding: 0;
-    max-height: 320px;
+    max-height: 450px;
     overflow: auto;
 }
 
@@ -103,6 +98,7 @@
 */
 .game-heading {
     display: flex;
+
 }
 
 .game-name {
@@ -176,30 +172,23 @@
 
 .bottom-buttons {
     display: flex;
+    opacity: .8;
+    background-color: #373737;
+    font-weight: normal;
+    color: white;
+    border: 1px solid white;
+    letter-spacing: 2pt;
+    word-spacing: 2pt;
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.2;
+    border-radius: 5px;
 }
-
-.ready-button {
+.bottom-button{
     width: 50%;
     flex-grow: 1;
     font-size: 20px;
-}
-
-.logout-button {
-    width: 50%;
-    flex-grow: 1;
-    font-size: 20px;
-}
-
-.newgame-button {
-    width: 50%;
-    flex-grow: 1;
-    font-size: 20px;
-}
-
-.startgame-button {
-    width: 50%;
-    flex-grow: 1;
-    font-size: 20px;
+    margin: 20px;
 }
 
 .wait-info {
@@ -234,7 +223,6 @@
     width: 100%;
     font-size: 25px;
     opacity: .8;
-    margin-top: 30px;
     background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
 }
 

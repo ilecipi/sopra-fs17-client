@@ -13,6 +13,8 @@ import {PyramidSiteboardComponent} from './pyramid-siteboard/pyramid-siteboard.c
 import {TempleSiteboardComponent} from './temple-siteboard/temple-siteboard.component';
 import {BurialchamberSiteboardComponent} from './burialchamber-siteboard/burialchamber-siteboard.component';
 import {ObeliskSiteboardComponent} from './obelisk-siteboard/obelisk-siteboard.component';
+import { OpposingPlayerComponent } from './opposing-player/opposing-player.component';
+
 
 import {AuthGuardService} from "./shared/services/auth-guard.service";
 import {UserService} from "./shared/services/user.service";
@@ -22,6 +24,7 @@ import {AuthenticationService} from "./shared/services/authentication.service";
 
 //Drag and Drop
 import {Ng2DragDropModule} from "ng2-drag-drop";
+import { CurrentPlayerComponent } from './current-player/current-player.component';
 
 
 @NgModule({
@@ -36,6 +39,8 @@ import {Ng2DragDropModule} from "ng2-drag-drop";
         TempleSiteboardComponent,
         BurialchamberSiteboardComponent,
         ObeliskSiteboardComponent,
+        OpposingPlayerComponent,
+        CurrentPlayerComponent,
     ],
     imports: [
         BrowserModule,

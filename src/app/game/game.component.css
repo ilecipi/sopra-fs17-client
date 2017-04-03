@@ -1,32 +1,24 @@
-.game.row{
+.game.row {
     height: 768px;
     width: 1366px;
     margin: 0px;
     font-size: 15px;
 }
 
-.player.col-lg-10{
+.player.col-lg-10 {
     height: 768px;
     width: 1010px;
     margin: 0px;
     padding: 0px;
 }
 
-.opposing-players.col-lg-2{
-    background-color: var(--colorFour);
-    border-style: ridge;
-    height: 768px;
-    width: 356px;
-    margin: 0px;
-}
-
-.gameboard.row{
+.gameboard.row {
     height: 599px;
     width: 1010px;
     margin: 0px;
 }
 
-.harbour.col-md-4{
+.harbour.col-md-4 {
     background-color: var(--colorSix);
     border-style: ridge;
     height: 599px;
@@ -35,7 +27,7 @@
     margin: 0px;
 }
 
-.siteboards.col-md-4{
+.siteboards.col-md-4 {
     background-color: var(--colorTwo);
     border-style: ridge;
     height: 599px;
@@ -43,7 +35,7 @@
     margin: 0px;
 }
 
-.cards.col-md-4{
+.cards.col-md-4 {
     background-color: var(--colorFour);
     border-style: ridge;
     height: 599px;
@@ -52,41 +44,64 @@
     margin: 0px;
 }
 
-.player.row{
-    background-color: var(--colorFour);
-    border-style: ridge;
-    height: 169px;
-    width: 1010px;
-    padding-left: 15px;
-    margin: 0px;
-}
 
-.market.row{
+.market.row {
     border: 1px solid;
     border-color: #080808;
     height: 185px;
 }
 
-.pyramid.row{
+.pyramid.row {
     border: 1px solid;
     border-color: #080808;
     height: 125px;
 }
 
-.temple.row{
+.temple.row {
     border: 1px solid;
     border-color: #080808;
     height: 79px;
 }
 
-.burial-chamber.row{
+.burial-chamber.row {
     border: 1px solid;
     border-color: #080808;
     height: 110px;
 }
 
-.obelisk.row{
+.obelisk.row {
     border: 1px solid;
     border-color: #080808;
     height: 95px;
+}
+/***********************************************************************************************************************
+Current player
+***********************************************************************************************************************/
+
+.player.row {
+    background-color: var(--colorFour);
+    border-style: ridge;
+    height: 169px;
+    width: 1010px;
+    margin: 0;
+
+}
+
+/***********************************************************************************************************************
+Opposing players
+***********************************************************************************************************************/
+.opposing-players.col-lg-2 {
+    background-color: var(--colorFour);
+    border-style: ridge;
+    height: 768px;
+    width: 356px;
+    margin: 0;
+    padding:0;
+}
+
+
+.opposing-players {
+    height: 33%;
+    width: auto;
+    background-color: #373737;
 }
