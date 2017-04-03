@@ -12,19 +12,34 @@ import {Ship} from '../models/ship';
 export class ShipService {
   private apiUrl: string;
 
-  constructor(private http: Http,
-              private authenticationService: AuthenticationService) {
+  constructor(private http: Http) {
     //selects correct URL on the basis of the environment mode
     this.apiUrl = environment.apiUrl;
   }
 
-  getShips(round: number){
+
+  //get the ships for a round from server
+  getShips(roundId: number){
     let headers = new Headers({'Content-Type': 'application/json'})
     let options = new RequestOptions({headers: headers});
 
+    return this.http.get(this.apiUrl + 'games/rounds/' + roundId +'/ships', options)
+        .map((response: Response) => response.json());
+  }
 
-    return this.http.post(this.apiUrl + '/ships/', options)
+  //
+  onDrop(e: any, ships: Ship[], siteboard = []){
+    if(siteboard.length > 0){return}
+    else {
+      siteboard.push(e.dragData);
+      this.removeShip(e.dragData, ships);
+      }
+  }
 
+  //removes ship
+  removeShip(ship: any, list: Array<any>) {
+    let index = list.map((e) => {return e.id}).indexOf(ship.id);
+    list.splice(index, 1);
   }
 
 }
