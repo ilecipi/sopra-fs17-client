@@ -25,6 +25,7 @@ import {AuthenticationService} from "./shared/services/authentication.service";
 //Drag and Drop
 import {Ng2DragDropModule} from "ng2-drag-drop";
 import { CurrentPlayerComponent } from './current-player/current-player.component';
+import { Player1Component } from './player1/player1.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { CurrentPlayerComponent } from './current-player/current-player.componen
         ObeliskSiteboardComponent,
         OpposingPlayerComponent,
         CurrentPlayerComponent,
+        Player1Component,
     ],
     imports: [
         BrowserModule,
