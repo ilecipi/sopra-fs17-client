@@ -37,8 +37,8 @@
     background-color: var(--colorFour);
     height: 599px;
     width: 308px;
-    padding-right: 15px;
     margin: 0;
+    padding:0;
 }
 .market.row {
     border: 1px solid;

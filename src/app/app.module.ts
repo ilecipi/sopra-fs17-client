@@ -18,8 +18,9 @@ import {UserService} from "./shared/services/user.service";
 import {GameService} from "./shared/services/game.service";
 import {routing} from "./app.routing";
 import {AuthenticationService} from "./shared/services/authentication.service";
-import {Ng2DragDropModule} from "ng2-drag-drop";    //Drag and Drop
+import {Ng2DragDropModule} from "ng2-drag-drop";
 import {CurrentPlayerComponent} from './game/current-player/current-player.component';
+import { InfoBoardComponent } from './game/info-board/info-board.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import {CurrentPlayerComponent} from './game/current-player/current-player.compo
         ObeliskSiteboardComponent,
         OpposingPlayerComponent,
         CurrentPlayerComponent,
+        InfoBoardComponent,
     ],
     imports: [
         BrowserModule,
