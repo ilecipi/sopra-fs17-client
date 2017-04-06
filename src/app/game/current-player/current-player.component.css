@@ -6,7 +6,6 @@
     background-image: -webkit-linear-gradient(top, var(--colorFour), #373737);
     border: 1px solid white;
 
-
 }
 
 /***********************************************************************************************************************
@@ -67,3 +66,26 @@ Heading
 .cards-block {
     flex-grow: 6;
 }
+
+/***********************************************************************************************************************
+Dynamic styles for quarry and stones:
+***********************************************************************************************************************/
+.brown {
+    background-color: var(--brownStone);
+}
+
+.grey {
+    background-color: var(--greyStone);
+}
+
+.black {
+    background-color: var(--blackStone);
+}
+
+.white {
+    /* If background is white then font color must be black for better readability*/
+    background-color: var(--whiteStone);
+    color: black;
+}
+
+

@@ -1,30 +1,55 @@
 <div class="parent-block">
     <div class="heading">
         <div class="player-username">
-            Player.username
+           {{currentUser.username}}
         </div>
         <div class="sled-and-quarry">
-            <div class="player-quarry">
+            <div class="player-quarry" [ngClass]="
+                                 {brown: currentUser.color == 'brown',
+                                 grey: currentUser.color == 'grey',
+                                 black: currentUser.color == 'black',
+                                 white: currentUser.color == 'white'
+                                 }" >
                 Quarry
             </div>
             <div class="supply-sled">
                 <div class="first-row">
-                    <div class="stone">
-
+                    <div class="stone" [ngClass]="
+                                 {brown: currentUser.color == 'brown' && currentUser.supplySled >= 1,
+                                 grey: currentUser.color == 'grey' && currentUser.supplySled >= 1,
+                                 black: currentUser.color == 'black' && currentUser.supplySled >= 1,
+                                 white: currentUser.color == 'white' && currentUser.supplySled >= 1
+                                 }">
                     </div>
-                    <div class="stone">
-
+                    <div class="stone" [ngClass]="
+                                 {brown: currentUser.color == 'brown' && currentUser.supplySled >= 2,
+                                 grey: currentUser.color == 'grey' && currentUser.supplySled >= 2,
+                                 black: currentUser.color == 'black' && currentUser.supplySled >= 2,
+                                 white: currentUser.color == 'white' && currentUser.supplySled >= 2
+                                 }">
                     </div>
-
                 </div>
                 <div class="second-row">
-                    <div class="stone">
-
+                    <div class="stone" [ngClass]="
+                                 {brown: currentUser.color == 'brown' && currentUser.supplySled >= 3,
+                                 grey: currentUser.color == 'grey' && currentUser.supplySled >= 3,
+                                 black: currentUser.color == 'black' && currentUser.supplySled >= 3,
+                                 white: currentUser.color == 'white' && currentUser.supplySled >= 3
+                                 }">
                     </div>
-                    <div class="stone">
-
+                    <div class="stone" [ngClass]="
+                                 {brown: currentUser.color == 'brown' && currentUser.supplySled >= 4,
+                                 grey: currentUser.color == 'grey' && currentUser.supplySled >= 4,
+                                 black: currentUser.color == 'black' && currentUser.supplySled >= 4,
+                                 white: currentUser.color == 'white' && currentUser.supplySled >= 4
+                                 }">
                     </div>
-                    <div class="stone">
+                    <div class="stone" [ngClass]="
+                                 {brown: currentUser.color == 'brown' && currentUser.supplySled >= 5,
+                                 grey: currentUser.color == 'grey' && currentUser.supplySled >= 5,
+                                 black: currentUser.color == 'black' && currentUser.supplySled >= 5,
+                                 white: currentUser.color == 'white' && currentUser.supplySled >= 5
+                                 }">
 
                     </div>
                 </div>

@@ -10,7 +10,6 @@ export class UserService {
     private apiUrl: string;
     private currentUser: User;
     private loggedIn: boolean;
-    private pollTime = 1500;
 
 
     constructor(private http: Http,
@@ -30,6 +29,9 @@ export class UserService {
         this.currentUser = new User();
     }
 
+    setCurrentUser(user: User):void{
+        this.currentUser=user;
+    }
 
     getCurrentUser(): User {
         return this.currentUser;
@@ -46,6 +48,21 @@ export class UserService {
 
         // get users from api
         return this.http.get(this.apiUrl + '/users', options)
+            .map((response: Response) => response.json());
+    }
+
+    pollUser(id: number) {
+        return Observable.interval(1500).flatMap(() => {
+            return this.getUser(id);
+
+        });
+    }
+
+    getUser(id: number): Observable<User> {
+        let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token});
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.get(this.apiUrl + '/users/' + id, options)
             .map((response: Response) => response.json());
     }
 }

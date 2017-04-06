@@ -31,7 +31,7 @@
         <div class="rounds-information">
             <div class="current-round">
                 <div class="current-round-content">
-                    4
+                    {{this.currentGame.rounds[0]}}
                 </div>
                 <div class="current-round-explanation">
                     Current<br>round
@@ -39,7 +39,7 @@
             </div>
             <div class="rounds-left">
                 <div class="rounds-left-content">
-                    2
+                    {{6-this.currentGame.rounds[0]}}
                 </div>
                 <div class="rounds-left-explanation">
                     Rounds<br>left

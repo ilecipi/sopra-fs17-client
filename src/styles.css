@@ -22,10 +22,10 @@
 
 
     /*Custom colors for player*/
-    --colorStoneOne: #6e1b00;
-    --colorStoneTwo: #797879;
-    --colorStoneThree: #222122;
-    --colorStoneFour: #fffbfb;
+    --brownStone: #6e1b00;
+    --greyStone: #797879;
+    --blackStone: #222122;
+    --whiteStone: #fffbfb;
 }
 
 

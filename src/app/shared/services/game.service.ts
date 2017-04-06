@@ -12,12 +12,13 @@ export class GameService {
     private currentGame: Game;
     private token: string;
     private gameId: number;
+    private isTrueGame: boolean;
 
     constructor(private http: Http,
                 private authenticationService: AuthenticationService) {
         //selects correct URL on the basis of the environment mode
         this.apiUrl = environment.apiUrl;
-
+        this.isTrueGame = false;
     }
 
     updateCurrentGame(): Observable<Game> {
@@ -45,6 +46,24 @@ export class GameService {
         });
     }
 
+    getTrueGame(): boolean {
+        return this.isTrueGame;
+    }
+
+    getGame(id: number): Observable<Game> {
+        let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token});
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.get(this.apiUrl + '/games/' + id, options)
+            .map((response: Response) => response.json());
+    }
+
+    pollGame(id: number) {
+        return Observable.interval(1500).flatMap(() => {
+            return this.getGame(id);
+        });
+    }
+
     setDummyGame() {
         this.currentGame = new Game;
         this.currentGame.name = "DummyGame";
@@ -64,6 +83,8 @@ export class GameService {
         let headers = new Headers({'Content-Type': 'application/json'});// ... Set content type to JSON
         let options = new RequestOptions({headers: headers}); // Create a request option
         //create new game with token same as user
+
+        this.isTrueGame = true;
 
         return this.http.post(this.apiUrl + '/games?token=' + user.token, bodyString, options) // ...using post request
             .map((response: Response) => {
@@ -123,11 +144,14 @@ export class GameService {
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers}); // Create a request option
 
+        this.isTrueGame = true;
+
         return this.http.post(this.apiUrl + '/games/' + game.id + '/player?token=' + user.id, options)
             .map((response: Response) => {
                 let resp = response.json() && response.json();
                 if (resp) {
                     this.currentGame = game;
+
                     return game;
                 } else {
                     return null;

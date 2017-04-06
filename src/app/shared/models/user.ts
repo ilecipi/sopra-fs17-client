@@ -4,9 +4,10 @@ export class User {
     public username: string;
     public token: string;
     public status: string;
-    public games: number;
-    public moves: number;
+    public games: number[];
+    public moves: number[];
     public color: string;
+    public supplySled: number;
 
     constructor() {
     }

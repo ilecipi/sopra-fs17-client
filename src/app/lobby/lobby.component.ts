@@ -4,9 +4,7 @@ import {GameService} from "../shared/services/game.service";
 import {User} from "../shared/models/user";
 import {Game} from "../shared/models/game";
 import {Router} from "@angular/router";
-
-import {Observable} from "rxjs/Rx"
-
+import {Observable} from "rxjs/Rx";
 
 @Component({
     selector: 'app-lobby',
@@ -50,8 +48,8 @@ export class LobbyComponent implements OnInit {
             //dummy data if the user is not logged in.
             //(for example if the page gets refreshed for developing purposes)
             this.currentUser = new User();
-            this.currentUser.name = 'Dummy';
-            this.currentUser.username = 'DonDon';
+            this.currentUser.name = 'Player 1 ';
+            this.currentUser.username = 'Player 1';
             this.currentUser.token = "42";
             this.currentUser.id = 42;
         }

@@ -65,3 +65,24 @@ Heading
 /***********************************************************************************************************************
 Cards
 ***********************************************************************************************************************/
+
+
+
+
+/***********************************************************************************************************************
+Dynamic styles for quarry and stones:
+***********************************************************************************************************************/
+.brown{
+    background-color: var(--brownStone);
+}
+.grey{
+    background-color: var(--greyStone);
+}
+.black{
+    background-color: var(--blackStone);
+}
+.white{
+    /* If background is white then font color must be black for better readability*/
+    background-color: var(--whiteStone);
+    color:black;
+}
