@@ -16,6 +16,7 @@ import {OpposingPlayerComponent} from './game/opposing-player/opposing-player.co
 import {AuthGuardService} from "./shared/services/auth-guard.service";
 import {UserService} from "./shared/services/user.service";
 import {GameService} from "./shared/services/game.service";
+import {ShipService} from "./shared/services/ship.service";
 import {routing} from "./app.routing";
 import {AuthenticationService} from "./shared/services/authentication.service";
 import {Ng2DragDropModule} from "ng2-drag-drop";
@@ -47,7 +48,7 @@ import { InfoBoardComponent } from './game/info-board/info-board.component';
         Ng2DragDropModule, //Drag and Drop
         routing
     ],
-    providers: [AuthenticationService, AuthGuardService, UserService, GameService],
+    providers: [AuthenticationService, AuthGuardService, UserService, GameService, ShipService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
