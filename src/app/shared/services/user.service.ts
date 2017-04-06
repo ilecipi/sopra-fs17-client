@@ -23,7 +23,7 @@ export class UserService {
 
     loginUser(user: User): void {
         this.currentUser = user;
-        this.loggedIn=true;
+        this.loggedIn = true;
     }
 
     logoutUser(): void {
