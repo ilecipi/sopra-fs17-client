@@ -29,7 +29,7 @@ export class HarbourComponent implements OnInit {
     ngOnInit() {
 
         //for testing purposes
-        //TODO: delete
+        //TODO: delete line
         this.currentRound = 1;
 
         this.currentGame = this.gameService.getCurrentGame();

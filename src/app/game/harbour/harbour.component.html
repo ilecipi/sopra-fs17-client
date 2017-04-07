@@ -1,6 +1,6 @@
 <div class="ship-column">
     <ul class="list-group ships">
-        <li draggable *ngFor="let ship of currentShips" [dragData]="ship" class="list-group-item">
+        <li draggable *ngFor="let ship of currentShips" [dragData]="ship" class="list-group-item">{{ship.isReady}}
             <div droppable *ngFor="let stone of ship.stones">
                 <div class="stone"></div>
             </div>

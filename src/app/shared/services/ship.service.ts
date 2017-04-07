@@ -38,11 +38,10 @@ export class ShipService {
     }
 
 
-    //event when a ship is dropped at a harbour
+    //dock a ship by drag and drop
     onDrop(e: any, ships: Ship[], dock = [], siteboard: number) {
-        if (dock.length > 0) {
-            return;
-        }
+        if(e.dragData.isReady == false) return;
+        else if (dock.length > 0) return;
         else {
             dock.push(e.dragData);
             this.removeShip(e.dragData, ships);
@@ -51,7 +50,7 @@ export class ShipService {
         }
 
         //TODO: end of round
-        //round ends if there are no more ships to sail -> all ship.docked = true
+        //round ends if there are no more ships to sail -> for all ship.docked = true
 
     }
 
