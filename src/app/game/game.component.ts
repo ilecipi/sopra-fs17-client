@@ -11,6 +11,7 @@ import {Ship} from "../shared/models/ship";
     styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
+
     private currentGame: Game;
     private currentUser: User;
 
@@ -23,6 +24,7 @@ export class GameComponent implements OnInit {
     }
 
     ngOnInit() {
+
 
         // if game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
         // used only for developing purposes

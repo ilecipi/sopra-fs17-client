@@ -1,95 +1,109 @@
-.game.row {
+.game-block{
     height: 768px;
     width: 1366px;
-    margin: 0;
-    font-size: 15px;
-}
-
-.player.col-lg-10 {
-    height: 768px;
-    width: 1010px;
-    margin: 0;
     padding: 0;
-}
-
-.gameboard.row {
-    height: 599px;
-    width: 1010px;
     margin: 0;
 }
 
-.harbour.col-md-4 {
+.left-column{
+    float: left;
+    height: 100%;
+    width: 80%;
+    margin: 0;
+}
+
+.gameboard-block{
+    height: 80%;
+    width: 100%;
+    margin: 0;
+}
+
+.harbour-column{
+    float: left;
+    height: 100%;
+    width: 30%;
+    border: 1px solid white;
+    margin: 0;
     background-color: var(--colorSix);
-    height: 599px;
-    width: 262px;
-    padding: 0;
-    margin: 0;
+
 }
 
-.siteboards.col-md-4 {
+
+/***********************************************************************************************************************
+Siteboards
+***********************************************************************************************************************/
+
+.siteboard-column{
+    display: inline-block;
+    height: 100%;
+    width: 40%;
+    border: 1px solid white;
+    margin: 0;
     background-color: var(--colorTwo);
-    height: 599px;
-    width: 440px;
-    margin: 0;
 }
 
-.cards.col-md-4 {
-    background-color: var(--colorFour);
-    height: 599px;
-    width: 308px;
-    margin: 0;
-    padding:0;
-}
 .market.row {
-    border: 1px solid;
-    border-color: #080808;
-    height: 185px;
+    height: 30%;
+    margin: 0;
+    border: 1px solid black;
 }
 
 .pyramid.row {
-    border: 1px solid;
-    border-color: #080808;
-    height: 125px;
+    height: 20%;
+    margin: 0;
+    border: 1px solid black;
 }
 
 .temple.row {
-    border: 1px solid;
-    border-color: #080808;
-    height: 79px;
+    height: 13%;
+    margin: 0;
+    border: 1px solid black;
 }
 
 .burial-chamber.row {
-    border: 1px solid;
-    border-color: #080808;
-    height: 115px;
+    height: 20%;
+    margin: 0;
+    border: 1px solid black;
 }
 
 .obelisk.row {
-    border: 1px solid;
-    border-color: #080808;
-    height: 95px;
+    height: 17%;
+    margin: 0;
+    border: 1px solid black;
 }
+
+/***********************************************************************************************************************
+Infoboard
+***********************************************************************************************************************/
+
+.info-board-column{
+    float: right;
+    height: 100%;
+    width: 30%;
+    margin: 0;
+    background-color: var(--colorFour);
+}
+
 /***********************************************************************************************************************
 Current player
 ***********************************************************************************************************************/
 
-.player.row {
-    background-color: var(--colorFour);
-    height: 169px;
-    width: 1010px;
+.currentPlayer-block{
+    height: 20%;
+    width: 100%;
     margin: 0;
-
 }
 
 /***********************************************************************************************************************
 Opposing players
 ***********************************************************************************************************************/
-.opposing-players.col-lg-2 {
-    background-color: var(--colorFour);
-    height: 768px;
-    width: 356px;
+
+.opposing-players.right-column{
+    float: right;
+    height: 100%;
+    width: 20%;
     margin: 0;
-    padding:0;
+    background-color: var(--colorFour);
 }
 
 

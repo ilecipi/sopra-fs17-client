@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {LoginComponent} from "./login/login.component";
 import {GameComponent} from "./game/game.component";
 import {LobbyComponent} from './lobby/lobby.component';
-import {HarbourComponent} from './game/harbour/harbour.component';
+
 import {MarketSiteboardComponent} from './game/market-siteboard/market-siteboard.component';
 import {PyramidSiteboardComponent} from './game/pyramid-siteboard/pyramid-siteboard.component';
 import {TempleSiteboardComponent} from './game/temple-siteboard/temple-siteboard.component';
@@ -22,6 +22,7 @@ import {AuthenticationService} from "./shared/services/authentication.service";
 import {Ng2DragDropModule} from "ng2-drag-drop";
 import {CurrentPlayerComponent} from './game/current-player/current-player.component';
 import { InfoBoardComponent } from './game/info-board/info-board.component';
+import { HarbourComponent } from './game/harbour/harbour.component';
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import { InfoBoardComponent } from './game/info-board/info-board.component';
         LoginComponent,
         GameComponent,
         LobbyComponent,
-        HarbourComponent,
+
         MarketSiteboardComponent,
         PyramidSiteboardComponent,
         TempleSiteboardComponent,
@@ -39,13 +40,14 @@ import { InfoBoardComponent } from './game/info-board/info-board.component';
         OpposingPlayerComponent,
         CurrentPlayerComponent,
         InfoBoardComponent,
+        HarbourComponent,
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
         JsonpModule,
-        Ng2DragDropModule, //Drag and Drop
+        Ng2DragDropModule,
         routing
     ],
     providers: [AuthenticationService, AuthGuardService, UserService, GameService, ShipService],
