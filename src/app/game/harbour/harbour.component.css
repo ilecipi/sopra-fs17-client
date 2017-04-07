@@ -1,0 +1,66 @@
+.ship-column {
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.harbour-column {
+    float: right;
+    width: 50%;
+    height: 100%;
+}
+
+/***********************************************************************************************************************
+Docks
+***********************************************************************************************************************/
+
+.panel.dock1 {
+    margin-top: 45%;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: 20px solid grey;
+}
+
+.panel.dock2 {
+    margin-top: 65%;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: 20px solid grey;
+}
+
+.panel.dock3 {
+    margin-top: 35%;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: 20px solid grey;
+}
+
+.panel.dock4 {
+    margin-top: 35%;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: 20px solid grey;
+}
+
+.panel.dock5 {
+    margin-top: 45%;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: 20px solid grey;
+}
+
+.panel-body {
+    height: 40px;
+    padding: 0;
+    border: none;
+    background-color: var(--colorSix);
+}
+
+.grey {
+    background-color: var(--greyStone);
+}

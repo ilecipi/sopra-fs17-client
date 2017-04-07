@@ -19,20 +19,21 @@ export class ShipService {
 
 
     //get ships for a round from api
-    getShips(gameId: number,roundId: number) {
+    getShips(gameId: number, roundId: number) {
         let headers = new Headers({'Content-Type': 'application/json'})
         let options = new RequestOptions({headers: headers});
 
-        return this.http.get(this.apiUrl + 'games/' + gameId + '/rounds/' + roundId + '/ships', options)
+        return this.http.get(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId + '/ships', options)
             .map((response: Response) => response.json());
     }
+
 
     //get a ship from api
     getShipId(gameId: number, roundId: number, shipId: number){
         let headers = new Headers({'Content-Type': 'application/json'})
         let options = new RequestOptions({headers: headers});
 
-        return this.http.get(this.apiUrl + 'games/' + gameId + '/rounds/' + roundId + '/ships/' + shipId, options)
+        return this.http.get(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId + '/ships/' + shipId, options)
             .map((response: Response) => response.json());
     }
 
@@ -40,11 +41,16 @@ export class ShipService {
     //event when a ship is dropped at a harbour
     onDrop(e: any, ships: Ship[], siteboard = []) {
         if (siteboard.length > 0) {
-            return
+            return;
         }
         else {
             siteboard.push(e.dragData);
             this.removeShip(e.dragData, ships);
+        }
+
+        //round ends if there are no more ships to sail
+        if (ships.length < 1){
+            console.log();
         }
     }
 

@@ -1,3 +1,13 @@
+.board-column{
+    float: left;
+    width: 80%;
+}
+
+.info-column{
+    float: right;
+    width: 20%;
+}
+
 .wrapper {
     display: grid;
     grid-template-columns: 90px 60px 30px;
