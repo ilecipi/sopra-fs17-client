@@ -16,7 +16,7 @@
                     </div>
 
                     <div class="temple row">
-                        <temple-siteboard></temple-siteboard>
+                        <temple-siteboard [stones]="getTempleStones()"></temple-siteboard>
                     </div>
 
                     <div class="burial-chamber row">
@@ -29,7 +29,7 @@
                 </div>
                 <!--left we have the variable name in info-board, right the variable name in game-component-->
                 <div class="cards col-md-4">
-                    <info-board [currentGame]="currentGame"></info-board>
+                    <info-board [currentGame]="currentGame" ></info-board>
                 </div>
 
             </div>
@@ -39,7 +39,7 @@
         </div>
 
         <div class="opposing-players col-lg-2" >
-            <opposing-player *ngFor="let opposingUser of getOpposingPlayers()" [opposingUser]="opposingUser"></opposing-player>
+            <opposing-player *ngFor="let opposingUser of getOpposingPlayers()" [opposingUser]="opposingUser" [opposingUsersCount]="getHowManyOpponents()"></opposing-player>
         </div>
     </div>
 </div>

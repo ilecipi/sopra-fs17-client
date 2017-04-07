@@ -26,8 +26,7 @@ export class LobbyComponent implements OnInit {
 
     constructor(private userService: UserService,
                 private gameService: GameService,
-                private router: Router
-    ) {
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -134,10 +133,11 @@ export class LobbyComponent implements OnInit {
         this.gamesSubscription.unsubscribe();
     }
 
-    listenForStart(time=300){
+    listenForStart(time = 300) {
         let subscription = Observable.interval(time).subscribe(x => {
-            if(this.index!=-1){
-                if (this.games[this.index].status=='RUNNING'){
+            if (this.index != -1) {
+                if (this.games[this.index].status == 'RUNNING') {
+                    this.gameService.setCurrentGame(this.games[this.index]);
                     this.router.navigate(['/game'])
                     this.gamesSubscription.unsubscribe();
                     subscription.unsubscribe();

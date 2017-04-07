@@ -19,6 +19,7 @@ export class GameService {
         //selects correct URL on the basis of the environment mode
         this.apiUrl = environment.apiUrl;
         this.isTrueGame = false;
+
     }
 
     updateCurrentGame(): Observable<Game> {
@@ -64,12 +65,6 @@ export class GameService {
         });
     }
 
-    setDummyGame() {
-        this.currentGame = new Game;
-        this.currentGame.name = "DummyGame";
-
-    }
-
     setCurrentGame(game: Game) {
         this.currentGame = game;
     }
@@ -86,7 +81,7 @@ export class GameService {
 
         this.isTrueGame = true;
 
-        return this.http.post(this.apiUrl + '/games?token=' + user.token, bodyString, options) // ...using post request
+        return this.http.post(this.apiUrl + '/games?token=' + user.id, bodyString, options) // ...using post request
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let game = response.json() && response.json();
@@ -117,7 +112,7 @@ export class GameService {
         // let options = new RequestOptions({headers: headers}); // Create a request option
 
         //passed user will have ready state on current game
-        return this.http.put(this.apiUrl + '/games/' + this.currentGame.id + "?token=" + user.token, headers)
+        return this.http.put(this.apiUrl + '/games/' + this.currentGame.id + "?token=" + user.id, headers)
             .map((response: Response) => {
                 let game = response.json() && response.json();
                 if (game) {
@@ -167,5 +162,65 @@ export class GameService {
         return this.http.post(this.apiUrl + '/games/' + this.currentGame.id + '/start', body)
             .catch((error: any) => Observable.throw(error.json().error || 'Server error in creating a user' || {})); //errors
     }
+
+
+    setDummyGame() {
+        let dummyUser = new User;
+        dummyUser.id = 1;
+        dummyUser.name = "Name 1";
+        dummyUser.username = "Player 1";
+        dummyUser.token = "1";
+        dummyUser.status = "IS_PLAYING";
+        dummyUser.games = [1];
+        dummyUser.moves = [1];
+        dummyUser.color = "grey";
+        dummyUser.supplySled = 1;
+
+        let opposing1 = new User;
+        opposing1.id = 2;
+        opposing1.name = "Name 2";
+        opposing1.username = "Player 2";
+        opposing1.token = "2";
+        opposing1.status = "IS_PLAYING";
+        opposing1.games = [1];
+        opposing1.moves = [2];
+        opposing1.color = "brown";
+        opposing1.supplySled = 2;
+
+        let opposing2 = new User;
+        opposing2.id = 3;
+        opposing2.name = "Name 3";
+        opposing2.username = "Player 3";
+        opposing2.token = "3";
+        opposing2.status = "IS_PLAYING";
+        opposing2.games = [1];
+        opposing2.moves = [3];
+        opposing2.color = "black";
+        opposing2.supplySled = 3;
+
+        let opposing3 = new User;
+        opposing3.id = 4;
+        opposing3.name = "Name 4";
+        opposing3.username = "Player 4";
+        opposing3.token = "4";
+        opposing3.status = "IS_PLAYING";
+        opposing3.games = [1];
+        opposing3.moves = [4];
+        opposing3.color = "white";
+        opposing3.supplySled = 4;
+
+
+        let dummyGame = new Game;
+        dummyGame.id = 1;
+        dummyGame.name = "Game 1";
+        dummyGame.owner = "Player 1";
+        dummyGame.status = "RUNNING";
+        dummyGame.currentPlayer = 1;
+        dummyGame.nextPlayer = 2;
+        dummyGame.rounds = [0];
+        dummyGame.players = [dummyUser, opposing1, opposing2, opposing3];
+        this.currentGame=dummyGame;
+    }
+
 
 }

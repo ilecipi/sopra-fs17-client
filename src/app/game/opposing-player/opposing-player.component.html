@@ -1,4 +1,4 @@
-<div class="parent-block">
+<div class="parent-block" [style.height.%]="(100/opposingUsersCount)">
     <div class="heading">
         <div class="player-info">
             <div class="player-username">
@@ -21,7 +21,6 @@
                                  black: opposingUser.color == 'black' && opposingUser.supplySled >= 1,
                                  white: opposingUser.color == 'white' && opposingUser.supplySled >= 1
                                  }">
-
                 </div>
                 <div class="stone" [ngClass]="
                                  {brown: opposingUser.color == 'brown' && opposingUser.supplySled >= 2,
@@ -29,9 +28,7 @@
                                  black: opposingUser.color == 'black' && opposingUser.supplySled >= 2,
                                  white: opposingUser.color == 'white' && opposingUser.supplySled >= 2
                                  }">
-
                 </div>
-
             </div>
             <div class="second-row">
                 <div class="stone" [ngClass]="
@@ -56,14 +53,10 @@
                                  black: opposingUser.color == 'black' && opposingUser.supplySled >= 5,
                                  white: opposingUser.color == 'white' && opposingUser.supplySled >= 5
                                  }">
-
                 </div>
             </div>
-
         </div>
     </div>
-
-
     <div class="cards-block">
         opposing player's own card go here
     </div>

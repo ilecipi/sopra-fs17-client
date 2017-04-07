@@ -65,4 +65,19 @@ export class UserService {
         return this.http.get(this.apiUrl + '/users/' + id, options)
             .map((response: Response) => response.json());
     }
+
+    setDummyUser(): void {
+        let dummyUser = new User;
+        dummyUser.id = 1;
+        dummyUser.name = "Name 1";
+        dummyUser.username = "Player 1";
+        dummyUser.token = "1";
+        dummyUser.status = "IS_PLAYING";
+        dummyUser.games = [1];
+        dummyUser.moves = [1];
+        dummyUser.color = "grey";
+        dummyUser.supplySled = 1;
+        this.currentUser=dummyUser;
+    }
+
 }

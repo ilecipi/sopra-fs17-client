@@ -11,7 +11,7 @@ export class InfoBoardComponent implements OnInit {
     private currentGame: Game;
 
     constructor() {
-        this.currentGame = new Game();
+
 
     }
 

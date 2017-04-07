@@ -11,6 +11,10 @@ import {User} from '../../shared/models/user'
 export class OpposingPlayerComponent implements OnInit {
     @Input()
     opposingUser: User;
+
+    @Input()
+    opposingUsersCount: number;
+
     currentGame: Game;
 
 

@@ -3,5 +3,7 @@ export class Ship {
     //public stones: Stone[];
     //isReady: boolean;
     //docked: boolean;
+    constructor() {
+    }
 
 }

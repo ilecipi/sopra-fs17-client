@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Stone} from '../../shared/models/stone';
 
 @Component({
-  selector: 'temple-siteboard',
-  templateUrl: './temple-siteboard.component.html',
-  styleUrls: ['./temple-siteboard.component.css']
+    selector: 'temple-siteboard',
+    templateUrl: './temple-siteboard.component.html',
+    styleUrls: ['./temple-siteboard.component.css']
 })
 export class TempleSiteboardComponent implements OnInit {
 
-  constructor() { }
+    @Input()
+    stones: Stone[];
 
-  ngOnInit() {
-  }
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
 
 }
