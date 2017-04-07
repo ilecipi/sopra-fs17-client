@@ -1,35 +1,57 @@
 <div class="ship-column">
-    <ul class="list-group">
-        <li draggable *ngFor="let ship of currentShips" [dragData]="ship" class="list-group-item">Ship Id: {{ship.id}}
-            <br> {{ship.isDocked}}
+    <ul class="list-group ships">
+        <li draggable *ngFor="let ship of currentShips" [dragData]="ship" class="list-group-item">
+            <div droppable *ngFor="let stone of ship.stones">
+                <div class="stone"></div>
+            </div>
         </li>
     </ul>
 </div>
 
 <div class="harbour-column">
-    <div class="panel  dock1" droppable (onDrop)="onMarketDrop($event)">
+    <div class="panel dock1" droppable (onDrop)="onMarketDrop($event)">
         <div class="panel-body">
-            <li *ngFor="let ship of market" class="list-group-item">Ship Id: {{ship.id}}</li>
+            <li *ngFor="let ship of market" class="list-group-item">
+                <div droppable *ngFor="let stone of ship.stones">
+                    <div class="stone"></div>
+                </div>
+            </li>
         </div>
     </div>
     <div class="panel dock2" droppable (onDrop)="onPyramidDrop($event)">
         <div class="panel-body">
-            <li *ngFor="let ship of pyramid" class="list-group-item">Ship Id: {{ship.id}}</li>
+            <li *ngFor="let ship of pyramid" class="list-group-item">
+                <div droppable *ngFor="let stone of ship.stones">
+                    <div class="stone"></div>
+                </div>
+            </li>
         </div>
     </div>
-    <div class="panel  dock3" droppable (onDrop)="onTempleDrop($event)">
+    <div class="panel dock3" droppable (onDrop)="onTempleDrop($event)">
         <div class="panel-body">
-            <li *ngFor="let ship of temple" class="list-group-item">Ship Id: {{ship.id}}</li>
+            <li *ngFor="let ship of temple" class="list-group-item">
+                <div droppable *ngFor="let stone of ship.stones">
+                    <div class="stone"></div>
+                </div>
+            </li>
         </div>
     </div>
     <div class="panel dock4" droppable (onDrop)="onBurialchamberDrop($event)">
         <div class="panel-body">
-            <li *ngFor="let ship of burialchamber" class="list-group-item">Ship Id: {{ship.id}}</li>
+            <li *ngFor="let ship of burialchamber" class="list-group-item">
+                <div droppable *ngFor="let stone of ship.stones">
+                    <div class="stone"></div>
+                </div>
+            </li>
         </div>
     </div>
     <div class="panel dock5" droppable (onDrop)="onObeliskDrop($event)">
         <div class="panel-body">
-            <li *ngFor="let ship of obelisk" class="list-group-item">Ship Id: {{ship.id}}</li>
+            <li *ngFor="let ship of obelisk" class="list-group-item">
+                <div droppable *ngFor="let stone of ship.stones">
+                    <div class="stone"></div>
+                </div>
+            </li>
         </div>
     </div>
 </div>

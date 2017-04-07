@@ -4,10 +4,24 @@
     height: 100%;
 }
 
+.list-group-item{
+    display: inline-flex;
+    background-color: var(--colorOne);
+}
+
 .harbour-column {
     float: right;
     width: 50%;
     height: 100%;
+}
+
+
+.stone {
+    flex-grow: 0;
+    float: left;
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
 }
 
 /***********************************************************************************************************************
@@ -55,7 +69,7 @@ Docks
 }
 
 .panel-body {
-    height: 40px;
+    height: 45px;
     padding: 0;
     border: none;
     background-color: var(--colorSix);

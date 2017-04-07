@@ -39,19 +39,20 @@ export class ShipService {
 
 
     //event when a ship is dropped at a harbour
-    onDrop(e: any, ships: Ship[], siteboard = []) {
-        if (siteboard.length > 0) {
+    onDrop(e: any, ships: Ship[], dock = [], siteboard: number) {
+        if (dock.length > 0) {
             return;
         }
         else {
-            siteboard.push(e.dragData);
+            dock.push(e.dragData);
             this.removeShip(e.dragData, ships);
+            e.dragData.docked = true;
+            e.dragData.siteBoard = siteboard;
         }
 
-        //round ends if there are no more ships to sail
-        if (ships.length < 1){
-            console.log();
-        }
+        //TODO: end of round
+        //round ends if there are no more ships to sail -> all ship.docked = true
+
     }
 
     //removes ship from original spot
@@ -61,5 +62,4 @@ export class ShipService {
         }).indexOf(ship.id);
         list.splice(index, 1);
     }
-
 }

@@ -43,27 +43,27 @@ export class HarbourComponent implements OnInit {
 
     //dock ship on market
     onMarketDrop(e: any) {
-        this.shipService.onDrop(e, this.currentShips, this.market);
+        this.shipService.onDrop(e, this.currentShips, this.market, 1);
     }
 
     //dock ship on pyramid
     onPyramidDrop(e: any) {
-        this.shipService.onDrop(e, this.currentShips, this.pyramid);
+        this.shipService.onDrop(e, this.currentShips, this.pyramid, 2);
     }
 
     //dock ship on temple
     onTempleDrop(e: any) {
-        this.shipService.onDrop(e, this.currentShips, this.temple);
+        this.shipService.onDrop(e, this.currentShips, this.temple, 3);
     }
 
     //dock ship on burial chamber
     onBurialchamberDrop(e: any) {
-        this.shipService.onDrop(e, this.currentShips, this.burialchamber);
+        this.shipService.onDrop(e, this.currentShips, this.burialchamber, 4);
     }
 
     //dock ship on obelisk
     onObeliskDrop(e: any) {
-        this.shipService.onDrop(e, this.currentShips, this.obelisk);
+        this.shipService.onDrop(e, this.currentShips, this.obelisk, 5);
     }
 
 
