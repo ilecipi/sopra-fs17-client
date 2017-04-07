@@ -15,6 +15,7 @@ import {Temple} from '../shared/models/temple';
     styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
+
     private currentGame: Game;
     private currentUser: User;
     private currentTemple: Temple;
@@ -31,6 +32,7 @@ export class GameComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
 
         // if game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
         // used only for developing purposes

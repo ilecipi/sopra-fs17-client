@@ -1,100 +1,110 @@
-.game.row {
+.game-block {
     height: 768px;
     width: 1366px;
-    margin: 0;
-    font-size: 15px;
-}
-
-.player.col-lg-10 {
-    height: 768px;
-    width: 1010px;
-    margin: 0;
     padding: 0;
+    margin: 0;
+    display: flex;
 }
 
-.gameboard.row {
-    height: 599px;
-    width: 1010px;
+.left-column {
+    height: 100%;
+    width: 78%;
     margin: 0;
 }
 
-.harbour.col-md-4 {
+.gameboard-block {
+    height: 78%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+}
+
+
+.harbour-column {
+    height: 100%;
+    width: 30%;
+    border: 1px solid white;
+    margin: 0;
     background-color: var(--colorSix);
-    height: 599px;
-    width: 262px;
-    padding: 0;
-    margin: 0;
+
 }
 
-.siteboards.col-md-4 {
+/***********************************************************************************************************************
+Siteboards
+***********************************************************************************************************************/
+
+.siteboard-column {
+    height: 100%;
+    width: 40%;
+    border: 1px solid white;
+    margin: 0;
     background-color: var(--colorTwo);
-    height: 599px;
-    width: 440px;
-    margin: 0;
 }
 
-.cards.col-md-4 {
+.market{
+    height: 30%;
+    margin: 0;
+    border: 1px solid black;
+}
+
+.pyramid{
+    height: 20%;
+    margin: 0;
+    border: 1px solid black;
+}
+
+.temple{
+    height: 13%;
+    margin: 0;
+    border: 1px solid black;
+}
+
+.burial-chamber{
+    height: 20%;
+    margin: 0;
+    border: 1px solid black;
+}
+
+.obelisk{
+    height: 17%;
+    margin: 0;
+    border: 1px solid black;
+}
+
+/***********************************************************************************************************************
+Infoboard
+***********************************************************************************************************************/
+
+.info-board-column {
+    height: 100%;
+    width: 30%;
+    margin: 0;
     background-color: var(--colorFour);
-    height: 599px;
-    width: 308px;
-    margin: 0;
-    padding:0;
-}
-.market.row {
-    border: 1px solid;
-    border-color: #080808;
-    height: 185px;
 }
 
-.pyramid.row {
-    border: 1px solid;
-    border-color: #080808;
-    height: 125px;
-}
-
-.temple.row {
-    border: 1px solid;
-    border-color: #080808;
-    height: 79px;
-}
-
-.burial-chamber.row {
-    border: 1px solid;
-    border-color: #080808;
-    height: 115px;
-}
-
-.obelisk.row {
-    border: 1px solid;
-    border-color: #080808;
-    height: 95px;
-}
 /***********************************************************************************************************************
 Current player
 ***********************************************************************************************************************/
 
-.player.row {
-    background-color: var(--colorFour);
-    height: 169px;
-    width: 1010px;
+.currentPlayer-block {
+    height: 22%;
+    width: 100%;
     margin: 0;
-
 }
 
 /***********************************************************************************************************************
 Opposing players
 ***********************************************************************************************************************/
-.opposing-players.col-lg-2 {
-    background-color: var(--colorFour);
-    height: 768px;
-    width: 356px;
+
+.opposing-players.right-column {
+    height: 100%;
+    width: 22%;
     margin: 0;
-    padding:0;
+    background-color: var(--colorFour);
 }
 
-
 .opposing-players {
-    height: 33%;
+    height: 20%;
     width: auto;
     background-color: #373737;
 }

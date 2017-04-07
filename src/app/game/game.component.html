@@ -1,49 +1,40 @@
-<div class="game">
-    <div class="game row">
-        <div class="player col-lg-10">
-            <div class="gameboard row">
-                <div class="harbour col-md-4">
-                    <harbour></harbour>
-                </div>
-
-                <div class="siteboards col-md-4">
-                    <div class="market row">
-                        <market-siteboard></market-siteboard>
-                    </div>
-
-                    <div class="pyramid row">
-                        <pyramid-siteboard></pyramid-siteboard>
-                    </div>
-
-                    <div class="temple row">
-                        <temple-siteboard [stones]="getTempleStones()"></temple-siteboard>
-                    </div>
-
-                    <div class="burial-chamber row">
-                        <burialchamber-siteboard></burialchamber-siteboard>
-                    </div>
-
-                    <div class="obelisk row">
-                        <obelisk-siteboard></obelisk-siteboard>
-                    </div>
-                </div>
-                <!--left we have the variable name in info-board, right the variable name in game-component-->
-                <div class="cards col-md-4">
-                    <info-board [currentGame]="currentGame" ></info-board>
-                </div>
-
+<div class="game-block">
+    <div class="left-column">
+        <div class="gameboard-block">
+            <div class="harbour-column">
+                <harbour></harbour>
             </div>
-            <div class="player row ">
-                <current-player [currentUser]="getUser()"></current-player>
+            <div class="siteboard-column">
+                <div class="market">
+                    <market-siteboard></market-siteboard>
+                </div>
+                <div class="pyramid">
+                    <pyramid-siteboard></pyramid-siteboard>
+                </div>
+                <div class="temple">
+                    <temple-siteboard [stones]="getTempleStones()"></temple-siteboard>
+                </div>
+                <div class="burial-chamber">
+                <burialchamber-siteboard></burialchamber-siteboard>
+                </div>
+                <div class="obelisk">
+                <obelisk-siteboard></obelisk-siteboard>
+                </div>
+            </div>
+            <div class="info-board-column">
+                <info-board [currentGame]="currentGame"></info-board>
             </div>
         </div>
-
-        <div class="opposing-players col-lg-2" >
-            <opposing-player *ngFor="let opposingUser of getOpposingPlayers()" [opposingUser]="opposingUser" [opposingUsersCount]="getHowManyOpponents()"></opposing-player>
+        <div class="currentPlayer-block">
+            <current-player [currentUser]="getUser()"></current-player>
         </div>
     </div>
+
+    <div class="opposing-players right-column">
+        <opposing-player *ngFor="let opposingUser of getOpposingPlayers()"
+                         [opposingUser]="opposingUser"
+                         [opposingUsersCount]="getHowManyOpponents()">
+        </opposing-player>
+    </div>
+
 </div>
-
-
-
-
