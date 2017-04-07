@@ -13,11 +13,12 @@ Heading
 ***********************************************************************************************************************/
 .heading {
     flex-grow: 1;
+    border: 1px solid white;
 }
 
 .player-username {
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid white;
     height: 30%;
     line-height: 2;
     font-size: 20px;
@@ -31,15 +32,14 @@ Heading
 .player-quarry {
     flex-grow: 1;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid white;
     background-color: #770000;
     line-height: 6;
 }
 
 .supply-sled {
     flex-grow: 1;
-    border: 1px solid white;
-    padding: 26px;
+    padding: 25px;
     align-self: center;
 }
 
