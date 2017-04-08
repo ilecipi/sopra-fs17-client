@@ -5,7 +5,7 @@ import {Observable} from "rxjs/Rx";
 import {Game} from "../models/game";
 import {User} from "../models/user";
 import {environment} from "../../../environments/environment";
-import {Points} from '../models/points';
+import {Points} from "../models/points";
 
 @Injectable()
 export class GameService {
@@ -209,6 +209,7 @@ export class GameService {
         opposing3.moves = [4];
         opposing3.color = "white";
         opposing3.supplySled = 4;
+
 
 
         let dummyGame = new Game;
