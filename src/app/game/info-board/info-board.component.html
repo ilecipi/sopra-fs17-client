@@ -4,25 +4,54 @@
     <div class="general-information-block">
         <div class="active-player-block">
             <div class="first-row">
-                <div class="first-element-bg player-element-bg">
-                    <div class="first-element player-element">
+                <div class="first-element-bg player-element-bg" *ngIf="currentGame.players.length>=1"
+                     [ngClass]="{highlight: currentGame.players[0].id == currentGame.currentPlayer}">
+                    <div class="first-element player-element"
+                         [ngClass]="{brown: currentGame.players[0].color == 'brown',
+                         grey: currentGame.players[0].color == 'grey',
+                         black: currentGame.players[0].color == 'black',
+                         white: currentGame.players[0].color == 'white'
+                         }
+                    ">
                         11
                     </div>
                 </div>
-                <div class="second-element-bg player-element-bg">
-                    <div class="second-element player-element">
+                <div class="second-element-bg player-element-bg" *ngIf="currentGame.players.length>=2"
+                     [ngClass]="{highlight: currentGame.players[1].id == currentGame.currentPlayer}">
+                    <div class="second-element player-element"
+                         [ngClass]="{brown: currentGame.players[1].color == 'brown',
+                         grey: currentGame.players[1].color == 'grey',
+                         black: currentGame.players[1].color == 'black',
+                         white: currentGame.players[1].color == 'white'
+                         }
+                    ">
                         22
                     </div>
                 </div>
             </div>
             <div class="second-row">
-                <div class="third-element-bg player-element-bg">
-                    <div class="third-element player-element">
+                <div class="third-element-bg player-element-bg" *ngIf="currentGame.players.length>=3"
+
+                     [ngClass]="{highlight: currentGame.players[2].id == currentGame.currentPlayer}">
+                    <div class="third-element player-element"
+                         [ngClass]="{brown: currentGame.players[2].color == 'brown',
+                         grey: currentGame.players[2].color == 'grey',
+                         black: currentGame.players[2].color == 'black',
+                         white: currentGame.players[2].color == 'white'
+                         }
+                    ">
                         33
                     </div>
                 </div>
-                <div class="fourth-element-bg player-element-bg">
-                    <div class="fourth-element player-element">
+                <div class="fourth-element-bg player-element-bg" *ngIf="currentGame.players.length>=4"
+                     [ngClass]="{highlight: currentGame.players[3].id == currentGame.currentPlayer}">
+                    <div class="fourth-element player-element"
+                         [ngClass]="{brown: currentGame.players[3].color == 'brown',
+                         grey: currentGame.players[3].color == 'grey',
+                         black: currentGame.players[3].color == 'black',
+                         white: currentGame.players[3].color == 'white'
+                         }
+                    ">
                         44
                     </div>
                 </div>
@@ -31,7 +60,7 @@
         <div class="rounds-information">
             <div class="current-round">
                 <div class="current-round-content">
-                    {{this.currentGame.rounds[0]}}
+                    {{this.currentGame.rounds.length}}
                 </div>
                 <div class="current-round-explanation">
                     Current<br>round
@@ -39,7 +68,7 @@
             </div>
             <div class="rounds-left">
                 <div class="rounds-left-content">
-                    {{6-this.currentGame.rounds[0]}}
+                    {{6-this.currentGame.rounds.length}}
                 </div>
                 <div class="rounds-left-explanation">
                     Rounds<br>left

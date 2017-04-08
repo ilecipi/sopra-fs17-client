@@ -17,5 +17,4 @@ export class InfoBoardComponent implements OnInit {
 
     ngOnInit() {
     }
-
 }

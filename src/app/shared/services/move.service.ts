@@ -20,6 +20,7 @@ export class MoveService {
 
         return this.http.post(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId + '/users', bodyString)
             .map((response: Response) => {
+                console.log(response);
                 return response.json();
             })
             .catch((error: any) => Observable.throw('Server error in adding stones'));

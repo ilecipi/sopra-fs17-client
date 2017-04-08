@@ -68,7 +68,7 @@ Heading
 }
 
 /***********************************************************************************************************************
-Dynamic styles for quarry and stones:
+Dynamic styles for quarry, stones and turn highlight:
 ***********************************************************************************************************************/
 .brown {
     background-color: var(--brownStone);
@@ -88,4 +88,9 @@ Dynamic styles for quarry and stones:
     color: black;
 }
 
+.highlight {
+    /* If background is of color '--turn' then font color must be black for better readability*/
+    background-color: var(--turn);
+    color: black;
+}
 

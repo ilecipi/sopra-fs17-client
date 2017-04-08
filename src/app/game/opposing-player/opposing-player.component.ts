@@ -15,6 +15,9 @@ export class OpposingPlayerComponent implements OnInit {
     @Input()
     opposingUsersCount: number;
 
+    @Input()
+    currentPlayerId: number;
+
     currentGame: Game;
 
 

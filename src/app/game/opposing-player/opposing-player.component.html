@@ -1,7 +1,7 @@
 <div class="parent-block" [style.height.%]="(100/opposingUsersCount)">
     <div class="heading">
         <div class="player-info">
-            <div class="player-username">
+            <div class="player-username" [ngClass]="{highlight: currentPlayerId==opposingUser.id}">
                 {{opposingUser.username}}
             </div>
             <div class="player-quarry" [ngClass]="
@@ -16,11 +16,28 @@
         <div class="supply-sled">
             <div class="first-row">
                 <div class="stone" [ngClass]="
+                                 {brown: opposingUser.color == 'brown' && opposingUser.supplySled >= 4,
+                                 grey: opposingUser.color == 'grey' && opposingUser.supplySled >= 4,
+                                 black: opposingUser.color == 'black' && opposingUser.supplySled >= 4,
+                                 white: opposingUser.color == 'white' && opposingUser.supplySled >= 4
+                                 }">
+                </div>
+                <div class="stone" [ngClass]="
+                                 {brown: opposingUser.color == 'brown' && opposingUser.supplySled >= 5,
+                                 grey: opposingUser.color == 'grey' && opposingUser.supplySled >= 5,
+                                 black: opposingUser.color == 'black' && opposingUser.supplySled >= 5,
+                                 white: opposingUser.color == 'white' && opposingUser.supplySled >= 5
+                                 }">
+                </div>
+            </div>
+            <div class="second-row">
+                <div class="stone" [ngClass]="
                                  {brown: opposingUser.color == 'brown' && opposingUser.supplySled >= 1,
                                  grey: opposingUser.color == 'grey' && opposingUser.supplySled >= 1,
                                  black: opposingUser.color == 'black' && opposingUser.supplySled >= 1,
                                  white: opposingUser.color == 'white' && opposingUser.supplySled >= 1
                                  }">
+
                 </div>
                 <div class="stone" [ngClass]="
                                  {brown: opposingUser.color == 'brown' && opposingUser.supplySled >= 2,
@@ -28,30 +45,13 @@
                                  black: opposingUser.color == 'black' && opposingUser.supplySled >= 2,
                                  white: opposingUser.color == 'white' && opposingUser.supplySled >= 2
                                  }">
+
                 </div>
-            </div>
-            <div class="second-row">
                 <div class="stone" [ngClass]="
                                  {brown: opposingUser.color == 'brown' && opposingUser.supplySled >= 3,
                                  grey: opposingUser.color == 'grey' && opposingUser.supplySled >= 3,
                                  black: opposingUser.color == 'black' && opposingUser.supplySled >= 3,
                                  white: opposingUser.color == 'white' && opposingUser.supplySled >= 3
-                                 }">
-
-                </div>
-                <div class="stone" [ngClass]="
-                                 {brown: opposingUser.color == 'brown' && opposingUser.supplySled >= 4,
-                                 grey: opposingUser.color == 'grey' && opposingUser.supplySled >= 4,
-                                 black: opposingUser.color == 'black' && opposingUser.supplySled >= 4,
-                                 white: opposingUser.color == 'white' && opposingUser.supplySled >= 4
-                                 }">
-
-                </div>
-                <div class="stone" [ngClass]="
-                                 {brown: opposingUser.color == 'brown' && opposingUser.supplySled >= 5,
-                                 grey: opposingUser.color == 'grey' && opposingUser.supplySled >= 5,
-                                 black: opposingUser.color == 'black' && opposingUser.supplySled >= 5,
-                                 white: opposingUser.color == 'white' && opposingUser.supplySled >= 5
                                  }">
                 </div>
             </div>

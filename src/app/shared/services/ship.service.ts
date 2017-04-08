@@ -29,20 +29,20 @@ export class ShipService {
 
 
     //get a ship from api
-    getShipId(gameId: number, roundId: number, shipId: number){
-        let headers = new Headers({'Content-Type': 'application/json'})
-        let options = new RequestOptions({headers: headers});
+            getShipId(gameId: number, roundId: number, shipId: number){
+                let headers = new Headers({'Content-Type': 'application/json'})
+                let options = new RequestOptions({headers: headers});
 
-        return this.http.get(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId + '/ships/' + shipId, options)
-            .map((response: Response) => response.json());
-    }
+                return this.http.get(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId + '/ships/' + shipId, options)
+                    .map((response: Response) => response.json());
+            }
 
 
-    //dock a ship by drag and drop
-    onDrop(e: any, ships: Ship[], dock = [], siteboard: number) {
-        if(e.dragData.isReady == false) return;
-        else if (dock.length > 0) return;
-        else {
+            //dock a ship by drag and drop
+            onDrop(e: any, ships: Ship[], dock = [], siteboard: number) {
+                if(e.dragData.isReady == false) return;
+                else if (dock.length > 0) return;
+                else {
             dock.push(e.dragData);
             this.removeShip(e.dragData, ships);
             e.dragData.docked = true;

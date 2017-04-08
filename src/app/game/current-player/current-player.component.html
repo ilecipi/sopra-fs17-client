@@ -1,6 +1,6 @@
 <div class="parent-block">
     <div class="heading">
-        <div class="player-username">
+        <div class="player-username" [ngClass]="{highlight: currentUser.id==currentGame.currentPlayer}">
            {{currentUser.username}}
         </div>
         <div class="sled-and-quarry">
@@ -15,6 +15,22 @@
             <div class="supply-sled">
                 <div class="first-row">
                     <div class="stone" [ngClass]="
+                                 {brown: currentUser.color == 'brown' && currentUser.supplySled >= 4,
+                                 grey: currentUser.color == 'grey' && currentUser.supplySled >= 4,
+                                 black: currentUser.color == 'black' && currentUser.supplySled >= 4,
+                                 white: currentUser.color == 'white' && currentUser.supplySled >= 4
+                                 }">
+                    </div>
+                    <div class="stone" [ngClass]="
+                                 {brown: currentUser.color == 'brown' && currentUser.supplySled >= 5,
+                                 grey: currentUser.color == 'grey' && currentUser.supplySled >= 5,
+                                 black: currentUser.color == 'black' && currentUser.supplySled >= 5,
+                                 white: currentUser.color == 'white' && currentUser.supplySled >= 5
+                                 }">
+                    </div>
+                </div>
+                <div class="second-row">
+                    <div class="stone" [ngClass]="
                                  {brown: currentUser.color == 'brown' && currentUser.supplySled >= 1,
                                  grey: currentUser.color == 'grey' && currentUser.supplySled >= 1,
                                  black: currentUser.color == 'black' && currentUser.supplySled >= 1,
@@ -28,27 +44,11 @@
                                  white: currentUser.color == 'white' && currentUser.supplySled >= 2
                                  }">
                     </div>
-                </div>
-                <div class="second-row">
                     <div class="stone" [ngClass]="
                                  {brown: currentUser.color == 'brown' && currentUser.supplySled >= 3,
                                  grey: currentUser.color == 'grey' && currentUser.supplySled >= 3,
                                  black: currentUser.color == 'black' && currentUser.supplySled >= 3,
                                  white: currentUser.color == 'white' && currentUser.supplySled >= 3
-                                 }">
-                    </div>
-                    <div class="stone" [ngClass]="
-                                 {brown: currentUser.color == 'brown' && currentUser.supplySled >= 4,
-                                 grey: currentUser.color == 'grey' && currentUser.supplySled >= 4,
-                                 black: currentUser.color == 'black' && currentUser.supplySled >= 4,
-                                 white: currentUser.color == 'white' && currentUser.supplySled >= 4
-                                 }">
-                    </div>
-                    <div class="stone" [ngClass]="
-                                 {brown: currentUser.color == 'brown' && currentUser.supplySled >= 5,
-                                 grey: currentUser.color == 'grey' && currentUser.supplySled >= 5,
-                                 black: currentUser.color == 'black' && currentUser.supplySled >= 5,
-                                 white: currentUser.color == 'white' && currentUser.supplySled >= 5
                                  }">
 
                     </div>

@@ -26,6 +26,9 @@
     --greyStone: #797879;
     --blackStone: #222122;
     --whiteStone: #fffbfb;
+
+    /*Custom color for highlighting the turn*/
+    --turn: #ffb90a;
 }
 
 

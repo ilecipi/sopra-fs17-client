@@ -45,7 +45,6 @@ Heading
     align-items: center;
     justify-content: center;
 
-
 }
 
 .second-row {
@@ -66,23 +65,29 @@ Heading
 Cards
 ***********************************************************************************************************************/
 
-
-
-
 /***********************************************************************************************************************
-Dynamic styles for quarry and stones:
+Dynamic styles for quarry and stones and turn highlight:
 ***********************************************************************************************************************/
-.brown{
+.brown {
     background-color: var(--brownStone);
 }
-.grey{
+
+.grey {
     background-color: var(--greyStone);
 }
-.black{
+
+.black {
     background-color: var(--blackStone);
 }
-.white{
+
+.white {
     /* If background is white then font color must be black for better readability*/
     background-color: var(--whiteStone);
-    color:black;
+    color: black;
+}
+
+.highlight {
+    /* If background is of color '--turn' then font color must be black for better readability*/
+    background-color: var(--turn);
+    color: black;
 }
