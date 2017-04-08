@@ -5,6 +5,7 @@ import {Observable} from "rxjs/Rx";
 import {Game} from "../models/game";
 import {User} from "../models/user";
 import {environment} from "../../../environments/environment";
+import {Points} from '../models/points';
 
 @Injectable()
 export class GameService {
@@ -17,7 +18,7 @@ export class GameService {
     constructor(private http: Http,
                 private authenticationService: AuthenticationService) {
         //selects correct URL on the basis of the environment mode
-            this.apiUrl = environment.apiUrl;
+        this.apiUrl = environment.apiUrl;
         this.isTrueGame = false;
 
     }
@@ -219,7 +220,8 @@ export class GameService {
         dummyGame.nextPlayer = 2;
         dummyGame.rounds = [0];
         dummyGame.players = [dummyUser, opposing1, opposing2, opposing3];
-        this.currentGame=dummyGame;
+        dummyGame.points = new Points();
+        this.currentGame = dummyGame;
     }
 
 

@@ -1,4 +1,5 @@
 import {User} from './user';
+import {Points} from './points';
 
 export class Game {
     public id: number;
@@ -10,6 +11,7 @@ export class Game {
     public rounds: number[];
     public players: User[];
     public siteBoards: number[];    //stored as the id of that siteboard
+    public points: Points; //stores how many points for each color in the game
 
     constructor() {
     }

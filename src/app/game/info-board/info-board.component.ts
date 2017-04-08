@@ -11,10 +11,29 @@ export class InfoBoardComponent implements OnInit {
     private currentGame: Game;
 
     constructor() {
-
-
     }
 
     ngOnInit() {
+    }
+
+    getPoints(i: number): number {
+        let playerColor = this.currentGame.players[i].color;
+        if (playerColor == undefined) return 0;
+        if (playerColor === 'brown') {
+            return this.currentGame.points.brown;
+        }
+        else if (playerColor === 'grey') {
+            return this.currentGame.points.grey;
+        }
+        else if (playerColor === 'black') {
+            return this.currentGame.points.black;
+        }
+        else if (playerColor === 'white') {
+            return this.currentGame.points.white;
+        }
+        else {
+            return -1; //the color wasn't found and must show invalid number
+        }
+
     }
 }
