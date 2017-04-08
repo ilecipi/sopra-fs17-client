@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from "../shared/services/user.service";
 import {GameService} from "../shared/services/game.service";
 import {TempleService} from '../shared/services/temple.service';
+import {MoveService} from '../shared/services/move.service';
 import {User} from "../shared/models/user";
 import {Game} from "../shared/models/game";
 import {Ship} from "../shared/models/ship";
@@ -55,7 +56,7 @@ export class GameComponent implements OnInit {
             .subscribe(game => {
                 this.currentGame = game;
             });
-        this.userSubscription = this.userService.pollUser(this.currentUser.id)
+        this.userSubscription = this.userService.pollUser(this.currentUser.token)
             .subscribe(user => {
                 this.currentUser = user;
             });

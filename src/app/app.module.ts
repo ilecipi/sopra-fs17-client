@@ -17,12 +17,13 @@ import {AuthGuardService} from "./shared/services/auth-guard.service";
 import {UserService} from "./shared/services/user.service";
 import {GameService} from "./shared/services/game.service";
 import {ShipService} from "./shared/services/ship.service";
+import {MoveService} from './shared/services/move.service';
 import {routing} from "./app.routing";
 import {AuthenticationService} from "./shared/services/authentication.service";
 import {Ng2DragDropModule} from "ng2-drag-drop";
 import {CurrentPlayerComponent} from './game/current-player/current-player.component';
-import { InfoBoardComponent } from './game/info-board/info-board.component';
-import { HarbourComponent } from './game/harbour/harbour.component';
+import {InfoBoardComponent} from './game/info-board/info-board.component';
+import {HarbourComponent} from './game/harbour/harbour.component';
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { HarbourComponent } from './game/harbour/harbour.component';
         Ng2DragDropModule,
         routing
     ],
-    providers: [AuthenticationService, AuthGuardService, UserService, GameService, ShipService],
+    providers: [AuthenticationService, AuthGuardService, UserService, GameService, ShipService, MoveService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -17,7 +17,7 @@ export class GameService {
     constructor(private http: Http,
                 private authenticationService: AuthenticationService) {
         //selects correct URL on the basis of the environment mode
-        this.apiUrl = environment.apiUrl;
+            this.apiUrl = environment.apiUrl;
         this.isTrueGame = false;
 
     }

@@ -4,7 +4,7 @@
            {{currentUser.username}}
         </div>
         <div class="sled-and-quarry">
-            <div class="player-quarry" [ngClass]="
+            <div class="btn player-quarry"  (click)="triggerAddStones()" [ngClass]="
                                  {brown: currentUser.color == 'brown',
                                  grey: currentUser.color == 'grey',
                                  black: currentUser.color == 'black',

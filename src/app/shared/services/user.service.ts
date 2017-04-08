@@ -51,18 +51,18 @@ export class UserService {
             .map((response: Response) => response.json());
     }
 
-    pollUser(id: number) {
+    pollUser(token: string) {
         return Observable.interval(1500).flatMap(() => {
-            return this.getUser(id);
+            return this.getUser(token);
 
         });
     }
 
-    getUser(id: number): Observable<User> {
+    getUser(token: string): Observable<User> {
         let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token});
         let options = new RequestOptions({headers: headers});
 
-        return this.http.get(this.apiUrl + '/users/' + id, options)
+        return this.http.get(this.apiUrl + '/users/' + token, options)
             .map((response: Response) => response.json());
     }
 
