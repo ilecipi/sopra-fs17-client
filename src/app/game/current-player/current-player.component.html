@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="second-row">
-                    <div class="stone" [ngClass]="
+                    <div draggable [dragData]="stone" [dragScope]="'stone'"class="stone" [ngClass]="
                                  {brown: currentUser.color == 'brown' && currentUser.supplySled >= 1,
                                  grey: currentUser.color == 'grey' && currentUser.supplySled >= 1,
                                  black: currentUser.color == 'black' && currentUser.supplySled >= 1,

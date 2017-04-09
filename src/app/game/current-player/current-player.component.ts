@@ -3,6 +3,7 @@ import {User} from '../../shared/models/user';
 import {GameService} from '../../shared/services/game.service';
 import {UserService} from '../../shared/services/user.service';
 import {MoveService} from '../../shared/services/move.service';
+import {ShipService} from '../../shared/services/ship.service';
 import {Game} from "../../shared/models/game";
 
 @Component({
@@ -18,7 +19,8 @@ export class CurrentPlayerComponent implements OnInit {
 
     constructor(private gameService: GameService,
                 private userService: UserService,
-                private moveService: MoveService) {
+                private moveService: MoveService,
+                private shipService: ShipService) {
     }
 
     ngOnInit() {
@@ -37,5 +39,10 @@ export class CurrentPlayerComponent implements OnInit {
             } else {
             }
         });
+    }
+
+    //event
+    onShipDrop(e:any){
+        //this.shipService.onShipDrop(e, this.stone, this.ship);
     }
 }

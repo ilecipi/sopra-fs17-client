@@ -6,6 +6,7 @@
 
 .list-group-item{
     display: inline-flex;
+    border-radius: 60%;
     background-color: var(--colorOne);
 }
 
@@ -21,6 +22,7 @@
     height: 30px;
     width: 30px;
     border: 1px solid black;
+    background-color: inherit;
 }
 
 /***********************************************************************************************************************
@@ -74,6 +76,50 @@ Docks
     background-color: var(--colorSix);
 }
 
-.grey {
+
+/***********************************************************************************************************************
+Dynamic styles stones
+***********************************************************************************************************************/
+
+.grey{
     background-color: var(--greyStone);
+}
+
+:host(.brownStone) {
+    flex-grow: 0;
+    float: left;
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    background-color: var(--brownStone);
+}
+
+
+:host(.greyStone) {
+    flex-grow: 0;
+    float: left;
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    background-color: var(--greyStone);
+}
+
+:host(.blackStone) {
+    flex-grow: 0;
+    float: left;
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    background-color: var(--blackStone);
+}
+
+:host(.whiteStone) {
+    /* If background is white then font color must be black for better readability*/
+    flex-grow: 0;
+    float: left;
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    background-color: var(--whiteStone);
+    color: black;
 }
