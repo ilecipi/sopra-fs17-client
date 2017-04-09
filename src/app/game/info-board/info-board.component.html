@@ -4,8 +4,10 @@
     <div class="general-information-block">
         <div class="active-player-block">
             <div class="first-row">
+                <!--first row is ued to highlight current player, second row is used to highlight next player-->
                 <div class="first-element-bg player-element-bg" *ngIf="currentGame.players.length>=1"
-                     [ngClass]="{highlight: currentGame.players[0].id == currentGame.currentPlayer}">
+                     [ngClass]="{highlight: currentGame.players[0].id == currentGame.currentPlayer,
+                     next_highlight: currentGame.players[0].id == currentGame.nextPlayer}">
                     <div class="first-element player-element"
                          [ngClass]="{brown: currentGame.players[0].color == 'brown',
                          grey: currentGame.players[0].color == 'grey',
@@ -17,7 +19,8 @@
                     </div>
                 </div>
                 <div class="second-element-bg player-element-bg" *ngIf="currentGame.players.length>=2"
-                     [ngClass]="{highlight: currentGame.players[1].id == currentGame.currentPlayer}">
+                     [ngClass]="{highlight: currentGame.players[1].id == currentGame.currentPlayer,
+                     next_highlight: currentGame.players[1].id == currentGame.nextPlayer}">
                     <div class="second-element player-element"
                          [ngClass]="{brown: currentGame.players[1].color == 'brown',
                          grey: currentGame.players[1].color == 'grey',
@@ -31,8 +34,8 @@
             </div>
             <div class="second-row">
                 <div class="third-element-bg player-element-bg" *ngIf="currentGame.players.length>=3"
-
-                     [ngClass]="{highlight: currentGame.players[2].id == currentGame.currentPlayer}">
+                     [ngClass]="{highlight: currentGame.players[2].id == currentGame.currentPlayer,
+                     next_highlight: currentGame.players[2].id == currentGame.nextPlayer}">
                     <div class="third-element player-element"
                          [ngClass]="{brown: currentGame.players[2].color == 'brown',
                          grey: currentGame.players[2].color == 'grey',
@@ -44,7 +47,8 @@
                     </div>
                 </div>
                 <div class="fourth-element-bg player-element-bg" *ngIf="currentGame.players.length>=4"
-                     [ngClass]="{highlight: currentGame.players[3].id == currentGame.currentPlayer}">
+                     [ngClass]="{highlight: currentGame.players[3].id == currentGame.currentPlayer,
+                     next_highlight: currentGame.players[3].id == currentGame.nextPlayer}">
                     <div class="fourth-element player-element"
                          [ngClass]="{brown: currentGame.players[3].color == 'brown',
                          grey: currentGame.players[3].color == 'grey',

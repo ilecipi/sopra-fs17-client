@@ -198,5 +198,9 @@ Dynamic styles for player colors and turn highlight
 }
 
 .highlight {
-    background-color: var(--turn)
+    background-color: var(--turn);
+}
+
+.next_highlight {
+    background-color: var(--nextTurn);
 }

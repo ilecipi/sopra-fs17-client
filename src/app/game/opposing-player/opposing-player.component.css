@@ -91,3 +91,6 @@ Dynamic styles for quarry and stones and turn highlight:
     background-color: var(--turn);
     color: black;
 }
+.next_highlight {
+    background-color: var(--nextTurn);
+}

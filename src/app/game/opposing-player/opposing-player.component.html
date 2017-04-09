@@ -1,7 +1,9 @@
 <div class="parent-block" [style.height.%]="(100/opposingUsersCount)">
     <div class="heading">
         <div class="player-info">
-            <div class="player-username" [ngClass]="{highlight: currentPlayerId==opposingUser.id}">
+            <div class="player-username"
+                 [ngClass]="{highlight: currentPlayerId==opposingUser.id,
+                    next_highlight: nextPlayerId == opposingUser.id}">
                 {{opposingUser.username}}
             </div>
             <div class="player-quarry" [ngClass]="

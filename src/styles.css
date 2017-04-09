@@ -27,8 +27,9 @@
     --blackStone: #222122;
     --whiteStone: #fffbfb;
 
-    /*Custom color for highlighting the turn*/
-    --turn: #ffb90a;
+    /*Custom color for highlighting the turn and next turn*/
+    --turn: #ffdf00;
+    --nextTurn: rgb(163, 144, 0);
 }
 
 

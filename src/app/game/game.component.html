@@ -35,7 +35,9 @@
         <opposing-player *ngFor="let opposingUser of getOpposingPlayers()"
                          [opposingUser]="opposingUser"
                          [opposingUsersCount]="getHowManyOpponents()"
-                         [currentPlayerId]="currentGame.currentPlayer">
+                         [currentPlayerId]="currentGame.currentPlayer"
+                         [nextPlayerId]="currentGame.nextPlayer">
+
         </opposing-player>
     </div>
 

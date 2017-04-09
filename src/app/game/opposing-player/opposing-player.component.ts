@@ -18,6 +18,9 @@ export class OpposingPlayerComponent implements OnInit {
     @Input()
     currentPlayerId: number;
 
+    @Input()
+    nextPlayerId: number;
+
     currentGame: Game;
 
 
