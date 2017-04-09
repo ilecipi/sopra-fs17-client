@@ -169,7 +169,9 @@ Scoring Track Board Block:
     min-height: 30px;
     flex-grow: 1;
     align-self: center;
-
+    text-align: center;
+    font-size: 12px;
+    line-height: 2.5;
 }
 
 .fillable-block {
