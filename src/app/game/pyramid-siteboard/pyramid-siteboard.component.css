@@ -14,6 +14,14 @@
     grid-gap: 20px;
 }
 
+.block{
+    display: flex;
+    flex-grow: 0;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+}
+
 table#py1{
     width: 90px;
     height: 90px;

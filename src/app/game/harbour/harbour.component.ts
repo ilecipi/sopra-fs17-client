@@ -4,6 +4,7 @@ import {GameService} from "../../shared/services/game.service";
 
 import {Game} from "../../shared/models/game";
 import {Ship} from "../../shared/models/ship";
+import {Stone} from "../../shared/models/stone";
 
 @Component({
     selector: 'harbour',
@@ -23,6 +24,9 @@ export class HarbourComponent implements OnInit {
     temple = [];
     burialchamber = [];
     obelisk = [];
+
+    stoneClass: {};
+
 
     constructor(private shipService: ShipService, private gameService: GameService) {
     }
@@ -56,5 +60,4 @@ export class HarbourComponent implements OnInit {
     onObeliskDrop(e: any) {
         this.shipService.onSiteboardDrop(e, this.currentShips, this.obelisk, 5);
     }
-
 }

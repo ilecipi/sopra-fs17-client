@@ -3,8 +3,9 @@ import {Http, Headers, RequestOptions, Response} from "@angular/http";
 import {AuthenticationService} from "./authentication.service";
 import {environment} from "../../../environments/environment";
 
+import {GameService} from '../services/game.service';
+
 import {Observable} from "rxjs/Rx";
-import {Game} from "../models/game";
 import {User} from "../models/user";
 import {Ship} from '../models/ship';
 import {Stone} from '../models/stone';
@@ -14,7 +15,8 @@ export class ShipService {
     private apiUrl: string;
     private currentShips: Ship[];
 
-    constructor(private http: Http) {
+    constructor(private http: Http,
+                private gameService: GameService) {
         //selects correct URL on the basis of the environment mode
         this.apiUrl = environment.apiUrl;
     }
@@ -57,9 +59,10 @@ export class ShipService {
         if (this.allShipsSailed(ships) == true) {
 
             //post-request on round-service
-
+            this.gameService.newRound();
         }
     }
+
 
     //TODO: place stone on ship via drop
     onShipDrop(e: any) {

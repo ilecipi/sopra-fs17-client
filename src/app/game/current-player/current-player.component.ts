@@ -43,6 +43,6 @@ export class CurrentPlayerComponent implements OnInit {
 
     //event
     onShipDrop(e:any){
-        //this.shipService.onShipDrop(e, this.stone, this.ship);
+        //this.shipService.onShipDrop(e, this.stones, this.ship);
     }
 }
