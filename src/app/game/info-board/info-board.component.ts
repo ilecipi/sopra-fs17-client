@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Game} from '../../shared/models/game';
-import {Points} from '../../shared/models/points';
 import {Observable} from "rxjs/Rx";
 
 @Component({
@@ -225,7 +224,7 @@ export class InfoBoardComponent implements OnInit {
         return styleString;
     }
 
-    hiddenButton() {
+    hiddenButton(): void {
         this.showSnake = !this.showSnake;
     }
 
