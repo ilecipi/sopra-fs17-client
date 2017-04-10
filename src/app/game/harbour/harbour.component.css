@@ -6,6 +6,7 @@
 
 .list-group-item{
     display: inline-flex;
+    flex-grow: 0;
     border-radius: 60%;
     background-color: var(--colorOne);
 }
