@@ -219,7 +219,7 @@ export class GameService {
         dummyGame.status = "RUNNING";
         dummyGame.currentPlayer = 1;
         dummyGame.nextPlayer = 2;
-        dummyGame.rounds = [0];
+        dummyGame.rounds = [1];
         dummyGame.players = [dummyUser, opposing1, opposing2, opposing3];
         dummyGame.points = new Points();
         this.currentGame = dummyGame;

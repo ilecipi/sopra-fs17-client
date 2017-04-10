@@ -3,6 +3,8 @@ import {UserService} from "../shared/services/user.service";
 import {GameService} from "../shared/services/game.service";
 import {TempleService} from '../shared/services/temple.service';
 import {MoveService} from '../shared/services/move.service';
+import {ShipService} from '../shared/services/ship.service';
+
 import {User} from "../shared/models/user";
 import {Game} from "../shared/models/game";
 import {Ship} from "../shared/models/ship";
@@ -20,16 +22,19 @@ export class GameComponent implements OnInit {
     private currentGame: Game;
     private currentUser: User;
     private currentTemple: Temple;
+    private currentShips: Ship[];
 
 
     //subscriptions stored in order to unsubscribe later.
     private gameSubscription: any;
     private userSubscription: any;
     private templeSubscription: any;
+    private shipsSubscription: any;
 
     constructor(private userService: UserService,
                 private gameService: GameService,
-                private templeService: TempleService) {
+                private templeService: TempleService,
+                private shipService: ShipService) {
     }
 
     ngOnInit(): void {
@@ -42,11 +47,15 @@ export class GameComponent implements OnInit {
             this.gameService.setDummyGame();
             this.userService.setDummyUser();
         }
-
         this.templeService.setDummyTemple();
+        this.shipService.setDummyShips();
+
+
         this.currentGame = this.gameService.getCurrentGame();
         this.currentUser = this.userService.getCurrentUser();
         this.currentTemple = this.templeService.getCurrentTemple();
+        this.currentShips = this.shipService.getCurrentShips();
+
 
         this.pollInfo();
     }
@@ -64,6 +73,21 @@ export class GameComponent implements OnInit {
             .subscribe(temple => {
                 this.currentTemple = temple;
             });
+        this.shipsSubscription = this.shipService.pollShips(this.currentGame.id, this.currentGame.rounds[this.currentGame.rounds.length - 1])
+            .subscribe(ships => {
+                this.setShips(ships);
+            });
+    }
+
+    setShips(ships: Ship[]): void {
+        for (let i = 0; i < ships.length; i++) {
+            for (let j = 0; j < ships[i].stones.length; j++) {
+                if (ships[i].stones[j] == null) {
+                    ships[i].stones[j] = new Stone();
+                }
+            }
+        }
+        this.currentShips=ships;
     }
 
     getOpposingPlayers(): User[] {

@@ -12,9 +12,10 @@ import {Ship} from "../../shared/models/ship";
 })
 export class HarbourComponent implements OnInit {
 
-    //@Input()
-    currentRound: number;
+    @Input()
     currentGame: Game;
+
+    @Input()
     currentShips: Ship[];
 
     market = [];
@@ -28,17 +29,6 @@ export class HarbourComponent implements OnInit {
 
     ngOnInit() {
 
-        //for testing purposes
-        //TODO: delete line
-        this.currentRound = 1;
-
-        this.currentGame = this.gameService.getCurrentGame();
-
-        //get ships from api
-        this.shipService.getShips(this.currentGame.id, this.currentRound)
-            .subscribe(ships => {
-                this.currentShips = ships;
-            });
     }
 
     //dock ship on market
@@ -67,20 +57,4 @@ export class HarbourComponent implements OnInit {
         this.shipService.onSiteboardDrop(e, this.currentShips, this.obelisk, 5);
     }
 
-
-    updateShips(ships: Ship[]) {
-        for (let ship of ships) {
-            for (let stone of ship.stones) {
-                if (stone.color == 'black') {
-                }
-                else if (stone.color == 'brown') {
-                }
-                else if (stone.color == 'grey') {
-                }
-                else if (stone.color == 'white') {
-                }
-                else return;
-            }
-        }
-    }
 }

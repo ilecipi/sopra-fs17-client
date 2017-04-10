@@ -5,5 +5,4 @@ export class Temple {
     game: number;
     isOccupied: boolean;
 
-
 }

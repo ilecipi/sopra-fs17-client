@@ -7,10 +7,12 @@ import {Observable} from "rxjs/Rx";
 import {Game} from "../models/game";
 import {User} from "../models/user";
 import {Ship} from '../models/ship';
+import {Stone} from '../models/stone';
 
 @Injectable()
 export class ShipService {
     private apiUrl: string;
+    private currentShips: Ship[];
 
     constructor(private http: Http) {
         //selects correct URL on the basis of the environment mode
@@ -60,7 +62,7 @@ export class ShipService {
     }
 
     //TODO: place stone on ship via drop
-    onShipDrop(e: any){
+    onShipDrop(e: any) {
 
     }
 
@@ -78,5 +80,33 @@ export class ShipService {
             if (ship.docked == false) return false;
         }
         return true;
+    }
+
+    pollShips(gameId: number, roundId: number) {
+        return Observable.interval(1500).flatMap(() => {
+            return this.getShips(gameId, roundId);
+        });
+    }
+
+    getCurrentShips(): Ship[]{
+        return this.currentShips;
+    }
+
+    setDummyShips() : void{
+        let dummyShips = [];
+        let ship = new Ship();
+
+        let stone = new Stone();
+        stone.color = 'black';
+
+        ship.id = 1;
+        ship.stones = [stone, stone, stone, stone];
+        ship.isReady = false;
+        ship.addedStones = 4;
+        ship.docked = false;
+        ship.siteBoard = null;
+        dummyShips = [ship, ship, ship, ship];
+
+        this.currentShips=dummyShips;
     }
 }
