@@ -7,7 +7,6 @@
     --colorFive: #8c3313;
     --colorSix: #4fb0cb;
 
-
     /*Custom colors for lobby status*/
     /*Game status*/
     --colorPending: #00e10d;
@@ -20,7 +19,6 @@
     --colorIsReady: #ffb90a;
     --colorIsPlaying: #ff513c;
 
-
     /*Custom colors for player*/
     --brownStone: #6e1b00;
     --greyStone: #797879;
@@ -32,12 +30,12 @@
     --nextTurn: #a39000;
 }
 
-
 body {
     background-image: url("assets/img/background.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    font-family: 'Sanchez',serif;
+    font-family: 'Sanchez', serif;
 }
+

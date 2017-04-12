@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="second-row">
-                    <div draggable [dragData]="stone" [dragScope]="'stone'"class="stone" [ngClass]="
+                    <div draggable [dragData]="stone" [dragScope]="'stone'" class="stone" [ngClass]="
                                  {brown: currentUser.color == 'brown' && currentUser.supplySled >= 1,
                                  grey: currentUser.color == 'grey' && currentUser.supplySled >= 1,
                                  black: currentUser.color == 'black' && currentUser.supplySled >= 1,
@@ -59,6 +59,21 @@
         </div>
     </div>
     <div class="cards-block">
-        player's own card go here
+        <div class="cards-container">
+            <div class="market-card" *ngFor="let card of currentCards"
+>
+                <div class="card-title"
+                     [ngClass]="
+                    {red: card.color == 'red',
+                    green: card.color == 'green',
+                    blue: card.color == 'blue',
+                    purple:card.color == 'purple'
+                    }">{{card.title}}</div>
+                <div class="image-and-description">
+                    <div class="card-image"></div>
+                    <div class="card-description">{{card.description}}</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

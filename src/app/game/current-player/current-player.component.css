@@ -14,6 +14,8 @@ Heading
 .heading {
     flex-grow: 1;
     border: 1px solid white;
+    width: 20%;
+    height: 100%;
 }
 
 .player-username {
@@ -63,8 +65,69 @@ Heading
     border: 1px solid black;
 }
 
+/***********************************************************************************************************************
+Cards:
+***********************************************************************************************************************/
 .cards-block {
     flex-grow: 6;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.cards-container {
+    display: flex;
+    overflow: scroll;
+    width: 100%;
+}
+
+.market-card {
+    min-width: 107px;
+    max-width: 107px;
+    min-height: 81px;
+    max-height: 81px;
+    font-size: 12px;
+    flex-grow: 1;
+    align-self: center;
+    margin: 5px;
+    border: 1px solid white;
+}
+
+.image-and-description {
+    display: flex;
+    height: 80%;
+
+}
+
+.card-image {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.card-description {
+    flex-grow: 3;
+    flex-shrink: 0;
+    width: 80%;
+    font-size: 10px;
+}
+
+/*Styles for card title colors:*/
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.red {
+    background-color: red;
+}
+
+.purple {
+    background-color: purple;
 }
 
 /***********************************************************************************************************************
