@@ -1,9 +1,9 @@
-.board-column{
+.board-column {
     float: left;
     width: 80%;
 }
 
-.info-column{
+.info-column {
     float: right;
     width: 20%;
 }
@@ -15,35 +15,28 @@
     margin-left: 30px;
 }
 
-.block-obelisk1{
+.obelisk {
     flex-grow: 0;
     width: 30px;
     height: 30px;
     border: 1px solid black;
+    text-align: center;
+    line-height: 2;
+}
+
+.block-obelisk1 {
     margin-top: 10px;
 }
 
-.block-obelisk2{
-    flex-grow: 0;
-    width: 30px;
-    height: 30px;
-    border: 1px solid black;
+.block-obelisk2 {
     margin-top: 25px;
 }
 
-.block-obelisk3{
-    flex-grow: 0;
-    width: 30px;
-    height: 30px;
-    border: 1px solid black;
+.block-obelisk3 {
     margin-top: 40px;
 }
 
-.block-obelisk4{
-    flex-grow: 0;
-    width: 30px;
-    height: 30px;
-    border: 1px solid black;
+.block-obelisk4 {
     margin-top: 55px;
 }
 

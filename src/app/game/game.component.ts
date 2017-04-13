@@ -4,12 +4,14 @@ import {GameService} from "../shared/services/game.service";
 import {TempleService} from '../shared/services/temple.service';
 import {MoveService} from '../shared/services/move.service';
 import {ShipService} from '../shared/services/ship.service';
+import {ObeliskService} from '../shared/services/obelisk.service';
 
 import {User} from "../shared/models/user";
 import {Game} from "../shared/models/game";
 import {Ship} from "../shared/models/ship";
 import {Stone} from '../shared/models/stone';
 import {Temple} from '../shared/models/temple';
+import {Obelisk} from "../shared/models/obelisk";
 
 
 @Component({
@@ -23,6 +25,7 @@ export class GameComponent implements OnInit {
     private currentUser: User;
     private currentTemple: Temple;
     private currentShips: Ship[];
+    private currentObelisk: Obelisk;
 
 
     //subscriptions stored in order to unsubscribe later.
@@ -30,11 +33,13 @@ export class GameComponent implements OnInit {
     private userSubscription: any;
     private templeSubscription: any;
     private shipsSubscription: any;
+    private obeliskSubscription: any;
 
     constructor(private userService: UserService,
                 private gameService: GameService,
                 private templeService: TempleService,
-                private shipService: ShipService) {
+                private shipService: ShipService,
+                private obeliskService: ObeliskService) {
     }
 
     ngOnInit(): void {
@@ -49,12 +54,14 @@ export class GameComponent implements OnInit {
         }
         this.templeService.setDummyTemple();
         this.shipService.setDummyShips();
+        this.obeliskService.setDummyObelisk();
 
 
         this.currentGame = this.gameService.getCurrentGame();
         this.currentUser = this.userService.getCurrentUser();
         this.currentTemple = this.templeService.getCurrentTemple();
         this.currentShips = this.shipService.getCurrentShips();
+        this.currentObelisk = this.obeliskService.getCurrentObelisk();
 
 
         this.pollInfo();
@@ -77,6 +84,10 @@ export class GameComponent implements OnInit {
             .subscribe(ships => {
                 this.setShips(ships);
             });
+        this.obeliskSubscription = this.obeliskService.pollObelisk(this.currentGame.id)
+            .subscribe(obelisk => {
+                this.currentObelisk = obelisk;
+            })
     }
 
     setShips(ships: Ship[]): void {
@@ -87,7 +98,7 @@ export class GameComponent implements OnInit {
                 }
             }
         }
-        this.currentShips=ships;
+        this.currentShips = ships;
     }
 
     getOpposingPlayers(): User[] {

@@ -18,6 +18,7 @@ import {UserService} from "./shared/services/user.service";
 import {GameService} from "./shared/services/game.service";
 import {ShipService} from "./shared/services/ship.service";
 import {MoveService} from './shared/services/move.service';
+import {ObeliskService} from './shared/services/obelisk.service';
 import {routing} from "./app.routing";
 import {AuthenticationService} from "./shared/services/authentication.service";
 import {Ng2DragDropModule} from "ng2-drag-drop";
@@ -53,7 +54,7 @@ import {MarketCardComponent} from './game/market-card/market-card.component';
         Ng2DragDropModule,
         routing
     ],
-    providers: [AuthenticationService, AuthGuardService, UserService, GameService, ShipService, MoveService],
+    providers: [AuthenticationService, AuthGuardService, UserService, GameService, ShipService, MoveService, ObeliskService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

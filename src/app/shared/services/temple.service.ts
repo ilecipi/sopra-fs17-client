@@ -13,8 +13,7 @@ export class TempleService {
     apiUrl: String;
     currentTemple: Temple;
 
-    constructor(private http: Http,
-                private authenticationService: AuthenticationService) {
+    constructor(private http: Http) {
         //selects correct URL on the basis of the environment mode
         this.apiUrl = environment.apiUrl;
     }

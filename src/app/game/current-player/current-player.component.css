@@ -79,7 +79,7 @@ Cards:
 
 .cards-container {
     display: flex;
-    overflow: scroll;
+    overflow-x: scroll;
     width: 100%;
     align-content:center;
 }
