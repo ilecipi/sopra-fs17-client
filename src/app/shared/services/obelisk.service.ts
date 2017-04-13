@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers, RequestOptions, Response} from "@angular/http";
 import {environment} from "../../../environments/environment";
-
-import {Obelisk} from "../models/obelisk";
 import {Observable} from "rxjs/Rx";
+import {Obelisk} from "../models/obelisk";
 
 
 @Injectable()
@@ -13,7 +12,6 @@ export class ObeliskService {
 
     constructor(private http: Http) {
         this.apiUrl = environment.apiUrl;
-
     }
 
     getCurrentObelisk(): Obelisk {

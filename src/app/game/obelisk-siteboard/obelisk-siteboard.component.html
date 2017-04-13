@@ -1,9 +1,17 @@
 <div class="board-column">
     <div class="wrapper">
-        <div class="block-obelisk1 obelisk">x{{currentObelisk?.obelisks?.black}}</div>
-        <div class="block-obelisk2 obelisk">x{{currentObelisk?.obelisks?.brown}}</div>
-        <div class="block-obelisk3 obelisk">x{{currentObelisk?.obelisks?.grey}}</div>
-        <div class="block-obelisk4 obelisk">x{{currentObelisk?.obelisks?.white}}</div>
+        <div class="block-obelisk1 obelisk" [ngClass]="{black: currentObelisk?.obelisks?.black >= 1}">
+            x{{currentObelisk?.obelisks?.black}}
+        </div>
+        <div class="block-obelisk2 obelisk" [ngClass]="{brown: currentObelisk?.obelisks?.brown >= 1}">
+            x{{currentObelisk?.obelisks?.brown}}
+        </div>
+        <div class="block-obelisk3 obelisk" [ngClass]="{grey: currentObelisk?.obelisks?.grey >= 1}">
+            x{{currentObelisk?.obelisks?.grey}}
+        </div>
+        <div class="block-obelisk4 obelisk" [ngClass]="{white: currentObelisk?.obelisks?.white >= 1}">
+            x{{currentObelisk?.obelisks?.white}}
+        </div>
     </div>
 </div>
 <div class="info-column">Obelisk Description</div>

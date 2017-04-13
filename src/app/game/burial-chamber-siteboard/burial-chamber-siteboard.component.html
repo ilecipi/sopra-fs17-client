@@ -1,0 +1,78 @@
+<div class="parent-block">
+    <div class="burial-chamber-container">
+        <div class="burial-chamber">
+            <div class="first-row row" >
+                <div class="block" *ngFor="let position of ngForArray" [ngClass]="{
+                brown: currentBurialChamber?.firstRow[position]?.color == 'brown',
+                grey: currentBurialChamber?.firstRow[position]?.color == 'grey',
+                black: currentBurialChamber?.firstRow[position]?.color == 'black',
+                white: currentBurialChamber?.firstRow[position]?.color == 'white'
+                }">
+                </div>
+            </div>
+            <div class="second-row row" >
+                <div class="block" *ngFor="let position of ngForArray" [ngClass]="{
+                brown: currentBurialChamber?.secondRow[position]?.color == 'brown',
+                grey: currentBurialChamber?.secondRow[position]?.color == 'grey',
+                black: currentBurialChamber?.secondRow[position]?.color == 'black',
+                white: currentBurialChamber?.secondRow[position]?.color == 'white'
+                }">
+                </div>
+            </div>
+            <div class="second-row row" >
+                <div class="block" *ngFor="let position of ngForArray" [ngClass]="{
+                brown: currentBurialChamber?.thirdRow[position]?.color == 'brown',
+                grey: currentBurialChamber?.thirdRow[position]?.color == 'grey',
+                black: currentBurialChamber?.thirdRow[position]?.color == 'black',
+                white: currentBurialChamber?.thirdRow[position]?.color == 'white'
+                }">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="info-column">Burial Chamber Description</div>
+</div>
+
+
+<!--<div class="first-row row">-->
+<!--<div class="block00 block"-->
+<!--[ngClass]="{-->
+<!--brown: currentBurialChamber?.firstRow[0]?.color == 'brown',-->
+<!--grey: currentBurialChamber?.firstRow[0]?.color == 'grey',-->
+<!--black: currentBurialChamber?.firstRow[0]?.color == 'black',-->
+<!--white: currentBurialChamber?.firstRow[0]?.color == 'white'-->
+<!--}"></div>-->
+<!--<div class="block01 block"></div>-->
+<!--<div class="block02 block"></div>-->
+<!--<div class="block03 block"></div>-->
+<!--<div class="block04 block"></div>-->
+<!--<div class="block05 block"></div>-->
+<!--<div class="block06 block"></div>-->
+<!--<div class="block07 block"></div>-->
+<!--<div class="block08 block"></div>-->
+<!--<div class="block09 block"></div>-->
+<!--</div>-->
+<!--<div class="second-row row">-->
+<!--<div class="block10 block"></div>-->
+<!--<div class="block11 block"></div>-->
+<!--<div class="block12 block"></div>-->
+<!--<div class="block13 block"></div>-->
+<!--<div class="block14 block"></div>-->
+<!--<div class="block15 block"></div>-->
+<!--<div class="block16 block"></div>-->
+<!--<div class="block17 block"></div>-->
+<!--<div class="block18 block"></div>-->
+<!--<div class="block19 block"></div>-->
+<!--</div>-->
+<!--<div class="third-row row">-->
+<!--<div class="block20 block"></div>-->
+<!--<div class="block21 block"></div>-->
+<!--<div class="block22 block"></div>-->
+<!--<div class="block23 block"></div>-->
+<!--<div class="block24 block"></div>-->
+<!--<div class="block25 block"></div>-->
+<!--<div class="block26 block"></div>-->
+<!--<div class="block27 block"></div>-->
+<!--<div class="block28 block"></div>-->
+<!--<div class="block29 block"></div>-->
+<!--</div>-->

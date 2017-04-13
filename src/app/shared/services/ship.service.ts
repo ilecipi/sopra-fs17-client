@@ -100,10 +100,10 @@ export class ShipService {
         let ship = new Ship();
 
         let stone = new Stone();
-        stone.color = 'black';
+        stone.color = 'none';
 
         ship.id = 1;
-        ship.stones = [stone, stone, stone, stone];
+        ship.stones = [stone,stone,stone,stone];
         ship.isReady = false;
         ship.addedStones = 4;
         ship.docked = false;

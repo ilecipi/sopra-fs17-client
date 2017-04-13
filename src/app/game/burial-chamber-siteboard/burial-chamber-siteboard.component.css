@@ -1,49 +1,43 @@
-.board-column {
-    float: left;
+.parent-block {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.burial-chamber-container {
+    flex-grow: 1;
     width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin:0;
+}
+
+.block {
+    flex-grow: 1;
+    min-height: 30px;
+    max-height: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    border: 1px solid black;
 }
 
 .info-column {
-    float: right;
+    flex-grow: 1;
     width: 20%;
 }
 
-.wrapper {
-    display: grid;
-    grid-template-columns: 30px 30px 30px 30px;
-    grid-gap: 40px;
-    margin-left: 30px;
-}
-
-.obelisk {
-    color: white;
-    flex-grow: 0;
-    width: 30px;
-    height: 30px;
-    border: 1px solid black;
-    text-align: center;
-    line-height: 2;
-}
-
-.block-obelisk1 {
-    margin-top: 10px;
-}
-
-.block-obelisk2 {
-    margin-top: 25px;
-}
-
-.block-obelisk3 {
-    margin-top: 40px;
-}
-
-.block-obelisk4 {
-    margin-top: 55px;
-}
-
 /***********************************************************************************************************************
-Dynamic styles for obelisk colors:
+Dynamic styles for stone colors:
 ***********************************************************************************************************************/
+
 .brown {
     background-color: var(--brownStone);
 }

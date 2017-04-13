@@ -5,6 +5,7 @@ import {TempleService} from '../shared/services/temple.service';
 import {MoveService} from '../shared/services/move.service';
 import {ShipService} from '../shared/services/ship.service';
 import {ObeliskService} from '../shared/services/obelisk.service';
+import {BurialChamberService} from '../shared/services/burial-chamber.service';
 
 import {User} from "../shared/models/user";
 import {Game} from "../shared/models/game";
@@ -12,6 +13,7 @@ import {Ship} from "../shared/models/ship";
 import {Stone} from '../shared/models/stone';
 import {Temple} from '../shared/models/temple';
 import {Obelisk} from "../shared/models/obelisk";
+import {BurialChamber} from '../shared/models/burialChamber';
 
 
 @Component({
@@ -26,6 +28,7 @@ export class GameComponent implements OnInit {
     private currentTemple: Temple;
     private currentShips: Ship[];
     private currentObelisk: Obelisk;
+    private currentBurialChamber: BurialChamber;
 
 
     //subscriptions stored in order to unsubscribe later.
@@ -34,12 +37,14 @@ export class GameComponent implements OnInit {
     private templeSubscription: any;
     private shipsSubscription: any;
     private obeliskSubscription: any;
+    private burialChamberSubscription: any;
 
     constructor(private userService: UserService,
                 private gameService: GameService,
                 private templeService: TempleService,
                 private shipService: ShipService,
-                private obeliskService: ObeliskService) {
+                private obeliskService: ObeliskService,
+                private burialChamberService: BurialChamberService) {
     }
 
     ngOnInit(): void {
@@ -55,6 +60,8 @@ export class GameComponent implements OnInit {
         this.templeService.setDummyTemple();
         this.shipService.setDummyShips();
         this.obeliskService.setDummyObelisk();
+        //burialChamber has no dummy setter because in the html we check if the values exist before displaying them
+        //TODO: probably need to remove at least all other dummy setter, but maintain at least user.id and game.id for developing purposes
 
 
         this.currentGame = this.gameService.getCurrentGame();
@@ -62,6 +69,7 @@ export class GameComponent implements OnInit {
         this.currentTemple = this.templeService.getCurrentTemple();
         this.currentShips = this.shipService.getCurrentShips();
         this.currentObelisk = this.obeliskService.getCurrentObelisk();
+        this.currentBurialChamber = this.burialChamberService.getCurrentBurialChamber();
 
 
         this.pollInfo();
@@ -87,6 +95,10 @@ export class GameComponent implements OnInit {
         this.obeliskSubscription = this.obeliskService.pollObelisk(this.currentGame.id)
             .subscribe(obelisk => {
                 this.currentObelisk = obelisk;
+            });
+        this.burialChamberSubscription = this.burialChamberService.pollBurialChamber(this.currentGame.id)
+            .subscribe(burialChamber => {
+                this.currentBurialChamber = burialChamber;
             })
     }
 

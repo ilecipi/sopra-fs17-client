@@ -4,5 +4,7 @@ export class Temple {
     stones: Stone[];
     game: number;
     isOccupied: boolean;
+    insertIndex: number;
+    completedRows: number;
 
 }
