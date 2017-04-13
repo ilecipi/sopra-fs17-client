@@ -60,19 +60,8 @@
     </div>
     <div class="cards-block">
         <div class="cards-container">
-            <div class="market-card" *ngFor="let card of currentCards"
->
-                <div class="card-title"
-                     [ngClass]="
-                    {red: card.color == 'red',
-                    green: card.color == 'green',
-                    blue: card.color == 'blue',
-                    purple:card.color == 'purple'
-                    }">{{card.title}}</div>
-                <div class="image-and-description">
-                    <div class="card-image"></div>
-                    <div class="card-description">{{card.description}}</div>
-                </div>
+            <div class="market-card" *ngFor="let card of currentCards, let i=index">
+                <market-card [currentCard]="currentCards[i]"></market-card>
             </div>
         </div>
     </div>

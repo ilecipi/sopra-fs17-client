@@ -1,0 +1,14 @@
+<div class="market-card">
+    <div class="card-title"
+         [ngClass]="
+                    {red: currentCard.color == 'red',
+                    green: currentCard.color == 'green',
+                    blue: currentCard.color == 'blue',
+                    purple: currentCard.color == 'purple'
+                    }">{{currentCard.title}}
+    </div>
+    <div class="image-and-description">
+        <div class="card-image"></div>
+        <div class="card-description">{{currentCard.description}}</div>
+    </div>
+</div>

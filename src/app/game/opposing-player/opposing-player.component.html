@@ -61,7 +61,11 @@
         </div>
     </div>
     <div class="cards-block">
-        opposing player's own card go here
+        <div class="cards-container">
+            <div class="market-card" *ngFor="let card of currentCards, let i=index">
+                <market-card [currentCard]="currentCards[i]"></market-card>
+            </div>
+        </div>
     </div>
 </div>
 

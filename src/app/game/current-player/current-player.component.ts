@@ -27,7 +27,9 @@ export class CurrentPlayerComponent implements OnInit {
                 private shipService: ShipService) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
+
+        //TODO: remove all cards when we get correct cards from backend
         this.currentCards.push(new Card('BURIAL_CHAMBER_DECORATION'));
         this.currentCards.push(new Card('PYRAMID_DECORATION'));
         this.currentCards.push(new Card('HAMMER'));
@@ -40,27 +42,27 @@ export class CurrentPlayerComponent implements OnInit {
         this.currentCards.push(new Card('STATUE'));
         this.currentCards.push(new Card('PAVED_PATH'));
         this.currentCards.push(new Card('CHISEL'));
-
-        //15 cards added;
+        //all 12 cards added;
     }
 
-    triggerAddStones() {
+    triggerAddStones(): void {
         //call addStones with correct game and user information
 
         let gameId = this.currentGame.id;
-        let roundId = this.currentGame.rounds[this.currentGame.rounds.length-1];
+        let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1];
         let playerToken = this.currentUser.token;
 
-        this.moveService.addStones(gameId,roundId,playerToken)
+        this.moveService.addStones(gameId, roundId, playerToken)
             .subscribe(result => {
-            if (result) {
-            } else {
-            }
-        });
+                if (result) {
+                } else {
+                }
+            });
     }
 
     //event
-    onShipDrop(e:any){
+    onShipDrop(e: any): void {
         //this.shipService.onShipDrop(e, this.stones, this.ship);
     }
+
 }

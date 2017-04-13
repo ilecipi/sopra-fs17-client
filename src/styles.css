@@ -28,6 +28,12 @@
     /*Custom color for highlighting the turn and next turn*/
     --turn: #ffdf00;
     --nextTurn: #a39000;
+
+    /*Custom color for market cards titles*/
+    --marketGreen: green;
+    --marketRed: red;
+    --marketPurple: purple;
+    --marketBlue: blue;
 }
 
 body {

@@ -24,6 +24,7 @@ import {Ng2DragDropModule} from "ng2-drag-drop";
 import {CurrentPlayerComponent} from './game/current-player/current-player.component';
 import {InfoBoardComponent} from './game/info-board/info-board.component';
 import {HarbourComponent} from './game/harbour/harbour.component';
+import {MarketCardComponent} from './game/market-card/market-card.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import {HarbourComponent} from './game/harbour/harbour.component';
         CurrentPlayerComponent,
         InfoBoardComponent,
         HarbourComponent,
+        MarketCardComponent,
     ],
     imports: [
         BrowserModule,

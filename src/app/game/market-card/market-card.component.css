@@ -1,0 +1,44 @@
+.market-card {
+    min-width: 107px;
+    max-width: 107px;
+    min-height: 81px;
+    max-height: 81px;
+    font-size: 12px;
+    margin: 5px;
+    border: 1px solid white;
+}
+
+.image-and-description {
+    display: flex;
+    height: 80%;
+
+}
+
+.card-image {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.card-description {
+    flex-grow: 3;
+    flex-shrink: 0;
+    width: 80%;
+    font-size: 10px;
+    }
+
+/*Styles for card title colors:*/
+.green {
+    background-color: var(--marketGreen);
+}
+
+.blue {
+    background-color: var(--marketBlue);
+}
+
+.red {
+    background-color: var(--marketRed);
+}
+
+.purple {
+    background-color: var(--marketPurple);
+}
