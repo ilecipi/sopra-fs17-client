@@ -1,6 +1,7 @@
- import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Game} from '../../shared/models/game';
 import {Observable} from "rxjs/Rx";
+import {Ship} from '../../shared/models/ship';
 
 @Component({
     selector: 'info-board',
@@ -11,6 +12,8 @@ export class InfoBoardComponent implements OnInit {
 
     @Input()
     private currentGame: Game;
+    @Input()
+    private currentShips: Ship[];
 
     private counter = 0;
     private showSnake: boolean;
