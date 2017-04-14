@@ -21,6 +21,7 @@ import {ShipService} from "./shared/services/ship.service";
 import {MoveService} from './shared/services/move.service';
 import {ObeliskService} from './shared/services/obelisk.service';
 import {BurialChamberService} from './shared/services/burial-chamber.service';
+import {PyramidService} from './shared/services/pyramid.service';
 import {routing} from "./app.routing";
 import {AuthenticationService} from "./shared/services/authentication.service";
 import {Ng2DragDropModule} from "ng2-drag-drop";
@@ -58,7 +59,7 @@ import {MarketCardComponent} from './game/market-card/market-card.component';
         Ng2DragDropModule,
         routing
     ],
-    providers: [AuthenticationService, AuthGuardService, UserService, GameService, ShipService, MoveService, ObeliskService, BurialChamberService],
+    providers: [AuthenticationService, AuthGuardService, UserService, GameService, ShipService, MoveService, ObeliskService, BurialChamberService, PyramidService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

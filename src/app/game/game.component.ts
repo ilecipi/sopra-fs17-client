@@ -14,6 +14,8 @@ import {Stone} from '../shared/models/stone';
 import {Temple} from '../shared/models/temple';
 import {Obelisk} from "../shared/models/obelisk";
 import {BurialChamber} from '../shared/models/burialChamber';
+import {Pyramid} from '../shared/models/pyramid';
+import {PyramidService} from "../shared/services/pyramid.service";
 
 
 @Component({
@@ -29,6 +31,7 @@ export class GameComponent implements OnInit {
     private currentShips: Ship[];
     private currentObelisk: Obelisk;
     private currentBurialChamber: BurialChamber;
+    private currentPyramid: Pyramid;
 
 
     //subscriptions stored in order to unsubscribe later.
@@ -38,13 +41,15 @@ export class GameComponent implements OnInit {
     private shipsSubscription: any;
     private obeliskSubscription: any;
     private burialChamberSubscription: any;
+    private pyramidSubscription: any;
 
     constructor(private userService: UserService,
                 private gameService: GameService,
                 private templeService: TempleService,
                 private shipService: ShipService,
                 private obeliskService: ObeliskService,
-                private burialChamberService: BurialChamberService) {
+                private burialChamberService: BurialChamberService,
+                private pyramidService: PyramidService) {
     }
 
     ngOnInit(): void {
@@ -61,7 +66,8 @@ export class GameComponent implements OnInit {
         this.shipService.setDummyShips();
         this.obeliskService.setDummyObelisk();
         //burialChamber has no dummy setter because in the html we check if the values exist before displaying them
-        //TODO: probably need to remove at least all other dummy setter, but maintain at least user.id and game.id for developing purposes
+        //pyramid has also no dummy setter
+        //TODO: probably need to remove all other dummy setters, but maintain at least user.id and game.id for developing purposes
 
 
         this.currentGame = this.gameService.getCurrentGame();
@@ -70,7 +76,7 @@ export class GameComponent implements OnInit {
         this.currentShips = this.shipService.getCurrentShips();
         this.currentObelisk = this.obeliskService.getCurrentObelisk();
         this.currentBurialChamber = this.burialChamberService.getCurrentBurialChamber();
-
+        this.currentPyramid = this.pyramidService.getCurrentPyramid();
 
         this.pollInfo();
     }
@@ -99,7 +105,11 @@ export class GameComponent implements OnInit {
         this.burialChamberSubscription = this.burialChamberService.pollBurialChamber(this.currentGame.id)
             .subscribe(burialChamber => {
                 this.currentBurialChamber = burialChamber;
-            })
+            });
+        this.pyramidSubscription = this.pyramidService.pollPyramid(this.currentGame.id)
+            .subscribe(pyramid => {
+                this.currentPyramid = pyramid;
+            });
     }
 
     setShips(ships: Ship[]): void {

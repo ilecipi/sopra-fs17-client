@@ -1,48 +1,82 @@
-.board-column{
-    float: left;
-    width: 80%;
-}
-
-.info-column{
-    float: right;
-    width: 20%;
-}
-
-.wrapper {
-    display: grid;
-    grid-template-columns: 90px 60px 30px;
-    grid-gap: 20px;
-}
-
-.block{
+.parent-block {
+    width: 100%;
+    height: 100%;
     display: flex;
+    color: white;
+    text-align: center;
+}
+
+.info-column {
+    width: 20%;
+    color: black;
+}
+
+.pyramid-container {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+}
+
+.block {
+    text-align: center;
+    line-height: 2.1;
     flex-grow: 0;
-    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    min-height: 30px;
+    max-height: 30px;
     height: 30px;
     border: 1px solid black;
 }
 
-table#py1{
-    width: 90px;
-    height: 90px;
-    background-color: #f1f1c1;
+.pyramid-base {
+    display: flex;
     margin: 10px;
 }
 
-table#py2{
-    width: 60px;
-    height: 60px;
-    background-color: #f1f1c1;
-    margin: 25px;
+.pyramid-middle {
+    display: flex;
+    margin: 10px;
+
 }
 
-table#py3{
-    width: 30px;
-    height: 30px;
-    background-color: #f1f1c1;
-    margin: 40px;
+.pyramid-top {
+    margin: 10px;
 }
 
-table, td{
-    border: 1px solid;
+.pyramid-surplus {
+    min-width: 10px;
+    display: flex;
+}
+
+.surplus-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.surplus-points {
+    display: flex;
+}
+
+/***********************************************************************************************************************
+Dynamic styles for stones:
+***********************************************************************************************************************/
+.brown {
+    background-color: var(--brownStone);
+}
+
+.grey {
+    background-color: var(--greyStone);
+}
+
+.black {
+    background-color: var(--blackStone);
+}
+
+.white {
+    /* If background is white then font color must be black for better readability*/
+    background-color: var(--whiteStone);
+    color: black;
 }

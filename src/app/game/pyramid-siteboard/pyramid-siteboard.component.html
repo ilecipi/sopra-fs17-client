@@ -1,26 +1,151 @@
-<div class="board-column">
-  <div class="wrapper">
-    <table id="py1">
-      <tr>
-        <td></td><td></td><td></td>
-      </tr>
-      <tr>
-        <td></td><td></td><td></td>
-      </tr>
-      <tr>
-        <td></td><td></td><td></td>
-      </tr>
-    </table>
-    <table id="py2">
-      <tr>
-        <td></td><td></td>
-      <tr>
-        <td></td><td></td>
-      </tr>
-    </table>
-    <table id="py3">
-      <td></td>
-    </table>
-  </div>
+<div class="parent-block">
+    <div class="pyramid-container">
+        <div class="pyramid-base">
+            <div class="first-column-base column-base column">
+                <div class="block pym1" [ngClass]="
+                {brown: currentPyramid?.addedStones[0]?.color == 'brown',
+                     grey: currentPyramid?.addedStones[0]?.color == 'grey',
+                     black: currentPyramid?.addedStones[0]?.color == 'black',
+                     white: currentPyramid?.addedStones[0]?.color == 'white'
+                     }">
+                    2
+                </div>
+                <div class="block pym2" [ngClass]="
+                {brown: currentPyramid?.addedStones[1]?.color == 'brown',
+                     grey: currentPyramid?.addedStones[1]?.color == 'grey',
+                     black: currentPyramid?.addedStones[1]?.color == 'black',
+                     white: currentPyramid?.addedStones[1]?.color == 'white'
+                     }">
+                    1
+                </div>
+                <div class="block pym3" [ngClass]="
+                {brown: currentPyramid?.addedStones[2]?.color == 'brown',
+                     grey: currentPyramid?.addedStones[2]?.color == 'grey',
+                     black: currentPyramid?.addedStones[2]?.color == 'black',
+                     white: currentPyramid?.addedStones[2]?.color == 'white'
+                     }">
+                    3
+                </div>
+            </div>
+            <div class="second-column-base column-base column">
+                <div class="block pym4" [ngClass]="
+                {brown: currentPyramid?.addedStones[3]?.color == 'brown',
+                     grey: currentPyramid?.addedStones[3]?.color == 'grey',
+                     black: currentPyramid?.addedStones[3]?.color == 'black',
+                     white: currentPyramid?.addedStones[3]?.color == 'white'
+                     }">
+                    2
+                </div>
+                <div class="block pym5" [ngClass]="
+                {brown: currentPyramid?.addedStones[4]?.color == 'brown',
+                     grey: currentPyramid?.addedStones[4]?.color == 'grey',
+                     black: currentPyramid?.addedStones[4]?.color == 'black',
+                     white: currentPyramid?.addedStones[4]?.color == 'white'
+                     }">
+                    4
+                </div>
+                <div class="block pym6" [ngClass]="
+                {brown: currentPyramid?.addedStones[5]?.color == 'brown',
+                     grey: currentPyramid?.addedStones[5]?.color == 'grey',
+                     black: currentPyramid?.addedStones[5]?.color == 'black',
+                     white: currentPyramid?.addedStones[5]?.color == 'white'
+                     }">
+                    3
+                </div>
+            </div>
+            <div class="third-column-base coulmn-base column">
+                <div class="block pym7" [ngClass]="
+                {brown: currentPyramid?.addedStones[6]?.color == 'brown',
+                     grey: currentPyramid?.addedStones[6]?.color == 'grey',
+                     black: currentPyramid?.addedStones[6]?.color == 'black',
+                     white: currentPyramid?.addedStones[6]?.color == 'white'
+                     }">
+                    2
+                </div>
+                <div class="block pym8" [ngClass]="
+                {brown: currentPyramid?.addedStones[7]?.color == 'brown',
+                     grey: currentPyramid?.addedStones[7]?.color == 'grey',
+                     black: currentPyramid?.addedStones[7]?.color == 'black',
+                     white: currentPyramid?.addedStones[7]?.color == 'white'
+                     }">
+                    1
+                </div>
+                <div class="block pym9" [ngClass]="
+                {brown: currentPyramid?.addedStones[8]?.color == 'brown',
+                     grey: currentPyramid?.addedStones[8]?.color == 'grey',
+                     black: currentPyramid?.addedStones[8]?.color == 'black',
+                     white: currentPyramid?.addedStones[8]?.color == 'white'
+                     }">
+                    3
+                </div>
+            </div>
+        </div>
+        <div class="pyramid-middle">
+            <div class="first-column-middle column-middle column">
+                <div class="block pym10" [ngClass]="
+                {brown: currentPyramid?.addedStones[9]?.color == 'brown',
+                     grey: currentPyramid?.addedStones[9]?.color == 'grey',
+                     black: currentPyramid?.addedStones[9]?.color == 'black',
+                     white: currentPyramid?.addedStones[9]?.color == 'white'
+                     }">
+                    2
+                </div>
+                <div class="block pym11" [ngClass]="
+                {brown: currentPyramid?.addedStones[10]?.color == 'brown',
+                     grey: currentPyramid?.addedStones[10]?.color == 'grey',
+                     black: currentPyramid?.addedStones[10]?.color == 'black',
+                     white: currentPyramid?.addedStones[10]?.color == 'white'
+                     }">
+                    3
+                </div>
+            </div>
+            <div class="second-column-middle column-middle column">
+                <div class="block pym12" [ngClass]="
+                {brown: currentPyramid?.addedStones[11]?.color == 'brown',
+                     grey: currentPyramid?.addedStones[11]?.color == 'grey',
+                     black: currentPyramid?.addedStones[11]?.color == 'black',
+                     white: currentPyramid?.addedStones[11]?.color == 'white'
+                     }">
+                    1
+                </div>
+                <div class="block pym13" [ngClass]="
+                {brown: currentPyramid?.addedStones[12]?.color == 'brown',
+                     grey: currentPyramid?.addedStones[12]?.color == 'grey',
+                     black: currentPyramid?.addedStones[12]?.color == 'black',
+                     white: currentPyramid?.addedStones[12]?.color == 'white'
+                     }">
+                    3
+                </div>
+            </div>
+        </div>
+        <div class="pyramid-top">
+            <div class="block pym14" [ngClass]="
+                {brown: currentPyramid?.addedStones[13]?.color == 'brown',
+                     grey: currentPyramid?.addedStones[13]?.color == 'grey',
+                     black: currentPyramid?.addedStones[13]?.color == 'black',
+                     white: currentPyramid?.addedStones[13]?.color == 'white'
+                     }">
+                4
+            </div>
+        </div>
+        <div class="pyramid-surplus" *ngIf="currentPyramid?.addedStones?.length>=11">
+            <div class="surplus-description">
+                Additional stones yield +1 points each.
+            </div>
+            <div class="surplus-points">
+                <div class="surplus-container">
+                    <div class="surplus-column">
+                        <div class="block" [ngClass]="{brown:true}">x{{surplusPoints('brown')}}</div>
+                        <div class="block" [ngClass]="{grey:true}">x{{surplusPoints('grey')}}</div>
+                    </div>
+                    <div class="surplus-column">
+                        <div class="block" [ngClass]="{black:true}">x{{surplusPoints('black')}}</div>
+                        <div class="block" [ngClass]="{white:true}">x{{surplusPoints('white')}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="info-column">Pyramid Description</div>
 </div>
-<div class="info-column">Pyramid Description</div>
