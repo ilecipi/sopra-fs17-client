@@ -133,20 +133,22 @@ Cards Block:
 }
 
 .round-card {
+    display: flex;
+    flex-direction: column;
     max-width: 120px;
     min-width: 120px;
     min-height: 100px;
     max-height: 100px;
-    flex-grow: 1;
     align-self: center;
     border: 1px solid black;
     background: var(--colorOne);
 }
 
 .ship {
+    flex-grow: 0;
     margin: 2px;
-    min-height: 20px;
-    max-height: 20px;
+    height: 20px;
+    align-self: center;
 }
 
 .discarded-round-cards-container {

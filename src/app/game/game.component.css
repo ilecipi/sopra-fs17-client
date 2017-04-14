@@ -22,7 +22,7 @@
 
 .harbour-column {
     height: 100%;
-    width: 30%;
+    width: 34%;
     border: 1px solid white;
     margin: 0;
     background-color: var(--colorSix);
@@ -30,19 +30,19 @@
 }
 
 /***********************************************************************************************************************
-Siteboards
+Site Boards
 ***********************************************************************************************************************/
 
 .siteboard-column {
     height: 100%;
-    width: 40%;
+    width: 36%;
     border: 1px solid white;
     margin: 0;
     background-color: var(--colorTwo);
 }
 
 .market{
-    height: 30%;
+    height: 31%;
     margin: 0;
     border: 1px solid black;
 }
@@ -54,7 +54,7 @@ Siteboards
 }
 
 .temple{
-    height: 13%;
+    height: 12%;
     margin: 0;
     border: 1px solid black;
 }
@@ -73,7 +73,7 @@ Siteboards
 }
 
 /***********************************************************************************************************************
-Infoboard
+Info Board:
 ***********************************************************************************************************************/
 
 .info-board-column {

@@ -1,13 +1,17 @@
-<div class="board-column">
-  <table id="market">
-    <tr>
-      <td>Market Card</td>
-      <td>Market Card</td>
-    </tr>
-    <tr>
-      <td>Market Card</td>
-      <td>Market Card</td>
-    </tr>
-  </table>
+<div class="parent-block">
+    <div class="market-block">
+            <div class="market-row">
+                <market-card [currentCard]="cards[0]"></market-card>
+                <market-card [currentCard]="cards[1]"></market-card>
+            </div>
+            <div class="market-row">
+                <market-card [currentCard]="cards[2]"></market-card>
+                <market-card [currentCard]="cards[3]"></market-card>
+            </div>
+    </div>
+    <div class="info-column">
+        <div class="info-hover">
+            <span class="hover">sperochefunzioni</span>
+        </div>
+    </div>
 </div>
-<div class="Info-column">Market Description</div>
