@@ -84,11 +84,18 @@
     <!-- CARDS BLOCK -->
     <div class="cards-block">
         <div class="round-cards">
-            <div class="round-card">
-                <img src="../../../assets/img/card-back.png" style="width:81px;height:107px;">
+            <div class="round-card-container">
+                <div class="round-card">
+                    <img class="ship1 ship" src="{{getShipSrc(0)}}">
+                    <img class="ship2 ship" src="{{getShipSrc(1)}}">
+                    <img class="ship3 ship" src="{{getShipSrc(2)}}">
+                    <img class="ship4 ship" src="{{getShipSrc(3)}}">
+                </div>
             </div>
-            <div class="discarded-round-cards">
-                <img src="../../../assets/img/card-back.png" style="width:81px;height:107px;">
+            <div class="discarded-round-cards-container">
+                <div class="discarded-round-cards">
+                    <img src="../../../assets/img/card-back.png" style="width:120px;height:100px;">
+                </div>
             </div>
         </div>
         <div class="market-cards">

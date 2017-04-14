@@ -15,6 +15,7 @@ export class InfoBoardComponent implements OnInit {
     @Input()
     private currentShips: Ship[];
 
+
     private counter = 0;
     private showSnake: boolean;
     // styles needed to color cells in scoring track board.
@@ -35,6 +36,33 @@ export class InfoBoardComponent implements OnInit {
         this.initStyleChildren();
         this.addStyleChildren();
         this.pollColors();
+    }
+
+    getShipSrc(index:number):string {
+        let numStones=this.currentShips[index].stones.length;
+        let stringSrc='../../../assets/img/ShipWithStones';
+        let ship: String = '';
+        switch (numStones){
+            case 1 :{
+                ship='1-75';
+                break;
+            }
+            case 2:{
+                ship='2-110';
+                break;
+            }
+            case 3:{
+                ship='3-145';
+                break;
+            }
+            case 4:{
+                ship='4-180';
+                break;
+            }
+        }
+        stringSrc+=ship;
+        stringSrc+='x36.png';
+        return stringSrc;
     }
 
     getPoints(i: number): number {

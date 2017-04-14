@@ -122,15 +122,49 @@ Cards Block:
     display: flex;
 }
 
-.round-card {
+.round-card-container {
+    width: 50%;
     flex-grow: 1;
     align-self: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.round-card {
+    max-width: 120px;
+    min-width: 120px;
+    min-height: 100px;
+    max-height: 100px;
+    flex-grow: 1;
+    align-self: center;
+    border: 1px solid black;
+    background: var(--colorOne);
+}
+
+.ship {
+    margin: 2px;
+    min-height: 20px;
+    max-height: 20px;
+}
+
+.discarded-round-cards-container {
+    width: 50%;
+    flex-grow: 1;
+    align-self: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 .discarded-round-cards {
+    max-width: 120px;
+    min-width: 120px;
+    min-height: 100px;
+    max-height: 100px;
     flex-grow: 1;
     align-self: center;
-
 }
 
 .market-cards {
