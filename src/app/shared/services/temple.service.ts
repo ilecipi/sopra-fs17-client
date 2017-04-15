@@ -29,9 +29,11 @@ export class TempleService {
     setDummyTemple(): void {
         let dummyTemple = new Temple();
         dummyTemple.id = 1;
-        dummyTemple.stones = [null, null, null, null, null];
+        dummyTemple.stones = [null, null, null, null];
         dummyTemple.game = 1;
         dummyTemple.isOccupied = true;
+        dummyTemple.completedRows = 0;
+        dummyTemple.insertIndex = 0;
         this.currentTemple = dummyTemple;
     }
 
