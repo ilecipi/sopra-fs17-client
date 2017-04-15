@@ -130,7 +130,7 @@
         </div>
         <div class="pyramid-surplus" *ngIf="currentPyramid?.addedStones?.length>=11">
             <div class="surplus-description">
-                Additional stones yield +1 points each.
+                Additional stones:
             </div>
             <div class="surplus-points">
                 <div class="surplus-container">
@@ -149,7 +149,12 @@
     </div>
     <div class="info-column">
         <div class="info-hover">
-            <span class="hover">sperochefunzioni</span>
+            <span class="hover">
+                <ul>
+                    <li>Points are automatically assessed immediately when the stone is placed.</li>
+                    <li>Once the pyramid is completed each additional stone yields 1 point.</li>
+                </ul>
+            </span>
         </div>
     </div>
 </div>

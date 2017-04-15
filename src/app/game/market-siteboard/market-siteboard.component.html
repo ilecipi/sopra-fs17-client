@@ -1,17 +1,26 @@
 <div class="parent-block">
     <div class="market-block">
-            <div class="market-row">
-                <market-card [currentCard]="cards[0]"></market-card>
-                <market-card [currentCard]="cards[1]"></market-card>
-            </div>
-            <div class="market-row">
-                <market-card [currentCard]="cards[2]"></market-card>
-                <market-card [currentCard]="cards[3]"></market-card>
-            </div>
+        <div class="market-row">
+            <market-card [currentCard]="cards[0]"></market-card>
+            <market-card [currentCard]="cards[1]"></market-card>
+        </div>
+        <div class="market-row">
+            <market-card [currentCard]="cards[2]"></market-card>
+            <market-card [currentCard]="cards[3]"></market-card>
+        </div>
     </div>
     <div class="info-column">
         <div class="info-hover">
-            <span class="hover">sperochefunzioni</span>
+            <span class="hover">
+                <ul>
+                    <li>For each stone delivered, the owner of the stone can immediately take any 1 card.</li>
+                    <li>Pick order is decided by the order of the stones on the ship.</li>
+                    <li>All other players can see which card you have.</li>
+                    <li>Red cards are played immediately.</li>
+                    <li>Blue cards can be played in a later turn of the player who draws it.</li>
+                    <li>Green and purple cards will earn you points at the end of the game</li>
+                </ul>
+            </span>
         </div>
     </div>
 </div>
