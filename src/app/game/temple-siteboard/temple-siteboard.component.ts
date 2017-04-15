@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Stone} from '../../shared/models/stone';
+import {Temple} from "../../shared/models/temple";
 
 @Component({
     selector: 'temple-siteboard',
@@ -9,7 +9,7 @@ import {Stone} from '../../shared/models/stone';
 export class TempleSiteboardComponent implements OnInit {
 
     @Input()
-    stones: Stone[];
+    private currentTemple: Temple;
 
     constructor() {
     }
@@ -17,4 +17,13 @@ export class TempleSiteboardComponent implements OnInit {
     ngOnInit() {
     }
 
+    getNotEmptyStones(): number {
+        let notEmptyStones = 0;
+        for (let i = 0; i < this.currentTemple.stones.length; i++) {
+            if (this.currentTemple.stones[i] != null) {
+                notEmptyStones++;
+            }
+        }
+        return notEmptyStones;
+    }
 }

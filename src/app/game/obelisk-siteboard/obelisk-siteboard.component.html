@@ -1,16 +1,16 @@
 <div class="parent-block">
-    <div class="board-column">
-        <div class="wrapper">
-            <div class="block-obelisk1 obelisk" [ngClass]="{black: currentObelisk?.obelisks?.black >= 1}">
+    <div class="obelisks">
+        <div class="obelisks-container">
+            <div class="obelisk1 obelisk" [ngClass]="{black: currentObelisk?.obelisks?.black >= 1}">
                 x{{currentObelisk?.obelisks?.black}}
             </div>
-            <div class="block-obelisk2 obelisk" [ngClass]="{brown: currentObelisk?.obelisks?.brown >= 1}">
+            <div class="obelisk2 obelisk" [ngClass]="{brown: currentObelisk?.obelisks?.brown >= 1}">
                 x{{currentObelisk?.obelisks?.brown}}
             </div>
-            <div class="block-obelisk3 obelisk" [ngClass]="{grey: currentObelisk?.obelisks?.grey >= 1}">
+            <div class="obelisk3 obelisk" [ngClass]="{grey: currentObelisk?.obelisks?.grey >= 1}">
                 x{{currentObelisk?.obelisks?.grey}}
             </div>
-            <div class="block-obelisk4 obelisk" [ngClass]="{white: currentObelisk?.obelisks?.white >= 1}">
+            <div class="obelisk4 obelisk" [ngClass]="{white: currentObelisk?.obelisks?.white >= 1}">
                 x{{currentObelisk?.obelisks?.white}}
             </div>
         </div>
@@ -18,6 +18,7 @@
     <div class="info-column">
         <div class="info-hover">
             <span class="hover">
+                OBELISKS
                 <ul>
                     <li>Points are automatically assessed at the end of the game.</li>
                     <li>

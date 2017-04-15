@@ -1,62 +1,70 @@
 <div class="parent-block">
     <div class="temple-block">
         <div class="temple-row">
+            <div class="marker marker1" *ngIf="currentTemple?.stones?.length>=1 && getNotEmptyStones()==0"></div>
             <div class="first-block block"
-                 *ngIf="stones.length>=1"
+                 *ngIf="currentTemple?.stones?.length>=1"
                  [ngClass]="
-                     {brown: stones[0].color == 'brown',
-                     grey: stones[0].color == 'grey',
-                     black: stones[0].color == 'black',
-                     white: stones[0].color == 'white'
+                     {brown: currentTemple?.stones[0]?.color == 'brown',
+                     grey: currentTemple?.stones[0]?.color == 'grey',
+                     black: currentTemple?.stones[0]?.color == 'black',
+                     white: currentTemple?.stones[0]?.color == 'white'
                      }">
-
             </div>
+
+            <div class="marker marker2" *ngIf="currentTemple?.stones?.length>=2 && getNotEmptyStones()==1"></div>
             <div class="second-block block"
-                 *ngIf="stones.length>=2"
+                 *ngIf="currentTemple?.stones?.length>=2"
                  [ngClass]="
-                     {brown: stones[1].color == 'brown',
-                     grey: stones[1].color == 'grey',
-                     black: stones[1].color == 'black',
-                     white: stones[1].color == 'white'
+                     {brown: currentTemple?.stones[1]?.color == 'brown',
+                     grey: currentTemple?.stones[1]?.color == 'grey',
+                     black: currentTemple?.stones[1]?.color == 'black',
+                     white: currentTemple?.stones[1]?.color == 'white'
                      }">
-
             </div>
+
+            <div class="marker marker3" *ngIf="currentTemple?.stones?.length>=3 && getNotEmptyStones()==2"></div>
             <div class="third-block block"
-                 *ngIf="stones.length>=3"
+                 *ngIf="currentTemple?.stones?.length>=3"
                  [ngClass]="
-                     {brown: stones[2].color == 'brown',
-                     grey: stones[2].color == 'grey',
-                     black: stones[2].color == 'black',
-                     white: stones[2].color == 'white'
+                     {brown: currentTemple?.stones[2]?.color == 'brown',
+                     grey: currentTemple?.stones[2]?.color == 'grey',
+                     black: currentTemple?.stones[2]?.color == 'black',
+                     white: currentTemple?.stones[2]?.color == 'white'
                      }">
-
             </div>
+
+            <div class="marker marker4" *ngIf="currentTemple?.stones?.length>=4 && getNotEmptyStones()==3"></div>
             <div class="fourth-block block"
-                 *ngIf="stones.length>=4"
+                 *ngIf="currentTemple?.stones?.length>=4"
                  [ngClass]="
-                     {brown: stones[3].color == 'brown',
-                     grey: stones[3].color == 'grey',
-                     black: stones[3].color == 'black',
-                     white: stones[3].color == 'white'
+                     {brown: currentTemple?.stones[3]?.color == 'brown',
+                     grey: currentTemple?.stones[3]?.color == 'grey',
+                     black: currentTemple?.stones[3]?.color == 'black',
+                     white: currentTemple?.stones[3]?.color == 'white'
                      }">
-
             </div>
-            <div class="fifth-block block"
-                 *ngIf="stones.length>=5"
-                 [ngClass]="
-                     {brown: stones[4].color == 'brown',
-                     grey: stones[4].color == 'grey',
-                     black: stones[4].color == 'black',
-                     white: stones[4].color == 'white'
-                     }">
 
+            <div class="marker marker5" *ngIf="currentTemple?.stones?.length>=5 && getNotEmptyStones()==4"></div>
+            <div class="fifth-block block"
+                 *ngIf="currentTemple?.stones?.length>=5"
+                 [ngClass]="
+                     {brown: currentTemple?.stones[4]?.color == 'brown',
+                     grey: currentTemple?.stones[4]?.color == 'grey',
+                     black: currentTemple?.stones[4]?.color == 'black',
+                     white: currentTemple?.stones[4]?.color == 'white'
+                     }">
             </div>
         </div>
-        <div class="temple-info">x# Rows <br> x# Total Stones</div>
+        <div class="temple-info">
+                {{currentTemple?.completedRows}} rows completed. <br>
+                {{getNotEmptyStones()*(currentTemple?.completedRows + 1)}} total stones.
+        </div>
     </div>
     <div class="info-column">
         <div class="info-hover">
             <span class="hover">
+                TEMPLE
                 <ul>
                     <li>Points are automatically assessed at the end of every round.</li>
                     <li>Earn 1 point for each stone that is visible.</li>

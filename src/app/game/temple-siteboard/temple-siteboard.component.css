@@ -24,6 +24,15 @@
     display: flex;
 }
 
+.marker {
+    min-width: 10px;
+    max-width: 10px;
+    min-height: 30px;
+    max-height: 30px;
+    border: 1px solid black;
+    background: var(--turn);
+}
+
 .block {
     min-height: 30px;
     max-height: 30px;
@@ -66,6 +75,7 @@ Info Column:
     background-repeat: no-repeat;
     margin: 10px;
 }
+
 .info-hover:hover {
     background-position: center;
     background-size: contain;

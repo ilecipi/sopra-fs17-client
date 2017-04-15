@@ -1,17 +1,17 @@
 .parent-block {
     display: flex;
+    height: 100%;
 }
 
-.board-column {
+.obelisks {
     flex-grow: 1;
-    width: 80%;
 }
 
-.wrapper {
-    display: grid;
-    grid-template-columns: 30px 30px 30px 30px;
-    grid-gap: 40px;
-    margin-left: 30px;
+.obelisks-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .obelisk {
@@ -22,22 +22,24 @@
     border: 1px solid black;
     text-align: center;
     line-height: 2;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-.block-obelisk1 {
-    margin-top: 10px;
+.obelisk1 {
+    margin-bottom: 50px;
 }
 
-.block-obelisk2 {
-    margin-top: 25px;
+.obelisk2 {
+    margin-bottom: 15px;
 }
 
-.block-obelisk3 {
-    margin-top: 40px;
+.obelisk3 {
+    margin-top: 15px;
 }
 
-.block-obelisk4 {
-    margin-top: 55px;
+.obelisk4 {
+    margin-top: 50px;
 }
 
 /***********************************************************************************************************************

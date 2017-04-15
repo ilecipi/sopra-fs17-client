@@ -145,17 +145,4 @@ export class GameComponent implements OnInit {
         return this.currentGame.players.length - 1;
     }
 
-    getTempleStones(): Stone[] {
-        let stoneArray: Stone[] = [];
-        let emptyStone = new Stone();
-        for (let i = 0; i < this.currentTemple.stones.length; i++) {
-            if (this.currentTemple.stones[i] != null) {
-                stoneArray.push(this.currentTemple.stones[i]);
-            }
-            else {
-                stoneArray.push(emptyStone);
-            }
-        }
-        return stoneArray;
-    }
 }
