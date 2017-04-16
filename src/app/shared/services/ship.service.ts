@@ -21,10 +21,15 @@ export class ShipService {
         this.apiUrl = environment.apiUrl;
     }
 
+    pollShips(gameId: number, roundId: number) {
+        return Observable.interval(1500).flatMap(() => {
+            return this.getShips(gameId, roundId);
+        });
+    }
 
-    //get ships for a round from api
+    //get ships for a round from backend
     getShips(gameId: number, roundId: number) {
-        let headers = new Headers({'Content-Type': 'application/json'})
+        let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers});
 
         return this.http.get(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId + '/ships', options)
@@ -34,7 +39,7 @@ export class ShipService {
 
     //get a ship from api
     getShipId(gameId: number, roundId: number, shipId: number) {
-        let headers = new Headers({'Content-Type': 'application/json'})
+        let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers});
 
         return this.http.get(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId + '/ships/' + shipId, options)
@@ -85,31 +90,24 @@ export class ShipService {
         return true;
     }
 
-    pollShips(gameId: number, roundId: number) {
-        return Observable.interval(1500).flatMap(() => {
-            return this.getShips(gameId, roundId);
-        });
-    }
 
-    getCurrentShips(): Ship[]{
+    getCurrentShips(): Ship[] {
         return this.currentShips;
     }
 
-    setDummyShips() : void{
-        let dummyShips = [];
+    setDummyShips(): void {
         let ship = new Ship();
 
         let stone = new Stone();
         stone.color = 'none';
 
         ship.id = 1;
-        ship.stones = [stone,stone,stone,stone];
+        ship.stones = [stone, stone, stone, stone];
         ship.isReady = false;
         ship.addedStones = 4;
         ship.docked = false;
         ship.siteBoard = null;
-        dummyShips = [ship, ship, ship, ship];
 
-        this.currentShips=dummyShips;
+        this.currentShips = [ship, ship, ship, ship]
     }
 }

@@ -8,7 +8,7 @@
 
 .left-column {
     height: 100%;
-    width: 78%;
+    width: 80%;
     margin: 0;
 }
 
@@ -22,7 +22,7 @@
 
 .harbour-column {
     height: 100%;
-    width: 34%;
+    width: 36%;
     border: 1px solid white;
     margin: 0;
     background-color: var(--colorSix);
@@ -78,7 +78,7 @@ Info Board:
 
 .info-board-column {
     height: 100%;
-    width: 30%;
+    width: 28%;
     margin: 0;
     background-color: var(--colorFour);
 }
@@ -99,7 +99,7 @@ Opposing players
 
 .opposing-players.right-column {
     height: 100%;
-    width: 22%;
+    width: 20%;
     margin: 0;
     background-color: var(--colorFour);
 }

@@ -52,7 +52,7 @@ export class CurrentPlayerComponent implements OnInit {
         let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1];
         let playerToken = this.currentUser.token;
 
-        this.moveService.addStones(gameId, roundId, playerToken)
+        this.moveService.retrieveStones(gameId, roundId, playerToken)
             .subscribe(result => {
                 if (result) {
                 } else {

@@ -1,112 +1,135 @@
-<div class="ship-column">
-    <ul class="list-group ships">
-        <li draggable *ngFor="let ship of currentShips" [dragData]="ship" [dragScope]="'ship'" class="list-group-item
-        ">{{ship.isReady}}
-            <div droppable *ngFor=" let stone of ship.stones">
-                <div droppable [dropScope]="'stone'" (onDrop)="onShipDrop($event)" class="stone"
-                     [ngClass]="{
-                        empty: stone.color == 'none',
-                         brown: stone.color == 'brown',
-                         grey: stone.color == 'grey',
-                         black: stone.color == 'black',
-                         white: stone.color == 'white'
-                         }
-                    "
-                ></div>
+<div class="parent-block">
+    <div class="undocked-ships">
+        <div *ngFor="let ship of currentShips;let shipIndex = index" class="ship{{shipIndex+1}} ship">
+            <img class="ship1-image image" src="{{getShipSrc(shipIndex)}}">
+            <div class="stone btn" *ngFor="let stone of ship.stones;let stoneIndex=index" (click)="addStone(shipIndex,stoneIndex)"
+                 [ngClass]="{
+                empty: stone.color == 'none',
+                brown: stone.color == 'brown',
+                grey: stone.color == 'grey',
+                black: stone.color == 'black',
+                white: stone.color == 'white'
+                }">
+                +
             </div>
-        </li>
-    </ul>
+        </div>
+    </div>
+    <div class="docks">
+
+    </div>
 </div>
 
-<div class="harbour-column">
-    <div class="panel dock1" droppable [dropScope]="'ship'" (onDrop)="onMarketDrop($event)">
-        <div class="panel-body">
-            <li *ngFor="let ship of market" class="list-group-item">
-                <div *ngFor="let stone of ship.stones">
-                    <div class="stone"
-                         [ngClass]="{
-                         empty: stone.color == 'none',
-                         brown: stone.color == 'brown',
-                         grey: stone.color == 'grey',
-                         black: stone.color == 'black',
-                         white: stone.color == 'white'
-                         }
-                    "
-                    ></div>
-                </div>
-            </li>
-        </div>
-    </div>
-    <div class="panel dock2" droppable [dropScope]="'ship'" (onDrop)="onPyramidDrop($event)">
-        <div class="panel-body">
-            <li *ngFor="let ship of pyramid" class="list-group-item">
-                <div *ngFor="let stone of ship.stones">
-                    <div class="stone"
-                         [ngClass]="{
-                         empty: stone.color == 'none',
-                         brown: stone.color == 'brown',
-                         grey: stone.color == 'grey',
-                         black: stone.color == 'black',
-                         white: stone.color == 'white'
-                         }
-                    "
-                    ></div>
-                </div>
-            </li>
-        </div>
-    </div>
-    <div class="panel dock3" droppable [dropScope]="'ship'" (onDrop)="onTempleDrop($event)">
-        <div class="panel-body">
-            <li *ngFor="let ship of temple" class="list-group-item">
-                <div *ngFor="let stone of ship.stones">
-                    <div class="stone"
-                         [ngClass]="{
-                         empty: stone.color == 'none',
-                         brown: stone.color == 'brown',
-                         grey: stone.color == 'grey',
-                         black: stone.color == 'black',
-                         white: stone.color == 'white'
-                         }
-                    "
-                    ></div>
-                </div>
-            </li>
-        </div>
-    </div>
-    <div class="panel dock4" droppable [dropScope]="'ship'" (onDrop)="onBurialchamberDrop($event)">
-        <div class="panel-body">
-            <li *ngFor="let ship of burialchamber" class="list-group-item">
-                <div *ngFor="let stone of ship.stones">
-                    <div class="stone"
-                         [ngClass]="{
-                         empty: stone.color == 'none',
-                         brown: stone.color == 'brown',
-                         grey: stone.color == 'grey',
-                         black: stone.color == 'black',
-                         white: stone.color == 'white'
-                         }
-                    "
-                    ></div>
-                </div>
-            </li>
-        </div>
-    </div>
-    <div class="panel dock5" droppable [dropScope]="'ship'" (onDrop)="onObeliskDrop($event)">
-        <div class="panel-body">
-            <li *ngFor="let ship of obelisk" class="list-group-item">
-                <div *ngFor="let stone of ship.stones">
-                    <div class="stone"
-                         [ngClass]="{
-                         empty: stone.color == 'none',
-                         brown: stone.color == 'brown',
-                         grey: stone.color == 'grey',
-                         black: stone.color == 'black',
-                         white: stone.color == 'white'
-                         }
-                    "
-                    ></div>
-                </div>
-            </li>
-        </div>
-    </div>
-</div>
+
+<!--<div class="ship-column">-->
+<!--<ul class="list-group ships">-->
+<!--<li draggable *ngFor="let ship of currentShips" [dragData]="ship" [dragScope]="'ship'" class="list-group-item-->
+<!--">{{ship.isReady}}-->
+<!--<div droppable *ngFor=" let stone of ship.stones">-->
+<!--<div droppable [dropScope]="'stone'" (onDrop)="onShipDrop($event)" class="stone"-->
+<!--[ngClass]="{-->
+<!--empty: stone.color == 'none',-->
+<!--brown: stone.color == 'brown',-->
+<!--grey: stone.color == 'grey',-->
+<!--black: stone.color == 'black',-->
+<!--white: stone.color == 'white'-->
+<!--}-->
+<!--"-->
+<!--&gt;</div>-->
+<!--</div>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+
+<!--<div class="harbour-column">-->
+<!--<div class="panel dock1" droppable [dropScope]="'ship'" (onDrop)="onMarketDrop($event)">-->
+<!--<div class="panel-body">-->
+<!--<li *ngFor="let ship of market" class="list-group-item">-->
+<!--<div *ngFor="let stone of ship.stones">-->
+<!--<div class="stone"-->
+<!--[ngClass]="{-->
+<!--empty: stone.color == 'none',-->
+<!--brown: stone.color == 'brown',-->
+<!--grey: stone.color == 'grey',-->
+<!--black: stone.color == 'black',-->
+<!--white: stone.color == 'white'-->
+<!--}-->
+<!--"-->
+<!--&gt;</div>-->
+<!--</div>-->
+<!--</li>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="panel dock2" droppable [dropScope]="'ship'" (onDrop)="onPyramidDrop($event)">-->
+<!--<div class="panel-body">-->
+<!--<li *ngFor="let ship of pyramid" class="list-group-item">-->
+<!--<div *ngFor="let stone of ship.stones">-->
+<!--<div class="stone"-->
+<!--[ngClass]="{-->
+<!--empty: stone.color == 'none',-->
+<!--brown: stone.color == 'brown',-->
+<!--grey: stone.color == 'grey',-->
+<!--black: stone.color == 'black',-->
+<!--white: stone.color == 'white'-->
+<!--}-->
+<!--"-->
+<!--&gt;</div>-->
+<!--</div>-->
+<!--</li>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="panel dock3" droppable [dropScope]="'ship'" (onDrop)="onTempleDrop($event)">-->
+<!--<div class="panel-body">-->
+<!--<li *ngFor="let ship of temple" class="list-group-item">-->
+<!--<div *ngFor="let stone of ship.stones">-->
+<!--<div class="stone"-->
+<!--[ngClass]="{-->
+<!--empty: stone.color == 'none',-->
+<!--brown: stone.color == 'brown',-->
+<!--grey: stone.color == 'grey',-->
+<!--black: stone.color == 'black',-->
+<!--white: stone.color == 'white'-->
+<!--}-->
+<!--"-->
+<!--&gt;</div>-->
+<!--</div>-->
+<!--</li>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="panel dock4" droppable [dropScope]="'ship'" (onDrop)="onBurialchamberDrop($event)">-->
+<!--<div class="panel-body">-->
+<!--<li *ngFor="let ship of burialchamber" class="list-group-item">-->
+<!--<div *ngFor="let stone of ship.stones">-->
+<!--<div class="stone"-->
+<!--[ngClass]="{-->
+<!--empty: stone.color == 'none',-->
+<!--brown: stone.color == 'brown',-->
+<!--grey: stone.color == 'grey',-->
+<!--black: stone.color == 'black',-->
+<!--white: stone.color == 'white'-->
+<!--}-->
+<!--"-->
+<!--&gt;</div>-->
+<!--</div>-->
+<!--</li>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="panel dock5" droppable [dropScope]="'ship'" (onDrop)="onObeliskDrop($event)">-->
+<!--<div class="panel-body">-->
+<!--<li *ngFor="let ship of obelisk" class="list-group-item">-->
+<!--<div *ngFor="let stone of ship.stones">-->
+<!--<div class="stone"-->
+<!--[ngClass]="{-->
+<!--empty: stone.color == 'none',-->
+<!--brown: stone.color == 'brown',-->
+<!--grey: stone.color == 'grey',-->
+<!--black: stone.color == 'black',-->
+<!--white: stone.color == 'white'-->
+<!--}-->
+<!--"-->
+<!--&gt;</div>-->
+<!--</div>-->
+<!--</li>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+

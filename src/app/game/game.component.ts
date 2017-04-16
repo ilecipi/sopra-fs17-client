@@ -55,15 +55,17 @@ export class GameComponent implements OnInit {
     ngOnInit(): void {
 
 
+
         // if game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
         // used only for developing purposes
         // TODO: remove this feature once game is completed.
         if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
             this.gameService.setDummyGame();
             this.userService.setDummyUser();
+            console.log('DUMMY GAME AND USER HAVE BEEN SET');
         }
-        this.templeService.setDummyTemple();
         this.shipService.setDummyShips();
+        this.templeService.setDummyTemple();
         this.obeliskService.setDummyObelisk();
         //burialChamber has no dummy setter because in the html we check if the values exist before displaying them
         //pyramid has also no dummy setter

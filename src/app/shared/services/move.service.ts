@@ -14,7 +14,7 @@ export class MoveService {
 
     }
 
-    addStones(gameId: number, roundId: number, playerToken: string): Observable<string> {
+    retrieveStones(gameId: number, roundId: number, playerToken: string): Observable<string> {
         let bodyString = new URLSearchParams();
         bodyString.set('playerToken', playerToken);
 
@@ -24,5 +24,21 @@ export class MoveService {
                 return response.json();
             })
             .catch((error: any) => Observable.throw('Server error in adding stones'));
+    }
+
+    addStone(gameId: number, roundId: number, shipNumber: number, playerToken: string, stonePosition: number): Observable<string> {
+        let headers = new Headers();// new empty header
+        let options = new RequestOptions({headers: headers}); // Create a request option
+
+        console.log(gameId, roundId, playerToken, shipNumber, stonePosition);
+
+        return this.http.post(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId
+                                + '/ships/' + shipNumber + '?playerToken=' + playerToken
+                                + '&position=' + stonePosition, options)
+            .map((response: Response) => {
+                console.log(response);
+                return response.json();
+            })
+            .catch((error: any) => Observable.throw('Server error in adding a stone to ship number' + shipNumber));
     }
 }

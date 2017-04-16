@@ -7,7 +7,7 @@ export class Ship {
     public isReady: boolean;
     public addedStones: number;
     public docked: boolean;
-    public siteBoard: number;
+    public siteBoard: string;
 
     constructor(){
 
