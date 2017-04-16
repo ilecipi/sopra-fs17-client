@@ -27,19 +27,19 @@ Ships
 }
 
 .ship1 {
-    top: 15%;
+    top: 100px;
 }
 
 .ship2 {
-    top: 30%;
+    top: 220px;
 }
 
 .ship3 {
-    top: 45%;
+    top: 340px;
 }
 
 .ship4 {
-    top: 60%;
+    top: 460px;
 }
 
 .image {
@@ -63,7 +63,6 @@ Ships
     padding: 3px;
 }
 
-
 /***********************************************************************************************************************
 Docks
  **********************************************************************************************************************/
@@ -73,6 +72,31 @@ Docks
     width: 50%;
     border: 2px dashed white;
 
+}
+
+.dock {
+    height: 40px;
+    width: 40px;
+    border: 1px solid black;
+    background: brown;
+    border-radius: 40px;
+    position: relative;
+    left:175px;
+}
+.market-dock{
+    top:72px;
+}
+.pyramid-dock{
+    top:185px;
+}
+.temple-dock{
+    top:237px;
+}
+.burial-chamber-dock{
+    top:295px;
+}
+.obelisks-dock{
+    top:365px;
 }
 
 /***********************************************************************************************************************

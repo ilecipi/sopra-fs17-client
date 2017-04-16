@@ -2,7 +2,8 @@
     <div class="undocked-ships">
         <div *ngFor="let ship of currentShips;let shipIndex = index" class="ship{{shipIndex+1}} ship">
             <img class="ship1-image image" src="{{getShipSrc(shipIndex)}}">
-            <div class="stone btn" *ngFor="let stone of ship.stones;let stoneIndex=index" (click)="addStone(shipIndex,stoneIndex)"
+            <div class="stone btn" *ngFor="let stone of ship.stones;let stoneIndex=index"
+                 (click)="addStone(shipIndex,stoneIndex)"
                  [ngClass]="{
                 empty: stone.color == 'none',
                 brown: stone.color == 'brown',
@@ -15,7 +16,21 @@
         </div>
     </div>
     <div class="docks">
+        <div class="market-dock dock">
 
+        </div>
+        <div class="pyramid-dock dock">
+
+        </div>
+        <div class="temple-dock dock">
+
+        </div>
+        <div class="burial-chamber-dock dock">
+
+        </div>
+        <div class="obelisks-dock dock">
+
+        </div>
     </div>
 </div>
 

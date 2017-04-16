@@ -7,6 +7,7 @@ import {Ship} from "../../shared/models/ship";
 import {Stone} from "../../shared/models/stone";
 import {MoveService} from "../../shared/services/move.service";
 import {User} from "../../shared/models/user";
+import {Observable} from "rxjs/Rx";
 
 @Component({
     selector: 'harbour',
@@ -30,14 +31,12 @@ export class HarbourComponent implements OnInit {
     burialchamber = [];
     obelisk = [];
 
-
     constructor(private shipService: ShipService,
                 private gameService: GameService,
                 private moveService: MoveService) {
     }
 
     ngOnInit() {
-
     }
 
     addStone(shipIndex: number, stoneIndex: number) {
@@ -60,7 +59,7 @@ export class HarbourComponent implements OnInit {
     getShipSrc(index: number): string {
         let numStones = this.currentShips[index].stones.length;
         let stringSrc = '../../../assets/img/Ship';
-        let ship: String = '';
+        let ship = '';
         switch (numStones) {
             case 1 : {
                 ship = '1-75';
@@ -85,30 +84,30 @@ export class HarbourComponent implements OnInit {
     }
 
 
-    //dock ship on market
-    //for now market has siteboard.id 1, can change depending on backend-team
-    onMarketDrop(e: any) {
-        this.shipService.onSiteboardDrop(e, this.currentShips, this.market, 1);
-    }
-
-    //dock ship on pyramid
-    onPyramidDrop(e: any) {
-        this.shipService.onSiteboardDrop(e, this.currentShips, this.pyramid, 2);
-    }
-
-    //dock ship on temple
-    onTempleDrop(e: any) {
-        this.shipService.onSiteboardDrop(e, this.currentShips, this.temple, 3);
-    }
-
-    //dock ship on burial chamber
-    onBurialchamberDrop(e: any) {
-        this.shipService.onSiteboardDrop(e, this.currentShips, this.burialchamber, 4);
-    }
-
-    //dock ship on obelisk
-    onObeliskDrop(e: any) {
-        this.shipService.onSiteboardDrop(e, this.currentShips, this.obelisk, 5);
-    }
+    // //dock ship on market
+    // //for now market has siteboard.id 1, can change depending on backend-team
+    // onMarketDrop(e: any) {
+    //     this.shipService.onSiteboardDrop(e, this.currentShips, this.market, 1);
+    // }
+    //
+    // //dock ship on pyramid
+    // onPyramidDrop(e: any) {
+    //     this.shipService.onSiteboardDrop(e, this.currentShips, this.pyramid, 2);
+    // }
+    //
+    // //dock ship on temple
+    // onTempleDrop(e: any) {
+    //     this.shipService.onSiteboardDrop(e, this.currentShips, this.temple, 3);
+    // }
+    //
+    // //dock ship on burial chamber
+    // onBurialchamberDrop(e: any) {
+    //     this.shipService.onSiteboardDrop(e, this.currentShips, this.burialchamber, 4);
+    // }
+    //
+    // //dock ship on obelisk
+    // onObeliskDrop(e: any) {
+    //     this.shipService.onSiteboardDrop(e, this.currentShips, this.obelisk, 5);
+    // }
 
 }

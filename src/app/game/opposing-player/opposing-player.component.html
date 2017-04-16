@@ -62,8 +62,10 @@
     </div>
     <div class="cards-block">
         <div class="cards-container">
-            <div class="market-card" *ngFor="let card of currentCards, let i=index">
-                <market-card [currentCard]="currentCards[i]"></market-card>
+            <div class="cards">
+                <div class="market-card" *ngFor="let card of currentCards, let i=index">
+                    <market-card [currentCard]="currentCards[i]"></market-card>
+                </div>
             </div>
         </div>
     </div>
