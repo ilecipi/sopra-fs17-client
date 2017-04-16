@@ -1,16 +1,18 @@
 <div class="market-card">
     <div class="card-title"
          [ngClass]="
-                    {red: currentCard.color == 'red',
-                    green: currentCard.color == 'green',
-                    blue: currentCard.color == 'blue',
-                    purple: currentCard.color == 'purple'
-                    }">{{currentCard.title}}
+            {red: currentCard.color == 'red',
+            green: currentCard.color == 'green',
+            blue: currentCard.color == 'blue',
+            purple: currentCard.color == 'purple'
+            }">{{currentCard.title}}
     </div>
-    <div class="image-and-description">
-        <div class="card-image"></div>
-        <div class="card-description">
-            <!--{{currentCard.description}}-->
+    <div class="info-hover-container">
+        <div class="info-hover">
+            <span class="hover">
+                - {{currentCard.title}} -<br>
+                {{currentCard.description}}
+            </span>
         </div>
     </div>
 </div>

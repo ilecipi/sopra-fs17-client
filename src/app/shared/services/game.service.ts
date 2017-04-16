@@ -157,10 +157,10 @@ export class GameService {
     }
 
     startGame(user: User): Observable<string> {
-        let body = new FormData();
-        body.append('token', user.token);
+        let headers = new Headers();// new empty header
+        let options = new RequestOptions({headers: headers}); // Create a request option
 
-        return this.http.post(this.apiUrl + '/games/' + this.currentGame.id + '/start', body)
+        return this.http.post(this.apiUrl + '/games/' + this.currentGame.id + '/start?playerToken=' + user.token, options)
             .catch((error: any) => Observable.throw(error.json().error || 'Server error in creating a user' || {})); //errors
     }
 

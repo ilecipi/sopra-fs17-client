@@ -30,7 +30,7 @@ export class MoveService {
         let headers = new Headers();// new empty header
         let options = new RequestOptions({headers: headers}); // Create a request option
 
-        console.log(gameId, roundId, playerToken, shipNumber, stonePosition);
+        console.log('gameId:' + gameId,'roundId'+roundId,'playerToken:' + playerToken,'shipNumber' + shipNumber,'stonePosition:' + stonePosition);
 
         return this.http.post(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId
                                 + '/ships/' + shipNumber + '?playerToken=' + playerToken

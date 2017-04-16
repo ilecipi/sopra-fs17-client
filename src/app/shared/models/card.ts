@@ -31,7 +31,7 @@ export class Card {
             //GREEN CARDS: *********************************************************************************************
             case 'BURIAL_CHAMBER_DECORATION': {
                 this.name = 'BURIAL_CHAMBER_DECORATION';
-                this.title = 'BURIAL CHAMBER DECORATION';
+                this.title = 'Burial Chamber Decoration';
                 this.color = "green";
                 this.description = 'At End of Game: Earn 1 point per 3 stones in the burial chamber. (your own + others\' stones).';
                 this.imagePath = 'not yet defined';
@@ -39,7 +39,7 @@ export class Card {
             }
             case 'PYRAMID_DECORATION': {
                 this.name = 'PYRAMID_DECORATION';
-                this.title = 'PYRAMID DECORATION';
+                this.title = 'Pyramid Decoration';
                 this.color = "green";
                 this.description = 'At End of Game: Earn 1 point per 3 stones in the pyramid. (your own + others\' stones).';
                 this.imagePath = 'not yet defined';
@@ -47,15 +47,15 @@ export class Card {
             }
             case 'TEMPLE_DECORATION': {
                 this.name = 'TEMPLE_DECORATION';
-                this.title = 'TEMPLE DECORATION';
+                this.title = 'Temple Decoration';
                 this.color = "green";
                 this.description = 'At End of Game: Earn 1 point per 3 stones in the temple. (your own + others\' stones).';
                 this.imagePath = 'not yet defined';
                 break;
             }
             case 'OBELISK_DECORATION': {
-                this.name = 'OBELISK_DECORATION';
-                this.title = 'OBELISK DECORATION';
+                this.name = 'OBELISK DECORATION';
+                this.title = 'Obelisk Decoration';
                 this.color = "green";
                 this.description = 'At End of Game: Earn 1 point per 3 stones in the obelisk. (your own + others\' stones).';
                 this.imagePath = 'not yet defined';
@@ -65,7 +65,7 @@ export class Card {
             //BLUE CARDS: **********************************************************************************************
             case 'HAMMER': {
                 this.name = 'HAMMER';
-                this.title = 'HAMMER';
+                this.title = 'Hammer';
                 this.color = "blue";
                 this.description = '1x Action: Excavate 3 stones from the quarry to your supply sled AND place 1 stone on 1 ship.';
                 this.imagePath = 'not yet defined';
@@ -73,7 +73,7 @@ export class Card {
             }
             case 'SAIL': {
                 this.name = 'SAIL';
-                this.title = 'SAIL';
+                this.title = 'Sail';
                 this.color = "blue";
                 this.description = '1x Action: Place 1 stone on 1 ship AND sail the ship to a site.';
                 this.imagePath = 'not yet defined';
@@ -81,7 +81,7 @@ export class Card {
             }
             case 'LEVER': {
                 this.name = 'LEVER';
-                this.title = 'LEVER';
+                this.title = 'Lever';
                 this.color = "blue";
                 this.description = '1x Action: Sail 1 ship to a site. Decide for yourself the order in which to unload the stones.';
                 this.imagePath = 'not yet defined';
@@ -89,7 +89,7 @@ export class Card {
             }
             case 'CHISEL': {
                 this.name = 'CHISEL';
-                this.title = 'CHISEL';
+                this.title = 'Chisel';
                 this.color = "blue";
                 this.description = '1x Action: Place 2 stones on 1 ship OR place 1 stone on each of 2 ships.';
                 this.imagePath = 'not yet defined';
@@ -99,7 +99,7 @@ export class Card {
             //RED CARDS: ***********************************************************************************************
             case 'SARCOPHAGUS': {
                 this.name = 'SARCOPHAGUS';
-                this.title = 'SARCOPHAGUS';
+                this.title = 'Sarcophagus';
                 this.color = "red";
                 this.description = 'Immediately: Place 1 stone from the quarry in the burial chamber.';
                 this.imagePath = 'not yet defined';
@@ -107,7 +107,7 @@ export class Card {
             }
             case 'ENTRANCE': {
                 this.name = 'ENTRANCE';
-                this.title = 'ENTRANCE';
+                this.title = 'Entrance';
                 this.color = "red";
                 this.description = 'Immediately; Place 1 stone from the quarry in the pyramid.';
                 this.imagePath = 'not yet defined';
@@ -115,7 +115,7 @@ export class Card {
             }
             case 'PAVED_PATH': {
                 this.name = 'PAVED_PATH';
-                this.title = 'PAVED PATH';
+                this.title = 'Paved Path';
                 this.color = "red";
                 this.description = 'Immediately: Place 1 stone from the quarry on your obelisk.';
                 this.imagePath = 'not yet defined';
@@ -125,7 +125,7 @@ export class Card {
             //PURPLE CARDS: ********************************************************************************************
             case 'STATUE': {
                 this.name = 'STATUE';
-                this.title = 'STATUE';
+                this.title = 'Statue';
                 this.color = "purple";
                 this.description = 'At End of Game: Number of statues';
                 this.imagePath = 'not yet defined';
