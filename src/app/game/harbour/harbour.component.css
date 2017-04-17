@@ -14,9 +14,8 @@ Ships
 }
 
 .ship {
-    position: absolute;
+    position: relative;
     flex-grow: 0;
-    left: -20px;
     max-height: 36px;
     min-height: 36px;
     align-self: center;
@@ -24,22 +23,6 @@ Ships
     display: flex;
     width: 210px;
     color: white;
-}
-
-.ship1 {
-    top: 100px;
-}
-
-.ship2 {
-    top: 220px;
-}
-
-.ship3 {
-    top: 340px;
-}
-
-.ship4 {
-    top: 460px;
 }
 
 .image {
@@ -76,27 +59,49 @@ Docks
 
 .dock {
     height: 40px;
-    width: 40px;
+    width: 80px;
     border: 1px solid black;
     background: brown;
     border-radius: 40px;
     position: relative;
-    left:175px;
+    right: -135px;
+    display: flex;
+    flex-direction: row;
 }
-.market-dock{
-    top:72px;
+
+.dock-button {
+    flex-grow: 0;
+    height: 40px;
+    width: 40px;
+    background-image: url('../../../assets/img/select-button.png');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-.pyramid-dock{
-    top:185px;
+
+.dock-anchor {
+    flex-grow: 0;
+    height: 40px;
+    width: 80px;
 }
-.temple-dock{
-    top:237px;
+
+.market-dock {
+    top: 72px;
 }
-.burial-chamber-dock{
-    top:295px;
+
+.pyramid-dock {
+    top: 185px;
 }
-.obelisks-dock{
-    top:365px;
+
+.temple-dock {
+    top: 237px;
+}
+
+.burial-chamber-dock {
+    top: 295px;
+}
+
+.obelisks-dock {
+    top: 365px;
 }
 
 /***********************************************************************************************************************
@@ -133,8 +138,10 @@ Dynamic styles for stone colors:
 
 .empty {
     background-color: rgba(0, 0, 0, 0);
+    background-image: url('../../../assets/img/plus-button.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     border-radius: 0;
-    font-size: 50px;
 }
 
 /*.ship-column {*/

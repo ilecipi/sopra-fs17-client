@@ -17,7 +17,7 @@ export class ShipService {
 
     constructor(private http: Http,
                 private gameService: GameService) {
-        //selects correct URL on the basis of the environment mode
+        //selects correct URL on the environment mode
         this.apiUrl = environment.apiUrl;
     }
 
@@ -99,15 +99,15 @@ export class ShipService {
         let ship = new Ship();
 
         let stone = new Stone();
-        stone.color = 'none';
+        stone.color = 'white';
 
         ship.id = 1;
-        ship.stones = [stone, stone, stone, stone];
+        ship.stones = [stone, stone];
         ship.isReady = false;
-        ship.addedStones = 4;
+        ship.addedStones = 0;
         ship.docked = false;
         ship.siteBoard = null;
 
-        this.currentShips = [ship, ship, ship, ship]
+        this.currentShips = [ship, ship, ship, ship];
     }
 }
