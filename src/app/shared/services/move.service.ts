@@ -30,15 +30,28 @@ export class MoveService {
         let headers = new Headers();// new empty header
         let options = new RequestOptions({headers: headers}); // Create a request option
 
-        console.log('gameId:' + gameId,'roundId'+roundId,'playerToken:' + playerToken,'shipNumber' + shipId,'stonePosition:' + stonePosition);
-
         return this.http.post(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId
-                                + '/ships/' + shipId + '?playerToken=' + playerToken
-                                + '&position=' + stonePosition, options)
+            + '/ships/' + shipId + '?playerToken=' + playerToken
+            + '&position=' + stonePosition, options)
             .map((response: Response) => {
                 console.log(response);
                 return response.json();
             })
             .catch((error: any) => Observable.throw('Server error in adding a stone to selected ship'));
+    }
+
+
+    sailShipToSiteBoard(gameId: number, roundId: number, shipId: number, siteBoardType: string, playerToken: string): Observable<string> {
+        let headers = new Headers();// new empty header
+        let options = new RequestOptions({headers: headers}); // Create a request option
+
+        return this.http.put(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId
+            + '/ships/' + shipId + '?siteBoardsType=' + siteBoardType
+            + '&playerToken=' + playerToken, options)
+            .map((response: Response) => {
+                console.log(response);
+                return response.json();
+            })
+            .catch((error: any) => Observable.throw('Server error in sailing selected ship to this site'));
     }
 }

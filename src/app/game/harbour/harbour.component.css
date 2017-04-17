@@ -19,8 +19,6 @@ Ships
     max-height: 36px;
     min-height: 36px;
     align-self: center;
-    justify-content: center;
-    display: flex;
     width: 210px;
     color: white;
 }
@@ -32,6 +30,12 @@ Ships
     max-height: 36px;
     min-height: 36px;
     align-self: center;
+}
+
+.stones-container {
+    align-self: center;
+    justify-content: center;
+    display: flex;
 }
 
 .stone {
@@ -46,6 +50,15 @@ Ships
     padding: 3px;
 }
 
+.ship-selector {
+    position: relative;
+    text-align: center;
+    left: 25px;
+    top: 5px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, brown, #373737);
+}
+
 /***********************************************************************************************************************
 Docks
  **********************************************************************************************************************/
@@ -53,36 +66,23 @@ Docks
     flex-grow: 1;
     height: 100%;
     width: 50%;
-    border: 2px dashed white;
 
 }
 
 .dock {
     height: 40px;
-    width: 80px;
-    border: 1px solid black;
+    width: 40px;
+    border: 2px solid yellow;
     background: brown;
     border-radius: 40px;
     position: relative;
-    right: -135px;
+    right: -177px;
     display: flex;
     flex-direction: row;
+    z-index: 1;
+
 }
 
-.dock-button {
-    flex-grow: 0;
-    height: 40px;
-    width: 40px;
-    background-image: url('../../../assets/img/select-button.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.dock-anchor {
-    flex-grow: 0;
-    height: 40px;
-    width: 80px;
-}
 
 .market-dock {
     top: 72px;
@@ -96,11 +96,11 @@ Docks
     top: 237px;
 }
 
-.burial-chamber-dock {
+.burialchamber-dock {
     top: 295px;
 }
 
-.obelisks-dock {
+.obelisk-dock {
     top: 365px;
 }
 

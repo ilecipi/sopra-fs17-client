@@ -25,11 +25,14 @@ export class HarbourComponent implements OnInit {
     @Input()
     private currentShips: Ship[];
 
+    private selectedShip = -1;
+
     market = [];
     pyramid = [];
     temple = [];
     burialchamber = [];
     obelisk = [];
+
 
     private styleSubscription: any;
     //styles required to move each ship in the correct place.
@@ -38,15 +41,25 @@ export class HarbourComponent implements OnInit {
     private style3 = document.createElement('style');
     private style4 = document.createElement('style');
 
+    private styleSelectedShip = document.createElement('style');
+
     constructor(private shipService: ShipService,
                 private gameService: GameService,
                 private moveService: MoveService) {
     }
 
     ngOnInit() {
+        //styles initialization for selection feature
+        this.styleSelectedShip.innerHTML = '';
+        document.getElementsByTagName('harbour')[0].appendChild(this.styleSelectedShip);
+
+        //styles initializtion for ships position
         this.initStyleChildren();
         this.addStyleChildren();
+
+        //polling ship positions
         this.pollShipPositions();
+
     }
 
     addStone(shipIndex: number, stoneIndex: number) {
@@ -56,8 +69,6 @@ export class HarbourComponent implements OnInit {
         let playerToken = this.currentUser.token;
         let shipId = this.currentShips[shipIndex].id; //post request is going to require current ship ID.
         // Stone index is going to start from zero also for the backend;
-
-        console.log('gameId:' + gameId + '. roundId:' + roundId + '. playerToken:' + playerToken + '. shipId' + shipId + '. stoneIndex:' +stoneIndex +'.')
 
         this.moveService.addStone(gameId, roundId, shipId, playerToken, stoneIndex)
             .subscribe(result => {
@@ -103,15 +114,15 @@ export class HarbourComponent implements OnInit {
 
     }
 
-
     setShipPositions(): void {
-        this.removeStyleChildren();
 
         //style[i] corresponds do ship[i]
 
         for (let i = 0; i < this.currentShips.length; i++) {
 
             if (!this.currentShips[i].docked) { //ship not docked means it is still in the water
+                this.removeStyleChildren();
+
                 switch (i + 1) {
                     case 1: {
                         this.style1.innerHTML = '.ship' + (i + 1) + ' {top: 90px;  left: -20px;}';
@@ -130,54 +141,62 @@ export class HarbourComponent implements OnInit {
                         break;
                     }
                 }
+                this.addStyleChildren();
+
             }
 
-            else { //ship is docked means it must be in his dock's position
+            else if (this.currentShips[i].docked){ //ship is docked means it must be in his dock's position
+                this.removeStyleChildren();
+
                 let positionString = '';
                 switch (i + 1) {
                     case 1: {
                         positionString = this.dockStringPosition(this.currentShips[i].siteBoard);
-                        this.style1.innerHTML = '.ship' + (i + 1) + ' ' + positionString;
+                        this.style1.innerHTML = '.ship' + (i + 1) + positionString;
                         break;
                     }
                     case 2: {
                         positionString = this.dockStringPosition(this.currentShips[i].siteBoard);
-                        this.style1.innerHTML = '.ship' + (i + 1) + ' ' + positionString;
+                        this.style2.innerHTML = '.ship' + (i + 1)  + positionString;
                         break;
                     }
                     case 3: {
                         positionString = this.dockStringPosition(this.currentShips[i].siteBoard);
-                        this.style1.innerHTML = '.ship' + (i + 1) + ' ' + positionString;
+                        this.style3.innerHTML = '.ship' + (i + 1)  + positionString;
                         break;
                     }
                     case 4: {
                         positionString = this.dockStringPosition(this.currentShips[i].siteBoard);
-                        this.style1.innerHTML = '.ship' + (i + 1) + ' ' + positionString;
+                        this.style4.innerHTML = '.ship' + (i + 1)  + positionString;
                         break;
                     }
+
                 }
+                this.addStyleChildren();
+
             }
         }
 
-        this.addStyleChildren();
     }
 
+
+    // TODO: modify this because it does not work. Maybe not displaying the ships anymore and displaying only their empty image counterpart at the docks can do the trick
     dockStringPosition(siteBoard: string): string {
-        switch(siteBoard){
-            case 'market':{
-                return '{right:-195px; top:76px; z-index:2;}';
+        switch (siteBoard) {
+            case 'market': {
+                return ' {right:-195px; top:76px; z-index:2;}';
             }
-            case 'pyramid':{
-                return '{right:-195px; top:76px; z-index:2;}';
+            case 'pyramid': {
+                return ' {right:-195px; top:227px; z-index:2;}';
             }
-            case 'temple':{
-                return '{right:-195px; top:321px; z-index:2;}';
+            case 'temple': {
+                return ' {right:-195px; top:283px; z-index:2;}';
             }
-            case 'burialchamber':{
-                return  '{right:-195px; top:419px; z-index:2;}';
+            case 'burialchamber': {
+                return ' {right:-195px; top:345px; z-index:2;}';
             }
-            case 'obelisk':{
-                return '{right:-195px; top:529px; z-index:2;}';
+            case 'obelisk': {
+                return ' {right:-195px; top:529px; z-index:2;}';
             }
         }
     }
@@ -204,6 +223,37 @@ export class HarbourComponent implements OnInit {
         this.style3.innerHTML = '';
         this.style4.innerHTML = '';
     }
+
+    selectShip(index: number): void {
+        this.selectedShip = index;
+        document.getElementsByTagName('harbour')[0].removeChild(this.styleSelectedShip);
+        this.styleSelectedShip.innerHTML = '.ship-selector' + (index + 1) + ' {border: 3px solid yellow;}';
+        document.getElementsByTagName('harbour')[0].appendChild(this.styleSelectedShip);
+    }
+
+    selectDock(siteBoardName: string): void {
+        if (this.selectedShip != -1) {
+            console.log(this.selectedShip);
+            let gameId = this.currentGame.id;
+            let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1]; //roundId is the last number in the rounds array of the game.
+            let shipId = this.currentShips[this.selectedShip].id; //post request requires current ship ID.
+            //siteBoardName is already in his correct form.
+            let playerToken = this.currentUser.token;
+
+            this.moveService.sailShipToSiteBoard(gameId, roundId, shipId, siteBoardName, playerToken)
+                .subscribe(result => {
+                    if (result) {
+                    } else {
+                    }
+                });
+        }
+        else {
+            console.log(this.selectedShip);
+            // TODO:Show error because a ship has not been selected
+        }
+
+    }
+
 
     // //dock ship on market
     // //for now market has siteboard.id 1, can change depending on backend-team
