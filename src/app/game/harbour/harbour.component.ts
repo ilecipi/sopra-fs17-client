@@ -183,7 +183,7 @@ export class HarbourComponent implements OnInit {
     }
 
     pollShipPositions(): void {
-        this.styleSubscription = Observable.interval(200).subscribe(x => {
+        this.styleSubscription = Observable.interval(100).subscribe(x => {
             this.setShipPositions();
             this.setEmptyShipsPositions();
         })

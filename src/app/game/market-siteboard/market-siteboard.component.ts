@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Card} from "../../shared/models/card";
+import {Market} from "../../shared/models/market";
 
 @Component({
     selector: 'market-siteboard',
@@ -7,17 +8,17 @@ import {Card} from "../../shared/models/card";
     styleUrls: ['./market-siteboard.component.css']
 })
 export class MarketSiteboardComponent implements OnInit {
-    cards: Card[];
+    @Input() currentMarket: Market;
 
     constructor() {
     }
 
     ngOnInit() {
-        this.cards=[];
-        this.cards.push(new Card('SAIL'));
-        this.cards.push(new Card('SARCOPHAGUS'));
-        this.cards.push(new Card('SAIL'));
-        this.cards.push(new Card('SAIL'));
+
+    }
+
+    getCard(index: number): Card {
+        return new Card(this.currentMarket.currentCards[index]);
     }
 
 }

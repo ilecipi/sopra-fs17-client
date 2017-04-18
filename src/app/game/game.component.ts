@@ -6,6 +6,10 @@ import {MoveService} from '../shared/services/move.service';
 import {ShipService} from '../shared/services/ship.service';
 import {ObeliskService} from '../shared/services/obelisk.service';
 import {BurialChamberService} from '../shared/services/burial-chamber.service';
+import {MarketService} from '../shared/services/market.service';
+import {PyramidService} from "../shared/services/pyramid.service";
+import {BurialChamber} from '../shared/models/burialChamber';
+
 
 import {User} from "../shared/models/user";
 import {Game} from "../shared/models/game";
@@ -13,9 +17,8 @@ import {Ship} from "../shared/models/ship";
 import {Stone} from '../shared/models/stone';
 import {Temple} from '../shared/models/temple';
 import {Obelisk} from "../shared/models/obelisk";
-import {BurialChamber} from '../shared/models/burialChamber';
 import {Pyramid} from '../shared/models/pyramid';
-import {PyramidService} from "../shared/services/pyramid.service";
+import {Market} from '../shared/models/market';
 
 
 @Component({
@@ -32,6 +35,7 @@ export class GameComponent implements OnInit {
     private currentObelisk: Obelisk;
     private currentBurialChamber: BurialChamber;
     private currentPyramid: Pyramid;
+    private currentMarket: Market;
 
 
     //subscriptions stored in order to unsubscribe later.
@@ -42,6 +46,7 @@ export class GameComponent implements OnInit {
     private obeliskSubscription: any;
     private burialChamberSubscription: any;
     private pyramidSubscription: any;
+    private marketSubscription: any;
 
     constructor(private userService: UserService,
                 private gameService: GameService,
@@ -49,7 +54,8 @@ export class GameComponent implements OnInit {
                 private shipService: ShipService,
                 private obeliskService: ObeliskService,
                 private burialChamberService: BurialChamberService,
-                private pyramidService: PyramidService) {
+                private pyramidService: PyramidService,
+                private marketService: MarketService) {
     }
 
     ngOnInit(): void {
@@ -67,6 +73,7 @@ export class GameComponent implements OnInit {
         this.shipService.setDummyShips();
         this.templeService.setDummyTemple();
         this.obeliskService.setDummyObelisk();
+        this.marketService.setDummyMarket();
         //burialChamber has no dummy setter because in the html we check if the values exist before displaying them
         //pyramid has also no dummy setter
         //TODO: probably need to remove all other dummy setters, but maintain at least user.id and game.id for developing purposes
@@ -79,6 +86,7 @@ export class GameComponent implements OnInit {
         this.currentObelisk = this.obeliskService.getCurrentObelisk();
         this.currentBurialChamber = this.burialChamberService.getCurrentBurialChamber();
         this.currentPyramid = this.pyramidService.getCurrentPyramid();
+        this.currentMarket = this.marketService.getCurrentMarket();
 
         this.pollInfo();
     }
@@ -111,6 +119,10 @@ export class GameComponent implements OnInit {
         this.pyramidSubscription = this.pyramidService.pollPyramid(this.currentGame.id)
             .subscribe(pyramid => {
                 this.currentPyramid = pyramid;
+            });
+        this.marketSubscription = this.marketService.pollMarket(this.currentGame.id)
+            .subscribe(market => {
+                this.currentMarket = market;
             });
     }
 
