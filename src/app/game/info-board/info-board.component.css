@@ -144,7 +144,7 @@ Cards Block:
     background: var(--colorOne);
 }
 
-.ship {
+.shipCard {
     flex-grow: 0;
     margin: 2px;
     height: 20px;

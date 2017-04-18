@@ -35,13 +35,22 @@ export class HarbourComponent implements OnInit {
 
 
     private styleSubscription: any;
-    //styles required to move each ship in the correct place.
-    private style1 = document.createElement('style');
-    private style2 = document.createElement('style');
-    private style3 = document.createElement('style');
-    private style4 = document.createElement('style');
 
+    //styles required to move each ship in the correct place.
+    private styleShip1Position = document.createElement('style');
+    private styleShip2Position = document.createElement('style');
+    private styleShip3Position = document.createElement('style');
+    private styleShip4Position = document.createElement('style');
+
+    //style required to highlight current selected ship.
     private styleSelectedShip = document.createElement('style');
+
+    //style required to position empty ship images at each dock;
+    private styleEmptyShipMarket = document.createElement('style');
+    private styleEmptyShipPyramid = document.createElement('style');
+    private styleEmptyShipTemple = document.createElement('style');
+    private styleEmptyShipBurialChamber = document.createElement('style');
+    private styleEmptyShipObelisk = document.createElement('style');
 
     constructor(private shipService: ShipService,
                 private gameService: GameService,
@@ -53,9 +62,15 @@ export class HarbourComponent implements OnInit {
         this.styleSelectedShip.innerHTML = '';
         document.getElementsByTagName('harbour')[0].appendChild(this.styleSelectedShip);
 
-        //styles initializtion for ships position
-        this.initStyleChildren();
-        this.addStyleChildren();
+        //styles initialization for docked and undocked ships position
+        this.initStyleShip();
+        this.initStyleEmptyShip();
+
+        //adding styles for docked ships
+        this.addStyleShip();
+
+        //adding styles for undocked ships
+        this.addStyleEmptyShip();
 
         //polling ship positions
         this.pollShipPositions();
@@ -106,10 +121,47 @@ export class HarbourComponent implements OnInit {
         return stringSrc;
     }
 
+    getEmptyShipSrc(dockName: string): string {
+        let shipSrc = '';
+        for (let i = 0; i <= this.currentShips.length; i++) {
+            if (this.currentShips[i] != undefined && this.currentShips[i].siteBoard == dockName) {
+                shipSrc = this.getShipSrc(i);
+            }
+        }
+        return shipSrc;
+    }
+
+    getEmptyShipStyle(dockName: string): string {
+        let shipStyle = 'position: relative; ';
+        for (let i = 0; i <= this.currentShips.length; i++) {
+            if (this.currentShips[i] != undefined && this.currentShips[i].siteBoard == dockName) {
+                switch (this.currentShips[i].stones.length) {
+                    case 1: {
+                        shipStyle += 'right:100px;';
+                        break;
+                    }
+                    case 2: {
+                        shipStyle += 'right:100px;';
+                        break;
+                    }
+                    case 3: {
+                        shipStyle += 'right:100px;';
+                        break;
+                    }
+                    case 4: {
+                        shipStyle += 'right:100px;';
+                        break;
+                    }
+                }
+            }
+        }
+        return shipStyle;
+    }
 
     pollShipPositions(): void {
-        this.styleSubscription = Observable.interval(400).subscribe(x => {
+        this.styleSubscription = Observable.interval(200).subscribe(x => {
             this.setShipPositions();
+            this.setEmptyShipsPositions();
         })
 
     }
@@ -121,107 +173,160 @@ export class HarbourComponent implements OnInit {
         for (let i = 0; i < this.currentShips.length; i++) {
 
             if (!this.currentShips[i].docked) { //ship not docked means it is still in the water
-                this.removeStyleChildren();
+                this.removeStyleShip(); //removing styles before modifications
 
                 switch (i + 1) {
                     case 1: {
-                        this.style1.innerHTML = '.ship' + (i + 1) + ' {top: 90px;  left: -20px;}';
+                        this.styleShip1Position.innerHTML = '.ship' + (i + 1) + ' {top: 90px;  left: -20px;}';
                         break;
                     }
                     case 2: {
-                        this.style2.innerHTML = '.ship' + (i + 1) + ' {top: 180px;  left: -20px;}';
+                        this.styleShip2Position.innerHTML = '.ship' + (i + 1) + ' {top: 180px;  left: -20px;}';
                         break;
                     }
                     case 3: {
-                        this.style3.innerHTML = '.ship' + (i + 1) + ' {top: 270px; left: -20px;}';
+                        this.styleShip3Position.innerHTML = '.ship' + (i + 1) + ' {top: 270px; left: -20px;}';
                         break;
                     }
                     case 4: {
-                        this.style4.innerHTML = '.ship' + (i + 1) + ' {top: 360px;  left: -20px;}';
+                        this.styleShip4Position.innerHTML = '.ship' + (i + 1) + ' {top: 360px;  left: -20px;}';
                         break;
                     }
                 }
-                this.addStyleChildren();
-
+                this.addStyleShip(); //adding styles again after modifications
             }
 
-            else if (this.currentShips[i].docked){ //ship is docked means it must be in his dock's position
-                this.removeStyleChildren();
+            else if (this.currentShips[i].docked) { //ship is docked means it must be hidden and an empty counterpart must be displayed at that ship's dock
+                this.removeStyleShip(); //removing styles before modifications
 
-                let positionString = '';
+
                 switch (i + 1) {
                     case 1: {
-                        positionString = this.dockStringPosition(this.currentShips[i].siteBoard);
-                        this.style1.innerHTML = '.ship' + (i + 1) + positionString;
+                        this.styleShip1Position.innerHTML = '.ship' + (i + 1) + ' {display: none}';
                         break;
                     }
                     case 2: {
-                        positionString = this.dockStringPosition(this.currentShips[i].siteBoard);
-                        this.style2.innerHTML = '.ship' + (i + 1)  + positionString;
+                        this.styleShip2Position.innerHTML = '.ship' + (i + 1) + ' {display: none}';
                         break;
                     }
                     case 3: {
-                        positionString = this.dockStringPosition(this.currentShips[i].siteBoard);
-                        this.style3.innerHTML = '.ship' + (i + 1)  + positionString;
+                        this.styleShip3Position.innerHTML = '.ship' + (i + 1) + ' {display: none}';
                         break;
                     }
                     case 4: {
-                        positionString = this.dockStringPosition(this.currentShips[i].siteBoard);
-                        this.style4.innerHTML = '.ship' + (i + 1)  + positionString;
+                        this.styleShip4Position.innerHTML = '.ship' + (i + 1) + ' {display: none}';
                         break;
                     }
-
                 }
-                this.addStyleChildren();
-
-            }
-        }
-
-    }
-
-
-    // TODO: modify this because it does not work. Maybe not displaying the ships anymore and displaying only their empty image counterpart at the docks can do the trick
-    dockStringPosition(siteBoard: string): string {
-        switch (siteBoard) {
-            case 'market': {
-                return ' {right:-195px; top:76px; z-index:2;}';
-            }
-            case 'pyramid': {
-                return ' {right:-195px; top:227px; z-index:2;}';
-            }
-            case 'temple': {
-                return ' {right:-195px; top:283px; z-index:2;}';
-            }
-            case 'burialchamber': {
-                return ' {right:-195px; top:345px; z-index:2;}';
-            }
-            case 'obelisk': {
-                return ' {right:-195px; top:529px; z-index:2;}';
+                this.addStyleShip(); //adding styles again after modifications
             }
         }
     }
 
+    setEmptyShipsPositions(): void {
+        this.removeStyleEmptyShip();
+        this.initStyleEmptyShip(); //reset all styles the default value because if the ship is docked her style will get updated again
 
-    removeStyleChildren(): void {
-        document.getElementsByTagName('harbour')[0].removeChild(this.style1);
-        document.getElementsByTagName('harbour')[0].removeChild(this.style2);
-        document.getElementsByTagName('harbour')[0].removeChild(this.style3);
-        document.getElementsByTagName('harbour')[0].removeChild(this.style4);
+        for (let i = 0; i <= this.currentShips.length; i++) {
+            if (this.currentShips[i] != undefined && this.currentShips[i].docked == true) {
+                switch (this.currentShips[i].siteBoard) {
+                    case 'market': {
+                        this.styleEmptyShipMarket.innerHTML = '.empty-image-market { right: ' +
+                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}';
+                        break;
+                    }
+                    case 'pyramid': {
+                        this.styleEmptyShipPyramid.innerHTML = '.empty-image-pyramid { right: ' +
+                            this.getEmptyPosition(this.currentShips[i].stones.length)  + 'px;}';
+                        break;
+                    }
+                    case 'temple': {
+                        this.styleEmptyShipTemple.innerHTML = '.empty-image-temple { right: ' +
+                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}';
+                        break;
+                    }
+                    case 'burialchamber': {
+                        this.styleEmptyShipBurialChamber.innerHTML = '.empty-image-burialchamber { right: ' +
+                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}';
+                        break;
+                    }
+                    case 'obelisk': {
+                        this.styleEmptyShipObelisk.innerHTML = '.empty-image-obelisk { right: ' +
+                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}';
+                        break;
+                    }
+
+                }
+            }
+        }
+
+        this.addStyleEmptyShip();
     }
 
-    addStyleChildren(): void {
-        document.getElementsByTagName('harbour')[0].appendChild(this.style1);
-        document.getElementsByTagName('harbour')[0].appendChild(this.style2);
-        document.getElementsByTagName('harbour')[0].appendChild(this.style3);
-        document.getElementsByTagName('harbour')[0].appendChild(this.style4);
+    getEmptyPosition(i: number): string {
+        switch (i) {
+            case 1: {
+                return '60';
+            }
+            case 2: {
+                return '95';
+            }
+            case 3: {
+                return '128';
+            }
+            case 4: {
+                return '168';
+            }
+        }
+    }
+
+    removeStyleShip(): void {
+        document.getElementsByTagName('harbour')[0].removeChild(this.styleShip1Position);
+        document.getElementsByTagName('harbour')[0].removeChild(this.styleShip2Position);
+        document.getElementsByTagName('harbour')[0].removeChild(this.styleShip3Position);
+        document.getElementsByTagName('harbour')[0].removeChild(this.styleShip4Position);
+
+
+    }
+
+    removeStyleEmptyShip(): void {
+        document.getElementsByTagName('harbour')[0].removeChild(this.styleEmptyShipMarket);
+        document.getElementsByTagName('harbour')[0].removeChild(this.styleEmptyShipPyramid);
+        document.getElementsByTagName('harbour')[0].removeChild(this.styleEmptyShipTemple);
+        document.getElementsByTagName('harbour')[0].removeChild(this.styleEmptyShipBurialChamber);
+        document.getElementsByTagName('harbour')[0].removeChild(this.styleEmptyShipObelisk);
+    }
+
+    addStyleShip(): void {
+        document.getElementsByTagName('harbour')[0].appendChild(this.styleShip1Position);
+        document.getElementsByTagName('harbour')[0].appendChild(this.styleShip2Position);
+        document.getElementsByTagName('harbour')[0].appendChild(this.styleShip3Position);
+        document.getElementsByTagName('harbour')[0].appendChild(this.styleShip4Position);
+
+    }
+
+    addStyleEmptyShip(): void {
+        document.getElementsByTagName('harbour')[0].appendChild(this.styleEmptyShipMarket);
+        document.getElementsByTagName('harbour')[0].appendChild(this.styleEmptyShipPyramid);
+        document.getElementsByTagName('harbour')[0].appendChild(this.styleEmptyShipTemple);
+        document.getElementsByTagName('harbour')[0].appendChild(this.styleEmptyShipBurialChamber);
+        document.getElementsByTagName('harbour')[0].appendChild(this.styleEmptyShipObelisk);
     }
 
 
-    initStyleChildren(): void {
-        this.style1.innerHTML = '';
-        this.style2.innerHTML = '';
-        this.style3.innerHTML = '';
-        this.style4.innerHTML = '';
+    initStyleShip(): void {
+        this.styleShip1Position.innerHTML = '';
+        this.styleShip2Position.innerHTML = '';
+        this.styleShip3Position.innerHTML = '';
+        this.styleShip4Position.innerHTML = '';
+    }
+
+    initStyleEmptyShip(): void {
+        this.styleEmptyShipMarket.innerHTML = '.empty-image-market {right: 500px}';
+        this.styleEmptyShipPyramid.innerHTML = '.empty-image-pyramid {right: 500px}';
+        this.styleEmptyShipTemple.innerHTML = '.empty-image-temple {right: 500px}';
+        this.styleEmptyShipBurialChamber.innerHTML = '.empty-image-burialchamber {right: 500px}';
+        this.styleEmptyShipObelisk.innerHTML = '.empty-image-obelisk {right: 500px}';
     }
 
     selectShip(index: number): void {

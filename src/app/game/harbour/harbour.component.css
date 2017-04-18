@@ -80,9 +80,7 @@ Docks
     display: flex;
     flex-direction: row;
     z-index: 1;
-
 }
-
 
 .market-dock {
     top: 72px;
@@ -93,7 +91,7 @@ Docks
 }
 
 .temple-dock {
-    top: 237px;
+    top: 240px;
 }
 
 .burialchamber-dock {
@@ -102,6 +100,11 @@ Docks
 
 .obelisk-dock {
     top: 365px;
+}
+
+.empty-image {
+    position: relative;
+    height:36px;
 }
 
 /***********************************************************************************************************************

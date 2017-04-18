@@ -6,26 +6,43 @@
                 <div class="stone btn" *ngFor="let stone of ship.stones;let stoneIndex=index"
                      (click)="addStone(shipIndex,stoneIndex)"
                      [ngClass]="{
-                empty: stone.color == 'none',
-                brown: stone.color == 'brown',
-                grey: stone.color == 'grey',
-                black: stone.color == 'black',
-                white: stone.color == 'white'
-                }">
+                        empty: stone.color == 'none',
+                        brown: stone.color == 'brown',
+                        grey: stone.color == 'grey',
+                        black: stone.color == 'black',
+                        white: stone.color == 'white'
+                        }">
                 </div>
             </div>
             <div class="ship-selector{{shipIndex + 1}} ship-selector btn" *ngIf="ship.isReady && !ship.docked"
                  (click)="selectShip(shipIndex)">
-                SELECT
+                select this ship
             </div>
         </div>
     </div>
     <div class="docks">
-        <div class="market-dock dock btn" (click)="selectDock('market')"></div>
-        <div class="pyramid-dock dock btn" (click)="selectDock('pyramid')"></div>
-        <div class="temple-dock dock btn" (click)="selectDock('temple')"></div>
-        <div class="burialchamber-dock dock btn" (click)="selectDock('burialchamber')"></div>
-        <div class="obelisk-dock dock btn" (click)="selectDock('obelisk')"></div>
+        <!--<img src="../../../assets/img/Ship1-75x36.png" style="height:36px;background-attachment: fixed; background-position: right; justify-self: right;">-->
+
+        <div class="market-dock dock">
+            <img class="empty-image empty-image-market" src="{{getEmptyShipSrc('market')}}">
+            <div class="dock-button btn" (click)="selectDock('market')"></div>
+        </div>
+        <div class="pyramid-dock dock">
+            <img class="empty-image empty-image-pyramid" src="{{getEmptyShipSrc('pyramid')}}">
+            <div class="dock-button btn" (click)="selectDock('pyramid')"></div>
+        </div>
+        <div class="temple-dock dock">
+            <img class="empty-image empty-image-temple" src="{{getEmptyShipSrc('temple')}}">
+            <div class="dock-button btn" (click)="selectDock('temple')"></div>
+        </div>
+        <div class="burialchamber-dock dock">
+            <img class="empty-image empty-image-burialchamber" src="{{getEmptyShipSrc('burialchamber')}}">
+            <div class="dock-button btn" (click)="selectDock('burialchamber')"></div>
+        </div>
+        <div class="obelisk-dock dock">
+            <img class="empty-image empty-image-obelisk" src="{{getEmptyShipSrc('obelisk')}}">
+            <div class="dock-button btn" (click)="selectDock('obelisk')"></div>
+        </div>
     </div>
 </div>
 
