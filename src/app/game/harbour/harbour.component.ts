@@ -77,6 +77,7 @@ export class HarbourComponent implements OnInit {
 
     }
 
+
     addStone(shipIndex: number, stoneIndex: number) {
 
         let gameId = this.currentGame.id;
@@ -93,6 +94,29 @@ export class HarbourComponent implements OnInit {
             });
     }
 
+
+    selectDock(siteBoardName: string): void {
+        if (this.selectedShip != -1) {
+            console.log(this.selectedShip);
+            let gameId = this.currentGame.id;
+            let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1]; //roundId is the last number in the rounds array of the game.
+            let shipId = this.currentShips[this.selectedShip].id; //post request requires current ship ID.
+            //siteBoardName is already in his correct form.
+            let playerToken = this.currentUser.token;
+
+            this.moveService.sailShipToSiteBoard(gameId, roundId, shipId, siteBoardName, playerToken)
+                .subscribe(result => {
+                    if (result) {
+                    } else {
+                    }
+                });
+        }
+        else {
+            console.log(this.selectedShip);
+            // TODO:Show error because a ship has not been selected
+        }
+
+    }
 
     getShipSrc(index: number): string {
         let numStones = this.currentShips[index].stones.length;
@@ -322,11 +346,12 @@ export class HarbourComponent implements OnInit {
     }
 
     initStyleEmptyShip(): void {
-        this.styleEmptyShipMarket.innerHTML = '.empty-image-market {right: 500px}';
-        this.styleEmptyShipPyramid.innerHTML = '.empty-image-pyramid {right: 500px}';
-        this.styleEmptyShipTemple.innerHTML = '.empty-image-temple {right: 500px}';
-        this.styleEmptyShipBurialChamber.innerHTML = '.empty-image-burialchamber {right: 500px}';
-        this.styleEmptyShipObelisk.innerHTML = '.empty-image-obelisk {right: 500px}';
+        //hides a little grey empty square that contains no image
+        this.styleEmptyShipMarket.innerHTML = '.empty-image-market {display: none}';
+        this.styleEmptyShipPyramid.innerHTML = '.empty-image-pyramid {display: none}';
+        this.styleEmptyShipTemple.innerHTML = '.empty-image-temple {display: none}';
+        this.styleEmptyShipBurialChamber.innerHTML = '.empty-image-burialchamber {display: none}';
+        this.styleEmptyShipObelisk.innerHTML = '.empty-image-obelisk {display: none}';
     }
 
     selectShip(index: number): void {
@@ -336,54 +361,5 @@ export class HarbourComponent implements OnInit {
         document.getElementsByTagName('harbour')[0].appendChild(this.styleSelectedShip);
     }
 
-    selectDock(siteBoardName: string): void {
-        if (this.selectedShip != -1) {
-            console.log(this.selectedShip);
-            let gameId = this.currentGame.id;
-            let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1]; //roundId is the last number in the rounds array of the game.
-            let shipId = this.currentShips[this.selectedShip].id; //post request requires current ship ID.
-            //siteBoardName is already in his correct form.
-            let playerToken = this.currentUser.token;
-
-            this.moveService.sailShipToSiteBoard(gameId, roundId, shipId, siteBoardName, playerToken)
-                .subscribe(result => {
-                    if (result) {
-                    } else {
-                    }
-                });
-        }
-        else {
-            console.log(this.selectedShip);
-            // TODO:Show error because a ship has not been selected
-        }
-
-    }
-
-
-    // //dock ship on market
-    // //for now market has siteboard.id 1, can change depending on backend-team
-    // onMarketDrop(e: any) {
-    //     this.shipService.onSiteboardDrop(e, this.currentShips, this.market, 1);
-    // }
-    //
-    // //dock ship on pyramid
-    // onPyramidDrop(e: any) {
-    //     this.shipService.onSiteboardDrop(e, this.currentShips, this.pyramid, 2);
-    // }
-    //
-    // //dock ship on temple
-    // onTempleDrop(e: any) {
-    //     this.shipService.onSiteboardDrop(e, this.currentShips, this.temple, 3);
-    // }
-    //
-    // //dock ship on burial chamber
-    // onBurialchamberDrop(e: any) {
-    //     this.shipService.onSiteboardDrop(e, this.currentShips, this.burialchamber, 4);
-    // }
-    //
-    // //dock ship on obelisk
-    // onObeliskDrop(e: any) {
-    //     this.shipService.onSiteboardDrop(e, this.currentShips, this.obelisk, 5);
-    // }
 
 }

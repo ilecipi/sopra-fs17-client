@@ -54,9 +54,24 @@ Ships
     position: relative;
     text-align: center;
     left: 25px;
-    top: 5px;
-    border-radius: 10px;
-    background: linear-gradient(to bottom, brown, #373737);
+    top: -45px;
+    border-radius: 20px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, brown);
+    width:185px;
+
+}
+
+.selector {
+    min-height: 50px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0);
+}
+
+.selector-button {
+    position: relative;
+    text-align:center;
+    width: 100%;
+    background: rgba(0,0,0,0);
 }
 
 /***********************************************************************************************************************
@@ -104,7 +119,7 @@ Docks
 
 .empty-image {
     position: relative;
-    height:36px;
+    height: 36px;
 }
 
 /***********************************************************************************************************************
@@ -146,153 +161,3 @@ Dynamic styles for stone colors:
     background-repeat: no-repeat;
     border-radius: 0;
 }
-
-/*.ship-column {*/
-/*float: left;*/
-/*width: 50%;*/
-/*height: 100%;*/
-/*}*/
-
-/*.list-group-item{*/
-/*display: inline-flex;*/
-/*flex-grow: 0;*/
-/*border-radius: 60%;*/
-/*background-color: var(--colorOne);*/
-/*}*/
-
-/*.harbour-column {*/
-/*float: right;*/
-/*width: 50%;*/
-/*height: 100%;*/
-/*}*/
-
-/*.stone {*/
-/*flex-grow: 0;*/
-/*float: left;*/
-/*height: 30px;*/
-/*width: 30px;*/
-/*border: 1px solid black;*/
-/*}*/
-
-/*!************************************************************************************************************************/
-/*Docks*/
-/************************************************************************************************************************!*/
-
-/*.panel.dock1 {*/
-/*margin-top: 45%;*/
-/*border-top: none;*/
-/*border-bottom: none;*/
-/*border-left: none;*/
-/*border-right: 20px solid grey;*/
-/*}*/
-
-/*.panel.dock2 {*/
-/*margin-top: 65%;*/
-/*border-top: none;*/
-/*border-bottom: none;*/
-/*border-left: none;*/
-/*border-right: 20px solid grey;*/
-/*}*/
-
-/*.panel.dock3 {*/
-/*margin-top: 35%;*/
-/*border-top: none;*/
-/*border-bottom: none;*/
-/*border-left: none;*/
-/*border-right: 20px solid grey;*/
-/*}*/
-
-/*.panel.dock4 {*/
-/*margin-top: 35%;*/
-/*border-top: none;*/
-/*border-bottom: none;*/
-/*border-left: none;*/
-/*border-right: 20px solid grey;*/
-/*}*/
-
-/*.panel.dock5 {*/
-/*margin-top: 45%;*/
-/*border-top: none;*/
-/*border-bottom: none;*/
-/*border-left: none;*/
-/*border-right: 20px solid grey;*/
-/*}*/
-
-/*.panel-body {*/
-/*height: 45px;*/
-/*padding: 0;*/
-/*border: none;*/
-/*background-color: var(--colorSix);*/
-/*}*/
-
-/*!************************************************************************************************************************/
-/*Dynamic styles stones*/
-/************************************************************************************************************************!*/
-
-/*.grey{*/
-/*background-color: var(--greyStone);*/
-/*}*/
-
-/*:host(.brownStone) {*/
-/*flex-grow: 0;*/
-/*float: left;*/
-/*height: 30px;*/
-/*width: 30px;*/
-/*border: 1px solid black;*/
-/*background-color: var(--brownStone);*/
-/*}*/
-
-/*:host(.greyStone) {*/
-/*flex-grow: 0;*/
-/*float: left;*/
-/*height: 30px;*/
-/*width: 30px;*/
-/*border: 1px solid black;*/
-/*background-color: var(--greyStone);*/
-/*}*/
-
-/*:host(.blackStone) {*/
-/*flex-grow: 0;*/
-/*float: left;*/
-/*height: 30px;*/
-/*width: 30px;*/
-/*border: 1px solid black;*/
-/*background-color: var(--blackStone);*/
-/*}*/
-
-/*:host(.whiteStone) {*/
-/*!* If background is white then font color must be black for better readability*!*/
-/*flex-grow: 0;*/
-/*float: left;*/
-/*height: 30px;*/
-/*width: 30px;*/
-/*border: 1px solid black;*/
-/*background-color: var(--whiteStone);*/
-/*color: black;*/
-/*}*/
-
-/***********************************************************************************************************************
-Dynamic styles for stone colors:
-***********************************************************************************************************************/
-/*.brown {*/
-/*background-color: var(--brownStone);*/
-/*}*/
-
-/*.grey {*/
-/*background-color: var(--greyStone);*/
-/*}*/
-
-/*.black {*/
-/*background-color: var(--blackStone);*/
-/*}*/
-
-/*.white {*/
-/*!* If background is white then font color must be black for better readability*!*/
-/*background-color: var(--whiteStone);*/
-/*color: black;*/
-/*}*/
-
-/*.empty {*/
-/*background-color: rgba(0, 0, 0, 0);*/
-
-/*}*/
