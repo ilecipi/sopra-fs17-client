@@ -2,18 +2,20 @@
 <div class="parent-block" [style.height.%]="(100/opposingUsersCount)">
     <div class="heading">
         <div class="player-info">
-            <div class="player-username"
+            <div class="player-username-container"
                  [ngClass]="{highlight: currentPlayerId==opposingUser.id,
                     next_highlight: nextPlayerId == opposingUser.id}">
-                {{opposingUser.username}}
+                <div class="player-username">
+                    {{opposingUser.username}}
+                </div>
             </div>
-            <div class="player-quarry" [ngClass]="
+            <div class="player-quarry-container" [ngClass]="
                                  {brown: opposingUser.color == 'brown',
                                  grey: opposingUser.color == 'grey',
                                  black: opposingUser.color == 'black',
                                  white: opposingUser.color == 'white'
                                  }">
-                Quarry
+                <div class="player-quarry">Quarry</div>
             </div>
         </div>
         <div class="supply-sled">

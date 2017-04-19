@@ -1,9 +1,11 @@
 <div class="parent-block">
     <div class="heading">
-        <div class="player-username"
+        <div class="player-username-container"
              [ngClass]="{highlight: currentUser.id==currentGame.currentPlayer ,
                 next_highlight: currentUser.id==currentGame.nextPlayer}">
-            {{currentUser.username}}
+            <div class="player-username">
+                {{currentUser.username}}
+            </div>
         </div>
         <div class="sled-and-quarry">
             <div class="btn player-quarry" (click)="triggerAddStones()" [ngClass]="

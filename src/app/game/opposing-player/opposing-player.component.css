@@ -24,18 +24,32 @@ Heading
     border: 1px solid white;
 }
 
+.player-username-container {
+    border: 1px solid white;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .player-username {
     text-align: center;
+    font-size: 17px;
+}
+
+.player-quarry-container {
     border: 1px solid black;
-    height: 35%;
+    height: 50%;
+    background-color: #770000;
+    line-height: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .player-quarry {
     text-align: center;
-    border: 1px solid black;
-    height: 65%;
-    background-color: #770000;
-    line-height: 4;
+
 }
 
 .supply-sled {
@@ -121,11 +135,11 @@ Dynamic styles for quarry and stones and turn highlight:
 }
 
 .highlight {
-    /* If background is of color '--turn' then font color must be black for better readability*/
-    background-color: var(--turn);
-    color: black;
+    border: 8px solid var(--turn);
+    border-radius: 10px;
 }
 
 .next_highlight {
-    background-color: var(--nextTurn);
+    border: 8px solid var(--nextTurn);
+    border-radius: 10px;
 }
