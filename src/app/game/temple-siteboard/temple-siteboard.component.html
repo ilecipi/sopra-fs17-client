@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="temple-info">
-                {{currentTemple?.completedRows}} rows completed. <br>
+                {{currentTemple?.completedRows}} row{{getPlural()}} completed. <br>
                 {{currentTemple?.stones?.length*(currentTemple?.completedRows) + currentTemple?.insertIndex}} total stones.
            </div>
     </div>

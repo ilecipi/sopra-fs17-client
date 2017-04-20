@@ -87,9 +87,7 @@ export class LobbyComponent implements OnInit {
         this.gameService.isReady(this.userService.getCurrentUser())
             .subscribe(result => {
                 if (result) {
-                    console.log("User gone ready");
                 } else {
-                    console.log("User not gone ready");
                 }
             });
         this.gameService.updateCurrentGame();

@@ -19,6 +19,8 @@ import {Temple} from '../shared/models/temple';
 import {Obelisk} from "../shared/models/obelisk";
 import {Pyramid} from '../shared/models/pyramid';
 import {Market} from '../shared/models/market';
+import {Observable} from "rxjs/Rx";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -55,7 +57,8 @@ export class GameComponent implements OnInit {
                 private obeliskService: ObeliskService,
                 private burialChamberService: BurialChamberService,
                 private pyramidService: PyramidService,
-                private marketService: MarketService) {
+                private marketService: MarketService,
+                private router: Router) {
     }
 
     ngOnInit(): void {
@@ -89,6 +92,7 @@ export class GameComponent implements OnInit {
         this.currentMarket = this.marketService.getCurrentMarket();
 
         this.pollInfo();
+        this.listenForEnd();
     }
 
     pollInfo(): void {
@@ -160,4 +164,22 @@ export class GameComponent implements OnInit {
         return this.currentGame.players.length - 1;
     }
 
+    listenForEnd(time = 300): void {
+        let subscription = Observable.interval(time).subscribe(x => {
+            if (this.currentGame.status == 'FINISHED') {
+                this.gameSubscription.unsubscribe();
+                this.userSubscription.unsubscribe();
+                this.templeSubscription.unsubscribe();
+                this.shipsSubscription.unsubscribe();
+                this.obeliskSubscription.unsubscribe();
+                this.burialChamberSubscription.unsubscribe();
+                this.pyramidSubscription.unsubscribe();
+                this.marketSubscription.unsubscribe();
+
+                this.router.navigate(['/endgame']);
+                subscription.unsubscribe();
+
+            }
+        });
+    }
 }
