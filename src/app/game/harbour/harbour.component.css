@@ -162,3 +162,15 @@ Dynamic styles for stone colors:
     background-repeat: no-repeat;
     border-radius: 0;
 }
+
+/*FAST FORWARD ********************************************************************************************************/
+
+.fast-forward {
+    height: 30px;
+    width: 100px;
+    background: rgba(0, 0, 0, 0.8);
+    color:white;
+    position:relative;
+    top:565px;
+    right:100px;
+}

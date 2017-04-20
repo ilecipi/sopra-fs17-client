@@ -361,5 +361,14 @@ export class HarbourComponent implements OnInit {
         document.getElementsByTagName('harbour')[0].appendChild(this.styleSelectedShip);
     }
 
+    fastForward(){
+        let gameId = this.currentGame.id;
+        this.moveService.fastForward(gameId)
+            .subscribe(result => {
+                if (result) {
+                } else {
+                }
+            });    }
+
 
 }
