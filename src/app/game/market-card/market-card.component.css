@@ -20,7 +20,7 @@
     text-align: center;
     flex-grow: 1;
     height: 50%;
-    padding-top:3px;
+    padding-top: 3px;
 
 }
 
@@ -54,8 +54,8 @@
     display: block;
     position: relative;
     width: 250px;
-    top:-50px;
-    right:113px;
+    top: -50px;
+    right: 113px;
     border: 1px solid white;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.7);
@@ -80,4 +80,8 @@
 
 .purple {
     background-color: var(--marketPurple);
+}
+
+.placeholder {
+    background-color: #373737;
 }

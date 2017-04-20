@@ -1,12 +1,12 @@
 <div class="parent-block">
     <div class="market-block">
         <div class="market-row">
-            <market-card [currentCard]="getCard(0)"></market-card>
-            <market-card [currentCard]="getCard(1)"></market-card>
+            <market-card (click)="pickCard(0)" [currentCard]="getCard(0)"></market-card>
+            <market-card (click)="pickCard(1)" [currentCard]="getCard(1)"></market-card>
         </div>
         <div class="market-row">
-            <market-card [currentCard]="getCard(2)"></market-card>
-            <market-card [currentCard]="getCard(3)"></market-card>
+            <market-card (click)="pickCard(2)" [currentCard]="getCard(2)"></market-card>
+            <market-card (click)="pickCard(3)" [currentCard]="getCard(3)"></market-card>
         </div>
     </div>
     <div class="info-column">
@@ -22,6 +22,19 @@
                     <li>Green and purple cards will earn you points at the end of the game</li>
                 </ul>
             </span>
+        </div>
+    </div>
+</div>
+<div class="cards-selector-block" *ngIf="currentMarket.userColors.length >= 1">
+    The player with the following color is required to pick a card:
+    <div class="cards-selector-container">
+        <div class="cards-selector" [ngClass]="{
+                brown: currentMarket.userColors[0] == 'brown',
+                grey: currentMarket.userColors[0] == 'grey',
+                black: currentMarket.userColors[0] == 'black',
+                white: currentMarket.userColors[0] == 'white'
+
+            }">
         </div>
     </div>
 </div>
