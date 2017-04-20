@@ -38,7 +38,7 @@ export class GameComponent implements OnInit {
     private currentMarket: Market;
 
 
-    //subscriptions stored in order to unsubscribe later.
+    // subscriptions stored in order to unsubscribe later.
     private gameSubscription: any;
     private userSubscription: any;
     private templeSubscription: any;
@@ -95,6 +95,7 @@ export class GameComponent implements OnInit {
         this.gameSubscription = this.gameService.pollGame(this.currentGame.id)
             .subscribe(game => {
                 this.currentGame = game;
+                this.gameService.setCurrentGame(game);
             });
         this.userSubscription = this.userService.pollUser(this.currentUser.token)
             .subscribe(user => {
@@ -104,7 +105,7 @@ export class GameComponent implements OnInit {
             .subscribe(temple => {
                 this.currentTemple = temple;
             });
-        this.shipsSubscription = this.shipService.pollShips(this.currentGame.id, this.currentGame.rounds[this.currentGame.rounds.length - 1])
+        this.shipsSubscription = this.shipService.pollShips(this.currentGame.id)
             .subscribe(ships => {
                 this.setShips(ships);
             });

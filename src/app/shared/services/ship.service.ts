@@ -21,8 +21,11 @@ export class ShipService {
         this.apiUrl = environment.apiUrl;
     }
 
-    pollShips(gameId: number, roundId: number) {
+    pollShips(gameId: number) {
         return Observable.interval(1500).flatMap(() => {
+            let rounds = this.gameService.getCurrentGame().rounds;
+            let roundId = rounds[rounds.length - 1];
+
             return this.getShips(gameId, roundId);
         });
     }
