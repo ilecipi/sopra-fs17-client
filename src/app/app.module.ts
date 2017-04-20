@@ -47,12 +47,8 @@ import {MarketCardComponent} from './game/market-card/market-card.component';
         CurrentPlayerComponent,
         InfoBoardComponent,
         HarbourComponent,
-
-        
         MarketCardComponent,
-
-        
-        EndGameComponent,
+        EndGameComponent
     ],
     imports: [
         BrowserModule,
