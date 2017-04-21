@@ -21,6 +21,7 @@ import {ObeliskService} from './shared/services/obelisk.service';
 import {BurialChamberService} from './shared/services/burial-chamber.service';
 import {PyramidService} from './shared/services/pyramid.service';
 import {MarketService} from "./shared/services/market.service";
+import {NotificationService} from "./shared/services/notification.service";
 
 import {routing} from "./app.routing";
 import {AuthenticationService} from "./shared/services/authentication.service";
@@ -28,7 +29,8 @@ import {CurrentPlayerComponent} from './game/current-player/current-player.compo
 import {InfoBoardComponent} from './game/info-board/info-board.component';
 import {HarbourComponent} from './game/harbour/harbour.component';
 import {MarketCardComponent} from './game/market-card/market-card.component';
-import {EndGameComponent } from './end-game/end-game.component';
+import {EndGameComponent} from './end-game/end-game.component';
+import {NotificationComponent} from './notification/notification.component';
 
 
 @NgModule({
@@ -48,7 +50,8 @@ import {EndGameComponent } from './end-game/end-game.component';
         InfoBoardComponent,
         HarbourComponent,
         MarketCardComponent,
-        EndGameComponent
+        EndGameComponent,
+        NotificationComponent
     ],
     imports: [
         BrowserModule,
@@ -57,7 +60,17 @@ import {EndGameComponent } from './end-game/end-game.component';
         JsonpModule,
         routing
     ],
-    providers: [AuthenticationService, AuthGuardService, UserService, GameService, ShipService, MoveService, ObeliskService, BurialChamberService, PyramidService, MarketService],
+    providers: [AuthenticationService,
+        AuthGuardService,
+        UserService,
+        GameService,
+        ShipService,
+        MoveService,
+        ObeliskService,
+        BurialChamberService,
+        PyramidService,
+        MarketService,
+        NotificationService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

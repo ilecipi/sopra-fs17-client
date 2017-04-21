@@ -1,5 +1,12 @@
-.parent-block{
+.parent-block {
     /*width: 1366px;*/
     /*height: 768px;*/
     /*overflow: hidden;*/
+}
+
+.notification{
+    position:absolute;
+    z-index:5;
+    top:30%;
+    left:30%;
 }

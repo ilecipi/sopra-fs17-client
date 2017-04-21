@@ -20,6 +20,7 @@
     Lobby heading
 */
 .lobby-heading {
+    margin-top: 50px;
     opacity: .9;
     background-color: #373737;
     font-weight: normal;
@@ -74,7 +75,6 @@
     font-size: 20px;
     text-align: center;
 }
-
 
 .list-games {
     padding: 0;
@@ -184,7 +184,8 @@
     line-height: 1.2;
     border-radius: 5px;
 }
-.bottom-button{
+
+.bottom-button {
     width: 50%;
     flex-grow: 1;
     font-size: 20px;

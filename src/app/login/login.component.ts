@@ -3,7 +3,7 @@ import {AuthenticationService} from "../shared/services/authentication.service";
 import {Router} from "@angular/router";
 import {User} from "../shared/models/user";
 import {UserService} from "../shared/services/user.service";
-
+import {NotificationService} from "../shared/services/notification.service";
 
 @Component({
     selector: 'app-login',
@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
 
     constructor(private router: Router,
                 private authenticationService: AuthenticationService,
-                private userService: UserService) {
+                private userService: UserService,
+                private notificationService: NotificationService) {
 
     }
 
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.user)
             .subscribe(result => {
                 if (result) {
-                    this.user.token=this.authenticationService.getToken();
+                    this.user.token = this.authenticationService.getToken();
                     this.user.id = this.authenticationService.getId();
                     this.userService.loginUser(this.user);//Saves current user into the service UserService
                     this.router.navigate(['/lobby']);
@@ -44,6 +45,4 @@ export class LoginComponent implements OnInit {
         this.user.name = '';
         this.user.username = '';
     }
-
-
 }
