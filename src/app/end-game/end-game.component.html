@@ -1,3 +1,24 @@
-<h1>
-  YOU REACHED THE END OF THE GAME
-</h1>
+<div class="end-game-heading">CONGRATULATIONS!</div>
+<div class="end-game-block">
+    <div class="ranking-column">
+        <div class="ranking-list" *ngFor="let player of getRankedPlayers(); let i=index">
+            <div class="player" [ngClass]="
+                {highlight: currentUser.id==player.id
+                }">{{player.username}}
+                <div class="stone" [ngClass]="
+                                 {brown: player.color == 'brown',
+                                 grey: player.color == 'grey',
+                                 black: player.color == 'black',
+                                 white: player.color == 'white'
+                                 }">
+                    {{getPoints(i)}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="options-column">
+        <button class="btn btn-lobby" [routerLink]="['/lobby']">NEW GAME</button>
+        <button class="btn btn-login" (click)="logout()" [routerLink]="['/login']">QUIT</button>
+    </div>
+</div>
+

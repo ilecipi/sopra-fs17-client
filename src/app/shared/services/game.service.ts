@@ -232,6 +232,7 @@ export class GameService {
 
 
     //new round
+    //TODO: delete?
     newRound(){
         let headers = new Headers({'Content-Type': 'application/json'})
         let options = new RequestOptions({headers: headers});

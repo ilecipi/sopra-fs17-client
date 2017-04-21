@@ -1,0 +1,139 @@
+.end-game-heading{
+    opacity: .70; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
+    filter: alpha(opacity=50); /* IE lt 8 */
+    -ms-filter: "alpha(opacity=50)"; /* IE 8 */
+    -khtml-opacity: .50; /* Safari 1.x */
+    -moz-opacity: .50; /* FF lt 1.5, Netscape */
+    font-family: 'Sanchez', serif;
+
+    margin-top: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 2%;
+    font-size: 40px;
+
+    position: relative;
+    display: flex;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+    color: white;
+    border: 1px solid white;
+    background-color: #373737;
+}
+
+
+.end-game-block {
+    opacity: .70; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
+    filter: alpha(opacity=50); /* IE lt 8 */
+    -ms-filter: "alpha(opacity=50)"; /* IE 8 */
+    -khtml-opacity: .50; /* Safari 1.x */
+    -moz-opacity: .50; /* FF lt 1.5, Netscape */
+    font-family: 'Sanchez', serif;
+
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 2%;
+
+    position: relative;
+    display: flex;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+    color: white;
+    border: 1px solid white;
+    background-color: #373737;
+}
+
+.ranking-column{
+    flex-grow: 1;
+    width: 60%;
+}
+
+.options-column{
+    flex-direction: column;
+    flex-grow: 1;
+    display: flex;
+    margin-left: 10%;
+    width: 30%;
+    justify-content: space-around;
+}
+
+.player{
+    display: flex;
+    height: auto;
+    margin: 2%;
+    font-size: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    border: 2px solid white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.stone {
+    flex-grow: 0;
+    height: 50px;
+    width: 50px;
+    border: 1px solid white;
+}
+
+.btn {
+    color: white;
+    border: 1px solid white;
+    background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
+}
+
+.btn:hover {
+    opacity: .8;
+    background-image: -webkit-linear-gradient(top, var(--colorFour), #D0D0D0);
+    color: white;
+}
+
+.btn-lobby {
+    flex-grow: 0;
+    width: 95%;
+    font-size: 30px;
+    opacity: .8;
+    background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
+}
+
+.btn-login{
+    flex-grow: 0;
+    width: 95%;
+    font-size: 30px;
+    opacity: .8;
+    background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
+}
+
+/***********************************************************************************************************************
+Dynamic styles stones and highlight for own player:
+***********************************************************************************************************************/
+.brown {
+    background-color: var(--brownStone);
+}
+
+.grey {
+    background-color: var(--greyStone);
+}
+
+.black {
+    background-color: var(--blackStone);
+}
+
+.white {
+    /* If background is white then font color must be black for better readability*/
+    background-color: var(--whiteStone);
+    color: black;
+}
+
+.highlight {
+    border:  2px solid var(--turn);
+}
+
