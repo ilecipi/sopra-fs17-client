@@ -141,8 +141,11 @@ Info Column:
 ***********************************************************************************************************************/
 
 .info-column {
+    border: 2px solid #373737;
+    border-radius: 10px;
+    height: 40px;
     position: relative;
-    top: 280px;
+    top: 555px;
     right: 175px;
     flex-grow: 1;
     color: black;
