@@ -176,7 +176,7 @@ export class GameComponent implements OnInit {
                 this.pyramidSubscription.unsubscribe();
                 this.marketSubscription.unsubscribe();
 
-                this.router.navigate(['/endgame']);
+                this.router.navigate(['/end-game']);
                 subscription.unsubscribe();
 
             }
