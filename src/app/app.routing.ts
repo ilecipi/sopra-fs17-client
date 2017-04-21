@@ -19,8 +19,6 @@ const appRoutes: Routes = [
     { path: 'end-game', component: EndGameComponent },
 
 
-
-
     // otherwise redirect to home
     {path: '**', redirectTo: 'login'}
 ];

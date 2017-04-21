@@ -61,14 +61,6 @@ export class ShipService {
             e.dragData.docked = true;
             e.dragData.siteBoard = siteboard;
         }
-
-        //TODO: end of round
-        //round ends if there are no more ships to sail -> for all ship.docked = true
-        if (this.allShipsSailed(ships) == true) {
-
-            //post-request on round-service
-            this.gameService.newRound();
-        }
     }
 
 

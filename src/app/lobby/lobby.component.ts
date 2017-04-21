@@ -5,6 +5,7 @@ import {User} from "../shared/models/user";
 import {Game} from "../shared/models/game";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs/Rx";
+import {NotificationService} from '../shared/services/notification.service';
 
 @Component({
     selector: 'app-lobby',
@@ -26,7 +27,8 @@ export class LobbyComponent implements OnInit {
 
     constructor(private userService: UserService,
                 private gameService: GameService,
-                private router: Router) {
+                private router: Router,
+                private notificationService: NotificationService) {
     }
 
     ngOnInit() {
@@ -73,10 +75,12 @@ export class LobbyComponent implements OnInit {
     //method called when button is pressed.
     createNewGame() {
         this.gameService.createNewGame(this.currentUser)
-            .subscribe(result => {
-                this.currentGame = result;
-                this.gameService.setCurrentGame(this.currentGame);
-            });
+            .subscribe(
+                (result) => {
+                    this.currentGame = result;
+                    this.gameService.setCurrentGame(this.currentGame);
+                }
+            );
         this.index = this.games.length;
         this.inWaitingRoom = true;
         this.createdGame = true;
@@ -85,11 +89,10 @@ export class LobbyComponent implements OnInit {
 
     ready() {
         this.gameService.isReady(this.userService.getCurrentUser())
-            .subscribe(result => {
-                if (result) {
-                } else {
+            .subscribe(
+                (result) => {
                 }
-            });
+            );
         this.gameService.updateCurrentGame();
         this.pressedReady = true;
         this.listenForStart();
@@ -100,12 +103,10 @@ export class LobbyComponent implements OnInit {
         let selectedGame = this.games[index]; //selects the game from the games list
         let user = this.userService.getCurrentUser(); //gets currentUser information from userService
         this.gameService.joinGame(selectedGame, user) //join game
-            .subscribe(result => {
-                if (result) {
-                } else {
-
+            .subscribe(
+                (result) => {
                 }
-            });
+            );
         this.inWaitingRoom = true;
         this.gameService.setCurrentGame(selectedGame); //currentGame in gameService is updated
         this.index = index;
@@ -117,7 +118,8 @@ export class LobbyComponent implements OnInit {
         if (this.createdGame) {
             this.gameService.startGame(this.userService.getCurrentUser())
                 .subscribe(result => {
-                });
+                    }
+                );
         }
         else {
             //do nothing because not allowed to start the game
@@ -125,10 +127,12 @@ export class LobbyComponent implements OnInit {
     }
 
     logout() {
-        this.userService.logoutUser();
+        this.notificationService.showNotification('You have been logged out.', 1);
         this.inWaitingRoom = false;
         this.createdGame = false;
         this.gamesSubscription.unsubscribe();
+        this.userService.logoutUser();
+
     }
 
     listenForStart(time = 300) {
@@ -136,9 +140,10 @@ export class LobbyComponent implements OnInit {
             if (this.index != -1) {
                 if (this.games[this.index].status == 'RUNNING') {
                     this.gameService.setCurrentGame(this.games[this.index]);
-                    this.router.navigate(['/game'])
                     this.gamesSubscription.unsubscribe();
                     subscription.unsubscribe();
+                    this.notificationService.showNotification('Your game is starting, good luck!', 1.7);
+                    this.router.navigate(['/game']);
 
                 }
             }

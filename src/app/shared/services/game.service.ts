@@ -38,7 +38,7 @@ export class GameService {
 
         // get games from api
         return this.http.get(this.apiUrl + '/games', options)
-            .map((response: Response) => response.json());
+            .map((response) => response.json());
     }
 
     pollGames(time = 1500) {
@@ -114,25 +114,7 @@ export class GameService {
 
         //passed user will have ready state on current game
         return this.http.put(this.apiUrl + '/games/' + this.currentGame.id + "?token=" + user.id, headers)
-            .map((response: Response) => {
-                let game = response.json() && response.json();
-                if (game) {
-
-                    this.currentGame = game;
-                    // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('isReadyResponse', JSON.stringify({
-                        name: game.name,
-                        owner: game.owner,
-                        id: this.gameId
-                    }));
-                    // return true to indicate successfully gone ready
-                    return game;
-                } else {
-                    // return false to indicate failed isReady
-                    return null;
-                }
-            }) // ...and calling .json() on the response to return data
-            .catch((error: any) => Observable.throw('Server error by updating status to IS_READY'));
+            .map(res => res.json());
     }
 
 
@@ -143,17 +125,8 @@ export class GameService {
         this.isTrueGame = true;
 
         return this.http.post(this.apiUrl + '/games/' + game.id + '/player?token=' + user.id, options)
-            .map((response: Response) => {
-                let resp = response.json() && response.json();
-                if (resp) {
-                    this.currentGame = game;
+            .map(res => res.json());
 
-                    return game;
-                } else {
-                    return null;
-                }
-            })
-            .catch((error: any) => Observable.throw('Server error in joining a game'));
     }
 
     startGame(user: User): Observable<string> {
@@ -161,7 +134,7 @@ export class GameService {
         let options = new RequestOptions({headers: headers}); // Create a request option
 
         return this.http.post(this.apiUrl + '/games/' + this.currentGame.id + '/start?playerToken=' + user.token, options)
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error in creating a user' || {})); //errors
+            .map(res => res.json());
     }
 
 
@@ -229,16 +202,4 @@ export class GameService {
         dummyGame.points = new Points();
         this.currentGame = dummyGame;
     }
-
-
-    //new round
-    //TODO: delete?
-    newRound(){
-        let headers = new Headers({'Content-Type': 'application/json'})
-        let options = new RequestOptions({headers: headers});
-
-        return this.http.put(this.apiUrl + '/games/' + this.getCurrentGame().id + '/rounds', options)
-            .map((response: Response) => response.json());
-    }
-
 }

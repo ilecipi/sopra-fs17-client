@@ -8,6 +8,7 @@ import {Stone} from "../../shared/models/stone";
 import {MoveService} from "../../shared/services/move.service";
 import {User} from "../../shared/models/user";
 import {Observable} from "rxjs/Rx";
+import {NotificationService} from "../../shared/services/notification.service";
 
 @Component({
     selector: 'harbour',
@@ -54,7 +55,8 @@ export class HarbourComponent implements OnInit {
 
     constructor(private shipService: ShipService,
                 private gameService: GameService,
-                private moveService: MoveService) {
+                private moveService: MoveService,
+                private notificationService: NotificationService) {
     }
 
     ngOnInit() {
@@ -87,13 +89,25 @@ export class HarbourComponent implements OnInit {
         // Stone index is going to start from zero also for the backend;
 
         this.moveService.addStone(gameId, roundId, shipId, playerToken, stoneIndex)
-            .subscribe(result => {
-                if (result) {
-                } else {
+            .subscribe(
+                (result) => {
+                    // do nothing because successful
+                },
+                (errorData) => {
+                    if (errorData.status == 403){
+                        this.notificationService.showNotification(errorData._body,3)
+                    }
+                        // this.notificationService.showNotification(errorData._body, 4);
                 }
-            });
+            );
     }
 
+    // // Error callback
+    // var error = errorData.json();
+    // var messages = error.messages;
+    // messages.forEach((message) => {
+    // this.companyForm.controls[message.property].setErrors({
+    //  remote: message.message });
 
     selectDock(siteBoardName: string): void {
         if (this.selectedShip != -1) {
@@ -105,15 +119,17 @@ export class HarbourComponent implements OnInit {
             let playerToken = this.currentUser.token;
 
             this.moveService.sailShipToSiteBoard(gameId, roundId, shipId, siteBoardName, playerToken)
-                .subscribe(result => {
-                    if (result) {
-                    } else {
+                .subscribe(
+                    (result) => {
+                        // do nothing because successful
+                    },
+                    (errorData) => {
+
                     }
-                });
+                );
         }
         else {
-            console.log(this.selectedShip);
-            // TODO:Show error because a ship has not been selected
+            this.notificationService.showNotification('Before sailing a ship you need to select one.', 3);
         }
 
     }
@@ -261,7 +277,7 @@ export class HarbourComponent implements OnInit {
                     }
                     case 'pyramid': {
                         this.styleEmptyShipPyramid.innerHTML = '.empty-image-pyramid { right: ' +
-                            this.getEmptyPosition(this.currentShips[i].stones.length)  + 'px;}';
+                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}';
                         break;
                     }
                     case 'temple': {
@@ -361,14 +377,15 @@ export class HarbourComponent implements OnInit {
         document.getElementsByTagName('harbour')[0].appendChild(this.styleSelectedShip);
     }
 
-    fastForward(){
+    fastForward() {
         let gameId = this.currentGame.id;
         this.moveService.fastForward(gameId)
-            .subscribe(result => {
-                if (result) {
-                } else {
-                }
-            });    }
+            .subscribe(
+                (result) => {
+                    this.notificationService.showNotification('Game is fast-forwarding...', 2);
+                },
+            );
+    }
 
 
 }

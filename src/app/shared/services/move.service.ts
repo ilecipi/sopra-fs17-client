@@ -3,13 +3,15 @@ import {Http, Headers, RequestOptions, Response} from "@angular/http";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs/Rx";
 import {URLSearchParams} from '@angular/http';
+import {NotificationService} from "./notification.service";
 
 
 @Injectable()
 export class MoveService {
     apiUrl: string;
 
-    constructor(private http: Http) {
+    constructor(private http: Http,
+                private notificationService: NotificationService) {
         this.apiUrl = environment.apiUrl;
 
     }
@@ -19,11 +21,8 @@ export class MoveService {
         bodyString.set('playerToken', playerToken);
 
         return this.http.post(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId + '/users', bodyString)
-            .map((response: Response) => {
-                console.log(response);
-                return response.json();
-            })
-            .catch((error: any) => Observable.throw('Server error in adding stones'));
+            .map(res => res.json());
+
     }
 
     addStone(gameId: number, roundId: number, shipId: number, playerToken: string, stonePosition: number): Observable<string> {
@@ -33,11 +32,7 @@ export class MoveService {
         return this.http.post(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId
             + '/ships/' + shipId + '?playerToken=' + playerToken
             + '&position=' + stonePosition, options)
-            .map((response: Response) => {
-                console.log(response);
-                return response.json();
-            })
-            .catch((error: any) => Observable.throw('Server error in adding a stone to selected ship'));
+            .map(res => res.json());
     }
 
 
@@ -48,11 +43,7 @@ export class MoveService {
         return this.http.put(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId
             + '/ships/' + shipId + '?siteBoardsType=' + siteBoardType
             + '&playerToken=' + playerToken, options)
-            .map((response: Response) => {
-                console.log(response);
-                return response.json();
-            })
-            .catch((error: any) => Observable.throw('Server error in sailing selected ship to this site'));
+            .map(res => res.json());
     }
 
     pickCard(gameId: number, roundId: number, playerToken: string, position: number): Observable<string> {
@@ -60,22 +51,17 @@ export class MoveService {
         let options = new RequestOptions({headers: headers}); // Create a request option
 
         return this.http.post(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId + '/market?playerToken=' + playerToken + '&position=' + position, options)
-            .map((response: Response) => {
-                console.log(response);
-                return response.json();
-            })
-            .catch((error: any) => Observable.throw('Server error in taking a card'));
+            .map(res => res.json());
+
     }
 
-    fastForward(gameId: number){
+    fastForward(gameId: number) {
         let headers = new Headers();// new empty header
         let options = new RequestOptions({headers: headers}); // Create a request option
 
         return this.http.put(this.apiUrl + '/games/' + gameId + '/fastforward', options)
-            .map((response: Response) => {
-                return response.json();
-            })
-            .catch((error: any) => Observable.throw('Server error in fast forwarding'));
+            .map(res => res.json());
+
     }
 
 }

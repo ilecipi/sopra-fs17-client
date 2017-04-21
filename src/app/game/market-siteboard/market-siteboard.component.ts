@@ -4,6 +4,7 @@ import {Market} from "../../shared/models/market";
 import {Game} from "../../shared/models/game";
 import {User} from "../../shared/models/user";
 import {MoveService} from "../../shared/services/move.service";
+import {NotificationService} from "../../shared/services/notification.service";
 
 @Component({
     selector: 'market-siteboard',
@@ -15,7 +16,8 @@ export class MarketSiteboardComponent implements OnInit {
     @Input() currentGame: Game;
     @Input() currentUser: User;
 
-    constructor(private moveService: MoveService) {
+    constructor(private moveService: MoveService,
+                private notificationService: NotificationService) {
     }
 
     ngOnInit() {
@@ -33,11 +35,14 @@ export class MarketSiteboardComponent implements OnInit {
         console.log('cardIndex:' + cardIndex);
 
         this.moveService.pickCard(gameId, roundId, playerToken, cardIndex)
-            .subscribe(result => {
-                if (result) {
-                } else {
+            .subscribe(
+                (result) => {
+                    // do nothing because successful.
+                },
+                (errorData) => {
+                    // don't show message because there is no response atm from the server.
                 }
-            });
+            );
     }
 
 }
