@@ -22,6 +22,7 @@ export class OpposingPlayerComponent implements OnInit {
     @Input()
     nextPlayerId: number;
 
+    @Input()
     currentGame: Game;
     currentCards: Card[] = [];
 
@@ -30,21 +31,21 @@ export class OpposingPlayerComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
 
-        //TODO: remove all cards when we get correct cards from backend
-        this.currentCards.push(new Card('BURIAL_CHAMBER_DECORATION'));
-        this.currentCards.push(new Card('PYRAMID_DECORATION'));
-        this.currentCards.push(new Card('HAMMER'));
-        this.currentCards.push(new Card('SAIL'));
-        this.currentCards.push(new Card('SARCOPHAGUS'));
-        this.currentCards.push(new Card('ENTRANCE'));
-        this.currentCards.push(new Card('OBELISK_DECORATION'));
-        this.currentCards.push(new Card('LEVER'));
-        this.currentCards.push(new Card('TEMPLE_DECORATION'));
-        this.currentCards.push(new Card('STATUE'));
-        this.currentCards.push(new Card('PAVED_PATH'));
-        this.currentCards.push(new Card('CHISEL'));
-        //all 12 cards added;
+    getCards(): Card[] {
+        let cardsNames: string[] = [];
+        let userId = this.opposingUser.id;
+        let cards: Card[] = [];
+        for (let i = 0; i <= this.currentGame.players.length; i++) {
+            if (this.currentGame.players[i] != undefined && this.currentGame.players[i].id == userId) {
+                cardsNames = this.currentGame.players[i].cards;
+            }
+        }
+        for (let i = 0; i < cardsNames.length; i++) {
+            cards.push(new Card(cardsNames[i]));
+        }
+        return cards;
     }
 
 }

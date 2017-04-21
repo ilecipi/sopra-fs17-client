@@ -54,4 +54,28 @@ export class MoveService {
             })
             .catch((error: any) => Observable.throw('Server error in sailing selected ship to this site'));
     }
+
+    pickCard(gameId: number, roundId: number, playerToken: string, position: number): Observable<string> {
+        let headers = new Headers();// new empty header
+        let options = new RequestOptions({headers: headers}); // Create a request option
+
+        return this.http.post(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId + '/market?playerToken=' + playerToken + '&position=' + position, options)
+            .map((response: Response) => {
+                console.log(response);
+                return response.json();
+            })
+            .catch((error: any) => Observable.throw('Server error in taking a card'));
+    }
+
+    fastForward(gameId: number){
+        let headers = new Headers();// new empty header
+        let options = new RequestOptions({headers: headers}); // Create a request option
+
+        return this.http.put(this.apiUrl + '/games/' + gameId + '/fastforward', options)
+            .map((response: Response) => {
+                return response.json();
+            })
+            .catch((error: any) => Observable.throw('Server error in fast forwarding'));
+    }
+
 }

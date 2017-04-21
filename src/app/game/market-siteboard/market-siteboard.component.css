@@ -66,3 +66,61 @@ Info Column:
     color: white;
     text-align: center;
 }
+
+/***********************************************************************************************************************
+Cards Selector
+***********************************************************************************************************************/
+
+.cards-selector-block {
+    position: relative;
+    width: 200px;
+    height: 120px;
+    z-index: 3;
+    right: 200px;
+    bottom:150px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    text-align: center;
+    padding:10px;
+}
+
+.cards-selector-container {
+    width: 100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.cards-selector {
+    min-width:30px;
+    max-width:30px;
+    min-height:30px;
+    max-height:30px;
+    border:1px solid white;
+    margin:5px;
+}
+
+
+/***********************************************************************************************************************
+Dynamic styles for stone color in cards-selector window:
+***********************************************************************************************************************/
+
+.brown {
+    background-color: var(--brownStone);
+}
+
+.grey {
+    background-color: var(--greyStone);
+}
+
+.black {
+    background-color: var(--blackStone);
+}
+
+.white {
+    /* If background is white then font color must be black for better readability*/
+    background-color: var(--whiteStone);
+    color: black;
+}

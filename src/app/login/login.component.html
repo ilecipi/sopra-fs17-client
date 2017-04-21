@@ -2,7 +2,7 @@
 
 
     <h1>LOGIN</h1>
-    <div class="form-signin">
+    <div class="form-signin" (keyup.enter)="login()">
         <h2 class="form-signin-heading">LOGIN</h2>
         <label for="user_name" class="sr-only">User</label>
         <input id="user_name" type="text" class="form-control" maxlength="20" placeholder="name" [(ngModel)]="user.name" autofocus>

@@ -26,4 +26,11 @@ export class TempleSiteboardComponent implements OnInit {
         }
         return notEmptyStones;
     }
+
+    getPlural(): string {
+        if (this.currentTemple.completedRows == 1) {
+            return '';
+        }
+        else return 's';
+    }
 }

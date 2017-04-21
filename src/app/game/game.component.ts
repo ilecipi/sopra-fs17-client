@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {Observable} from "rxjs/Rx";
+import {Router} from "@angular/router";
+
 import {UserService} from "../shared/services/user.service";
 import {GameService} from "../shared/services/game.service";
 import {TempleService} from '../shared/services/temple.service';
@@ -9,7 +12,6 @@ import {BurialChamberService} from '../shared/services/burial-chamber.service';
 import {MarketService} from '../shared/services/market.service';
 import {PyramidService} from "../shared/services/pyramid.service";
 import {BurialChamber} from '../shared/models/burialChamber';
-
 
 import {User} from "../shared/models/user";
 import {Game} from "../shared/models/game";
@@ -38,7 +40,7 @@ export class GameComponent implements OnInit {
     private currentMarket: Market;
 
 
-    //subscriptions stored in order to unsubscribe later.
+    // subscriptions stored in order to unsubscribe later.
     private gameSubscription: any;
     private userSubscription: any;
     private templeSubscription: any;
@@ -55,7 +57,8 @@ export class GameComponent implements OnInit {
                 private obeliskService: ObeliskService,
                 private burialChamberService: BurialChamberService,
                 private pyramidService: PyramidService,
-                private marketService: MarketService) {
+                private marketService: MarketService,
+                private router: Router) {
     }
 
     ngOnInit(): void {
@@ -89,12 +92,14 @@ export class GameComponent implements OnInit {
         this.currentMarket = this.marketService.getCurrentMarket();
 
         this.pollInfo();
+        this.listenForEnd();
     }
 
     pollInfo(): void {
         this.gameSubscription = this.gameService.pollGame(this.currentGame.id)
             .subscribe(game => {
                 this.currentGame = game;
+                this.gameService.setCurrentGame(game);
             });
         this.userSubscription = this.userService.pollUser(this.currentUser.token)
             .subscribe(user => {
@@ -104,7 +109,7 @@ export class GameComponent implements OnInit {
             .subscribe(temple => {
                 this.currentTemple = temple;
             });
-        this.shipsSubscription = this.shipService.pollShips(this.currentGame.id, this.currentGame.rounds[this.currentGame.rounds.length - 1])
+        this.shipsSubscription = this.shipService.pollShips(this.currentGame.id)
             .subscribe(ships => {
                 this.setShips(ships);
             });
@@ -159,4 +164,22 @@ export class GameComponent implements OnInit {
         return this.currentGame.players.length - 1;
     }
 
+    listenForEnd(time = 300): void {
+        let subscription = Observable.interval(time).subscribe(x => {
+            if (this.currentGame.status == 'FINISHED') {
+                this.gameSubscription.unsubscribe();
+                this.userSubscription.unsubscribe();
+                this.templeSubscription.unsubscribe();
+                this.shipsSubscription.unsubscribe();
+                this.obeliskSubscription.unsubscribe();
+                this.burialChamberSubscription.unsubscribe();
+                this.pyramidSubscription.unsubscribe();
+                this.marketSubscription.unsubscribe();
+
+                this.router.navigate(['/endgame']);
+                subscription.unsubscribe();
+
+            }
+        });
+    }
 }

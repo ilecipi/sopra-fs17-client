@@ -14,6 +14,7 @@ import {ObeliskSiteboardComponent} from './game/obelisk-siteboard/obelisk-sitebo
 import {OpposingPlayerComponent} from './game/opposing-player/opposing-player.component';
 import {AuthGuardService} from "./shared/services/auth-guard.service";
 import {UserService} from "./shared/services/user.service";
+import { EndGameComponent } from './end-game/end-game.component';
 import {GameService} from "./shared/services/game.service";
 import {ShipService} from "./shared/services/ship.service";
 import {MoveService} from './shared/services/move.service';
@@ -46,9 +47,8 @@ import {MarketCardComponent} from './game/market-card/market-card.component';
         CurrentPlayerComponent,
         InfoBoardComponent,
         HarbourComponent,
-
-        
         MarketCardComponent,
+        EndGameComponent
     ],
     imports: [
         BrowserModule,

@@ -22,7 +22,6 @@ export class Card {
     // export class SomeComponent {}
 
 
-
     //TODO: define or remove image paths of the cards, depends on what we want to do.
 
     constructor(name: string) {
@@ -128,6 +127,16 @@ export class Card {
                 this.title = 'Statue';
                 this.color = "purple";
                 this.description = 'At End of Game: Number of statues';
+                this.imagePath = 'not yet defined';
+                break;
+            }
+
+            //PLACEHODER CARD: *****************************************************************************************
+            case null: {
+                this.name = 'PLACEHOLDER';
+                this.title = 'Card Has been Picked';
+                this.color = "placeholder";
+                this.description = 'This card has already been picked.';
                 this.imagePath = 'not yet defined';
                 break;
             }
