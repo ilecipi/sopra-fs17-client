@@ -1,13 +1,12 @@
 import {Injectable} from '@angular/core';
-import {Notification} from'../../shared/models/notification';
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class NotificationService {
 
-    private currentNotification: Notification;
-    private currentNotificationSubject = new Subject<Notification>();
+    private currentNotification: string;
+    private currentNotificationSubject = new Subject<string>();
     private isShown: boolean = false;
 
     constructor() {
@@ -24,15 +23,15 @@ export class NotificationService {
         this.isShown = false;
     }
 
-    showNotification(title: string, description: string, serverResponse: string, secs: number) {
-        this.setNotification(new Notification(title, description, serverResponse));
+    showNotification(notificationMessage: string, seconds: number) {
+        this.setNotification(notificationMessage);
         if (!this.isShown) {
             document.getElementsByTagName('app-root')[0].removeChild(this.notificationStyle);
-            setTimeout(() => this.hideNotification(), secs * 1000);
+            setTimeout(() => this.hideNotification(), seconds * 1000);
             this.isShown = true;
         }
         else {
-            setTimeout(() => this.hideNotification(), secs * 1000);
+            setTimeout(() => this.hideNotification(), seconds * 1000);
         }
 
     }
@@ -42,13 +41,13 @@ export class NotificationService {
         this.isShown = false;
     }
 
-    setNotification(notification: Notification) {
+    setNotification(notification: string) {
         this.currentNotification = notification;
         this.currentNotificationSubject.next(this.currentNotification);
     }
 
     //used to send a flow of Notifications to the notifications component
-    getCurrentNotification(): Observable<Notification> {
+    getCurrentNotification(): Observable<string> {
         return this.currentNotificationSubject;
     }
 

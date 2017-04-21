@@ -28,17 +28,23 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        this.authenticationService.login(this.user)
-            .subscribe(result => {
-                if (result) {
+        let subscription = this.authenticationService.login(this.user)
+            .subscribe(
+                (result) => { //success
                     this.user.token = this.authenticationService.getToken();
                     this.user.id = this.authenticationService.getId();
                     this.userService.loginUser(this.user);//Saves current user into the service UserService
+                    console.log(result);
                     this.router.navigate(['/lobby']);
-                } else {
-                    console.log('Username already exists');
+                },
+                (error) => { //fail
+                    let description = 'There was an error in logging you in: either the fields were empty or the username already exists. \n';
+                    this.notificationService.showNotification(description +  error,3);
+                },
+                ()=>{ //end of subscription
+                    subscription.unsubscribe();
                 }
-            });
+            );
     }
 
     clearfields() {

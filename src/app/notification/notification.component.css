@@ -1,31 +1,21 @@
 .parent-block {
     width: 400px;
-    height: 400px;
+    height: 200px;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     border-radius: 10px;
     border: 1px solid white;
-    display: flex;
     flex-direction: column;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 
-.title {
-    flex-grow: 1;
-    height: 20%;
-    text-align: center;
-}
+.text-container {
+    white-space: pre-wrap;
 
-.description {
-    flex-grow: 1;
-    height: 60%;
-    text-align: center;
-    border-top: 1px solid white;
-}
-
-.server-response {
-    flex-grow: 1;
-    height: 20%;
-    text-align: center;
-    border-top: 1px solid white;
 }
