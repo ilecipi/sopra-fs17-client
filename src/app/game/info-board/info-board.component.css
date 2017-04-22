@@ -16,13 +16,23 @@ Parent Blocks
     text-align: center;
 }
 
-.cards-block {
+.legend-block {
     border: 1px solid black;
-    height: 35%;
+    height: 5%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.card-block {
+    border: 1px solid black;
+    height: 30%;
     width: 100%;
     font-size: 12px;
     text-align: center;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .scoring-track-board-block {
@@ -114,31 +124,45 @@ General Information - Rounds Information Block
 }
 
 /***********************************************************************************************************************
+Legend Block:
+***********************************************************************************************************************/
+
+.legend-element {
+    flex-grow: 1;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    line-height:2.0;
+}
+
+.legend-cell-turn {
+    min-width: 30px;
+    background-color: var(--turn);
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-right: 5px;
+}
+
+.legend-cell-next-turn {
+    min-width: 30px;
+    background-color: var(--nextTurn);
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-right: 5px;
+
+}
+
+/***********************************************************************************************************************
 Cards Block:
 ***********************************************************************************************************************/
-.round-cards {
-    height: 55%;
-    width: 100%;
-    display: flex;
-}
-
-.round-card-container {
-    width: 50%;
-    flex-grow: 1;
-    align-self: center;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-
-}
 
 .round-card {
     display: flex;
     flex-direction: column;
-    max-width: 120px;
-    min-width: 120px;
-    min-height: 100px;
-    max-height: 100px;
+    max-width: 220px;
+    min-width: 220px;
+    min-height: 170px;
+    max-height: 170px;
     align-self: center;
     border: 1px solid black;
     background: var(--colorOne);
@@ -146,45 +170,9 @@ Cards Block:
 
 .shipCard {
     flex-grow: 0;
-    margin: 2px;
-    height: 20px;
+    margin: 3px;
+    height: 36px;
     align-self: center;
-}
-
-.discarded-round-cards-container {
-    width: 50%;
-    flex-grow: 1;
-    align-self: center;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-}
-
-.discarded-round-cards {
-    max-width: 120px;
-    min-width: 120px;
-    min-height: 100px;
-    max-height: 100px;
-    flex-grow: 1;
-    align-self: center;
-}
-
-.market-cards {
-    height: 45%;
-    width: 100%;
-    display: flex;
-}
-
-.covered-market-cards {
-    flex-grow: 1;
-    align-self: center;
-
-}
-
-.discarded-market-cards {
-    flex-grow: 1;
-    align-self: center;
-
 }
 
 /***********************************************************************************************************************
