@@ -62,6 +62,8 @@ export class LobbyComponent implements OnInit {
 
         //Automatically retrieve users and games list information from server:
         this.pollInfo();
+        this.listenForStart();
+
     }
 
     //calls polling function for games list
@@ -95,7 +97,6 @@ export class LobbyComponent implements OnInit {
             );
         // this.gameService.updateCurrentGame();
         this.pressedReady = true;
-        this.listenForStart();
     }
 
 

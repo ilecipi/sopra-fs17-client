@@ -110,6 +110,13 @@ Docks
     flex-direction: row;
     z-index: 1;
 }
+.dock-button{
+    position:relative;
+    min-height:38px; /*40 - 2 px border */
+    min-width:38px;
+    border-radius: 20px;
+    right:2px;
+}
 
 .market-dock {
     top: 72px;
@@ -141,7 +148,7 @@ Info Column:
 ***********************************************************************************************************************/
 
 .info-column {
-    border: 2px solid #373737;
+    border: 2px solid #888888;
     border-radius: 10px;
     height: 40px;
     position: relative;
@@ -178,7 +185,7 @@ Info Column:
 .info-hover:hover span {
     display: block;
     position: relative;
-    bottom: 125px;
+    bottom: 175px;
     right: 137px;
     width: 300px;
     border: 1px solid white;

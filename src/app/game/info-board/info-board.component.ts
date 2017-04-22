@@ -38,30 +38,30 @@ export class InfoBoardComponent implements OnInit {
         this.pollColors();
     }
 
-    getShipSrc(index:number):string {
-        let numStones=this.currentShips[index].stones.length;
-        let stringSrc='../../../assets/img/ShipWithStones';
+    getShipSrc(index: number): string {
+        let numStones = this.currentShips[index].stones.length;
+        let stringSrc = '../../../assets/img/ShipWithStones';
         let ship: String = '';
-        switch (numStones){
-            case 1 :{
-                ship='1-75';
+        switch (numStones) {
+            case 1 : {
+                ship = '1-75';
                 break;
             }
-            case 2:{
-                ship='2-110';
+            case 2: {
+                ship = '2-110';
                 break;
             }
-            case 3:{
-                ship='3-145';
+            case 3: {
+                ship = '3-145';
                 break;
             }
-            case 4:{
-                ship='4-180';
+            case 4: {
+                ship = '4-180';
                 break;
             }
         }
-        stringSrc+=ship;
-        stringSrc+='x36.png';
+        stringSrc += ship;
+        stringSrc += 'x36.png';
         return stringSrc;
     }
 
@@ -102,8 +102,6 @@ export class InfoBoardComponent implements OnInit {
 
 
     setTrackBoardCells(): void {
-        //Each iteration of the function requires the old style to be removed, changed, and then added again
-        this.removeStyleChildren();
 
         let pointsArray = [];
         let points = this.currentGame.points;
@@ -121,8 +119,8 @@ export class InfoBoardComponent implements OnInit {
             pointsArray.push(['grey', points.grey % 40, 'var(--greyStone)']);
         }
 
-        //important: these two list are "connected" with indexes!
-        let distinctScore = []; // is going to contain all distincts scores
+        // important: these two list are "connected" with indexes!
+        let distinctScore = []; // is going to contain all distinct scores
         let counts = [];    // is going to contain the amount of time each score presents itself
         for (let i = 0; i < pointsArray.length; i++) {
             if (distinctScore.some(x => x == pointsArray[i][1])) {
@@ -172,10 +170,21 @@ export class InfoBoardComponent implements OnInit {
 
         // now need to create the style to apply:
 
-        //  example style: background: linear-gradient(to right, #ffffff,#ffffff 49.9%, #000000 50.1%, #000000);
+        // Each iteration of the function requires the old style to be removed, changed, and then added again
+        this.removeStyleChildren();
+
+        // Need to reset the styles before calculating them again.
+        // Otherwise there would be bugs in moments where for example from three total styles we would go to only one,
+        // actual example being two players with distinct scores that after a while catch up and have the same score.
+        this.style1.innerHTML='';
+        this.style2.innerHTML='';
+        this.style3.innerHTML='';
+        this.style4.innerHTML='';
+
+        // example style: background: linear-gradient(to right, #ffffff,#ffffff 49.9%, #000000 50.1%, #000000);
         let styleCounter = 1;
         for (let i = 0; i < boardStatus.length; i++) {
-            let styleString: string;
+            let styleString: string = '';
             if (styleCounter == 1) {
                 styleString = this.setStyleString(boardStatus, i);
                 this.style1.innerHTML = styleString;
@@ -241,7 +250,7 @@ export class InfoBoardComponent implements OnInit {
         this.counter = this.counter % 40;
     }
 
-    setStyleString(boardStatus: any, i: number): string {// this was such a pain, believe me I coded it... ok with some help.
+    setStyleString(boardStatus: any, i: number): string {// this was such a pain, believe me I coded it... ok with some help, but I still coded it.
 
         let styleString = '.order' + boardStatus[i][0] + ' { background: linear-gradient( to right, '; //set beginning of styleString
 

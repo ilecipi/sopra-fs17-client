@@ -92,11 +92,14 @@ Cards:
     overflow-x: scroll;
     width: 100%;
     align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
 }
 
 .market-card {
     align-self: center;
-    flex-grow: 1;
+    flex-grow: 0;
 }
 
 /***********************************************************************************************************************
