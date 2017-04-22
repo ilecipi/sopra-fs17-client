@@ -64,4 +64,13 @@ export class MoveService {
 
     }
 
+    useCard(gameId: number, roundId: number, playerToken: string, marketCardId: number): Observable<string> {
+        let headers = new Headers();// new empty header
+        let options = new RequestOptions({headers: headers}); // Create a request option
+
+        return this.http.put(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId
+            + '/marketcard' + '?playerToken=' + playerToken + '&marketCardId=' + marketCardId, options)
+            .map(res => res.json());
+    }
+
 }

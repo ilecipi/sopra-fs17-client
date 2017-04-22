@@ -63,7 +63,7 @@
     <div class="cards-block">
         <div class="cards-container">
             <div class="market-card" *ngFor="let card of getCards()">
-                <market-card [currentCard]="card"></market-card>
+                <market-card (click)="useCard(card.id)" [currentCard]="card"></market-card>
             </div>
         </div>
     </div>

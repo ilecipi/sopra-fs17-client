@@ -105,13 +105,12 @@ export class LobbyComponent implements OnInit {
         this.gameService.joinGame(selectedGame, user) //join game
             .subscribe(
                 (result) => {
+
                 }
             );
         this.inWaitingRoom = true;
         this.gameService.setCurrentGame(selectedGame); //currentGame in gameService is updated
         this.index = index;
-
-
     }
 
     startGame(): void {

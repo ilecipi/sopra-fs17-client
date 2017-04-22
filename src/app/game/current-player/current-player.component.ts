@@ -7,6 +7,7 @@ import {ShipService} from '../../shared/services/ship.service';
 import {Game} from "../../shared/models/game";
 import {Card} from '../../shared/models/card';
 import {isUndefined} from "util";
+import {NotificationService} from "../../shared/services/notification.service";
 
 @Component({
     selector: 'current-player',
@@ -23,7 +24,8 @@ export class CurrentPlayerComponent implements OnInit {
     constructor(private gameService: GameService,
                 private userService: UserService,
                 private moveService: MoveService,
-                private shipService: ShipService) {
+                private shipService: ShipService,
+                private notificationService: NotificationService) {
     }
 
     ngOnInit(): void {
@@ -38,9 +40,6 @@ export class CurrentPlayerComponent implements OnInit {
 
         this.moveService.retrieveStones(gameId, roundId, playerToken)
             .subscribe(result => {
-                if (result) {
-                } else {
-                }
             });
     }
 
@@ -58,5 +57,18 @@ export class CurrentPlayerComponent implements OnInit {
             cards.push(new Card(cardsNames[i]));
         }
         return cards;
+    }
+
+    useCard(cardId: number): void {
+        let gameId = this.currentGame.id;
+        let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1];
+        let playerToken = this.currentUser.token;
+        this.moveService.useCard(gameId, roundId, playerToken, cardId)
+            .subscribe((result) => {
+                },
+                (error) => {
+                    this.notificationService.showNotification(error._status + '\n' + error._body, 2)
+                }
+            );
     }
 }

@@ -22,7 +22,7 @@
                                  }">
                         {{game.status}}
                     </div>
-                    <button *ngIf=" game.status != 'RUNNING' && !inWaitingRoom"
+                    <button *ngIf=" game.status == 'PENDING' && !inWaitingRoom"
                             class="btn btn-sm btn-primary btn-list" (click)="join(i)" type="submit">
                         JOIN THIS GAME
                     </button>

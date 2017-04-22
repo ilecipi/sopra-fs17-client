@@ -2,8 +2,9 @@ export class Card {
     name: string;
     title: string;
     description: string;
-    color: string; //color is either: 'blue', 'green', 'red' or 'purple'
-    imagePath: string; //path to the image
+    color: string; // color is either: 'blue', 'green', 'red' or 'purple'
+    imagePath: string; // path to the image
+    id: number; // id of the card, this is useful only in the CurrentPlayer component, since
 
 
     // Build the imagePath on the component and assign it to a variable, then:
@@ -24,7 +25,12 @@ export class Card {
 
     //TODO: define or remove image paths of the cards, depends on what we want to do.
 
-    constructor(name: string) {
+    constructor(nameAndId: string) {
+
+        let splittedFields = nameAndId.split('-');
+        let name = splittedFields[0];
+        this.id = Number(splittedFields[1]); //convert id string into storable number
+
         switch (name) {
 
             //GREEN CARDS: *********************************************************************************************
@@ -132,7 +138,7 @@ export class Card {
             }
 
             //PLACEHODER CARD: *****************************************************************************************
-            case null: {
+            case 'IS_TAKEN': {
                 this.name = 'PLACEHOLDER';
                 this.title = 'Card Has been Picked';
                 this.color = "placeholder";
