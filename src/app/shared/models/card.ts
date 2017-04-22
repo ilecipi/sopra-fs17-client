@@ -140,7 +140,7 @@ export class Card {
             //PLACEHODER CARD: *****************************************************************************************
             case 'IS_TAKEN': {
                 this.name = 'PLACEHOLDER';
-                this.title = 'Card Has been Picked';
+                this.title = 'Not Available';
                 this.color = "placeholder";
                 this.description = 'This card has already been picked.';
                 this.imagePath = 'not yet defined';

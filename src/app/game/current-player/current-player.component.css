@@ -89,7 +89,8 @@ Cards:
 
 .cards-container {
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
+    overflow-y: auto;
     width: 100%;
     align-content: center;
     align-items: center;

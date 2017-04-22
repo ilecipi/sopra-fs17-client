@@ -20,6 +20,9 @@ export class CurrentPlayerComponent implements OnInit {
     @Input()
     currentGame: Game; //need to know the current game for sending the addStones move request
 
+    @Input()
+    currentUserCards : Card[] = [];
+
 
     constructor(private gameService: GameService,
                 private userService: UserService,
@@ -29,6 +32,7 @@ export class CurrentPlayerComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
     }
 
     triggerAddStones(): void {
@@ -44,20 +48,7 @@ export class CurrentPlayerComponent implements OnInit {
     }
 
 
-    getCards(): Card[] {
-        let cardsNames: string[] = [];
-        let userId = this.currentUser.id;
-        let cards: Card[] = [];
-        for (let i = 0; i <= this.currentGame.players.length; i++) {
-            if (this.currentGame.players[i] != undefined && this.currentGame.players[i].id == userId) {
-                cardsNames = this.currentGame.players[i].cards;
-            }
-        }
-        for (let i = 0; i < cardsNames.length; i++) {
-            cards.push(new Card(cardsNames[i]));
-        }
-        return cards;
-    }
+
 
     useCard(cardId: number): void {
         let gameId = this.currentGame.id;

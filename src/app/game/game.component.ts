@@ -21,6 +21,7 @@ import {Temple} from '../shared/models/temple';
 import {Obelisk} from "../shared/models/obelisk";
 import {Pyramid} from '../shared/models/pyramid';
 import {Market} from '../shared/models/market';
+import {Card} from "../shared/models/card";
 
 
 @Component({
@@ -61,9 +62,9 @@ export class GameComponent implements OnInit {
                 private router: Router) {
     }
 
+
+
     ngOnInit(): void {
-
-
 
         // if game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
         // used only for developing purposes
@@ -181,5 +182,20 @@ export class GameComponent implements OnInit {
 
             }
         });
+    }
+
+    getCurrentUserCards(): Card[] {
+        let cardsNames: string[] = [];
+        let userId = this.currentUser.id;
+        let cards: Card[] = [];
+        for (let i = 0; i <= this.currentGame.players.length; i++) {
+            if (this.currentGame.players[i] != undefined && this.currentGame.players[i].id == userId) {
+                cardsNames = this.currentGame.players[i].cards;
+            }
+        }
+        for (let i = 0; i < cardsNames.length; i++) {
+            cards.push(new Card(cardsNames[i]));
+        }
+        return cards;
     }
 }
