@@ -81,9 +81,10 @@ export class LobbyComponent implements OnInit {
                 (result) => {
                     this.currentGame = result;
                     this.gameService.setCurrentGame(this.currentGame);
+                    this.index = this.games.length;
+
                 }
             );
-        this.index = this.games.length;
         this.inWaitingRoom = true;
         this.createdGame = true;
     }
