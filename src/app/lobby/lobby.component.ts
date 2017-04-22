@@ -93,7 +93,7 @@ export class LobbyComponent implements OnInit {
                 (result) => {
                 }
             );
-        this.gameService.updateCurrentGame();
+        // this.gameService.updateCurrentGame();
         this.pressedReady = true;
         this.listenForStart();
     }

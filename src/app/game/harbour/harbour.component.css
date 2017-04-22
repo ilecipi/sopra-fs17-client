@@ -10,7 +10,7 @@ Ships
 .undocked-ships {
     flex-grow: 1;
     height: 100%;
-    width: 50%;
+    min-width: 50%;
 }
 
 .ship {
@@ -94,7 +94,7 @@ Docks
 .docks {
     flex-grow: 1;
     height: 100%;
-    width: 50%;
+    min-width: 50%;
 
 }
 
@@ -146,7 +146,8 @@ Info Column:
     height: 40px;
     position: relative;
     top: 555px;
-    right: 175px;
+    /*right: 175px;*/
+    right: 250px;
     flex-grow: 1;
     color: black;
     max-width: 40px;
@@ -233,10 +234,11 @@ Dynamic styles for stone colors:
 
 .fast-forward {
     height: 30px;
-    width: 100px;
+    width: 150px;
     background: rgba(0, 0, 0, 0.8);
-    color:white;
-    position:relative;
-    top:565px;
-    right:100px;
+    color: white;
+    position: relative;
+    top: 565px;
+    right: 200px;
+    text-align: center;
 }

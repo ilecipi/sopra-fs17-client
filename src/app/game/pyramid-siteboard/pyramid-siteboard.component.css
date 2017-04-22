@@ -43,6 +43,7 @@
 .pyramid-surplus {
     min-width: 10px;
     display: flex;
+    flex-direction: column;
 }
 
 .surplus-container {
@@ -50,9 +51,13 @@
     align-items: center;
     justify-content: center;
 }
-
+.surplus-description{
+    color: black;
+}
 .surplus-points {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /***********************************************************************************************************************
@@ -75,6 +80,7 @@ Info Column:
     background-repeat: no-repeat;
     margin: 10px;
 }
+
 .info-hover:hover {
     background-position: center;
     background-size: contain;

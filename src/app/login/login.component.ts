@@ -34,12 +34,11 @@ export class LoginComponent implements OnInit {
                     this.user.token = this.authenticationService.getToken();
                     this.user.id = this.authenticationService.getId();
                     this.userService.loginUser(this.user);//Saves current user into the service UserService
-                    console.log(result);
                     this.router.navigate(['/lobby']);
                 },
                 (error) => { //fail
                     let description = 'There was an error in logging you in: either the fields were empty or the username already exists. \n';
-                    this.notificationService.showNotification(description +  error,3);
+                    this.notificationService.showNotification(description +  error._body,3);
                 },
                 ()=>{ //end of subscription
                     subscription.unsubscribe();

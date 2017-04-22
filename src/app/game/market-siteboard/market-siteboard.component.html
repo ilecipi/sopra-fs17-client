@@ -26,7 +26,7 @@
     </div>
 </div>
 <div class="cards-selector-block" *ngIf="currentMarket.userColors.length >= 1">
-    The player with the following color is required to pick a card:
+    Player:
     <div class="cards-selector-container">
         <div class="cards-selector" [ngClass]="{
                 brown: currentMarket.userColors[0] == 'brown',
@@ -35,6 +35,10 @@
                 white: currentMarket.userColors[0] == 'white'
 
             }">
+            {{getPlayerNameFromColor(currentMarket.userColors[0])}}
         </div>
     </div>
+    is required to pick a card.
+    <br><br>
+    Remember: if a RED card is chosen, then it must be used immediately!
 </div>

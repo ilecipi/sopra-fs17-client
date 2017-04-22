@@ -22,7 +22,7 @@ export class ShipService {
     }
 
     pollShips(gameId: number) {
-        return Observable.interval(1500).flatMap(() => {
+        return Observable.interval(400).flatMap(() => { // faster because the ships are actually the most important components
             let rounds = this.gameService.getCurrentGame().rounds;
             let roundId = rounds[rounds.length - 1];
 
@@ -91,18 +91,43 @@ export class ShipService {
     }
 
     setDummyShips(): void {
-        let ship = new Ship();
+        let ship1 = new Ship();
+        let ship2 = new Ship();
+        let ship3 = new Ship();
+        let ship4 = new Ship();
 
         let stone = new Stone();
-        stone.color = 'white';
+        stone.color = 'none';
 
-        ship.id = 1;
-        ship.stones = [stone, stone];
-        ship.isReady = false;
-        ship.addedStones = 0;
-        ship.docked = false;
-        ship.siteBoard = null;
+        ship1.id = 1;
+        ship1.stones = [stone, stone, stone, stone];
+        ship1.isReady = false;
+        ship1.addedStones = 0;
+        ship1.docked = false;
+        ship1.siteBoard = null
 
-        this.currentShips = [ship, ship, ship, ship];
+        ship2.id = 1;
+        ship2.stones = [stone, stone, stone];
+        ship2.isReady = false;
+        ship2.addedStones = 0;
+        ship2.docked = false;
+        ship2.siteBoard = null;
+
+        ship3.id = 1;
+        ship3.stones = [stone, stone];
+        ship3.isReady = false;
+        ship3.addedStones = 0;
+        ship3.docked = false;
+        ship3.siteBoard = null;
+
+        ship4.id = 1;
+        ship4.stones = [stone];
+        ship4.isReady = false;
+        ship4.addedStones = 0;
+        ship4.docked = false;
+        ship4.siteBoard = null;
+
+
+        this.currentShips = [ship1, ship2, ship3, ship4];
     }
 }

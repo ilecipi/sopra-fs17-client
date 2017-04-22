@@ -45,4 +45,12 @@ export class MarketSiteboardComponent implements OnInit {
             );
     }
 
+    getPlayerNameFromColor(color:string):string{
+        for(let i =0; i<this.currentGame.players.length;i++){
+            if (this.currentGame.players[i].color==color){
+                return this.currentGame.players[i].username;
+            }
+        }
+        return '';
+    }
 }
