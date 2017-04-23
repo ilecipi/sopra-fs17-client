@@ -200,6 +200,10 @@ export class GameService {
         dummyGame.rounds = [1];
         dummyGame.players = [dummyUser, opposing1, opposing2, opposing3];
         dummyGame.points = new Points();
+        dummyGame.isActionCardLever=[];
+        dummyGame.isActionCardSail=0;
+        dummyGame.isActionCardHammer=false;
+        dummyGame.isActionCardChisel=0;
         this.currentGame = dummyGame;
     }
 }

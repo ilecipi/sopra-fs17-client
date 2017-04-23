@@ -68,3 +68,58 @@
         </div>
     </div>
 </div>
+<div class="action-cards-block" *ngIf="showActionCardBlock()">
+    <div class="action-cards-container">
+        <div class="chisel-message" *ngIf="currentGame?.isactionCardChisel != 0">
+            <div class="chisel-2" *ngIf="currentGame?.isactionCardChisel == 2">
+                Place 1 stone on a ship.
+            </div>
+            <div class="chisel-1" *ngIf="currentGame?.isActionCardChisel == 1">
+                Now you can place another stone on a ship.
+            </div>
+        </div>
+        <div class="sail-message" *ngIf="currentGame?.isActionCardSail != 0">
+            <div class="sail-2" *ngIf="currentGame?.isActionCardSail==2">
+                Place one stone on a ship.
+            </div>
+            <div class="sail-1">
+                Now you can sail a ship to a site
+            </div>
+        </div>
+        <div class="hammer-message" *ngIf="currentGame?.isActionCardHammer">
+            3 Stones have been placed on your supply sled, now you can place one on a ship.
+        </div>
+        <div class="lever-message" *ngIf="currentGame?.isActionCardLever.length != 0">
+            Choose a ship, as soon as you sailed it to a site you will be prompted about the stones order.
+            <div class="lever-message-part2" *ngIf="currentGame?.isActionCardLever?.length != 0 && currentGame?.isActionCardLever[0] != 'played'">
+                Click on the stones to select an order:
+            </div>
+            <div class="lever-selection-button"></div>
+            <div class="lever-selection" *ngIf="currentGame?.isActionCardLever?.length != 0 && currentGame?.isActionCardLever[0] != 'played'">
+                <div class="lever-selection-container" *ngFor="let color of currentGame?.isActionCardLever; let i=index">
+                    <div class="lever-selection-element">
+                        <div class="element-color btn" (click)="selected(i)"
+                             [ngClass]="
+                                {brown: color == 'brown',
+                                 grey: color == 'grey',
+                                 black: color == 'black',
+                                 white: color == 'white'
+                                 }
+                                ">
+                        </div>
+                        <div class="element-order">
+                            {{getElementOrder(i)}}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="reset-selection-button btn" (click)="resetLeverSelection()">
+                    Reset Selection
+                </div>
+                <div class="confirm-selection-button btn" (click)="confirmLeverSelection()">
+                    Confirm
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

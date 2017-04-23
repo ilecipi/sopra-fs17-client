@@ -73,4 +73,21 @@ export class MoveService {
             .map(res => res.json());
     }
 
+    leverCall(gameId: number, roundId: number, playerToken: string, order: string[]) {
+        let headers = new Headers();// new empty header
+        let options = new RequestOptions({headers: headers}); // Create a request option
+
+        let colorsString = '';
+
+        for (let i = 0; i < order.length; i++) {
+            colorsString+=order[i] + ',';
+        }
+
+        colorsString=colorsString.substring(0,colorsString.length-1); //remove last comma
+
+
+        return this.http.put(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId
+            + '/lever' + '?playerToken=' + playerToken + '&userColors=' + colorsString, options)
+            .map(res => res.json())
+    }
 }

@@ -13,6 +13,12 @@ export class Game {
     public siteBoards: number[];    //stored as the id of that siteboard
     public points: Points; //stores how many points for each color in the game
 
+    //these are used to signal when one of these cards has been played
+    public isActionCardHammer: boolean;
+    public isActionCardLever: string[];
+    public isActionCardChisel: number;
+    public isActionCardSail: number;
+
     constructor() {
     }
 }

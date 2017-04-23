@@ -104,6 +104,65 @@ Cards:
 }
 
 /***********************************************************************************************************************
+Action Cards Block:
+***********************************************************************************************************************/
+.action-cards-block {
+    position: relative;
+    float: left; /* LEAVE THIS HERE BECAUSE THE 'ABILITY' OF FLOATS BEING WITHOUT HEIGHT IS USEFUL HERE */
+    bottom: 160px;
+    left: 505px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 150px;
+    max-height: 150px;
+    z-index: 3;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+
+}
+
+.action-cards-container {
+    text-align: center;
+}
+
+.lever-selection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.lever-selection-element {
+    margin: 5px;
+}
+
+.element-color {
+    border: 1px solid white;
+    min-width: 30px;
+    max-width: 30px;
+    min-height: 30px;
+    max-height: 30px;
+}
+
+.reset-selection-button {
+    background-color: darkgrey;
+    max-height: 30px;
+    margin: 5px;
+}
+
+.confirm-selection-button {
+    background-color: darkgrey;
+    max-height: 30px;
+    margin: 5px;
+}
+
+/***********************************************************************************************************************
 Dynamic styles for quarry, stones and turn highlight:
 ***********************************************************************************************************************/
 .brown {
