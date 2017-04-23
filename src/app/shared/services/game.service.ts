@@ -110,10 +110,10 @@ export class GameService {
 
     isReady(user: User): Observable<string> {
         let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token});// ... Set access rights.
-        // let options = new RequestOptions({headers: headers}); // Create a request option
+        let options = new RequestOptions({headers: headers}); // Create a request option
 
         //passed user will have ready state on current game
-        return this.http.put(this.apiUrl + '/games/' + this.currentGame.id + "?token=" + user.id, headers)
+        return this.http.put(this.apiUrl + '/games/' + this.currentGame.id + "?token=" + user.id, options)
             .map(res => res.json());
     }
 

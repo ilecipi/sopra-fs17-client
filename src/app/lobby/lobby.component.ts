@@ -95,7 +95,6 @@ export class LobbyComponent implements OnInit {
                 (result) => {
                 }
             );
-        // this.gameService.updateCurrentGame();
         this.pressedReady = true;
         this.listenForStart();
 
@@ -106,11 +105,7 @@ export class LobbyComponent implements OnInit {
         let selectedGame = this.games[index]; //selects the game from the games list
         let user = this.userService.getCurrentUser(); //gets currentUser information from userService
         this.gameService.joinGame(selectedGame, user) //join game
-            .subscribe(
-                (result) => {
-
-                }
-            );
+            .subscribe();
         this.inWaitingRoom = true;
         this.gameService.setCurrentGame(selectedGame); //currentGame in gameService is updated
         this.index = index;
@@ -119,9 +114,7 @@ export class LobbyComponent implements OnInit {
     startGame(): void {
         if (this.createdGame) {
             this.gameService.startGame(this.userService.getCurrentUser())
-                .subscribe(result => {
-                    }
-                );
+                .subscribe();
         }
         else {
             //do nothing because not allowed to start the game
@@ -138,7 +131,7 @@ export class LobbyComponent implements OnInit {
     }
 
     listenForStart(time = 300) {
-        let subscription = Observable.interval(time).subscribe(x => {
+        let subscription = Observable.interval(time).subscribe((x) => {
             if (this.index != -1) {
                 if (this.games[this.index].status == 'RUNNING') {
                     this.gameService.setCurrentGame(this.games[this.index]);

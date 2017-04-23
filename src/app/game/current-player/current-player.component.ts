@@ -26,9 +26,8 @@ export class CurrentPlayerComponent implements OnInit {
 
     private leverSubscription: any;
 
-    private leverSelection: any[] = []; // is an array of pair: [ [color, number], [color, number], ... ]
+    private leverSelection: number[] = [0, 0, 0, 0];
     private leverCounter = 0;
-    private leverToReset = true;
 
 
 
@@ -40,8 +39,8 @@ export class CurrentPlayerComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.resetLeverSelection();
         this.leverListener();
-        this.resetLeverSelection()
     }
 
     triggerAddStones(): void {
@@ -70,7 +69,7 @@ export class CurrentPlayerComponent implements OnInit {
             );
     }
 
-    leverCall(order:string[]){
+    leverCall(order: string[]) {
         let gameId = this.currentGame.id;
         let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1];
         let playerToken = this.currentUser.token;
@@ -91,55 +90,47 @@ export class CurrentPlayerComponent implements OnInit {
         let isLever = this.currentGame.isActionCardLever.length != 0;
 
 
-
         return isCurrentPlayer && (isChisel || isSail || isHammer || isLever);
     }
 
     leverListener() {
         this.leverSubscription = Observable.interval(100).subscribe(x => {
-            if (this.leverToReset) {
+            if (this.currentGame.isActionCardLever.length != this.leverSelection.length) {
                 this.resetLeverSelection();
-            }
-            else {
-
             }
         })
     }
 
 
     resetLeverSelection() {
-        let emptySelection: any [] = [];
-        // this.currentGame.isActionCardLever.length
-        for (let i = 0; i < this.currentGame.isActionCardLever.length; i++) {
-            let element: any [] = [];
+        console.log(this.leverSelection);
+        console.log(this.currentGame.isActionCardLever);
 
-            // this.currentGame.isActionCardLever[i]
-            element.push(this.currentGame.isActionCardLever[i]); // color string
-            element.push(0); // signals that the order has not been specified
-            emptySelection.push(element);
+        this.leverSelection = [];
+        for (let i = 0; i < this.currentGame.isActionCardLever.length; i++) {
+            this.leverSelection.push(0);
         }
-        this.leverSelection = emptySelection;
-        this.leverCounter = 0;
+        this.leverCounter=0;
+
     }
 
     getElementOrder(index: number): number {
-        return this.leverSelection[index][1];
+        return this.leverSelection[index];
     }
 
 
     // executed when the user is selecting a card.
     selected(index: number): void {
-        this.leverToReset = false;// stops refreshing leverSelection
         if (this.checkAllSelected()) {
             this.notificationService.showNotification('All colors have already been specified', 2);
         }
         else {
-            if (this.leverSelection[index][1] != 0) {
+            if (this.leverSelection[index] != 0) {
                 this.notificationService.showNotification('This color has already been specified', 2);
             }
             else {
                 this.leverCounter++;
-                this.leverSelection[index][1] = this.leverCounter;
+                this.leverSelection[index] = this.leverCounter;
             }
 
         }
@@ -149,34 +140,33 @@ export class CurrentPlayerComponent implements OnInit {
         if (!this.checkAllSelected()) {
             this.notificationService.showNotification('You did not specify an order for each color', 2);
         }
+
         else {
-            //Bubble sort FTW:
+            let result: string[] = [];
+
+            // get out the colors in order
+            let counter = 1;
             for (let j = 0; j < this.leverSelection.length; j++) {
-                for (let i = 0; i < this.leverSelection.length - 1; i++) {
-                    if (this.leverSelection[i][1] > this.leverSelection[i + 1][1]) {
-                        let temp = this.leverSelection[i];
-                        this.leverSelection[i] = this.leverSelection[i + 1];
-                        this.leverSelection[i + 1] = temp;
+                for (let i = 0; i < this.leverSelection.length; i++) {
+                    if (this.leverSelection[i] == counter) {
+                        result.push(this.currentGame.isActionCardLever[i]);
                     }
                 }
+                counter++;
             }
 
-            let result = [];
-            for (let i = 0; i < this.leverSelection.length; i++) {
-                result.push(this.leverSelection[i][0]);
-            }
+            console.log(result);
 
             this.leverCall(result);
-
-            this.leverToReset=true; //need to reset because other Lever cards might be played.
         }
     }
 
-    // returns true if all elements have been specified.
+
+// returns true if all elements have been specified.
     checkAllSelected(): boolean {
         let allSelected = true;
         for (let i = 0; i < this.leverSelection.length; i++) {
-            if (this.leverSelection[i][1] == 0) {
+            if (this.leverSelection[i] == 0) {
                 allSelected = false;
             }
         }
