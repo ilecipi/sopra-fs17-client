@@ -119,23 +119,23 @@ Docks
 }
 
 .market-dock {
-    top: 72px;
+    top: 87px;
 }
 
 .pyramid-dock {
-    top: 185px;
+    top: 213px;
 }
 
 .temple-dock {
-    top: 240px;
+    top: 273px;
 }
 
 .burialchamber-dock {
-    top: 295px;
+    top: 325px;
 }
 
 .obelisk-dock {
-    top: 365px;
+    top: 390px;
 }
 
 .empty-image {

@@ -92,10 +92,7 @@ Cards:
     overflow-x: auto;
     overflow-y: auto;
     width: 100%;
-    align-content: center;
-    align-items: center;
-    justify-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .market-card {

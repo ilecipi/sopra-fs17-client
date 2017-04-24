@@ -1,7 +1,7 @@
 .parent-block {
-    /*width: 1366px;*/
-    /*height: 768px;*/
-    /*overflow: hidden;*/
+        width: 1366px;
+        height: 768px;
+        overflow: hidden;
 }
 
 .notification{

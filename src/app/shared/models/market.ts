@@ -1,7 +1,7 @@
 export class Market {
     id: number;
     isOccupied: boolean;
-    currentCards: string[]; //Contains the name of each card, if a card has been picked, then it's value is null
+    currentCards: string[]; //Contains the name of each card, if a card has been picked, then it's value is null,
     userColors: string[]; //Explanation below
     /*If empty, there is no ship docked at the market and
      there is no need for card selection.
@@ -11,7 +11,7 @@ export class Market {
     constructor() {
         this.id = 0;
         this.isOccupied = false;
-        this.currentCards = ['SAIL', 'SAIL', 'SAIL', 'SAIL'];
+        this.currentCards = ['IS_TAKEN-1', 'IS_TAKEN-1','IS_TAKEN-1','IS_TAKEN-1'];
         this.userColors = [];
     }
 }

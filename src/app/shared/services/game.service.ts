@@ -6,6 +6,7 @@ import {Game} from "../models/game";
 import {User} from "../models/user";
 import {environment} from "../../../environments/environment";
 import {Points} from "../models/points";
+import {Card} from "../models/card";
 
 @Injectable()
 export class GameService {

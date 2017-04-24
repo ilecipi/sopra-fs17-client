@@ -1,8 +1,8 @@
 .market-card {
-    min-width: 107px;
-    max-width: 107px;
-    min-height: 81px;
-    max-height: 81px;
+    min-width: 140px;
+    max-width: 140px;
+    min-height: 95px;
+    max-height: 95px;
     font-size: 15px;
     margin: 5px;
     border: 1px solid white;
@@ -15,54 +15,22 @@
 
 .card-title {
     border-radius: 5px;
-    border-bottom: 1px solid white;
     font-size: 13px;
     text-align: center;
-    flex-grow: 1;
+    flex-grow: 0;
     height: 50%;
     padding-top: 3px;
+    line-height:  1;
 
 }
 
-.info-hover-container {
-    height: 50%;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.info-hover {
-    flex-grow: 0;
-    min-width: 25px;
-    max-width: 25px;
-    min-height: 25px;
-    max-height: 25px;
-    background-image: url("../../../assets/img/info-button.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: 10px;
-}
-
-.hover {
-    display: none;
-    width: 0;
-}
-
-.info-hover:hover span {
-    display: block;
-    position: relative;
-    width: 250px;
-    top: -50px;
-    right: 113px;
-    border: 1px solid white;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
+.description {
+    border-top: 1px solid white;
     text-align: center;
-    padding: 10px;
-    z-index: 4;
+    flex-grow: 0;
+    font-size: 12px;
+    padding: 3px;
+    line-height:1.0;
 }
 
 /*Styles for card title colors:*/
