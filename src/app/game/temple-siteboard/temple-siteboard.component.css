@@ -25,15 +25,18 @@
 }
 
 .marker {
-    min-width: 10px;
-    max-width: 10px;
-    min-height: 30px;
-    max-height: 30px;
+    min-width: 15px;
+    max-width: 15px;
+    min-height: 50px;
+    max-height: 50px;
     border: 1px solid black;
     background: var(--turn);
+    line-height:3.5;
 }
 
 .block {
+    margin-top:10px;
+    margin-bottom:10px;
     min-height: 30px;
     max-height: 30px;
     min-width: 30px;
