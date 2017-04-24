@@ -69,27 +69,32 @@
 </div>
 <div class="action-cards-block" *ngIf="showActionCardBlock()">
     <div class="action-cards-container">
-        <div class="chisel-message" *ngIf="currentGame?.isactionCardChisel != 0">
-            <div class="chisel-2" *ngIf="currentGame?.isactionCardChisel == 2">
-                Place 1 stone on a ship.
+        <div class="chisel-message" *ngIf="currentGame?.isActionCardChisel != 0">
+            <div class="chisel-2" *ngIf="currentGame?.isActionCardChisel == 2">
+                Place two stones where you want.<br>
+                Stones already placed: 0.
             </div>
             <div class="chisel-1" *ngIf="currentGame?.isActionCardChisel == 1">
-                Now you can place another stone on a ship.
+                Place two stones where you want.<br>
+                Stones already placed: 1.
             </div>
         </div>
         <div class="sail-message" *ngIf="currentGame?.isActionCardSail != 0">
-            <div class="sail-2" *ngIf="currentGame?.isActionCardSail==2">
-                Place one stone on a ship.
+            <div class="sail-2" *ngIf="currentGame?.isActionCardSail == 2">
+                First place one stone on a ship. <br>
+                A ship can be sailed later.
             </div>
-            <div class="sail-1">
-                Now you can sail a ship to a site
+            <div class="sail-1" *ngIf="currentGame?.isActionCardSail == 1">
+                Now you can sail a ship to a site.
             </div>
         </div>
         <div class="hammer-message" *ngIf="currentGame?.isActionCardHammer">
             3 Stones have been placed on your supply sled, now you can place one on a ship.
         </div>
         <div class="lever-message" *ngIf="currentGame?.isActionCardLever.length != 0">
-            Choose a ship, as soon as you sailed it to a site you will be prompted about the stones order.
+            <div class="lever-message-part1" *ngIf="currentGame?.isActionCardLever[0]=='played'">
+                Choose a ship, as soon as you sailed it to a site you will be prompted about the stones order.
+            </div>
             <div class="lever-message-part2" *ngIf="currentGame?.isActionCardLever?.length != 0 && currentGame?.isActionCardLever[0] != 'played'">
                 Click on the stones to select an order:
             </div>

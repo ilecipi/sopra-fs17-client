@@ -150,7 +150,7 @@ export class GameService {
         dummyUser.moves = [1];
         dummyUser.color = "grey";
         dummyUser.supplySled = 1;
-        dummyUser.cards=[];
+        dummyUser.cards = [];
 
         let opposing1 = new User;
         opposing1.id = 2;
@@ -162,7 +162,7 @@ export class GameService {
         opposing1.moves = [2];
         opposing1.color = "brown";
         opposing1.supplySled = 2;
-        opposing1.cards=[];
+        opposing1.cards = [];
 
         let opposing2 = new User;
         opposing2.id = 3;
@@ -174,7 +174,7 @@ export class GameService {
         opposing2.moves = [3];
         opposing2.color = "black";
         opposing2.supplySled = 3;
-        opposing2.cards=[];
+        opposing2.cards = [];
 
 
         let opposing3 = new User;
@@ -187,8 +187,7 @@ export class GameService {
         opposing3.moves = [4];
         opposing3.color = "white";
         opposing3.supplySled = 4;
-        opposing3.cards=[];
-
+        opposing3.cards = [];
 
 
         let dummyGame = new Game;
@@ -201,10 +200,10 @@ export class GameService {
         dummyGame.rounds = [1];
         dummyGame.players = [dummyUser, opposing1, opposing2, opposing3];
         dummyGame.points = new Points();
-        dummyGame.isActionCardLever=[];
-        dummyGame.isActionCardSail=0;
-        dummyGame.isActionCardHammer=false;
-        dummyGame.isActionCardChisel=0;
+        dummyGame.isActionCardLever = [];
+        dummyGame.isActionCardSail = 0;
+        dummyGame.isActionCardHammer = false;
+        dummyGame.isActionCardChisel = 0;
         this.currentGame = dummyGame;
     }
 }

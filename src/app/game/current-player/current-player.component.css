@@ -106,15 +106,15 @@ Action Cards Block:
 .action-cards-block {
     position: relative;
     float: left; /* LEAVE THIS HERE BECAUSE THE 'ABILITY' OF FLOATS BEING WITHOUT HEIGHT IS USEFUL HERE */
-    bottom: 160px;
+    bottom: 140px;
     left: 505px;
     border: 1px solid white;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.8);
     min-width: 400px;
     max-width: 400px;
-    min-height: 150px;
-    max-height: 150px;
+    min-height: 130px;
+    max-height: 130px;
     z-index: 3;
     color: white;
     display: flex;
