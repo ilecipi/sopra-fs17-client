@@ -102,9 +102,16 @@
         </div>
         <div class="discarded-market-cards-container">
             <div class="discarded-market-cards">
-                <div class="discarded-card{{i}} discarded-card" *ngFor="let angle of discardedAngles; let i=index">
-                <!-- rotating cards -->
+
+                <div class="discarded-card-absolute"  *ngFor="let angle of discardedAngles; let i=index">
+                    <div class="discarded-card{{i}} discarded-card">
+                        <!-- rotating cards -->
+                    </div>
                 </div>
+            </div>
+            <div class="discarded-market-cards-description">
+                Discarded<br>Market<br>Cards
+
             </div>
         </div>
     </div>

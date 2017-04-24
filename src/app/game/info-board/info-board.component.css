@@ -162,17 +162,19 @@ Cards Block:
     flex-direction: column;
     max-width: 40%;
     min-width: 40%;
-    min-height: 100%;
-    max-height: 100%;
+    min-height: 90%;
+    max-height: 90%;
     align-self: center;
-    border: 1px solid black;
+    border: 2px solid black;
+    border-radius:10px;
+    margin:5px;
     background: var(--colorOne);
 }
 
 .shipCard {
     flex-grow: 0;
-    margin-top: 11px;
-    margin-bottom: 11px;
+    margin-top: 9px;
+    margin-bottom: 9px;
     height: 23px;
     align-self: center;
 }
@@ -182,32 +184,50 @@ Cards Block:
     width: 60%;
     height: 100%;
     display: flex;
+    flex-direction:column;
     align-items: center;
     justify-content: center;
 }
 
 .discarded-market-cards {
-    flex-grow:0;
-    min-height: 170px;
-    max-height: 170px;
-    min-width: 170px;
-    max-width: 170px;
-    border-radius:85px;
+    flex-grow: 0;
+    min-height: 100px;
+    max-height: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    border-radius: 50px;
+    border: 1px dashed black;
+    text-align: center;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.discarded-card{
-    position:absolute;
+
+.discarded-card-absolute {
+    position: absolute;
+}
+
+.discarded-card {
+    position: relative;
     min-width: 140px;
     max-width: 140px;
-    min-height:95px;
-    max-height:95px;
+    min-height: 95px;
+    max-height: 95px;
+    z-index:2;
 
     background-image: url('../../../assets/img/cards-back.png');
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.discarded-market-cards-description{
+    position:relative;
+    bottom: 73px;
+    height:0%;
+    text-align:center;
+    flex-grow:0;
+    /*line-height:5;*/
 }
 
 /***********************************************************************************************************************

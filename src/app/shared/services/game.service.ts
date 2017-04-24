@@ -204,7 +204,7 @@ export class GameService {
         dummyGame.isActionCardSail = 0;
         dummyGame.isActionCardHammer = false;
         dummyGame.isActionCardChisel = 0;
-        dummyGame.discardedCardsCounter = 30;
+        dummyGame.discardedCardsCounter = 0;
         this.currentGame = dummyGame;
     }
 }

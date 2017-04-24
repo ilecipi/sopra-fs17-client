@@ -296,8 +296,8 @@ export class InfoBoardComponent implements OnInit {
         this.getAngles();
         for (let i = 0; i < this.discardedAngles.length; i++) {
             this.discardedStyle.innerHTML += '.discarded-card' + i.toString() + ' {transform: rotate(' + this.discardedAngles[i] + 'deg);' +
-                // 'top: ' + Math.floor(10*Math.sin(i)) + 'px;' +
-                //     'left: '  + Math.floor(10* Math.cos(i)) + 'px;' +
+                'top: ' + Math.floor(8*Math.sin(i)) + 'px;' +
+                    'left: '  + Math.floor(8* Math.cos(i)) + 'px;' +
                 '} ';
         }
 
