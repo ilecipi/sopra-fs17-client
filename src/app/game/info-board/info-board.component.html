@@ -92,13 +92,20 @@
         </div>
     </div>
 
-    <!-- CARD BLOCK -->
-    <div class="card-block">
+    <!-- CARDS BLOCK -->
+    <div class="cards-block">
         <div class="round-card">
             <img class="shipCard1 shipCard" src="{{getShipSrc(0)}}">
             <img class="shipCard2 shipCard" src="{{getShipSrc(1)}}">
             <img class="shipCard3 shipCard" src="{{getShipSrc(2)}}">
             <img class="shipCard4 shipCard" src="{{getShipSrc(3)}}">
+        </div>
+        <div class="discarded-market-cards-container">
+            <div class="discarded-market-cards">
+                <div class="discarded-card{{i}} discarded-card" *ngFor="let angle of discardedAngles; let i=index">
+                <!-- rotating cards -->
+                </div>
+            </div>
         </div>
     </div>
 

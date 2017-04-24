@@ -10,7 +10,7 @@ Parent Blocks
 
 .general-information-block {
     border: 1px solid black;
-    height: 25%;
+    min-height: 25%;
     width: 100%;
     display: flex;
     text-align: center;
@@ -18,26 +18,26 @@ Parent Blocks
 
 .legend-block {
     border: 1px solid black;
-    height: 5%;
+    min-height: 5%;
     width: 100%;
     display: flex;
     flex-direction: row;
 }
 
-.card-block {
+.cards-block {
     border: 1px solid black;
     height: 30%;
     width: 100%;
     font-size: 12px;
-    text-align: center;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
 .scoring-track-board-block {
     border: 1px solid black;
-    height: 40%;
+    min-height: 40%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -132,7 +132,7 @@ Legend Block:
     width: 50%;
     display: flex;
     flex-direction: row;
-    line-height:2.0;
+    line-height: 2.0;
 }
 
 .legend-cell-turn {
@@ -157,12 +157,13 @@ Cards Block:
 ***********************************************************************************************************************/
 
 .round-card {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    max-width: 220px;
-    min-width: 220px;
-    min-height: 170px;
-    max-height: 170px;
+    max-width: 40%;
+    min-width: 40%;
+    min-height: 100%;
+    max-height: 100%;
     align-self: center;
     border: 1px solid black;
     background: var(--colorOne);
@@ -170,9 +171,43 @@ Cards Block:
 
 .shipCard {
     flex-grow: 0;
-    margin: 3px;
-    height: 36px;
+    margin-top: 11px;
+    margin-bottom: 11px;
+    height: 23px;
     align-self: center;
+}
+
+.discarded-market-cards-container {
+    flex-grow: 0;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.discarded-market-cards {
+    flex-grow:0;
+    min-height: 170px;
+    max-height: 170px;
+    min-width: 170px;
+    max-width: 170px;
+    border-radius:85px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.discarded-card{
+    position:absolute;
+    min-width: 140px;
+    max-width: 140px;
+    min-height:95px;
+    max-height:95px;
+
+    background-image: url('../../../assets/img/cards-back.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /***********************************************************************************************************************

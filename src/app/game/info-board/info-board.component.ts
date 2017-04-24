@@ -15,6 +15,10 @@ export class InfoBoardComponent implements OnInit {
     @Input()
     private currentShips: Ship[];
 
+    private maxAngle = 0;
+    private minAngle = 180;
+    private discardedAngles = [];
+
 
     private counter = 0;
     private showSnake: boolean;
@@ -24,6 +28,8 @@ export class InfoBoardComponent implements OnInit {
     style3 = document.createElement('style');
     style4 = document.createElement('style');
 
+    discardedStyle = document.createElement('style');
+
 
     styleSubscription: any;
 
@@ -32,6 +38,12 @@ export class InfoBoardComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        // initialization of style for rotating discarded cards.
+        this.discardedStyle.innerHTML = '';
+        document.getElementsByTagName('info-board')[0].appendChild(this.discardedStyle);
+
+
         this.showSnake = false;
         this.initStyleChildren();
         this.addStyleChildren();
@@ -95,6 +107,8 @@ export class InfoBoardComponent implements OnInit {
                 this.setTrackBoardCells();
 
             }
+
+            this.updateDiscardedCardsStyle();
 
         })
 
@@ -176,10 +190,10 @@ export class InfoBoardComponent implements OnInit {
         // Need to reset the styles before calculating them again.
         // Otherwise there would be bugs in moments where for example from three total styles we would go to only one,
         // actual example being two players with distinct scores that after a while catch up and have the same score.
-        this.style1.innerHTML='';
-        this.style2.innerHTML='';
-        this.style3.innerHTML='';
-        this.style4.innerHTML='';
+        this.style1.innerHTML = '';
+        this.style2.innerHTML = '';
+        this.style3.innerHTML = '';
+        this.style4.innerHTML = '';
 
         // example style: background: linear-gradient(to right, #ffffff,#ffffff 49.9%, #000000 50.1%, #000000);
         let styleCounter = 1;
@@ -260,13 +274,54 @@ export class InfoBoardComponent implements OnInit {
                 boardStatus[i][1][j] + ' ' + (percent * (j + 1) - 0.1) + '%, ';     // second stop of the color
         }
         styleString = styleString.substring(0, styleString.length - 2);     // remove last comma and space, which are not needed
-        styleString += ');}';    //close parenthesis, and voila, you have your style sir *tips hat*.
+        styleString += ');}';    // close parenthesis, and voila, you have your style sir *tips hat*.
         return styleString;
     }
 
     hiddenButton(): void {
         this.showSnake = !this.showSnake;
     }
+
+
+    randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+
+    updateDiscardedCardsStyle() {
+        document.getElementsByTagName('info-board')[0].removeChild(this.discardedStyle);
+
+        this.discardedStyle.innerHTML = ''; //resetting before modifying
+
+        this.getAngles();
+        for (let i = 0; i < this.discardedAngles.length; i++) {
+            this.discardedStyle.innerHTML += '.discarded-card' + i.toString() + ' {transform: rotate(' + this.discardedAngles[i] + 'deg);' +
+                // 'top: ' + Math.floor(10*Math.sin(i)) + 'px;' +
+                //     'left: '  + Math.floor(10* Math.cos(i)) + 'px;' +
+                '} ';
+        }
+
+        document.getElementsByTagName('info-board')[0].appendChild(this.discardedStyle);
+
+    }
+
+    getAngles(): number[] {
+        if (this.discardedAngles.length < this.currentGame.discardedCardsCounter) {
+            for (let i = this.discardedAngles.length; i < this.currentGame.discardedCardsCounter; i++) {
+                this.discardedAngles.push(this.randomInt(this.maxAngle, this.minAngle));
+            }
+        }
+        else if (this.discardedAngles.length > this.currentGame.discardedCardsCounter) {
+            this.discardedAngles = [];
+            this.getAngles();
+        }
+        else {
+            return this.discardedAngles;
+        }
+
+
+    }
+
 
 }
 

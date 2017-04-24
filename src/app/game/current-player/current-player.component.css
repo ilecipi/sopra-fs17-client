@@ -182,10 +182,8 @@ Dynamic styles for quarry, stones and turn highlight:
 
 .highlight {
     border: 8px solid var(--turn);
-    border-radius: 10px;
 }
 
 .next_highlight {
     border: 8px solid var(--nextTurn);
-    border-radius: 10px;
 }

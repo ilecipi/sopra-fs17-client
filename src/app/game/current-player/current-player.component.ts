@@ -103,9 +103,6 @@ export class CurrentPlayerComponent implements OnInit {
 
 
     resetLeverSelection() {
-        console.log(this.leverSelection);
-        console.log(this.currentGame.isActionCardLever);
-
         this.leverSelection = [];
         for (let i = 0; i < this.currentGame.isActionCardLever.length; i++) {
             this.leverSelection.push(0);
@@ -154,8 +151,6 @@ export class CurrentPlayerComponent implements OnInit {
                 }
                 counter++;
             }
-
-            console.log(result);
 
             this.leverCall(result);
         }

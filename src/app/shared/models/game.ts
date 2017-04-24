@@ -19,6 +19,8 @@ export class Game {
     public isActionCardChisel: number;
     public isActionCardSail: number;
 
+    public discardedCardsCounter:number;
+
     constructor() {
     }
 }
