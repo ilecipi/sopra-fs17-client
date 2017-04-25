@@ -94,10 +94,10 @@ export class HarbourComponent implements OnInit {
                     // do nothing because successful
                 },
                 (errorData) => {
-                    if (errorData.status == 403){
-                        this.notificationService.showNotification(errorData._body,3)
+                    if (errorData.status == 403) {
+                        this.notificationService.showNotification(errorData._body, 3)
                     }
-                        // this.notificationService.showNotification(errorData._body, 4);
+                    // this.notificationService.showNotification(errorData._body, 4);
                 }
             );
     }
@@ -272,30 +272,34 @@ export class HarbourComponent implements OnInit {
                 switch (this.currentShips[i].siteBoard) {
                     case 'market': {
                         this.styleEmptyShipMarket.innerHTML = '.empty-image-market { right: ' +
-                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}';
+                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}' +
+                        '.market-dock {background-color: grey;}';
                         break;
                     }
                     case 'pyramid': {
                         this.styleEmptyShipPyramid.innerHTML = '.empty-image-pyramid { right: ' +
-                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}';
+                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}'+
+                            '.pyramid-dock {background-color: grey;}';
                         break;
                     }
                     case 'temple': {
                         this.styleEmptyShipTemple.innerHTML = '.empty-image-temple { right: ' +
-                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}';
+                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}'+
+                            '.temple-dock {background-color: grey;}';
                         break;
                     }
                     case 'burialchamber': {
                         this.styleEmptyShipBurialChamber.innerHTML = '.empty-image-burialchamber { right: ' +
-                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}';
+                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}'+
+                            '.burial-chamber-dock {background-color: grey;}';
                         break;
                     }
                     case 'obelisk': {
                         this.styleEmptyShipObelisk.innerHTML = '.empty-image-obelisk { right: ' +
-                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}';
+                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}'+
+                            '.obelisk-dock {background-color: grey;}';
                         break;
                     }
-
                 }
             }
         }
@@ -371,11 +375,11 @@ export class HarbourComponent implements OnInit {
     }
 
     selectShip(index: number): void {
-        console.log(index);
         this.selectedShip = index;
         document.getElementsByTagName('harbour')[0].removeChild(this.styleSelectedShip);
         this.styleSelectedShip.innerHTML = '.ship-selector' + (index + 1) + ' {border: 3px solid yellow;}';
         document.getElementsByTagName('harbour')[0].appendChild(this.styleSelectedShip);
+
     }
 
     fastForward() {

@@ -2,7 +2,7 @@
     <div class="undocked-ships">
         <div *ngFor="let ship of currentShips;let shipIndex = index" class="ship{{shipIndex + 1}} ship">
             <div class="stones-container">
-                <img class="ship-image image" src="{{getShipSrc(shipIndex)}}">
+                <img class="ship-image image" src="{{getShipSrc(shipIndex)}}" (click)="selectShip(shipIndex)" >
                 <div class="stone btn" *ngFor="let stone of ship.stones;let stoneIndex=index"
                      (click)="addStone(shipIndex,stoneIndex)"
                      [ngClass]="{
@@ -16,6 +16,8 @@
             </div>
             <div class="ship-selector{{shipIndex + 1}} ship-selector" *ngIf="ship.isReady && !ship.docked"
                  (click)="selectShip(shipIndex)" >
+
+
                 <!--<div class="selector-button btn" (click)="selectShip(shipIndex)">-->
                     <!--Select this ship.-->
                 <!--</div>-->
