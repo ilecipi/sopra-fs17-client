@@ -371,6 +371,7 @@ export class HarbourComponent implements OnInit {
     }
 
     selectShip(index: number): void {
+        console.log(index);
         this.selectedShip = index;
         document.getElementsByTagName('harbour')[0].removeChild(this.styleSelectedShip);
         this.styleSelectedShip.innerHTML = '.ship-selector' + (index + 1) + ' {border: 3px solid yellow;}';

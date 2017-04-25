@@ -15,16 +15,15 @@
                 </div>
             </div>
             <div class="ship-selector{{shipIndex + 1}} ship-selector" *ngIf="ship.isReady && !ship.docked"
-                 (click)="selectShip(shipIndex)">
-                <div class="selector"></div>
-                <div class="selector-button btn" (click)="selectShip(shipIndex)">
-                    Select this ship.
-                </div>
+                 (click)="selectShip(shipIndex)" >
+                <!--<div class="selector-button btn" (click)="selectShip(shipIndex)">-->
+                    <!--Select this ship.-->
+                <!--</div>-->
             </div>
         </div>
     </div>
     <div class="docks">
-        <!--<img src="../../../assets/img/Ship1-75x36.png" style="height:36px;background-attachment: fixed; background-position: right; justify-self: right;">-->
+            <!--<img src="../../../assets/img/Ship1-75x36.png" style="height:36px;background-attachment: fixed; background-position: right; justify-self: right;">-->
 
         <div class="market-dock dock">
             <img class="empty-image empty-image-market" src="{{getEmptyShipSrc('market')}}">

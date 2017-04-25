@@ -30,6 +30,7 @@ Ships
     max-height: 36px;
     min-height: 36px;
     align-self: center;
+    z-index:1;
 }
 
 .stones-container {
@@ -52,41 +53,37 @@ Ships
 
 .ship-selector {
     position: relative;
-    text-align: center;
-    left: 25px;
-    top: -45px;
-    border-radius: 20px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, brown);
-    width: 185px;
+    left: 10px;
+    bottom: 57px;
+    border-radius: 40px;
+    background: radial-gradient(ellipse, white 20%, rgba(255,255,255,0.8) 40%, rgba(0,0,0,0)70%);
+    min-height: 80px;
+    width: 210px;
+    z-index:0;
 
 }
 
-.selector {
-    min-height: 50px;
-    width: 100%;
-    background: rgba(0, 0, 0, 0);
-}
 
-.selector-button {
-    position: relative;
-    text-align: center;
-    width: 100%;
-    background: rgba(0, 0, 0, 0);
-    border-radius: 10px;
-}
+/*.selector-button {*/
+    /*position: relative;*/
+    /*text-align: center;*/
+    /*width: 100%;*/
+    /*background: rgba(0, 0, 0, 0);*/
+    /*border-radius: 10px;*/
+/*}*/
 
-.selector-button:hover {
-    background: rgba(0, 0, 0, 0);
-    border-radius: 10px;
-    color: white;
-}
+/*.selector-button:hover {*/
+    /*background: rgba(0, 0, 0, 0);*/
+    /*border-radius: 10px;*/
+    /*color: white;*/
+/*}*/
 
-.selector-button:active {
-    background: rgba(0, 0, 0, 0);
-    border-radius: 10px;
-    color: white;
-    box-shadow: 0;
-}
+/*.selector-button:active {*/
+    /*background: rgba(0, 0, 0, 0);*/
+    /*border-radius: 10px;*/
+    /*color: white;*/
+    /*box-shadow: 0;*/
+/*}*/
 
 /***********************************************************************************************************************
 Docks
