@@ -28,14 +28,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: rgba(69,69,69,0.8);
+    border:1px solid white;
+    border-radius:5px;
 }
 
 /*Heading of login-block*/
 
 .form-signin-heading {
-
     height: 70px;
-
     background-color: rgba(55, 55, 55, 0.7);
     color: #ebebeb;
     border: 1px solid white;
@@ -46,7 +47,7 @@
     text-align: center;
     line-height: 1.6;
     min-width: 610px;
-    margin:5px;
+    margin-bottom:5px;
 }
 
 .form-signin .checkbox {
@@ -65,7 +66,7 @@
     font-size: 25px;
     padding: 2%;
     color: white;
-    border: 1px solid white;
+    border: 1px solid rgba(0,0,0,0);
     background-color: rgba(55, 55, 55, 0.8);
 }
 
@@ -99,19 +100,19 @@
 
 .enter-button {
     flex-grow: 1;
-    margin: 5px;
+    margin-top: 5px;
 }
 
 .clear-button {
     flex-grow: 1;
-    margin: 5px;
+    margin-top: 5px;
 
 }
 
 /*buttons*/
 .btn {
     margin-top: 1%;
-    width:300px;
+    width:305px;
     color: white;
     border: 1px solid white;
     font-size: 35px;

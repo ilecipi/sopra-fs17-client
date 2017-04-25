@@ -6,12 +6,15 @@
             <div class="username-user">Username: {{currentUser.username}}</div>
         </div>
     </div>
-    <div class="lobby-block">
+    <div class="lobby-block">   
 
         <div class="list-heading">
-            Available Games
+            Available Games:
         </div>
         <ul class="list-games">
+            <div class="no-game-message" *ngIf="games.length==0">
+                It seems there is no game here, you could create one by yourself if you wish! ;)
+            </div>
             <li class="list-group-item" *ngFor="let game of games; let i=index">
                 <div class='game-heading'>
                     <div class="game-name">{{game.name}}</div>
@@ -88,9 +91,14 @@
 
     <div class="bottom-buttons">
         <div class="btn logout-button bottom-button" (click)="logout()" [routerLink]="['/login']">LOGOUT</div>
-        <div class="btn newgame-button bottom-button"  (click)="createNewGame()" *ngIf="!inWaitingRoom">CREATE NEW GAME</div>
+        <div class="btn newgame-button bottom-button" (click)="createNewGame()" *ngIf="!inWaitingRoom">CREATE NEW GAME
+        </div>
         <div class="btn ready-button bottom-button" (click)="ready()" *ngIf="inWaitingRoom && !pressedReady">READY</div>
-        <div class="btn startgame-button bottom-button"  (click)="startGame()" *ngIf="inWaitingRoom && createdGame && pressedReady"> START GAME </div>
-        <div class="wait-info bottom-button" *ngIf="inWaitingRoom && !createdGame && pressedReady">Please wait for the owner <br> to start the game</div>
+        <div class="btn startgame-button bottom-button" (click)="startGame()"
+             *ngIf="inWaitingRoom && createdGame && pressedReady"> START GAME
+        </div>
+        <div class="wait-info bottom-button" *ngIf="inWaitingRoom && !createdGame && pressedReady">Please wait for the
+            owner <br> to start the game
+        </div>
     </div>
 </div>

@@ -14,6 +14,8 @@
     width: 100%;
     overflow: hidden;
     margin-bottom: -10px;
+    border: 1px solid white;
+    border-radius: 5px;
 }
 
 /*
@@ -31,7 +33,7 @@
     font-size: 20px;
     text-align: center;
     line-height: 1.2;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .name-username {
@@ -60,26 +62,30 @@
     Columns Block:
 */
 
-.right-column {
-    flex-grow: 1;
-    margin-bottom: -10px;
-    height: auto;
-}
-
 .list-heading {
     color: white;
     background: #373737;
     opacity: .9;
-    border: 1px solid white;
-    border-radius: 5px;
     font-size: 20px;
     text-align: center;
+    height: 50px;
+    line-height: 2.4;
+
 }
 
 .list-games {
+    border-top: 1px solid white;
+    background: rgba(69, 69, 69, 0.8);
     padding: 0;
-    max-height: 450px;
+    min-height: 450px;
     overflow: auto;
+}
+
+.no-game-message {
+    margin-top:200px;
+    color: white;
+    text-align: center;
+    font-size: 20px;
 }
 
 .list-group-item {
