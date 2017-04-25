@@ -1,10 +1,18 @@
 <div class="login-block">
+    <div class="game-name">
+        IMHOTEP
+    </div>
+    <div class="credits">
+        A game by Phil Walker-Harding
+    </div>
     <div class="form-signin" (keyup.enter)="login()">
-        <h2 class="form-signin-heading">LOGIN</h2>
+        <div class="form-signin-heading">LOGIN</div>
         <label for="user_name" class="sr-only">User</label>
-        <input id="user_name" type="text" class="form-control" maxlength="20" placeholder="name" [(ngModel)]="user.name" autofocus>
+        <input id="user_name" type="text" class="form-control" maxlength="20" placeholder="name" [(ngModel)]="user.name"
+               autofocus>
         <label for="password" class="sr-only">Username</label>
-        <input id="password" type="text" class="form-control"  maxlength="20" placeholder="username" [(ngModel)]="user.username">
+        <input id="password" type="text" class="form-control" maxlength="20" placeholder="username"
+               [(ngModel)]="user.username">
         <br>
 
         <div class="row">
@@ -14,9 +22,6 @@
             <div class="enter-button">
                 <button class="btn btn-lg btn-default btn-block" type="submit" (click)="login()">ENTER</button>
             </div>
-        </div>
-        <div class="credits">
-            A game by Phil Walker-Harding
         </div>
     </div>
 </div>

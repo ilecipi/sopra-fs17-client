@@ -1,33 +1,52 @@
 .login-block {
-    opacity: .70; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
-    filter: alpha(opacity=50); /* IE lt 8 */
-    -ms-filter: "alpha(opacity=50)"; /* IE 8 */
-    -khtml-opacity: .50; /* Safari 1.x */
-    -moz-opacity: .50; /* FF lt 1.5, Netscape */
-    font-family: 'Sanchez', serif;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+.game-name {
+    margin-top: 10%;
+    text-align: center;
+    font-size: 140px;
+    color: rgba(55, 55, 55, 0.8);
+    -webkit-text-stroke: 1px lightgrey;
+}
+
+.credits {
+    position:relative;
+    bottom:45px;
+    text-align: center;
+    font-size: 20px;
+    color: #ebebeb  ;
+
+}
 .form-signin {
-    max-width: 30%;
-    padding: 0;
-    margin: auto;
-    margin-top: 25%;
+    width: 610px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /*Heading of login-block*/
+
 .form-signin-heading {
 
-    background-color: #373737;
-    color: white;
+    height: 70px;
+
+    background-color: rgba(55, 55, 55, 0.7);
+    color: #ebebeb;
     border: 1px solid white;
     border-radius: 5px;
     letter-spacing: 2pt;
     word-spacing: 2pt;
     font-size: 43px;
     text-align: center;
-    line-height: 1.2;
-    margin-bottom: 2%;
+    line-height: 1.6;
+    min-width: 610px;
+    margin:5px;
 }
 
 .form-signin .checkbox {
@@ -39,6 +58,7 @@
     position: relative;
     text-align: center;
     height: auto;
+    width: 530px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -46,7 +66,7 @@
     padding: 2%;
     color: white;
     border: 1px solid white;
-    background-color: #373737;
+    background-color: rgba(55, 55, 55, 0.8);
 }
 
 /*Placeholder for color of font of fillable text - cross-browser*/
@@ -79,16 +99,19 @@
 
 .enter-button {
     flex-grow: 1;
+    margin: 5px;
 }
 
 .clear-button {
     flex-grow: 1;
+    margin: 5px;
+
 }
 
 /*buttons*/
 .btn {
     margin-top: 1%;
-
+    width:300px;
     color: white;
     border: 1px solid white;
     font-size: 35px;
@@ -100,9 +123,3 @@
     background-image: -webkit-linear-gradient(top, var(--colorFour), #D0D0D0);
 }
 
-.credits {
-    text-align: center;
-    font-size: 20px;
-    color: white;
-
-}

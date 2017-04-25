@@ -93,5 +93,4 @@
         <div class="btn startgame-button bottom-button"  (click)="startGame()" *ngIf="inWaitingRoom && createdGame && pressedReady"> START GAME </div>
         <div class="wait-info bottom-button" *ngIf="inWaitingRoom && !createdGame && pressedReady">Please wait for the owner <br> to start the game</div>
     </div>
-    <button class="btn btn-bottom" [routerLink]="['/game']">GO TO GAMEBOARD</button>
 </div>
