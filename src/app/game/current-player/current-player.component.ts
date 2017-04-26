@@ -64,7 +64,7 @@ export class CurrentPlayerComponent implements OnInit {
             .subscribe((result) => {
                 },
                 (error) => {
-                    this.notificationService.showNotification(error._status + '\n' + error._body, 2)
+                    this.notificationService.show(error._status + '\n' + error._body)
                 }
             );
     }
@@ -77,7 +77,7 @@ export class CurrentPlayerComponent implements OnInit {
             .subscribe((result) => {
                 },
                 (error) => {
-                    this.notificationService.showNotification(error._status + '\n' + error._body, 2)
+                    this.notificationService.show(error._status + '\n' + error._body)
                 }
             );
     }
@@ -119,11 +119,11 @@ export class CurrentPlayerComponent implements OnInit {
     // executed when the user is selecting a card.
     selected(index: number): void {
         if (this.checkAllSelected()) {
-            this.notificationService.showNotification('All colors have already been specified', 2);
+            this.notificationService.show('All colors have already been specified');
         }
         else {
             if (this.leverSelection[index] != 0) {
-                this.notificationService.showNotification('This color has already been specified', 2);
+                this.notificationService.show('This color has already been specified');
             }
             else {
                 this.leverCounter++;
@@ -135,7 +135,7 @@ export class CurrentPlayerComponent implements OnInit {
 
     confirmLeverSelection(): void {
         if (!this.checkAllSelected()) {
-            this.notificationService.showNotification('You did not specify an order for each color', 2);
+            this.notificationService.show('You did not specify an order for each color');
         }
 
         else {

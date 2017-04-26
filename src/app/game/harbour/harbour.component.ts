@@ -95,7 +95,7 @@ export class HarbourComponent implements OnInit {
                 },
                 (errorData) => {
                     if (errorData.status == 403) {
-                        this.notificationService.showNotification(errorData._body, 3)
+                        this.notificationService.show(errorData._body)
                     }
                     // this.notificationService.showNotification(errorData._body, 4);
                 }
@@ -129,7 +129,7 @@ export class HarbourComponent implements OnInit {
                 );
         }
         else {
-            this.notificationService.showNotification('Before sailing a ship you need to select one.', 3);
+            this.notificationService.show('Before sailing a ship you need to select one.');
         }
 
     }
@@ -387,7 +387,7 @@ export class HarbourComponent implements OnInit {
         this.moveService.fastForward(gameId)
             .subscribe(
                 (result) => {
-                    this.notificationService.showNotification('Game is fast-forwarding...', 2);
+                    this.notificationService.show('Game is fast-forwarding...');
                 },
             );
     }
