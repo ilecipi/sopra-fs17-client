@@ -10,13 +10,17 @@
         <div class="list-heading">
             Available Games:
         </div>
-        <ul class="list-games">
+        <ul class="list-games" id="scrollable">
             <div class="no-game-message" *ngIf="games.length==0">
-                It seems there is no game here, you could create one by yourself if you wish! ;)
+                It seems there is no game here, you could create one by yourself!
             </div>
             <li class="list-group-item" *ngFor="let game of games; let i=index">
                 <div class='game-heading'>
                     <div class="game-name">{{game.name}}</div>
+                    <button [hidden]="game.status == 'PENDING' && !inWaitingRoom"
+                            class="btn btn-sm btn-primary btn-list" (click)="join(i)" type="submit">
+                        JOIN THIS GAME
+                    </button>
                     <div class="game-status" [ngClass]="
                                  {pending: game.status == 'PENDING',
                                  running: game.status == 'RUNNING',
@@ -24,15 +28,12 @@
                                  }">
                         {{game.status}}
                     </div>
-                    <button *ngIf=" game.status == 'PENDING' && !inWaitingRoom"
-                            class="btn btn-sm btn-primary btn-list" (click)="join(i)" type="submit">
-                        JOIN THIS GAME
-                    </button>
+
 
                 </div>
                 <div class="players">
                     <div class="players-heading">
-                        Players already in this game:
+                        Players in this game:
                     </div>
                     <div class="player-row">
                         <div class='player' *ngIf="game.players[0]!=undefined">
