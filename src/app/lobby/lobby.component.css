@@ -1,9 +1,4 @@
 .lobby {
-    opacity: 1; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
-    filter: alpha(opacity=50); /* IE lt 8 */
-    -ms-filter: "alpha(opacity=50)"; /* IE 8 */
-    -khtml-opacity: .50; /* Safari 1.x */
-    -moz-opacity: .50; /* FF lt 1.5, Netscape */
     font-size: 15px;
     margin-left: 20%;
     margin-right: 20%;
@@ -13,8 +8,7 @@
 .lobby-block {
     width: 100%;
     overflow: hidden;
-    margin-bottom: -10px;
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     border-radius: 5px;
 }
 
@@ -23,17 +17,14 @@
 */
 .lobby-heading {
     margin-top: 50px;
-    opacity: .9;
-    background-color: #373737;
+    background-color:  rgba(55, 55, 55, 0.9);
     font-weight: normal;
     color: white;
-    border: 1px solid white;
-    letter-spacing: 2pt;
-    word-spacing: 2pt;
     font-size: 20px;
     text-align: center;
     line-height: 1.2;
-    border-radius: 10px;
+    border-radius: 5px;
+    margin-bottom:10px;
 }
 
 .name-username {
@@ -50,22 +41,13 @@
     padding: 10px;
 }
 
-.user-status {
-    float: right;
-}
-
-.game-status {
-    float: right;
-}
-
 /*
     Columns Block:
 */
 
 .list-heading {
     color: white;
-    background: #373737;
-    opacity: .9;
+    background:  rgba(55, 55, 55, 0.9);
     font-size: 20px;
     text-align: center;
     height: 50px;
@@ -74,9 +56,9 @@
 }
 
 .list-games {
-    border-top: 1px solid white;
     background: rgba(69, 69, 69, 0.8);
     padding: 0;
+    margin:0;
     min-height: 450px;
     overflow: auto;
 }
@@ -92,11 +74,9 @@
     opacity: .9;
     color: white;
     background: #000000;
-    border: 1px double white;
-    border-radius: 10px;
     padding: 3px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 /*
@@ -112,7 +92,7 @@
     width: 33%;
     flex-grow: 1;
     text-align: center;
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     border-radius: 5px;
     margin: 3px;
     height: 30px;
@@ -123,7 +103,7 @@
     width: 33%;
     flex-grow: 1;
     text-align: center;
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     border-radius: 5px;
     margin: 3px;
     height: 30px;
@@ -135,7 +115,7 @@
     width: 33%;
     height: 30px;
     color: white;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     border-radius: 5px;
     margin: 3px;
     font-size: 14px;
@@ -152,7 +132,7 @@
 }
 
 .player {
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     border-radius: 5px;
     margin: 5px;
     flex-grow: 1;
@@ -176,26 +156,43 @@
     Bottom buttons
 */
 
+
 .bottom-buttons {
+
     display: flex;
-    opacity: .9;
-    background-color: #373737;
+    flex-direction:row;
+    align-items: center;
+    justify-content:center;
+    background-color:  rgba(55, 55, 55, 0.9);
     font-weight: normal;
     color: white;
-    border: 1px solid white;
-    letter-spacing: 2pt;
-    word-spacing: 2pt;
-    font-size: 20px;
+     font-size: 20px;
     text-align: center;
     line-height: 1.2;
     border-radius: 5px;
+    min-height:70px;
 }
-
+.name-input{
+    flex-grow:1;
+    position: relative;
+    text-align: center;
+    height: 50px;
+    width: 200px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 25px;
+    padding: 2%;
+    color: white;
+     background-color: rgba(69, 69, 69, 0.8);
+}
 .bottom-button {
+    margin:10px;
+    line-height:2;
     width: 50%;
+    height:50px;
     flex-grow: 1;
     font-size: 20px;
-    margin: 20px;
 }
 
 .wait-info {
@@ -204,8 +201,7 @@
     background-color: #373737;
     color: white;
     opacity: 0.9;
-    border: 1px solid white;
-    border-radius: 5px;
+        border-radius: 5px;
     text-align: center;
 
 }
@@ -215,7 +211,7 @@
 */
 .btn {
     color: white;
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
 }
 
@@ -264,4 +260,22 @@
 
 .inALobby {
     color: var(--colorInALobby);
+}
+
+
+/*Placeholder for color of font of fillable text - cross-browser*/
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: white;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    color: white;
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+    color: white;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: white;
 }

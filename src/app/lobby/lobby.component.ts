@@ -22,6 +22,7 @@ export class LobbyComponent implements OnInit {
     inWaitingRoom: boolean;
     createdGame: boolean;
     pressedReady: boolean;
+    gameName: string;
 
     gamesSubscription: any; //need to store the subscription in order to un-subscribe from it later
 
@@ -32,6 +33,7 @@ export class LobbyComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.gameName = '';
 
         //Get all games from the server:
         this.gameService.getGames()
@@ -75,17 +77,23 @@ export class LobbyComponent implements OnInit {
 
     //method called when button is pressed.
     createNewGame() {
-        this.gameService.createNewGame(this.currentUser)
-            .subscribe(
-                (result) => {
-                    this.currentGame = result;
-                    this.gameService.setCurrentGame(this.currentGame);
-                    this.index = this.games.length;
+        if (this.gameName === undefined || this.gameName === ''){
+            this.notificationService.showNotification('Please insert a valid game name',2);
+        }
+        else {
+            this.gameService.createNewGame(this.currentUser,this.gameName)
+                .subscribe(
+                    (result) => {
+                        this.currentGame = result;
+                        this.gameService.setCurrentGame(this.currentGame);
+                        this.index = this.games.length;
 
-                }
-            );
-        this.inWaitingRoom = true;
-        this.createdGame = true;
+                    }
+                );
+            this.inWaitingRoom = true;
+            this.createdGame = true;
+        }
+
     }
 
 
@@ -105,7 +113,7 @@ export class LobbyComponent implements OnInit {
         let selectedGame = this.games[index]; //selects the game from the games list
         let user = this.userService.getCurrentUser(); //gets currentUser information from userService
         let subscription = this.gameService.joinGame(selectedGame, user) //join game
-            .subscribe((result)=> subscription.unsubscribe());
+            .subscribe((result) => subscription.unsubscribe());
         this.inWaitingRoom = true;
         this.gameService.setCurrentGame(selectedGame); //currentGame in gameService is updated
         this.index = index;

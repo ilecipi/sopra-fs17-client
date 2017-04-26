@@ -75,11 +75,11 @@ export class GameService {
         return this.currentGame;
     }
 
-    createNewGame(user: User): Observable<Game> {
-        let bodyString = JSON.stringify({name: "NewGame", owner: user.username}); // Stringify payload
-        let headers = new Headers({'Content-Type': 'application/json'});// ... Set content type to JSON
+    createNewGame(user: User, gameName: string): Observable<Game> {
+        let bodyString = JSON.stringify({name: gameName, owner: user.username}); // Stringify payload
+        let headers = new Headers({'Content-Type': 'application/json'}); // ... Set content type to JSON
         let options = new RequestOptions({headers: headers}); // Create a request option
-        //create new game with token same as user
+        // create new game with token same as user
 
         this.isTrueGame = true;
 
