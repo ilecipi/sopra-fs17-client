@@ -37,10 +37,15 @@ export class MarketSiteboardComponent implements OnInit {
         this.moveService.pickCard(gameId, roundId, playerToken, cardIndex)
             .subscribe(
                 (result) => {
-                    // do nothing because successful.
+                    // do nothing because successful
                 },
                 (errorData) => {
-                    // don't show message because there is no response atm from the server.
+                    if (errorData.status == 403) {
+                        let cuts = errorData._body.split('"');
+                        // let notification= secondCut[0];
+                        this.notificationService.show(cuts[15]);
+                    }
+
                 }
             );
     }

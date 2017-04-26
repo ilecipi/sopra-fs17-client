@@ -25,14 +25,14 @@ export class MoveService {
 
     }
 
-    addStone(gameId: number, roundId: number, shipId: number, playerToken: string, stonePosition: number): Observable<string> {
+    addStone(gameId: number, roundId: number, shipId: number, playerToken: string, stonePosition: number): Observable<JSON> {
         let headers = new Headers();// new empty header
         let options = new RequestOptions({headers: headers}); // Create a request option
 
         return this.http.post(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId
             + '/ships/' + shipId + '?playerToken=' + playerToken
             + '&position=' + stonePosition, options)
-            .map(res => res.json());
+            .map(res => res.json().stringify().json());
     }
 
 

@@ -51,8 +51,19 @@ export class CurrentPlayerComponent implements OnInit {
         let playerToken = this.currentUser.token;
 
         this.moveService.retrieveStones(gameId, roundId, playerToken)
-            .subscribe(result => {
-            });
+            .subscribe(
+                (result) => {
+                    // do nothing because successful
+                },
+                (errorData) => {
+                    if (errorData.status == 403) {
+                        let cuts = errorData._body.split('"');
+                        // let notification= secondCut[0];
+                        this.notificationService.show(cuts[15]);
+                    }
+
+                }
+            );
     }
 
 
@@ -61,10 +72,17 @@ export class CurrentPlayerComponent implements OnInit {
         let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1];
         let playerToken = this.currentUser.token;
         this.moveService.useCard(gameId, roundId, playerToken, cardId)
-            .subscribe((result) => {
+            .subscribe(
+                (result) => {
+                    // do nothing because successful
                 },
-                (error) => {
-                    this.notificationService.show(error._status + '\n' + error._body)
+                (errorData) => {
+                    if (errorData.status == 403) {
+                        let cuts = errorData._body.split('"');
+                        // let notification= secondCut[0];
+                        this.notificationService.show(cuts[15]);
+                    }
+
                 }
             );
     }
@@ -74,10 +92,17 @@ export class CurrentPlayerComponent implements OnInit {
         let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1];
         let playerToken = this.currentUser.token;
         this.moveService.leverCall(gameId, roundId, playerToken, order)
-            .subscribe((result) => {
+            .subscribe(
+                (result) => {
+                    // do nothing because successful
                 },
-                (error) => {
-                    this.notificationService.show(error._status + '\n' + error._body)
+                (errorData) => {
+                    if (errorData.status == 403) {
+                        let cuts = errorData._body.split('"');
+                        // let notification= secondCut[0];
+                        this.notificationService.show(cuts[15]);
+                    }
+
                 }
             );
     }
