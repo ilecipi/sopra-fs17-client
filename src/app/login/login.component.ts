@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {AuthenticationService} from "../shared/services/authentication.service";
 import {Router} from "@angular/router";
 import {User} from "../shared/models/user";
@@ -20,19 +20,19 @@ export class LoginComponent implements OnInit {
 
     }
 
-    ngOnInit() {
+    ngOnInit():void {
         // reset login status
         this.authenticationService.logout();
         this.user = new User();
 
     }
 
-    login() {
+    login() :void{
         if (this.user.name == undefined || this.user.name == '') {
-            this.notificationService.showNotification('Please insert a name.', 2);
+            this.notificationService.show('Please insert a name.');
         }
         else if (this.user.username == undefined  || this.user.username == '') {
-            this.notificationService.showNotification('Please insert a username.', 2);
+            this.notificationService.show('Please insert a username.');
         }
         else { // if user and username fields are not empty
 
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
     }
 
-    clearfields() {
+    clearfields(): void {
         this.user.name = '';
         this.user.username = '';
     }
