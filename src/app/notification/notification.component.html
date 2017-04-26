@@ -1,5 +1,5 @@
 <div class="parent-block">
-    <div class="text-container">
-        {{currentNotification}}
-    </div>
+        <div class="notification" *ngFor="let notification of notifications">
+            {{notification}}
+        </div>
 </div>
