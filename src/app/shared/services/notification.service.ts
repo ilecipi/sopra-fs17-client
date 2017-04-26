@@ -23,10 +23,16 @@ export class NotificationService {
             if (this.notificationsQueue.length == 0) {
                 //do nothing because queue is empty
             }
+            if (this.notificationsQueue.length >= 7){
+                this.removeItem();
+            }
             else {
 
                 if (this.queueToUpdate) {
                     this.removeItem();
+                    this.queueToUpdate = false;
+                    this.wait3secs();
+
                 }
             }
         });
@@ -34,14 +40,12 @@ export class NotificationService {
 
     removeItem() {
         this.notificationsQueue.shift();
-        this.queueToUpdate = false;
-        this.wait3secs();
     }
 
     wait3secs() {
         setTimeout(() => {
             this.queueToUpdate = true;
-        }, 3000)
+        }, 1500)
     }
 
     show(notification: string) {

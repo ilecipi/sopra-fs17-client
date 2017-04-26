@@ -13,6 +13,8 @@
 
 
 .notification {
+
+    border-radius: 5px;
     margin:5px;
     border:1px solid white;
     min-width:300px;
