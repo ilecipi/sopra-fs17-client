@@ -1,23 +1,23 @@
 .parent-block {
-    min-width: 100%;
-    min-height: 100%;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.end-game-container {
-    min-width: 1000px;
-    min-height: 200px;
-    margin-top: 300px;
-
-}
+    background-image: url("../../assets/img/market-endgame.png");
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;}
 
 .end-game-heading {
+    margin-top:300px;
     flex-grow: 0;
-    min-width: 100%;
+    width: 65%;
     font-size: 40px;
+    height:66px;
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -33,9 +33,10 @@
 .end-game-block {
     flex-grow: 0;
 
-    min-width: 1000px;
-    min-height: 300px;
+    min-width: 65%;
+    height: 300px;
 
+    margin-bottom:187px;
     position: relative;
     display: flex;
     -webkit-box-sizing: border-box;

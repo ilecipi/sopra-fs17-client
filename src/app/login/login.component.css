@@ -29,7 +29,6 @@
     align-items: center;
     justify-content: center;
     background: rgba(69,69,69,0.8);
-    /*border:1px solid white;*/
     border-radius:5px;
 }
 
@@ -115,7 +114,9 @@
     height:60px;
     color: white;
     border: 0;
-    border-radius:10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     margin:5px;
     font-size: 35px;
     background-image: -webkit-linear-gradient(top,var(--colorFour), #5e2e1a);
