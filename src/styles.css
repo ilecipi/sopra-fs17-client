@@ -37,7 +37,7 @@
 }
 
 body {
-    background-image: url("assets/img/background.jpg");
+    background-image: url("assets/img/background.png");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

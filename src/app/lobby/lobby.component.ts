@@ -78,7 +78,7 @@ export class LobbyComponent implements OnInit {
     //method called when button is pressed.
     createNewGame() {
         if (this.gameName === undefined || this.gameName === ''){
-            this.notificationService.showNotification('Please insert a valid game name',2);
+            this.notificationService.show('Please insert a valid game name');
         }
         else {
             this.gameService.createNewGame(this.currentUser,this.gameName)

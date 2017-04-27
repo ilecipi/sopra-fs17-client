@@ -22,8 +22,8 @@
 }
 
 .form-signin {
-    margin-top: 300px;
-    width: 500px;
+    margin-top: 10px;
+    width: 610px;
     color: black;
     display: flex;
     flex-direction: column;
@@ -48,7 +48,6 @@
     line-height: 1.6;
     min-width: 610px;
     margin-bottom:5px;
-
 }
 
 .form-signin .checkbox {
