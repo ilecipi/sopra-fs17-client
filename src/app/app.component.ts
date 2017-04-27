@@ -4,7 +4,6 @@ import {UserService} from './shared/services/user.service';
 import {GameService} from './shared/services/game.service'
 import {ShipService} from "./shared/services/ship.service";
 import {TempleService} from './shared/services/temple.service';
-import {NotificationService} from './shared/services/notification.service';
 
 @Component({
     selector: 'app-root',
@@ -14,11 +13,10 @@ import {NotificationService} from './shared/services/notification.service';
 
 })
 export class AppComponent implements OnInit{
-    constructor(private notificationService: NotificationService) {
+    constructor() {
     }
 
     ngOnInit(){
-        this.notificationService.initializeNotification();
     }
 
     title = 'Sopra FS17';

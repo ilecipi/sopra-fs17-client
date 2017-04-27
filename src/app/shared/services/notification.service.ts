@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
 
@@ -9,46 +9,50 @@ export class NotificationService {
     private currentNotificationSubject = new Subject<string>();
     private isShown: boolean = false;
 
+    private notificationsQueue: string[] = [];
+    private queueSubscription;
+    private queueToUpdate = true;
+
     constructor() {
+        this.pollQueue();
     }
 
-    //styles required to move each ship in the correct place.
-    private notificationStyle = document.createElement('style');
 
-    initializeNotification(): void {
+    pollQueue(): void {
+        this.queueSubscription = Observable.interval(100).subscribe(x => {
+            if (this.notificationsQueue.length == 0) {
+                //do nothing because queue is empty
+            }
+            if (this.notificationsQueue.length >= 7){
+                this.removeItem();
+            }
+            else {
 
-        //styles initialization for display feature
-        this.notificationStyle.innerHTML = '.notification {display: none;}';
-        document.getElementsByTagName('app-root')[0].appendChild(this.notificationStyle);
-        this.isShown = false;
+                if (this.queueToUpdate) {
+                    this.removeItem();
+                    this.queueToUpdate = false;
+                    this.wait3secs();
+
+                }
+            }
+        });
     }
 
-    showNotification(notificationMessage: string, seconds: number) {
-        this.setNotification(notificationMessage);
-        if (!this.isShown) {
-            document.getElementsByTagName('app-root')[0].removeChild(this.notificationStyle);
-            setTimeout(() => this.hideNotification(), seconds * 1000);
-            this.isShown = true;
-        }
-        else {
-            setTimeout(() => this.hideNotification(), seconds * 1000);
-        }
-
+    removeItem() {
+        this.notificationsQueue.shift();
     }
 
-    hideNotification() {
-        document.getElementsByTagName('app-root')[0].appendChild(this.notificationStyle);
-        this.isShown = false;
+    wait3secs() {
+        setTimeout(() => {
+            this.queueToUpdate = true;
+        }, 1500)
     }
 
-    setNotification(notification: string) {
-        this.currentNotification = notification;
-        this.currentNotificationSubject.next(this.currentNotification);
+    show(notification: string) {
+        this.notificationsQueue.push(notification);
     }
 
-    //used to send a flow of Notifications to the notifications component
-    getCurrentNotification(): Observable<string> {
-        return this.currentNotificationSubject;
+    getNotificationsQueue(): string[] {
+        return this.notificationsQueue;
     }
-
 }

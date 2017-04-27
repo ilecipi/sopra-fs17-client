@@ -1,7 +1,9 @@
 <div class="parent-block">
     <div class="temple-block">
         <div class="temple-row">
-            <div class="marker marker1" *ngIf="currentTemple?.stones?.length>=1 && currentTemple?.insertIndex==0">►</div>
+            <div class="marker marker1" *ngIf="currentTemple?.stones?.length>=1 && currentTemple?.insertIndex==0">
+                <img src="../../../assets/img/temple-arrow.png" style="width:13px;">
+            </div>
             <div class="first-block block"
                  *ngIf="currentTemple?.stones?.length>=1"
                  [ngClass]="
@@ -23,7 +25,7 @@
                      }">
             </div>
 
-            <div class="marker marker3" *ngIf="currentTemple?.stones?.length>=3 && currentTemple?.insertIndex==2">🡺</div>
+            <div class="marker marker3" *ngIf="currentTemple?.stones?.length>=3 && currentTemple?.insertIndex==2">►</div>
             <div class="third-block block"
                  *ngIf="currentTemple?.stones?.length>=3"
                  [ngClass]="
@@ -34,7 +36,7 @@
                      }">
             </div>
 
-            <div class="marker marker4" *ngIf="currentTemple?.stones?.length>=4 && currentTemple?.insertIndex==3">🡺</div>
+            <div class="marker marker4" *ngIf="currentTemple?.stones?.length>=4 && currentTemple?.insertIndex==3">►</div>
             <div class="fourth-block block"
                  *ngIf="currentTemple?.stones?.length>=4"
                  [ngClass]="
@@ -45,7 +47,7 @@
                      }">
             </div>
 
-            <div class="marker marker5" *ngIf="currentTemple?.stones?.length>=5 && currentTemple?.insertIndex==4">🡺</div>
+            <div class="marker marker5" *ngIf="currentTemple?.stones?.length>=5 && currentTemple?.insertIndex==4">►</div>
             <div class="fifth-block block"
                  *ngIf="currentTemple?.stones?.length>=5"
                  [ngClass]="

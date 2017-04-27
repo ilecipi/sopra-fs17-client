@@ -130,7 +130,7 @@ export class LobbyComponent implements OnInit {
     }
 
     logout() {
-        this.notificationService.showNotification('You have been logged out.', 1);
+        this.notificationService.show('You have been logged out.');
         this.inWaitingRoom = false;
         this.createdGame = false;
         this.gamesSubscription.unsubscribe();
@@ -145,7 +145,7 @@ export class LobbyComponent implements OnInit {
                     this.gameService.setCurrentGame(this.games[this.index]);
                     this.gamesSubscription.unsubscribe();
                     subscription.unsubscribe();
-                    this.notificationService.showNotification('Your game is starting, good luck!', 1.7);
+                    this.notificationService.show('Your game is starting, good luck!');
                     this.router.navigate(['/game']);
 
                 }

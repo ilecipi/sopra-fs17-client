@@ -1,10 +1,9 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from "@angular/core";
 import {ShipService} from "../../shared/services/ship.service";
 import {GameService} from "../../shared/services/game.service";
 
 import {Game} from "../../shared/models/game";
 import {Ship} from "../../shared/models/ship";
-import {Stone} from "../../shared/models/stone";
 import {MoveService} from "../../shared/services/move.service";
 import {User} from "../../shared/models/user";
 import {Observable} from "rxjs/Rx";
@@ -95,9 +94,11 @@ export class HarbourComponent implements OnInit {
                 },
                 (errorData) => {
                     if (errorData.status == 403) {
-                        this.notificationService.showNotification(errorData._body, 3)
+                        let cuts = errorData._body.split('"');
+                        // let notification= secondCut[0];
+                        this.notificationService.show(cuts[15]);
                     }
-                    // this.notificationService.showNotification(errorData._body, 4);
+
                 }
             );
     }
@@ -124,12 +125,17 @@ export class HarbourComponent implements OnInit {
                         // do nothing because successful
                     },
                     (errorData) => {
+                        if (errorData.status == 403) {
+                            let cuts = errorData._body.split('"');
+                            // let notification= secondCut[0];
+                            this.notificationService.show(cuts[15]);
+                        }
 
                     }
                 );
         }
         else {
-            this.notificationService.showNotification('Before sailing a ship you need to select one.', 3);
+            this.notificationService.show('Before sailing a ship you need to select one.');
         }
 
     }
@@ -387,7 +393,7 @@ export class HarbourComponent implements OnInit {
         this.moveService.fastForward(gameId)
             .subscribe(
                 (result) => {
-                    this.notificationService.showNotification('Game is fast-forwarding...', 2);
+                    this.notificationService.show('Game is fast-forwarding...');
                 },
             );
     }
