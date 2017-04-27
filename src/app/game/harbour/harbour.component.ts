@@ -102,14 +102,7 @@ export class HarbourComponent implements OnInit {
                 }
             );
     }
-
-    // // Error callback
-    // var error = errorData.json();
-    // var messages = error.messages;
-    // messages.forEach((message) => {
-    // this.companyForm.controls[message.property].setErrors({
-    //  remote: message.message });
-
+    
     selectDock(siteBoardName: string): void {
         if (this.selectedShip != -1) {
             console.log(this.selectedShip);

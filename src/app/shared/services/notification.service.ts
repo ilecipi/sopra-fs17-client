@@ -18,7 +18,7 @@ export class NotificationService {
             if (this.notificationsQueue.length == 0) {
                 //do nothing because queue is empty
             }
-            else if (this.notificationsQueue.length >= 7) {
+            else if (this.notificationsQueue.length >= 10) {
                 this.removeItem();
             }
             else {
