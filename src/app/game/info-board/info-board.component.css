@@ -215,19 +215,14 @@ Cards Block:
     min-height: 95px;
     max-height: 95px;
     z-index:2;
-
-    background-image: url('../../../assets/img/cards-back.png');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .discarded-market-cards-description{
     position:relative;
     bottom: 73px;
-    height:0%;
+    height: 0;
     text-align:center;
     flex-grow:0;
-    /*line-height:5;*/
 }
 
 /***********************************************************************************************************************
