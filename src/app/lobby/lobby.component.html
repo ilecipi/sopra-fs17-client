@@ -17,8 +17,6 @@
             <li class="list-group-item" *ngFor="let game of games; let i=index">
                 <div class='game-heading'>
                     <div class="game-name">{{game.name}}</div>
-                    <button [hidden]="game.status == 'PENDING' && !inWaitingRoom"
-                            class="btn btn-sm btn-primary btn-list" (click)="join(i)" type="submit">
                         JOIN THIS GAME
                     </button>
                     <div class="game-status" [ngClass]="

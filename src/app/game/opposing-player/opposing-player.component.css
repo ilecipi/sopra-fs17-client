@@ -1,7 +1,6 @@
 .parent-block {
     height: 256px;
     color: white;
-    background-image: -webkit-linear-gradient(top, var(--colorFour), #373737);
     border: 1px solid white;
     display: flex;
     flex-direction: column;
