@@ -71,6 +71,7 @@ Info Column:
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     text-align: center;
+    z-index:10;
 }
 .info-hover:hover {
     background-position: center;
