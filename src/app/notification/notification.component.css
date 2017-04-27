@@ -13,14 +13,30 @@
 
 
 .notification {
-
+    position:relative;
+    right:500px;
+    opacity: 0;
+    transition: .3s ease-in-out all;
     border-radius: 5px;
     margin:5px;
-    border:1px solid white;
     min-width:300px;
     align-self:flex-start;
-    background:rgba(55,55,55,0.8);
+    background: rgba(69, 69, 69, 0.9);
     text-align: center;
-    padding:5px;
+    padding: 5px;
+    height:0;
+}
 
+.show {
+    position:relative;
+    right:0;
+    opacity: 1 !important;
+    border-radius: 5px;
+    margin:5px;
+    min-width:300px;
+    align-self:flex-start;
+    background: rgba(69, 69, 69, 0.9);
+    text-align: center;
+    padding: 5px;
+    height:auto;
 }
