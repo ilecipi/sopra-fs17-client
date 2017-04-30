@@ -9,7 +9,6 @@ Parent Blocks
 }
 
 .general-information-block {
-    border: 1px solid black;
     min-height: 25%;
     width: 100%;
     display: flex;
@@ -57,11 +56,15 @@ General Information - Active Player Block
 .first-row {
     display: flex;
     height: 45%;
+    align-items: center;
+    justify-content: center;
 }
 
 .second-row {
     display: flex;
     height: 45%;
+    align-items: center;
+    justify-content: center;
 }
 
 .player-element-bg {
@@ -168,7 +171,7 @@ Cards Block:
     border: 2px solid black;
     border-radius:10px;
     margin:5px;
-    background: var(--colorOne);
+    background: rgba(100,100,100,1);
 }
 
 .shipCard {
@@ -224,7 +227,7 @@ Cards Block:
 .discarded-market-cards-description{
     position:relative;
     bottom: 73px;
-    height:0%;
+    height: 0;
     text-align:center;
     flex-grow:0;
     /*line-height:5;*/

@@ -3,7 +3,7 @@
     color: white;
     width: 100%;
     height: 100%;
-    border: 1px solid white;
+    /*border: 1px solid white;*/
 
 }
 
@@ -12,13 +12,14 @@ Heading
 ***********************************************************************************************************************/
 .heading {
     flex-grow: 1;
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     width: 30%;
     height: 100%;
+    border-right:1px solid white;
 }
 
 .player-username-container {
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     height: 30%;
     display: flex;
     align-items: center;
@@ -39,9 +40,8 @@ Heading
 .player-quarry {
     flex-grow: 1;
     text-align: center;
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     border-radius: 10px;
-    background-color: #770000;
     line-height: 6;
     display: flex;
     flex-direction: column;
@@ -104,10 +104,9 @@ Action Cards Block:
 ***********************************************************************************************************************/
 .action-cards-block {
     position: relative;
-    float: left; /* LEAVE THIS HERE BECAUSE THE 'ABILITY' OF FLOATS BEING WITHOUT HEIGHT IS USEFUL HERE */
-    bottom: 140px;
+    float: left; /* LEAVE THIS HERE BECAUSE THE 'ABILITY' OF FLOATS OF BEING WITHOUT HEIGHT IS USEFUL HERE */
+    bottom: 145px;
     left: 505px;
-    border: 1px solid white;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.8);
     min-width: 400px;
@@ -139,7 +138,7 @@ Action Cards Block:
 }
 
 .element-color {
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     min-width: 30px;
     max-width: 30px;
     min-height: 30px;

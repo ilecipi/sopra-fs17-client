@@ -105,13 +105,9 @@ export class InfoBoardComponent implements OnInit {
             }
             else {
                 this.setTrackBoardCells();
-
             }
-
             this.updateDiscardedCardsStyle();
-
         })
-
     }
 
 

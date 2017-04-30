@@ -12,7 +12,7 @@
         </div>
         <ul class="list-games" id="scrollable">
             <div class="no-game-message" *ngIf="games.length==0">
-                It seems there is no game here, you could create one by yourself!
+                No games found. Create one yourself!<br><br><br><br><br><br>...and don't forget to give it a name!
             </div>
             <li class="list-group-item" *ngFor="let game of games; let i=index">
                 <div class='game-heading'>
@@ -27,8 +27,6 @@
                                  }">
                         {{game.status}}
                     </div>
-
-
                 </div>
                 <div class="players">
                     <div class="players-heading">
@@ -43,7 +41,22 @@
                                     isPlaying: game.players[0].status == 'IS_PLAYING',
                                     isReady: game.players[0].status == 'IS_READY',
                                     inALobby: game.players[0].status=='IN_A_LOBBY'
-                                     }">{{game.players[0].status}}
+                                     }">
+                                <div class="status-clean" *ngIf="game.players[0].status == 'ONLINE'">
+                                    ONLINE
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[0].status == 'OFFLINE'">
+                                    OFFLINE
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[0].status == 'IS_PLAYING'">
+                                    IS PLAYING
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[0].status == 'IS_READY'">
+                                    IS READY TO PLAY
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[0].status == 'IN_A_LOBBY'">
+                                    IN A LOBBY
+                                </div>
                             </div>
                         </div>
                         <div class='player' *ngIf="game.players[1]!=undefined">
@@ -54,7 +67,22 @@
                                     isPlaying: game.players[1].status == 'IS_PLAYING',
                                     isReady: game.players[1].status == 'IS_READY',
                                     inALobby: game.players[1].status=='IN_A_LOBBY'
-                                     }">{{game.players[1].status}}
+                                     }">
+                                <div class="status-clean" *ngIf="game.players[1].status == 'ONLINE'">
+                                    ONLINE
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[1].status == 'OFFLINE'">
+                                    OFFLINE
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[1].status == 'IS_PLAYING'">
+                                    IS PLAYING
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[1].status == 'IS_READY'">
+                                    IS READY TO PLAY
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[1].status == 'IN_A_LOBBY'">
+                                    IN A LOBBY
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -67,7 +95,22 @@
                                     isPlaying: game.players[2].status == 'IS_PLAYING',
                                     isReady: game.players[2].status == 'IS_READY',
                                     inALobby: game.players[2].status=='IN_A_LOBBY'
-                                     }">{{game.players[2].status}}
+                                     }">
+                                <div class="status-clean" *ngIf="game.players[2].status == 'ONLINE'">
+                                    ONLINE
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[2].status == 'OFFLINE'">
+                                    OFFLINE
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[2].status == 'IS_PLAYING'">
+                                    IS PLAYING
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[2].status == 'IS_READY'">
+                                    IS READY TO PLAY
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[2].status == 'IN_A_LOBBY'">
+                                    IN A LOBBY
+                                </div>
                             </div>
                         </div>
                         <div class='player' *ngIf="game.players[3]!=undefined">
@@ -78,7 +121,22 @@
                                     isPlaying: game.players[3].status == 'IS_PLAYING',
                                     isReady: game.players[3].status == 'IS_READY',
                                     inALobby: game.players[3].status=='IN_A_LOBBY'
-                                     }">{{game.players[3].status}}
+                                     }">
+                                <div class="status-clean" *ngIf="game.players[3].status == 'ONLINE'">
+                                    ONLINE
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[3].status == 'OFFLINE'">
+                                    OFFLINE
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[3].status == 'IS_PLAYING'">
+                                    IS PLAYING
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[3].status == 'IS_READY'">
+                                    IS READY TO PLAY
+                                </div>
+                                <div class="status-clean" *ngIf="game.players[3].status == 'IN_A_LOBBY'">
+                                    IN A LOBBY
+                                </div>
                             </div>
                         </div>
                     </div>

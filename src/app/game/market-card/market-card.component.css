@@ -5,17 +5,18 @@
     max-height: 95px;
     font-size: 15px;
     margin: 5px;
-    border: 1px solid white;
     border-radius: 5px;
     color: white;
     display: flex;
     flex-direction: column;
-    background: #373737;
+    background: #696969;
     cursor: pointer;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .card-title {
-    border-radius: 5px;
+    border-radius: 0;
     font-size: 13px;
     text-align: center;
     flex-grow: 0;
@@ -26,7 +27,8 @@
 }
 
 .description {
-    border-top: 1px solid white;
+    border-top: 1px solid rgba(255, 255, 255, 0.7);
+
     text-align: center;
     flex-grow: 0;
     font-size: 12px;
@@ -78,6 +80,7 @@
     max-height: 20px;
     min-width: 20px;
     max-width: 20px;
-    border: 1px solid white;
     text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
 }
