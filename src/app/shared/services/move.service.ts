@@ -32,7 +32,7 @@ export class MoveService {
         return this.http.post(this.apiUrl + '/games/' + gameId + '/rounds/' + roundId
             + '/ships/' + shipId + '?playerToken=' + playerToken
             + '&position=' + stonePosition, options)
-            .map(res => res.json().stringify().json());
+            .map(res => res.json());
     }
 
 

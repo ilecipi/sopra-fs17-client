@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {UserService} from "../shared/services/user.service";
 import {GameService} from "../shared/services/game.service";
 import {User} from "../shared/models/user";
 import {Game} from "../shared/models/game";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs/Rx";
-import {NotificationService} from '../shared/services/notification.service';
+import {NotificationService} from "../shared/services/notification.service";
 
 @Component({
     selector: 'app-lobby',
@@ -25,6 +25,7 @@ export class LobbyComponent implements OnInit {
     gameName: string;
 
     gamesSubscription: any; //need to store the subscription in order to un-subscribe from it later
+    userSubscription: any;
 
     constructor(private userService: UserService,
                 private gameService: GameService,
@@ -64,7 +65,7 @@ export class LobbyComponent implements OnInit {
 
         //Automatically retrieve users and games list information from server:
         this.pollInfo();
-
+        this.listenForStart();
     }
 
     //calls polling function for games list
@@ -73,10 +74,20 @@ export class LobbyComponent implements OnInit {
             .subscribe(games => {
                 this.games = games;
             });
+        this.userSubscription = this.userService.pollUser(this.currentUser.token)
+            .subscribe((user) => {
+                this.currentUser = user;
+                if (this.currentUser.status === 'IN_A_LOBBY') {
+                    this.inWaitingRoom = true;
+                }
+                else if (this.currentUser.status === 'IS_READY') {
+                    this.pressedReady = true;
+                }
+            });
     }
 
     //method called when button is pressed.
-    createNewGame() {
+    createNewGame() :void{
         if (this.gameName === undefined || this.gameName === ''){
             this.notificationService.show('Please insert a valid game name');
         }
@@ -86,25 +97,38 @@ export class LobbyComponent implements OnInit {
                     (result) => {
                         this.currentGame = result;
                         this.gameService.setCurrentGame(this.currentGame);
-                        this.index = this.games.length;
+                        this.createdGame = true;
+                        let subscription = Observable.interval(100).subscribe((x) => {
 
+                            let findIndex = -1;
+                            for (let i = 0; i <= this.games.length; i++) {
+                                if (this.currentGame!=undefined && this.games[i] != undefined && this.currentGame.id === this.games[i].id) {
+                                    findIndex = i;
+                                }
+                            }
+                            if (findIndex != -1) {
+
+                                this.index = findIndex;
+                                subscription.unsubscribe();
+
+                            }
+                        });
                     }
                 );
-            this.inWaitingRoom = true;
-            this.createdGame = true;
         }
 
     }
 
 
-    ready() {
+    ready(): void {
         this.gameService.isReady(this.userService.getCurrentUser())
             .subscribe(
                 (result) => {
+                    this.listenForStart();
+                },
+                (errorData) => {
                 }
             );
-        this.pressedReady = true;
-        this.listenForStart();
 
     }
 
@@ -125,7 +149,7 @@ export class LobbyComponent implements OnInit {
                 .subscribe();
         }
         else {
-            //do nothing because not allowed to start the game
+            this.notificationService.show('Game could not start properly.');
         }
     }
 
@@ -134,6 +158,7 @@ export class LobbyComponent implements OnInit {
         this.inWaitingRoom = false;
         this.createdGame = false;
         this.gamesSubscription.unsubscribe();
+        this.userSubscription.unsubscribe();
         this.userService.logoutUser();
 
     }
@@ -141,9 +166,13 @@ export class LobbyComponent implements OnInit {
     listenForStart(time = 300) {
         let subscription = Observable.interval(time).subscribe((x) => {
             if (this.index != -1) {
+                // problema con chi crea il gioco e con chi invece lo joina...
+                // con l'index funziona. però quello che crea il gioco non entra nella partita perchè non sa l'index,
+                // magari risolvibile cercando il gioco nella lista usando il suo ID. o il nome.
                 if (this.games[this.index].status == 'RUNNING') {
                     this.gameService.setCurrentGame(this.games[this.index]);
                     this.gamesSubscription.unsubscribe();
+                    this.userSubscription.unsubscribe();
                     subscription.unsubscribe();
                     this.notificationService.show('Your game is starting, good luck!');
                     this.router.navigate(['/game']);
