@@ -27,7 +27,8 @@
     height: 100%;
     width: 36%;
     margin: 0;
-background-image: url('../../assets/img/ImhotepHarbour.png');
+    background-image: url('../../assets/img/ImhotepHarbourWaterNew.png');
+    background-size: cover;
 }
 
 /***********************************************************************************************************************
@@ -84,7 +85,7 @@ Info Board:
     height: 100%;
     width: 28%;
     margin: 0;
-    background-color: var(--colorFour);
+    background-color: #95652e;
 }
 
 /***********************************************************************************************************************
@@ -96,7 +97,7 @@ Current player
     height: 17%;
     width: 100%;
     margin: 0;
-    background-color: var(--colorFour);
+    background-color: #95652e;
 }
 
 /***********************************************************************************************************************
@@ -107,11 +108,11 @@ Opposing players
     height: 100%;
     width: 20%;
     margin: 0;
-    background-color: var(--colorFour);
+    background-color: #95652e;
 }
 
 .opposing-players {
     height: 20%;
     width: auto;
-    background-color: #373737;
+    background-color: #95652e;
 }

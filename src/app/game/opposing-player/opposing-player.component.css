@@ -1,7 +1,7 @@
 .parent-block {
+    border-bottom: 1px solid black;
     height: 256px;
     color: white;
-    border: 1px solid white;
     display: flex;
     flex-direction: column;
 }
@@ -13,18 +13,18 @@ Heading
     flex-grow: 1;
     flex-shrink: 9;
     min-height: 75px;
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     display: flex;
     height: 30px;;
 }
 
 .player-info {
     flex-grow: 3;
-    border: 1px solid white;
+    /*border: 1px solid white;*/
 }
 
 .player-username-container {
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     height: 50%;
     display: flex;
     align-items: center;
@@ -37,7 +37,10 @@ Heading
 }
 
 .player-quarry-container {
-    border: 1px solid black;
+    border-top: none;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
     height: 50%;
     background-color: #770000;
     line-height: 4;
@@ -58,7 +61,7 @@ Heading
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    border: 1px solid black;
 }
 
 .first-row {
