@@ -2,10 +2,10 @@
 Parent Blocks
 ***********************************************************************************************************************/
 .parent-block {
-    /*border: 1px solid white;*/
     width: 100%;
     height: 100%;
-    color: white;
+    color: #fef1c4;
+    border: 1px solid black;
 }
 
 .general-information-block {
@@ -27,10 +27,18 @@ Parent Blocks
 }
 
 .cards-block {
+    padding-left: 12px;
+    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards-block {
     height: 30%;
     width: 100%;
     font-size: 12px;
     display: flex;
+
     flex-direction: row;
     align-items: center;
     justify-content: center;

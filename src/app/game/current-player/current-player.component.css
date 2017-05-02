@@ -14,7 +14,7 @@ Heading
     flex-grow: 1;
     width: 30%;
     height: 100%;
-    /*border-right:1px solid white;*/
+    border-right: 1px solid black;
 }
 
 .player-username-container {

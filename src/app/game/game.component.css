@@ -27,7 +27,8 @@
     height: 100%;
     width: 36%;
     margin: 0;
-background-image: url('../../assets/img/ImhotepHarbour.png');
+    background-image: url('../../assets/img/ImhotepHarbourWaterNew.png');
+    background-size: cover;
 }
 
 /***********************************************************************************************************************
@@ -86,7 +87,6 @@ Info Board:
     margin: 0;
     background-image: -webkit-linear-gradient(top left, var(--colorTwo),var(--colorFour));
     border-left:3px solid rgba(69,69,69,0.8);
-
 }
 
 /***********************************************************************************************************************
@@ -100,7 +100,6 @@ Current player
     margin: 0;
     background-image: -webkit-linear-gradient(45deg, rgb(16, 75, 106), rgb(40, 115, 160) 30% , var(--colorTwo) 50%,var(--colorFour)90%);
     border-top:3px solid rgba(69,69,69,0.8);
-
 }
 
 /***********************************************************************************************************************
