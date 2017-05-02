@@ -9,10 +9,13 @@
     color: white;
     display: flex;
     flex-direction: column;
-    background: #696969;
     cursor: pointer;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(0,0,0,0.4);
+    background-image: url(../../../assets/img/card-pattern.png);
+    box-shadow: 3px 3px 20px 6px rgba(0,0,0,0.3);
+
 }
 
 .card-title {
@@ -28,7 +31,6 @@
 
 .description {
     border-top: 1px solid rgba(255, 255, 255, 0.7);
-
     text-align: center;
     flex-grow: 0;
     font-size: 12px;
@@ -52,11 +54,6 @@
 .purple {
     background-color: var(--marketPurple);
 }
-
-.placeholder {
-    background-color: #373737;
-}
-
 /***********************************************************************************************************************
  STATUE TABLE
 ***********************************************************************************************************************/

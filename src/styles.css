@@ -1,7 +1,7 @@
 :root {
     /*Custom colors for interface*/
     --colorOne: #85622a;
-    --colorTwo: #e6a644;
+    --colorTwo: #e3c467;
     --colorThree: #e18339;
     --colorFour: #b6571d;
     --colorFive: #8c3313;
@@ -27,7 +27,7 @@
 
     /*Custom color for highlighting the turn and next turn*/
     --turn: #ffdf00;
-    --nextTurn: #a39000;
+    --nextTurn: #b6571d;
 
     /*Custom color for market cards titles*/
     --marketGreen: #008200;

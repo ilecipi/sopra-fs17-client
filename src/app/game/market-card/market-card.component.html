@@ -1,34 +1,35 @@
 <div class="market-card">
-    <div class="card-title"
-         [ngClass]="
+    <div class="market-card-container" *ngIf="currentCard.name!='PLACEHOLDER'">
+        <div class="card-title"
+             [ngClass]="
             {red: currentCard.color == 'red',
             green: currentCard.color == 'green',
             blue: currentCard.color == 'blue',
-            purple: currentCard.color == 'purple',
-            placeholder: currentCard.color == 'placeholder'
+            purple: currentCard.color == 'purple'
             }">{{currentCard.title}}
-    </div>
-    <div class="description">
-        {{currentCard.description}}
+        </div>
+        <div class="description">
+            {{currentCard.description}}
 
-    </div>
-    <div class="statue-table-container">
-        <div class="statue-table" *ngIf="currentCard.name=='STATUE'">
-            <div class="row">
-                <div class="cell">1x</div>
-                <div class="cell">2x</div>
-                <div class="cell">3x</div>
-                <div class="cell">4x</div>
-                <div class="cell">5x</div>
-                <div class="cell">...</div>
-            </div>
-            <div class="row">
-                <div class="cell">1</div>
-                <div class="cell">3</div>
-                <div class="cell">6</div>
-                <div class="cell">10</div>
-                <div class="cell">15</div>
-                <div class="cell">+2</div>
+        </div>
+        <div class="statue-table-container">
+            <div class="statue-table" *ngIf="currentCard.name=='STATUE'">
+                <div class="row">
+                    <div class="cell">1x</div>
+                    <div class="cell">2x</div>
+                    <div class="cell">3x</div>
+                    <div class="cell">4x</div>
+                    <div class="cell">5x</div>
+                    <div class="cell">...</div>
+                </div>
+                <div class="row">
+                    <div class="cell">1</div>
+                    <div class="cell">3</div>
+                    <div class="cell">6</div>
+                    <div class="cell">10</div>
+                    <div class="cell">15</div>
+                    <div class="cell">+2</div>
+                </div>
             </div>
         </div>
     </div>

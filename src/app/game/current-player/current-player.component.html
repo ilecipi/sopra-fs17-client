@@ -1,8 +1,7 @@
 <div class="parent-block">
     <div class="heading">
         <div class="player-username-container"
-             [ngClass]="{highlight: currentUser?.id==currentGame?.currentPlayer ,
-                next_highlight: currentUser?.id==currentGame?.nextPlayer}">
+             [ngClass]="{highlight: currentUser?.id==currentGame?.currentPlayer}">
             <div class="player-username">
                 {{currentUser.username}}
             </div>

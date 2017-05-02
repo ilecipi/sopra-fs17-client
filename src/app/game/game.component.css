@@ -84,7 +84,9 @@ Info Board:
     height: 100%;
     width: 28%;
     margin: 0;
-    background-color: var(--colorFour);
+    background-image: -webkit-linear-gradient(top left, var(--colorTwo),var(--colorFour));
+    border-left:3px solid rgba(69,69,69,0.8);
+
 }
 
 /***********************************************************************************************************************
@@ -96,7 +98,9 @@ Current player
     height: 17%;
     width: 100%;
     margin: 0;
-    background-color: var(--colorFour);
+    background-image: -webkit-linear-gradient(45deg, rgb(16, 75, 106), rgb(40, 115, 160) 30% , var(--colorTwo) 50%,var(--colorFour)90%);
+    border-top:3px solid rgba(69,69,69,0.8);
+
 }
 
 /***********************************************************************************************************************
@@ -107,11 +111,10 @@ Opposing players
     height: 100%;
     width: 20%;
     margin: 0;
-    background-color: var(--colorFour);
+    background-image: -webkit-linear-gradient(20deg,var(--colorFour), var(--colorTwo));
 }
 
 .opposing-players {
     height: 20%;
     width: auto;
-    background-color: #373737;
 }

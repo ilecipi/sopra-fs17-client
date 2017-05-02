@@ -23,6 +23,8 @@
     max-height: 30px;
     height: 30px;
     border: 1px solid black;
+    border-radius:2px;
+    margin:1px;
 }
 
 .pyramid-base {
@@ -106,19 +108,19 @@ Info Column:
 Dynamic styles for stones:
 ***********************************************************************************************************************/
 .brown {
-    background-color: var(--brownStone);
+    background-image: url(../../../assets/img/brownStone.png);
 }
 
 .grey {
-    background-color: var(--greyStone);
+    background-image: url(../../../assets/img/greyStone.png);
 }
 
 .black {
-    background-color: var(--blackStone);
+    background-image: url(../../../assets/img/blackStone.png);
 }
 
 .white {
     /* If background is white then font color must be black for better readability*/
-    background-color: var(--whiteStone);
+    background-image: url(../../../assets/img/whiteStone.png);
     color: black;
 }
