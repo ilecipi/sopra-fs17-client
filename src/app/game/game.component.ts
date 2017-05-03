@@ -1,26 +1,27 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {Observable} from "rxjs/Rx";
 import {Router} from "@angular/router";
 
 import {UserService} from "../shared/services/user.service";
 import {GameService} from "../shared/services/game.service";
-import {TempleService} from '../shared/services/temple.service';
-import {MoveService} from '../shared/services/move.service';
-import {ShipService} from '../shared/services/ship.service';
-import {ObeliskService} from '../shared/services/obelisk.service';
-import {BurialChamberService} from '../shared/services/burial-chamber.service';
-import {MarketService} from '../shared/services/market.service';
+import {TempleService} from "../shared/services/temple.service";
+import {ShipService} from "../shared/services/ship.service";
+import {ObeliskService} from "../shared/services/obelisk.service";
+import {BurialChamberService} from "../shared/services/burial-chamber.service";
+import {MarketService} from "../shared/services/market.service";
 import {PyramidService} from "../shared/services/pyramid.service";
-import {BurialChamber} from '../shared/models/burialChamber';
+import {BurialChamber} from "../shared/models/burialChamber";
+import {NotificationService} from "../shared/services/notification.service";
+
 
 import {User} from "../shared/models/user";
 import {Game} from "../shared/models/game";
 import {Ship} from "../shared/models/ship";
-import {Stone} from '../shared/models/stone';
-import {Temple} from '../shared/models/temple';
+import {Stone} from "../shared/models/stone";
+import {Temple} from "../shared/models/temple";
 import {Obelisk} from "../shared/models/obelisk";
-import {Pyramid} from '../shared/models/pyramid';
-import {Market} from '../shared/models/market';
+import {Pyramid} from "../shared/models/pyramid";
+import {Market} from "../shared/models/market";
 import {Card} from "../shared/models/card";
 
 
@@ -39,6 +40,8 @@ export class GameComponent implements OnInit {
     private currentBurialChamber: BurialChamber;
     private currentPyramid: Pyramid;
     private currentMarket: Market;
+
+    private showedTurn: boolean;
 
 
     // subscriptions stored in order to unsubscribe later.
@@ -59,7 +62,8 @@ export class GameComponent implements OnInit {
                 private burialChamberService: BurialChamberService,
                 private pyramidService: PyramidService,
                 private marketService: MarketService,
-                private router: Router) {
+                private router: Router,
+                private notificationService: NotificationService) {
     }
 
 
@@ -92,6 +96,7 @@ export class GameComponent implements OnInit {
         this.currentPyramid = this.pyramidService.getCurrentPyramid();
         this.currentMarket = this.marketService.getCurrentMarket();
 
+        this.showedTurn = false;
         this.pollInfo();
         this.listenForEnd();
     }
@@ -167,6 +172,13 @@ export class GameComponent implements OnInit {
 
     listenForEnd(time = 300): void {
         let subscription = Observable.interval(time).subscribe(x => {
+            if (this.currentGame.currentPlayer == this.currentUser.id && !this.showedTurn) {
+                this.notificationService.show('It\'s your turn!');
+                this.showedTurn = true;
+            }
+            if(this.currentGame.nextPlayer == this.currentUser.id && this.showedTurn){
+                this.showedTurn=false;
+            }
             if (this.currentGame.status == 'FINISHED') {
                 this.gameSubscription.unsubscribe();
                 this.userSubscription.unsubscribe();
@@ -179,7 +191,6 @@ export class GameComponent implements OnInit {
 
                 this.router.navigate(['/end-game']);
                 subscription.unsubscribe();
-
             }
         });
     }
@@ -198,4 +209,6 @@ export class GameComponent implements OnInit {
         }
         return cards;
     }
+
+
 }
