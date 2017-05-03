@@ -293,3 +293,6 @@ Dynamic styles for player colors and turn highlight
     background-image: url(../../../assets/img/whiteStone.png);
     color: black;
 }
+.highlight{
+    background: var(--turn);
+}
