@@ -63,7 +63,7 @@
     </div>
     <div class="cards-block">
         <div class="cards-container">
-            <div class="cards">
+            <div class="cards" id="scrollable">
                 <div class="market-card" *ngFor="let card of getCards()">
                     <market-card [currentCard]="card"></market-card>
                 </div>

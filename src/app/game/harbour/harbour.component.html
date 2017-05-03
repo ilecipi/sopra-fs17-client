@@ -61,7 +61,15 @@
             </span>
         </div>
     </div>
-    <div class="fast-forward btn" (click)="fastForward()">
+    <div class="fast-forward btn bottom-btn" (click)="fastForward()">
         fast-forward
+    </div>
+    <div class="show-wave btn bottom-btn" (click)="swapWave()">
+        <div class="start-swey" *ngIf="!showWave">
+            start swey
+        </div>
+        <div class="stop-swey" *ngIf="showWave">
+            stop swey
+        </div>
     </div>
 </div>

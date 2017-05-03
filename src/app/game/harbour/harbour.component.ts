@@ -33,6 +33,10 @@ export class HarbourComponent implements OnInit {
     burialchamber = [];
     obelisk = [];
 
+    private waveCounter: number; // Used to let the ship wave around
+    private showWave: boolean; // Used to show wave
+    private alreadyStarted: boolean;
+
 
     private styleSubscription: any;
 
@@ -73,8 +77,13 @@ export class HarbourComponent implements OnInit {
         //adding styles for undocked ships
         this.addStyleEmptyShip();
 
+        this.waveCounter = 0; // initialize waveCounter to 0;
+        this.alreadyStarted = false;
+        this.showWave = false;
+
         //polling ship positions
         this.pollShipPositions();
+
 
     }
 
@@ -197,11 +206,31 @@ export class HarbourComponent implements OnInit {
         return shipStyle;
     }
 
+    swapWave(): void {
+        this.showWave = !this.showWave;
+        this.pollShipPositions();
+    }
+
     pollShipPositions(): void {
-        this.styleSubscription = Observable.interval(100).subscribe(x => {
+        let timeShip: number;
+        if (this.alreadyStarted) {
+            this.styleSubscription.unsubscribe();
+        }
+        else {
+            this.alreadyStarted = true;
+        }
+        if (this.showWave) {
+            timeShip = 16;
+        }
+        else {
+            timeShip = 200;
+        }
+        this.styleSubscription = Observable.interval(timeShip).subscribe(x => {
             this.setShipPositions();
+        });
+        this.styleSubscription = Observable.interval(200).subscribe(x => {
             this.setEmptyShipsPositions();
-        })
+        });
 
     }
 
@@ -214,25 +243,41 @@ export class HarbourComponent implements OnInit {
             if (!this.currentShips[i].docked) { //ship not docked means it is still in the water
                 this.removeStyleShip(); //removing styles before modifications
 
+                let step = Math.PI * 2 / 4000;
+                let omegaHorizontal = 2; // angular velocity for the ship positions formula
+                let omegaVertical = 4; // angular velocity for the ship positions formula
+                let amplitude = 5; // max positive and negative offset in pixels of the ship positions
+
+                if (!this.showWave) {
+                    amplitude = 0;
+                }
                 switch (i + 1) {
                     case 1: {
-                        this.styleShip1Position.innerHTML = '.ship' + (i + 1) + ' {top: 90px;  left: -20px;}';
+                        this.styleShip1Position.innerHTML = '.ship' + (i + 1) + ' {top: ' + (90 + amplitude * Math.sin(this.waveCounter * omegaVertical + 0.8)) + 'px;' +
+                            '  left:' + ( -20 + amplitude * Math.sin(this.waveCounter * omegaHorizontal + 0.8)) + 'px;}';
                         break;
                     }
                     case 2: {
-                        this.styleShip2Position.innerHTML = '.ship' + (i + 1) + ' {top: 180px;  left: -20px;}';
+                        this.styleShip2Position.innerHTML = '.ship' + (i + 1) + ' {top: ' + (180 + amplitude * Math.sin(this.waveCounter * omegaVertical + 2.4)) + 'px;' +
+                            '  left:' + ( -20 + amplitude * Math.sin(this.waveCounter * omegaHorizontal + 2.4)) + 'px;}';
                         break;
                     }
                     case 3: {
-                        this.styleShip3Position.innerHTML = '.ship' + (i + 1) + ' {top: 270px; left: -20px;}';
+                        this.styleShip3Position.innerHTML = '.ship' + (i + 1) + ' {top: ' + (270 + amplitude * Math.sin(this.waveCounter * omegaVertical + 1.6)) + 'px;' +
+                            '  left:' + ( -20 + amplitude * Math.sin(this.waveCounter * omegaHorizontal + 1.6)) + 'px;}';
                         break;
                     }
                     case 4: {
-                        this.styleShip4Position.innerHTML = '.ship' + (i + 1) + ' {top: 360px;  left: -20px;}';
+                        this.styleShip4Position.innerHTML = '.ship' + (i + 1) + ' {top: ' + (360 + amplitude * Math.sin(this.waveCounter * omegaVertical + 3.2)) + 'px;' +
+                            '  left:' + ( -20 + amplitude * Math.sin(this.waveCounter * omegaHorizontal + 3.2)) + 'px;}';
                         break;
                     }
                 }
                 this.addStyleShip(); //adding styles again after modifications
+                this.waveCounter += step;
+                if (this.waveCounter >= Math.PI * 2) {
+                    this.waveCounter = 0;
+                }
             }
 
             else if (this.currentShips[i].docked) { //ship is docked means it must be hidden and an empty counterpart must be displayed at that ship's dock

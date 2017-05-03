@@ -85,7 +85,7 @@ Docks
     background: brown;
     border-radius: 40px;
     position: relative;
-    right: -177px;
+    right: -181px;
     display: flex;
     flex-direction: row;
     z-index: 1;
@@ -128,19 +128,18 @@ Info Column:
 ***********************************************************************************************************************/
 
 .info-column {
-    border: 2px solid brown;
-    border-radius: 10px;
     height: 40px;
     position: relative;
     top: 584px;
     /*right: 175px;*/
-    right: 250px;
+    right: 220px;
     flex-grow: 1;
     color: black;
     max-width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align:center;
 }
 
 .info-hover {
@@ -223,7 +222,7 @@ Dynamic styles for stone colors:
     overflow:hidden;
 }
 
-/*FAST FORWARD ********************************************************************************************************/
+/*FAST FORWARD  AND SHOW WAVE BUTTONS *********************************************************************************/
 
 .fast-forward {
     height: 30px;
@@ -232,6 +231,43 @@ Dynamic styles for stone colors:
     color: white;
     position: relative;
     top: 594px;
-    right: 200px;
+    right: 150px;
     text-align: center;
+}
+.show-wave{
+    height: 30px;
+    min-width: 100px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    position: relative;
+    top: 594px;
+    right: 550px;
+    text-align: center;
+}
+
+/***********************************************************************************************************************
+ Buttons:
+***********************************************************************************************************************/
+
+.bottom-btn {
+    color: white;
+    border: 0;
+    border-radius:5px;
+    background-image: -webkit-linear-gradient(top,var(--colorFour), #5e2e1a);
+    transition-duration: 0.4s;
+    outline:none;
+}
+
+
+/*Hover color for button*/
+.bottom-btn:hover {
+    color: white;
+    border: 0;
+    border-radius:5px;
+    background-image: -webkit-linear-gradient(top, var(--colorFour),rgba(80,80,80,1));
+}
+.bottom-btn:active{
+    box-shadow: 0 0 16px 10px rgba(200,200,200,0.2), 0 6px 20px 0 rgba(200,200,200,0.19);
+    background-image: -webkit-linear-gradient(top, #5e2e1a, rgba(80,80,80,1));
+
 }
