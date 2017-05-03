@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {NotificationService} from "../shared/services/notification.service";
-import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: 'notification',
@@ -8,21 +7,24 @@ import {Observable} from "rxjs/Observable";
     styleUrls: ['./notification.component.css']
 })
 export class NotificationComponent implements OnInit {
+    private maxNumOfNotification: number = 10;
+    private array: number[] = [];
 
-    private notifications: string[];
-    private notificationSubscription: any;
 
-    constructor(private notificationService:NotificationService) {
+    constructor(private notificationService: NotificationService) {
     }
 
     ngOnInit() {
-        this.pollQueue();
+        for (let i = 0; i < this.maxNumOfNotification; i++) {
+            this.array.push(0);
+        }
+
+
+        this.notificationService.pollQueue();
     }
 
-    pollQueue(): void {
-        this.notificationSubscription = Observable.interval(100).subscribe(() => {
-            this.notifications = this.notificationService.getNotificationsQueue();
-        });
+    getNotification(index: number): string {
+        return this.notificationService.getNotificationsQueue(index);
     }
 
 }

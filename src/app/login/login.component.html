@@ -1,5 +1,10 @@
 <div class="login-block">
-
+    <div class="game-name">
+        IMHOTEP
+    </div>
+    <div class="credits">
+        A game by Phil Walker-Harding
+    </div>
     <div class="form-signin" (keyup.enter)="login()">
         <div class="form-signin-heading">LOGIN</div>
         <label for="user_name" class="sr-only">User</label>
@@ -12,14 +17,11 @@
 
         <div class="row">
             <div class="clear-button">
-                <button class="btn btn-lg btn-default btn-block" type="submit" (click)="clearfields()">CLEAR</button>
+                <button class="button btn-block" type="submit" (click)="clearfields()">CLEAR</button>
             </div>
             <div class="enter-button">
-                <button class="btn btn-lg btn-default btn-block" type="submit" (click)="login()">ENTER</button>
+                <button class="button btn-block" type="submit" (click)="login()">ENTER</button>
             </div>
         </div>
-    </div>
-    <div class="credits">
-        A game by Phil Walker-Harding
     </div>
 </div>

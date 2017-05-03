@@ -1,5 +1,5 @@
 <div class="parent-block">
-        <div class="notification" *ngFor="let notification of notifications">
-            {{notification}}
+    <div class="notification notifiaction0" *ngFor="let notification of array;let i=index" [class.show]="getNotification(i)!=''">
+        {{getNotification(i)}}
         </div>
 </div>

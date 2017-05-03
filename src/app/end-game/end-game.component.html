@@ -1,5 +1,4 @@
 <div class="parent-block">
-    <div class="end-game-container">
         <div class="end-game-heading">CONGRATULATIONS!</div>
         <div class="end-game-block">
             <div class="ranking-column">
@@ -7,6 +6,7 @@
                     <div class="player" [ngClass]="
                 {highlight: currentUser.id==player.id
                 }">
+                        <div class="rank">{{i+1}}.</div>
                         <div class="player-name">
                             {{player.username}}
                         </div>
@@ -22,10 +22,9 @@
                 </div>
             </div>
             <div class="options-column">
-                <button class="btn btn-lobby" [routerLink]="['/lobby']">NEW GAME</button>
-                <button class="btn btn-login" (click)="logout()" [routerLink]="['/login']">QUIT</button>
+                <button class="button btn-lobby" [routerLink]="['/lobby']">NEW GAME</button>
+                <button class="button btn-login" (click)="logout()" [routerLink]="['/login']">QUIT</button>
             </div>
         </div>
-    </div>
 </div>
 

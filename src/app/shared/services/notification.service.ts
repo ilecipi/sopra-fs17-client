@@ -1,58 +1,56 @@
 import {Injectable} from "@angular/core";
-import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class NotificationService {
 
-    private currentNotification: string;
-    private currentNotificationSubject = new Subject<string>();
-    private isShown: boolean = false;
-
     private notificationsQueue: string[] = [];
+    private timeToLiveQueue: number[] = [];
     private queueSubscription;
-    private queueToUpdate = true;
+    private timeResolution = 100;
 
     constructor() {
-        this.pollQueue();
     }
 
 
     pollQueue(): void {
-        this.queueSubscription = Observable.interval(100).subscribe(x => {
+        this.queueSubscription = Observable.interval(this.timeResolution).subscribe(() => {
             if (this.notificationsQueue.length == 0) {
                 //do nothing because queue is empty
             }
-            if (this.notificationsQueue.length >= 7){
+            else if (this.notificationsQueue.length >= 10) {
                 this.removeItem();
             }
             else {
-
-                if (this.queueToUpdate) {
-                    this.removeItem();
-                    this.queueToUpdate = false;
-                    this.wait3secs();
-
-                }
+                this.reduceQueue();
             }
         });
     }
 
     removeItem() {
         this.notificationsQueue.shift();
+        this.timeToLiveQueue.shift();
     }
 
-    wait3secs() {
-        setTimeout(() => {
-            this.queueToUpdate = true;
-        }, 1500)
+    reduceQueue(): void {
+        if (this.timeToLiveQueue.length > 0) {
+            for (let i = 0; i < this.timeToLiveQueue.length; i++) {
+                this.timeToLiveQueue[i] -= this.timeResolution;
+
+            }
+        }
+        if (this.timeToLiveQueue[0] <= 0) {
+            this.removeItem();
+        }
     }
 
     show(notification: string) {
         this.notificationsQueue.push(notification);
+        this.timeToLiveQueue.push(3000);
     }
 
-    getNotificationsQueue(): string[] {
-        return this.notificationsQueue;
+    getNotificationsQueue(index: number): string {
+        if (this.notificationsQueue.length <= index) return '';
+        else return this.notificationsQueue[index];
     }
 }

@@ -28,7 +28,10 @@ export class LoginComponent implements OnInit {
     }
 
     login() :void{
-        if (this.user.name == undefined || this.user.name == '') {
+        if ((this.user.name == undefined || this.user.name == '') && (this.user.username == undefined || this.user.username == '')){
+            this.notificationService.show('Please insert a valid name and username');
+        }
+        else if (this.user.name == undefined || this.user.name == '') {
             this.notificationService.show('Please insert a name.');
         }
         else if (this.user.username == undefined  || this.user.username == '') {

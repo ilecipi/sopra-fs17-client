@@ -15,6 +15,7 @@
 
 .credits {
     position: relative;
+    bottom:40px;
     text-align: center;
     font-size: 20px;
     color: #ebebeb;
@@ -22,32 +23,32 @@
 }
 
 .form-signin {
-    margin-top: 300px;
-    width: 500px;
+    margin-top: 10px;
+    width: 610px;
     color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: rgba(69,69,69,0.8);
+    border-radius:5px;
 }
 
 /*Heading of login-block*/
 
 .form-signin-heading {
-
     height: 70px;
-
     background-color: rgba(55, 55, 55, 0.7);
     color: #ebebeb;
-    border: 1px solid white;
+    /*border: 1px outset white;*/
     border-radius: 5px;
     letter-spacing: 2pt;
     word-spacing: 2pt;
     font-size: 43px;
     text-align: center;
     line-height: 1.6;
-    min-width: 500px;
-    margin: 5px;
+    min-width: 610px;
+    margin-bottom:5px;
 }
 
 .form-signin .checkbox {
@@ -66,25 +67,25 @@
     font-size: 25px;
     padding: 2%;
     color: white;
-    border: 1px solid white;
+    border: 1px solid rgba(0,0,0,0);
     background-color: rgba(55, 55, 55, 0.8);
 }
 
 /*Placeholder for color of font of fillable text - cross-browser*/
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: white;
+    color: rgba(200,200,200,0.7);
 }
 
 ::-moz-placeholder { /* Firefox 19+ */
-    color: white;
+    color: rgba(200,200,200,0.7);
 }
 
 :-ms-input-placeholder { /* IE 10+ */
-    color: white;
+    color: rgba(200,200,200,0.7);
 }
 
 :-moz-placeholder { /* Firefox 18- */
-    color: white;
+    color: rgba(200,200,200,0.7);
 }
 
 .form-control {
@@ -100,27 +101,45 @@
 
 .enter-button {
     flex-grow: 1;
-    margin: 5px;
+    margin-top: 5px;
 }
 
 .clear-button {
     flex-grow: 1;
-    margin: 5px;
+    margin-top: 5px;
 
 }
 
 /*buttons*/
-.btn {
-    margin-top: 1%;
-    width: 240px;
+.button {
+    width: 290px;
+    height:60px;
     color: white;
-    border: 1px solid white;
+    border: 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin:5px;
     font-size: 35px;
-    background-image: -webkit-linear-gradient(top, var(--colorFour), #777777);
+    background-image: -webkit-linear-gradient(top,var(--colorFour), #5e2e1a);
+    transition-duration: 0.4s;
+    outline:none;
 }
 
 /*Hover color for button*/
-.btn:hover {
-    background-image: -webkit-linear-gradient(top, var(--colorFour), #D0D0D0);
+.button:hover {
+    width: 290px;
+    height:60px;
+    color: white;
+    border: 0;
+    border-radius:10px;
+    margin:5px;
+    font-size: 35px;
+    background-image: -webkit-linear-gradient(top, var(--colorFour),rgba(80,80,80,1));
+}
+.button:active{
+    box-shadow: 0 0 16px 10px rgba(200,200,200,0.2), 0 6px 20px 0 rgba(200,200,200,0.19);
+    background-image: -webkit-linear-gradient(top, #5e2e1a,     rgba(80,80,80,1));
+
 }
 

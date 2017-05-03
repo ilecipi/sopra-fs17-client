@@ -79,7 +79,7 @@ export class InfoBoardComponent implements OnInit {
 
     getPoints(i: number): number {
         let playerColor = this.currentGame.players[i].color;
-        if (playerColor == undefined) return 0;
+        if (playerColor === undefined) return 0;
         if (playerColor === 'brown') {
             return this.currentGame.points.brown;
         }
@@ -93,7 +93,7 @@ export class InfoBoardComponent implements OnInit {
             return this.currentGame.points.white;
         }
         else {
-            return -1; //the color wasn't found and must show invalid number
+            return -1; // the color wasn't found and must show invalid number
         }
 
     }
@@ -105,13 +105,9 @@ export class InfoBoardComponent implements OnInit {
             }
             else {
                 this.setTrackBoardCells();
-
             }
-
             this.updateDiscardedCardsStyle();
-
         })
-
     }
 
 

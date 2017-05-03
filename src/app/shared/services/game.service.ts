@@ -75,11 +75,11 @@ export class GameService {
         return this.currentGame;
     }
 
-    createNewGame(user: User): Observable<Game> {
-        let bodyString = JSON.stringify({name: "Game", owner: user.username}); // Stringify payload
-        let headers = new Headers({'Content-Type': 'application/json'});// ... Set content type to JSON
+    createNewGame(user: User, gameName: string): Observable<Game> {
+        let bodyString = JSON.stringify({name: gameName, owner: user.username}); // Stringify payload
+        let headers = new Headers({'Content-Type': 'application/json'}); // ... Set content type to JSON
         let options = new RequestOptions({headers: headers}); // Create a request option
-        //create new game with token same as user
+        // create new game with token same as user
 
         this.isTrueGame = true;
 
@@ -114,19 +114,19 @@ export class GameService {
         let options = new RequestOptions({headers: headers}); // Create a request option
 
         //passed user will have ready state on current game
-        return this.http.put(this.apiUrl + '/games/' + this.currentGame.id + "?token=" + user.id, options)
+        return this.http.put(this.apiUrl + '/games/' + this.currentGame.id + "?token=" + user.token, options)
             .map(res => res.json());
     }
 
 
-    joinGame(game: Game, user: User): Observable<Game> {
+    joinGame(game: Game, user: User): Observable<string> {
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers}); // Create a request option
 
         this.isTrueGame = true;
 
-        return this.http.post(this.apiUrl + '/games/' + game.id + '/player?token=' + user.id, options)
-            .map(res => res.json());
+        return this.http.post(this.apiUrl + '/games/' + game.id + '/player?token=' + user.token, options)
+            .map(res => res.toString());
 
     }
 

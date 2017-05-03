@@ -1,10 +1,13 @@
 .parent-block {
+    border-bottom: 1px solid black;
     height: 256px;
     color: white;
-    background-image: -webkit-linear-gradient(top, var(--colorFour), #373737);
-    border: 1px solid white;
     display: flex;
     flex-direction: column;
+    border-left:3px solid rgba(69,69,69,0.8);
+    border-top:3px solid rgba(69,69,69,0.8);
+
+
 }
 
 /***********************************************************************************************************************
@@ -14,22 +17,20 @@ Heading
     flex-grow: 1;
     flex-shrink: 9;
     min-height: 75px;
-    border: 1px solid white;
     display: flex;
     height: 30px;;
 }
 
 .player-info {
     flex-grow: 3;
-    border: 1px solid white;
 }
 
 .player-username-container {
-    border: 1px solid white;
     height: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius:5px;
 }
 
 .player-username {
@@ -38,7 +39,11 @@ Heading
 }
 
 .player-quarry-container {
-    border: 1px solid black;
+    border-radius:5px;
+    border-top: none;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
     height: 50%;
     background-color: #770000;
     line-height: 4;
@@ -59,7 +64,7 @@ Heading
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    border: 1px solid black;
 }
 
 .first-row {
@@ -81,6 +86,8 @@ Heading
     height: 30px;
     width: 30px;
     border: 1px solid black;
+    border-radius:2px;
+    margin:1px;
 }
 
 /***********************************************************************************************************************
@@ -118,27 +125,23 @@ Cards
 Dynamic styles for quarry and stones and turn highlight:
 ***********************************************************************************************************************/
 .brown {
-    background-color: var(--brownStone);
+    background-image: url(../../../assets/img/brownStone.png);
 }
 
 .grey {
-    background-color: var(--greyStone);
+    background-image: url(../../../assets/img/greyStone.png);
 }
 
 .black {
-    background-color: var(--blackStone);
+    background-image: url(../../../assets/img/blackStone.png);
 }
 
 .white {
     /* If background is white then font color must be black for better readability*/
-    background-color: var(--whiteStone);
+    background-image: url(../../../assets/img/whiteStone.png);
     color: black;
 }
 
 .highlight {
     border: 8px solid var(--turn);
-}
-
-.next_highlight {
-    border: 8px solid var(--nextTurn);
 }

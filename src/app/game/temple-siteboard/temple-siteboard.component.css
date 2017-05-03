@@ -37,12 +37,16 @@
 .block {
     margin-top:10px;
     margin-bottom:10px;
+    margin-left:1px;
+    margin-right:1px;
     min-height: 30px;
     max-height: 30px;
     min-width: 30px;
     max-width: 30px;
     flex-grow: 1;
     border: 1px solid black;
+    border-radius:2px;
+
 }
 
 .temple-info {
@@ -107,19 +111,19 @@ Info Column:
 Dynamic styles for stones:
 ***********************************************************************************************************************/
 .brown {
-    background-color: var(--brownStone);
+    background-image: url(../../../assets/img/brownStone.png);
 }
 
 .grey {
-    background-color: var(--greyStone);
+    background-image: url(../../../assets/img/greyStone.png);
 }
 
 .black {
-    background-color: var(--blackStone);
+    background-image: url(../../../assets/img/blackStone.png);
 }
 
 .white {
     /* If background is white then font color must be black for better readability*/
-    background-color: var(--whiteStone);
+    background-image: url(../../../assets/img/whiteStone.png);
     color: black;
 }
