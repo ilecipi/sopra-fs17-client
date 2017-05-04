@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Temple} from "../../shared/models/temple";
+import {Temple} from '../../shared/models/temple';
 
 @Component({
     selector: 'temple-siteboard',
@@ -9,7 +9,7 @@ import {Temple} from "../../shared/models/temple";
 export class TempleSiteboardComponent implements OnInit {
 
     @Input()
-    private currentTemple: Temple;
+    public currentTemple: Temple;
 
     constructor() {
     }
@@ -20,7 +20,7 @@ export class TempleSiteboardComponent implements OnInit {
     getNotEmptyStones(): number {
         let notEmptyStones = 0;
         for (let i = 0; i < this.currentTemple.stones.length; i++) {
-            if (this.currentTemple.stones[i] != null) {
+            if (this.currentTemple.stones[i] !== null) {
                 notEmptyStones++;
             }
         }
@@ -28,7 +28,7 @@ export class TempleSiteboardComponent implements OnInit {
     }
 
     getPlural(): string {
-        if (this.currentTemple.completedRows == 1) {
+        if (this.currentTemple.completedRows === 1) {
             return '';
         }
         else return 's';

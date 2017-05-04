@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Obelisk} from "../../shared/models/obelisk";
+import {Obelisk} from '../../shared/models/obelisk';
 
 @Component({
     selector: 'obelisk-siteboard',

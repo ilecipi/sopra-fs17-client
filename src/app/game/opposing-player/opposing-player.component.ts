@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Game} from '../../shared/models/game';
-import {GameService} from '../../shared/services/game.service';
 import {User} from '../../shared/models/user'
-import {Card} from "../../shared/models/card";
+import {Card} from '../../shared/models/card';
 
 @Component({
     selector: 'opposing-player',
@@ -38,7 +37,7 @@ export class OpposingPlayerComponent implements OnInit {
         let userId = this.opposingUser.id;
         let cards: Card[] = [];
         for (let i = 0; i <= this.currentGame.players.length; i++) {
-            if (this.currentGame.players[i] != undefined && this.currentGame.players[i].id == userId) {
+            if (this.currentGame.players[i] !== undefined && this.currentGame.players[i].id === userId) {
                 cardsNames = this.currentGame.players[i].cards;
             }
         }

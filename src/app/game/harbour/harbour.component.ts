@@ -1,6 +1,4 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {ShipService} from "../../shared/services/ship.service";
-import {GameService} from "../../shared/services/game.service";
 
 import {Game} from "../../shared/models/game";
 import {Ship} from "../../shared/models/ship";
@@ -34,66 +32,65 @@ export class HarbourComponent implements OnInit {
     obelisk = [];
 
     private waveCounter: number; // Used to let the ship wave around
-    private showWave: boolean; // Used to show wave
+    public showWave: boolean; // Used to show wave
     private alreadyStarted: boolean;
 
 
     private styleSubscription: any;
 
-    //styles required to move each ship in the correct place.
+    // Styles required to move each ship in the correct place.
     private styleShip1Position = document.createElement('style');
     private styleShip2Position = document.createElement('style');
     private styleShip3Position = document.createElement('style');
     private styleShip4Position = document.createElement('style');
 
-    //style required to highlight current selected ship.
+    // Style required to highlight current selected ship.
     private styleSelectedShip = document.createElement('style');
 
-    //style required to position empty ship images at each dock;
+    // Style required to position empty ship images at each dock;
     private styleEmptyShipMarket = document.createElement('style');
     private styleEmptyShipPyramid = document.createElement('style');
     private styleEmptyShipTemple = document.createElement('style');
     private styleEmptyShipBurialChamber = document.createElement('style');
     private styleEmptyShipObelisk = document.createElement('style');
 
-    constructor(private shipService: ShipService,
-                private gameService: GameService,
-                private moveService: MoveService,
+    constructor(private moveService: MoveService,
                 private notificationService: NotificationService) {
     }
 
     ngOnInit() {
-        //styles initialization for selection feature
+        // Styles initialization for selection feature
         this.styleSelectedShip.innerHTML = '';
         document.getElementsByTagName('harbour')[0].appendChild(this.styleSelectedShip);
 
-        //styles initialization for docked and undocked ships position
+        // Styles initialization for docked and undocked ships position
         this.initStyleShip();
         this.initStyleEmptyShip();
 
-        //adding styles for docked ships
+        // Adding styles for docked ships
         this.addStyleShip();
 
-        //adding styles for undocked ships
+        // Adding styles for undocked ships
         this.addStyleEmptyShip();
 
-        this.waveCounter = 0; // initialize waveCounter to 0;
+        // Initializations for the swey of the ships
+        this.waveCounter = 0; // initialize waveCounter to 0, it will go up to 2*PI and reset itself later
         this.alreadyStarted = false;
         this.showWave = false;
 
-        //polling ship positions
+        // Polling ship positions
         this.pollShipPositions();
 
 
     }
 
 
-    addStone(shipIndex: number, stoneIndex: number) {
+    addStone(shipIndex: number, stoneIndex: number): void {
 
         let gameId = this.currentGame.id;
-        let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1]; //roundId is the last number in the rounds array of the game.
+        let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1]; // RoundId is the last number in the rounds array of the game.
         let playerToken = this.currentUser.token;
-        let shipId = this.currentShips[shipIndex].id; //post request is going to require current ship ID.
+        let shipId = this.currentShips[shipIndex].id; // Post request is going to require current ship ID.
         // Stone index is going to start from zero also for the backend;
 
         this.moveService.addStone(gameId, roundId, shipId, playerToken, stoneIndex)
@@ -102,7 +99,7 @@ export class HarbourComponent implements OnInit {
                     // do nothing because successful
                 },
                 (errorData) => {
-                    if (errorData.status == 403) {
+                    if (errorData.status === 403) {
                         let cuts = errorData._body.split('"');
                         // let notification= secondCut[0];
                         this.notificationService.show(cuts[15]);
@@ -111,25 +108,25 @@ export class HarbourComponent implements OnInit {
                 }
             );
     }
-    
+
     selectDock(siteBoardName: string): void {
-        if (this.selectedShip != -1) {
+        if (this.selectedShip !== -1) {
             console.log(this.selectedShip);
             let gameId = this.currentGame.id;
-            let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1]; //roundId is the last number in the rounds array of the game.
-            let shipId = this.currentShips[this.selectedShip].id; //post request requires current ship ID.
-            //siteBoardName is already in his correct form.
+            let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1]; // RoundId is the last number in the rounds array of the game.
+            let shipId = this.currentShips[this.selectedShip].id; // Post request requires current ship ID.
+            // SiteBoardName is already in his correct form.
             let playerToken = this.currentUser.token;
 
             this.moveService.sailShipToSiteBoard(gameId, roundId, shipId, siteBoardName, playerToken)
                 .subscribe(
                     (result) => {
-                        // do nothing because successful
+                        // Do nothing because successful
                     },
                     (errorData) => {
                         if (errorData.status == 403) {
                             let cuts = errorData._body.split('"');
-                            // let notification= secondCut[0];
+                            // Let notification= secondCut[0];
                             this.notificationService.show(cuts[15]);
                         }
 
@@ -172,7 +169,7 @@ export class HarbourComponent implements OnInit {
     getEmptyShipSrc(dockName: string): string {
         let shipSrc = '';
         for (let i = 0; i <= this.currentShips.length; i++) {
-            if (this.currentShips[i] != undefined && this.currentShips[i].siteBoard == dockName) {
+            if (this.currentShips[i] !== undefined && this.currentShips[i].siteBoard === dockName) {
                 shipSrc = this.getShipSrc(i);
             }
         }
@@ -182,7 +179,7 @@ export class HarbourComponent implements OnInit {
     getEmptyShipStyle(dockName: string): string {
         let shipStyle = 'position: relative; ';
         for (let i = 0; i <= this.currentShips.length; i++) {
-            if (this.currentShips[i] != undefined && this.currentShips[i].siteBoard == dockName) {
+            if (this.currentShips[i] !== undefined && this.currentShips[i].siteBoard === dockName) {
                 switch (this.currentShips[i].stones.length) {
                     case 1: {
                         shipStyle += 'right:100px;';
@@ -213,22 +210,22 @@ export class HarbourComponent implements OnInit {
 
     pollShipPositions(): void {
         let timeShip: number;
-        if (this.alreadyStarted) {
+        if (this.alreadyStarted) { // At component generation this.styleSubscription is not yet subscribed to.
             this.styleSubscription.unsubscribe();
         }
         else {
             this.alreadyStarted = true;
         }
         if (this.showWave) {
-            timeShip = 16;
+            timeShip = 32; // Every 32 milliseconds means roughly at 30 fps refresh rate
         }
         else {
-            timeShip = 200;
+            timeShip = 200; // If ships are not moving, then there is no need to refresh very fast
         }
         this.styleSubscription = Observable.interval(timeShip).subscribe(x => {
             this.setShipPositions();
         });
-        this.styleSubscription = Observable.interval(200).subscribe(x => {
+        this.styleSubscription = Observable.interval(timeShip).subscribe(x => {
             this.setEmptyShipsPositions();
         });
 
@@ -236,17 +233,17 @@ export class HarbourComponent implements OnInit {
 
     setShipPositions(): void {
 
-        //style[i] corresponds do ship[i]
+        // Style[i] corresponds do ship[i]
 
         for (let i = 0; i < this.currentShips.length; i++) {
 
-            if (!this.currentShips[i].docked) { //ship not docked means it is still in the water
-                this.removeStyleShip(); //removing styles before modifications
+            if (!this.currentShips[i].docked) { // Ship not docked means it is still in the water
+                this.removeStyleShip(); // Removing styles before modifications
 
-                let step = Math.PI * 2 / 4000;
-                let omegaHorizontal = 2; // angular velocity for the ship positions formula
-                let omegaVertical = 4; // angular velocity for the ship positions formula
-                let amplitude = 5; // max positive and negative offset in pixels of the ship positions
+                let step = Math.PI * 2 / 2000; // Step is going to be a fraction of the whole circle in radians
+                let omegaHorizontal = 2; // Angular velocity for the ship positions formula (better use whole numbers to avoid stuttering)
+                let omegaVertical = 4; // Angular velocity for the ship positions formula (better use whole numbers to avoid stuttering)
+                let amplitude = 5; // Max positive and negative offset in pixels of the ship positions
 
                 if (!this.showWave) {
                     amplitude = 0;
@@ -273,15 +270,15 @@ export class HarbourComponent implements OnInit {
                         break;
                     }
                 }
-                this.addStyleShip(); //adding styles again after modifications
+                this.addStyleShip(); // Adding styles again after modifications
                 this.waveCounter += step;
                 if (this.waveCounter >= Math.PI * 2) {
                     this.waveCounter = 0;
                 }
             }
 
-            else if (this.currentShips[i].docked) { //ship is docked means it must be hidden and an empty counterpart must be displayed at that ship's dock
-                this.removeStyleShip(); //removing styles before modifications
+            else if (this.currentShips[i].docked) { // Ship is docked means it must be hidden and an empty counterpart must be displayed at that ship's dock
+                this.removeStyleShip(); // Removing styles before modifications
 
 
                 switch (i + 1) {
@@ -302,17 +299,17 @@ export class HarbourComponent implements OnInit {
                         break;
                     }
                 }
-                this.addStyleShip(); //adding styles again after modifications
+                this.addStyleShip(); // Adding styles again after modifications
             }
         }
     }
 
     setEmptyShipsPositions(): void {
         this.removeStyleEmptyShip();
-        this.initStyleEmptyShip(); //reset all styles the default value because if the ship is docked her style will get updated again
+        this.initStyleEmptyShip(); // Reset all styles the default value because if the ship is docked her style will get updated again
 
         for (let i = 0; i <= this.currentShips.length; i++) {
-            if (this.currentShips[i] != undefined && this.currentShips[i].docked == true) {
+            if (this.currentShips[i] !== undefined && this.currentShips[i].docked === true) {
                 switch (this.currentShips[i].siteBoard) {
                     case 'market': {
                         this.styleEmptyShipMarket.innerHTML = '.empty-image-market { right: ' +
@@ -322,25 +319,25 @@ export class HarbourComponent implements OnInit {
                     }
                     case 'pyramid': {
                         this.styleEmptyShipPyramid.innerHTML = '.empty-image-pyramid { right: ' +
-                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}'+
+                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}' +
                             '.pyramid-dock {background-color: grey;}';
                         break;
                     }
                     case 'temple': {
                         this.styleEmptyShipTemple.innerHTML = '.empty-image-temple { right: ' +
-                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}'+
+                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}' +
                             '.temple-dock {background-color: grey;}';
                         break;
                     }
                     case 'burialchamber': {
                         this.styleEmptyShipBurialChamber.innerHTML = '.empty-image-burialchamber { right: ' +
-                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}'+
+                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}' +
                             '.burial-chamber-dock {background-color: grey;}';
                         break;
                     }
                     case 'obelisk': {
                         this.styleEmptyShipObelisk.innerHTML = '.empty-image-obelisk { right: ' +
-                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}'+
+                            this.getEmptyPosition(this.currentShips[i].stones.length) + 'px;}' +
                             '.obelisk-dock {background-color: grey;}';
                         break;
                     }
@@ -410,7 +407,7 @@ export class HarbourComponent implements OnInit {
     }
 
     initStyleEmptyShip(): void {
-        //hides a little grey empty square that contains no image
+        // Hides a little grey empty square that contains no image
         this.styleEmptyShipMarket.innerHTML = '.empty-image-market {display: none}';
         this.styleEmptyShipPyramid.innerHTML = '.empty-image-pyramid {display: none}';
         this.styleEmptyShipTemple.innerHTML = '.empty-image-temple {display: none}';
@@ -423,7 +420,6 @@ export class HarbourComponent implements OnInit {
         document.getElementsByTagName('harbour')[0].removeChild(this.styleSelectedShip);
         this.styleSelectedShip.innerHTML = '.ship-selector' + (index + 1) + ' {border: 3px solid yellow;}';
         document.getElementsByTagName('harbour')[0].appendChild(this.styleSelectedShip);
-
     }
 
     fastForward() {

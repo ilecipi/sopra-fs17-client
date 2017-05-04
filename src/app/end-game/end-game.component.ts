@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 
-import {UserService} from "../shared/services/user.service";
-import {GameService} from "../shared/services/game.service";
+import {UserService} from '../shared/services/user.service';
+import {GameService} from '../shared/services/game.service';
 
-import {User} from "../shared/models/user";
-import {Game} from "../shared/models/game";
+import {User} from '../shared/models/user';
+import {Game} from '../shared/models/game';
 
 @Component({
     selector: 'end-game',
@@ -13,11 +13,11 @@ import {Game} from "../shared/models/game";
 })
 export class EndGameComponent implements OnInit {
 
-    private currentGame: Game;
-    private currentUser: User;
+    public currentGame: Game;
+    public currentUser: User;
 
 
-    //subscriptions stored in order to unsubscribe later.
+    // Subscriptions stored in order to unsubscribe later.
     private gameSubscription: any;
     private userSubscription: any;
 
@@ -26,8 +26,8 @@ export class EndGameComponent implements OnInit {
                 private gameService: GameService) {
     }
 
-    ngOnInit() {
-        // if game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
+    ngOnInit(): void {
+        // If game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
         // used only for developing purposes
         // TODO: remove this feature once game is completed.
         if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
@@ -35,8 +35,6 @@ export class EndGameComponent implements OnInit {
             this.userService.setDummyUser();
             console.log('DUMMY GAME AND USER HAVE BEEN SET');
         }
-        //TODO: probably need to remove all other dummy setters, but maintain at least user.id and game.id for developing purposes
-
 
         this.currentGame = this.gameService.getCurrentGame();
         this.currentUser = this.userService.getCurrentUser();
@@ -57,7 +55,7 @@ export class EndGameComponent implements OnInit {
     }
 
 
-    getRankedPlayers(): User[]{
+    getRankedPlayers(): User[] {
         let rankedPlayers =  this.currentGame.players;
         let finalPoints: number[] = [];
 
@@ -66,14 +64,14 @@ export class EndGameComponent implements OnInit {
         }
 
         for (let i = 0; i < rankedPlayers.length; i++) {
-            if (finalPoints[i] < finalPoints[i+1]) {
-                let tmp = rankedPlayers[i+1];
-                let tmpPoints = finalPoints[i+1];
-                rankedPlayers[i+1] = rankedPlayers[i];
-                finalPoints[i+1] = finalPoints[i];
+            if (finalPoints[i] < finalPoints[i + 1]) {
+                let tmp = rankedPlayers[i + 1];
+                let tmpPoints = finalPoints[i + 1];
+                rankedPlayers[i + 1] = rankedPlayers[i];
+                finalPoints[i + 1] = finalPoints[i];
                 rankedPlayers[i] = tmp;
                 finalPoints[i] = tmpPoints;
-                i = i-2;
+                i = i - 2;
             }
         }
         return rankedPlayers;
@@ -82,7 +80,9 @@ export class EndGameComponent implements OnInit {
 
     getPoints(i: number): number {
         let playerColor = this.currentGame.players[i].color;
-        if (playerColor == undefined) return 0;
+        if (playerColor === undefined) {
+            return 0;
+        }
         if (playerColor === 'brown') {
             return this.currentGame.points.brown;
         }
@@ -96,7 +96,7 @@ export class EndGameComponent implements OnInit {
             return this.currentGame.points.white;
         }
         else {
-            return -1; //the color wasn't found and must show invalid number
+            return -1; // The color wasn't found and must show invalid number
         }
     }
 

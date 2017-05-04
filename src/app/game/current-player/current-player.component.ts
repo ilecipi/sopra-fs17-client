@@ -1,14 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../shared/models/user';
-import {GameService} from '../../shared/services/game.service';
-import {UserService} from '../../shared/services/user.service';
 import {MoveService} from '../../shared/services/move.service';
-import {ShipService} from '../../shared/services/ship.service';
-import {Game} from "../../shared/models/game";
+import {Game} from '../../shared/models/game';
 import {Card} from '../../shared/models/card';
-import {isUndefined} from "util";
-import {NotificationService} from "../../shared/services/notification.service";
-import {Observable} from "rxjs/Observable";
+import {NotificationService} from '../../shared/services/notification.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
     selector: 'current-player',
@@ -17,9 +13,9 @@ import {Observable} from "rxjs/Observable";
 })
 export class CurrentPlayerComponent implements OnInit {
     @Input()
-    private currentUser: User;
+    public currentUser: User;
     @Input()
-    private currentGame: Game; //need to know the current game for sending the addStones move request
+    public currentGame: Game; // Need to know the current game for sending the addStones move request
 
     @Input()
     private currentUserCards: Card[] = [];
@@ -31,10 +27,7 @@ export class CurrentPlayerComponent implements OnInit {
 
 
 
-    constructor(private gameService: GameService,
-                private userService: UserService,
-                private moveService: MoveService,
-                private shipService: ShipService,
+    constructor(private moveService: MoveService,
                 private notificationService: NotificationService) {
     }
 
@@ -44,7 +37,7 @@ export class CurrentPlayerComponent implements OnInit {
     }
 
     triggerAddStones(): void {
-        //call addStones with correct game and user information
+        // Call addStones with correct game and user information
 
         let gameId = this.currentGame.id;
         let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1];
@@ -56,7 +49,7 @@ export class CurrentPlayerComponent implements OnInit {
                     // do nothing because successful
                 },
                 (errorData) => {
-                    if (errorData.status == 403) {
+                    if (errorData.status === 403) {
                         let cuts = errorData._body.split('"');
                         // let notification= secondCut[0];
                         this.notificationService.show(cuts[15]);
@@ -77,7 +70,7 @@ export class CurrentPlayerComponent implements OnInit {
                     // do nothing because successful
                 },
                 (errorData) => {
-                    if (errorData.status == 403) {
+                    if (errorData.status === 403) {
                         let cuts = errorData._body.split('"');
                         // let notification= secondCut[0];
                         this.notificationService.show(cuts[15]);
@@ -97,7 +90,7 @@ export class CurrentPlayerComponent implements OnInit {
                     // do nothing because successful
                 },
                 (errorData) => {
-                    if (errorData.status == 403) {
+                    if (errorData.status === 403) {
                         let cuts = errorData._body.split('"');
                         // let notification= secondCut[0];
                         this.notificationService.show(cuts[15]);
@@ -108,11 +101,11 @@ export class CurrentPlayerComponent implements OnInit {
     }
 
     showActionCardBlock(): boolean {
-        let isCurrentPlayer = this.currentGame.currentPlayer == this.currentUser.id;
-        let isChisel = this.currentGame.isActionCardChisel != 0;
-        let isSail = this.currentGame.isActionCardSail != 0;
-        let isHammer = this.currentGame.isActionCardHammer == true;
-        let isLever = this.currentGame.isActionCardLever.length != 0;
+        let isCurrentPlayer = this.currentGame.currentPlayer === this.currentUser.id;
+        let isChisel = this.currentGame.isActionCardChisel !== 0;
+        let isSail = this.currentGame.isActionCardSail !== 0;
+        let isHammer = this.currentGame.isActionCardHammer === true;
+        let isLever = this.currentGame.isActionCardLever.length !== 0;
 
 
         return isCurrentPlayer && (isChisel || isSail || isHammer || isLever);
@@ -120,7 +113,7 @@ export class CurrentPlayerComponent implements OnInit {
 
     leverListener() {
         this.leverSubscription = Observable.interval(100).subscribe(x => {
-            if (this.currentGame.isActionCardLever.length != this.leverSelection.length) {
+            if (this.currentGame.isActionCardLever.length !== this.leverSelection.length) {
                 this.resetLeverSelection();
             }
         })
@@ -132,7 +125,7 @@ export class CurrentPlayerComponent implements OnInit {
         for (let i = 0; i < this.currentGame.isActionCardLever.length; i++) {
             this.leverSelection.push(0);
         }
-        this.leverCounter=0;
+        this.leverCounter = 0;
 
     }
 
@@ -147,7 +140,7 @@ export class CurrentPlayerComponent implements OnInit {
             this.notificationService.show('All colors have already been specified');
         }
         else {
-            if (this.leverSelection[index] != 0) {
+            if (this.leverSelection[index] !== 0) {
                 this.notificationService.show('This color has already been specified');
             }
             else {
@@ -170,7 +163,7 @@ export class CurrentPlayerComponent implements OnInit {
             let counter = 1;
             for (let j = 0; j < this.leverSelection.length; j++) {
                 for (let i = 0; i < this.leverSelection.length; i++) {
-                    if (this.leverSelection[i] == counter) {
+                    if (this.leverSelection[i] === counter) {
                         result.push(this.currentGame.isActionCardLever[i]);
                     }
                 }
@@ -186,7 +179,7 @@ export class CurrentPlayerComponent implements OnInit {
     checkAllSelected(): boolean {
         let allSelected = true;
         for (let i = 0; i < this.leverSelection.length; i++) {
-            if (this.leverSelection[i] == 0) {
+            if (this.leverSelection[i] === 0) {
                 allSelected = false;
             }
         }

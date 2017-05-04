@@ -1,9 +1,9 @@
-import {Component, OnInit} from "@angular/core";
-import {AuthenticationService} from "../shared/services/authentication.service";
-import {Router} from "@angular/router";
-import {User} from "../shared/models/user";
-import {UserService} from "../shared/services/user.service";
-import {NotificationService} from "../shared/services/notification.service";
+import {Component, OnInit} from '@angular/core';
+import {AuthenticationService} from '../shared/services/authentication.service';
+import {Router} from '@angular/router';
+import {User} from '../shared/models/user';
+import {UserService} from '../shared/services/user.service';
+import {NotificationService} from '../shared/services/notification.service';
 
 @Component({
     selector: 'app-login',
@@ -20,21 +20,21 @@ export class LoginComponent implements OnInit {
 
     }
 
-    ngOnInit():void {
+    ngOnInit(): void {
         // reset login status
         this.authenticationService.logout();
         this.user = new User();
 
     }
 
-    login() :void{
-        if ((this.user.name == undefined || this.user.name == '') && (this.user.username == undefined || this.user.username == '')){
+    login(): void{
+        if ((this.user.name === undefined || this.user.name === '') && (this.user.username === undefined || this.user.username === '')) {
             this.notificationService.show('Please insert a valid name and username');
         }
-        else if (this.user.name == undefined || this.user.name == '') {
+        else if (this.user.name === undefined || this.user.name === '') {
             this.notificationService.show('Please insert a name.');
         }
-        else if (this.user.username == undefined  || this.user.username == '') {
+        else if (this.user.username === undefined  || this.user.username === '') {
             this.notificationService.show('Please insert a username.');
         }
         else { // if user and username fields are not empty
@@ -44,11 +44,11 @@ export class LoginComponent implements OnInit {
                     (result) => { // success
                         this.user.token = this.authenticationService.getToken();
                         this.user.id = this.authenticationService.getId();
-                        this.userService.loginUser(this.user);//Saves current user into the service UserService
+                        this.userService.loginUser(this.user); // Saves current user into the service UserService
                         this.router.navigate(['/lobby']);
                     },
                     (error) => { // fail
-                        if (error._status ==403){
+                        if (error._status === 403) {
                             // this.notificationService.showNotification('Username already exists',2);
                         }
                     },

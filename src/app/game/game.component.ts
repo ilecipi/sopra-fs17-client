@@ -24,7 +24,6 @@ import {Pyramid} from "../shared/models/pyramid";
 import {Market} from "../shared/models/market";
 import {Card} from "../shared/models/card";
 
-
 @Component({
     selector: 'game',
     templateUrl: './game.component.html',
@@ -32,7 +31,7 @@ import {Card} from "../shared/models/card";
 })
 export class GameComponent implements OnInit {
 
-    private currentGame: Game;
+    public currentGame: Game;
     private currentUser: User;
     private currentTemple: Temple;
     private currentShips: Ship[];
@@ -82,9 +81,9 @@ export class GameComponent implements OnInit {
         this.templeService.setDummyTemple();
         this.obeliskService.setDummyObelisk();
         this.marketService.setDummyMarket();
-        //burialChamber has no dummy setter because in the html we check if the values exist before displaying them
-        //pyramid has also no dummy setter
-        //TODO: probably need to remove all other dummy setters, but maintain at least user.id and game.id for developing purposes
+        // BurialChamber has no dummy setter because in the html we check if the values exist before displaying them
+        // Pyramid has also no dummy setter
+        // TODO: probably need to remove all other dummy setters, but maintain at least user.id and game.id for developing purposes
 
 
         this.currentGame = this.gameService.getCurrentGame();
@@ -98,7 +97,7 @@ export class GameComponent implements OnInit {
 
         this.showedTurn = false;
         this.pollInfo();
-        this.listenForEnd();
+        this.gameManager();
     }
 
     pollInfo(): void {
@@ -140,7 +139,7 @@ export class GameComponent implements OnInit {
     setShips(ships: Ship[]): void {
         for (let i = 0; i < ships.length; i++) {
             for (let j = 0; j < ships[i].stones.length; j++) {
-                if (ships[i].stones[j] == null) {
+                if (ships[i].stones[j] === null) {
                     ships[i].stones[j] = new Stone();
                 }
             }
@@ -151,7 +150,7 @@ export class GameComponent implements OnInit {
     getOpposingPlayers(): User[] {
         let opposingPlayers: User[] = [];
         for (let i = 0; i < this.currentGame.players.length; i++) {
-            if (this.userService.getCurrentUser().id != this.currentGame.players[i].id) {
+            if (this.userService.getCurrentUser().id !== this.currentGame.players[i].id) {
                 opposingPlayers.push(this.currentGame.players[i]);
             }
         }
@@ -160,7 +159,7 @@ export class GameComponent implements OnInit {
 
     getUser(): User {
         for (let i = 0; i < this.currentGame.players.length; i++) {
-            if (this.currentUser.id == this.currentGame.players[i].id) {
+            if (this.currentUser.id === this.currentGame.players[i].id) {
                 return this.currentGame.players[i];
             }
         }
@@ -170,16 +169,18 @@ export class GameComponent implements OnInit {
         return this.currentGame.players.length - 1;
     }
 
-    listenForEnd(time = 300): void {
-        let subscription = Observable.interval(time).subscribe(x => {
-            if (this.currentGame.currentPlayer == this.currentUser.id && !this.showedTurn) {
+    gameManager(): void {
+        let subscription = Observable.interval(300).subscribe(x => {
+
+            if (this.currentGame.currentPlayer === this.currentUser.id && !this.showedTurn) {
                 this.notificationService.show('It\'s your turn!');
                 this.showedTurn = true;
             }
-            if(this.currentGame.nextPlayer == this.currentUser.id && this.showedTurn){
-                this.showedTurn=false;
+            if (this.currentGame.nextPlayer === this.currentUser.id && this.showedTurn) {
+                this.showedTurn = false;
             }
-            if (this.currentGame.status == 'FINISHED') {
+
+            if (this.currentGame.status === 'FINISHED') {
                 this.gameSubscription.unsubscribe();
                 this.userSubscription.unsubscribe();
                 this.templeSubscription.unsubscribe();
@@ -200,7 +201,7 @@ export class GameComponent implements OnInit {
         let userId = this.currentUser.id;
         let cards: Card[] = [];
         for (let i = 0; i <= this.currentGame.players.length; i++) {
-            if (this.currentGame.players[i] != undefined && this.currentGame.players[i].id == userId) {
+            if (this.currentGame.players[i] !== undefined && this.currentGame.players[i].id === userId) {
                 cardsNames = this.currentGame.players[i].cards;
             }
         }

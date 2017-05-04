@@ -32,7 +32,7 @@
     </div>
 
     <div class="opposing-players right-column">
-        <opposing-player *ngFor="let opposingUser of getOpposingPlayers()   "
+        <opposing-player *ngFor="let opposingUser of getOpposingPlayers()"
                          [currentGame]="currentGame"
                          [opposingUser]="opposingUser"
                          [opposingUsersCount]="getHowManyOpponents()"

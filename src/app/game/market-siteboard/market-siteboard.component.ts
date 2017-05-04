@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from "@angular/core";
 import {Card} from "../../shared/models/card";
 import {Market} from "../../shared/models/market";
 import {Game} from "../../shared/models/game";
@@ -30,7 +30,7 @@ export class MarketSiteboardComponent implements OnInit {
 
     pickCard(cardIndex: number): void {
         let gameId = this.currentGame.id;
-        let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1]; //roundId is the last number in the rounds array of the game.
+        let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1]; // RoundId is the last number in the rounds array of the game.
         let playerToken = this.currentUser.token;
         console.log('cardIndex:' + cardIndex);
 
@@ -40,7 +40,7 @@ export class MarketSiteboardComponent implements OnInit {
                     // do nothing because successful
                 },
                 (errorData) => {
-                    if (errorData.status == 403) {
+                    if (errorData.status === 403) {
                         let cuts = errorData._body.split('"');
                         // let notification= secondCut[0];
                         this.notificationService.show(cuts[15]);
@@ -50,9 +50,9 @@ export class MarketSiteboardComponent implements OnInit {
             );
     }
 
-    getPlayerNameFromColor(color:string):string{
-        for(let i =0; i<this.currentGame.players.length;i++){
-            if (this.currentGame.players[i].color==color){
+    getPlayerNameFromColor(color: string): string {
+        for (let i = 0; i < this.currentGame.players.length; i++) {
+            if (this.currentGame.players[i].color === color) {
                 return this.currentGame.players[i].username;
             }
         }

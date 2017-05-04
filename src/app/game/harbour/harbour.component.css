@@ -130,8 +130,7 @@ Info Column:
 .info-column {
     height: 40px;
     position: relative;
-    top: 584px;
-    /*right: 175px;*/
+    top: 590px;
     right: 220px;
     flex-grow: 1;
     color: black;
@@ -145,7 +144,7 @@ Info Column:
 .info-hover {
     min-width: 25px;
     min-height: 25px;
-    background-image: url("../../../assets/img/info-button.png");
+    background-image: url(../../../assets/img/info-button.png);
     background-size: cover;
     background-repeat: no-repeat;
     margin: 10px;
@@ -225,13 +224,13 @@ Dynamic styles for stone colors:
 /*FAST FORWARD  AND SHOW WAVE BUTTONS *********************************************************************************/
 
 .fast-forward {
-    height: 30px;
-    width: 150px;
+    opacity: 0;
+    max-height: 10px;
     background: rgba(0, 0, 0, 0.8);
     color: white;
     position: relative;
-    top: 594px;
-    right: 150px;
+    top: 612px;
+    right: 70px;
     text-align: center;
 }
 .show-wave{
@@ -241,7 +240,7 @@ Dynamic styles for stone colors:
     color: white;
     position: relative;
     top: 594px;
-    right: 550px;
+    right: 460px;
     text-align: center;
 }
 

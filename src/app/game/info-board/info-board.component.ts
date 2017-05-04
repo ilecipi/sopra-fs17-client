@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Game} from '../../shared/models/game';
-import {Observable} from "rxjs/Rx";
+import {Observable} from 'rxjs/Rx';
 import {Ship} from '../../shared/models/ship';
 
 @Component({
@@ -38,13 +38,11 @@ export class InfoBoardComponent implements OnInit {
     }
 
     ngOnInit() {
-
-        // initialization of style for rotating discarded cards.
+        // Initialization of style for rotating discarded cards.
         this.discardedStyle.innerHTML = '';
         document.getElementsByTagName('info-board')[0].appendChild(this.discardedStyle);
 
-
-        this.showSnake = false;
+        this.showSnake = false; // Not show snake easter egg at component generation
         this.initStyleChildren();
         this.addStyleChildren();
         this.pollColors();
@@ -116,16 +114,16 @@ export class InfoBoardComponent implements OnInit {
         let pointsArray = [];
         let points = this.currentGame.points;
         // push on the pointsArray every color present in currentGame.points with his respective points
-        if (points.brown != undefined) {
+        if (points.brown !== undefined) {
             pointsArray.push(['brown', points.brown % 40, 'var(--brownStone)']);
         }
-        if (points.black != undefined) {
+        if (points.black !== undefined) {
             pointsArray.push(['black', points.black % 40, 'var(--blackStone)']);
         }
-        if (points.white != undefined) {
+        if (points.white !== undefined) {
             pointsArray.push(['white', points.white % 40, 'var(--whiteStone)']);
         }
-        if (points.grey != undefined) {
+        if (points.grey !== undefined) {
             pointsArray.push(['grey', points.grey % 40, 'var(--greyStone)']);
         }
 
@@ -133,7 +131,7 @@ export class InfoBoardComponent implements OnInit {
         let distinctScore = []; // is going to contain all distinct scores
         let counts = [];    // is going to contain the amount of time each score presents itself
         for (let i = 0; i < pointsArray.length; i++) {
-            if (distinctScore.some(x => x == pointsArray[i][1])) {
+            if (distinctScore.some(x => x === pointsArray[i][1])) {
                 counts[distinctScore.indexOf(pointsArray[i][1])] += 1;
             } else {
                 distinctScore.push(pointsArray[i][1]);
@@ -145,14 +143,14 @@ export class InfoBoardComponent implements OnInit {
         // first element: the actual score number
         // second element: a list containing the strings that need to be used for that color (e.g. [var(--blackStone),var(--whiteStone)])
 
-        let boardStatus = []; //is going to contain every color of the game
+        let boardStatus = []; // Is going to contain every color of the game
         for (let i = 0; i < distinctScore.length; i++) {
-            let element = [];// this is one row in boardStatus
+            let element = []; // This is one row in boardStatus
             element.push(distinctScore[i]);
             let colors = [];
             for (let j = 0; j < pointsArray.length; j++) {
                 if (distinctScore[i] == pointsArray[j][1]) {
-                    colors.push(pointsArray[j][2]); //add every string to be used with that specific score amount
+                    colors.push(pointsArray[j][2]); // Add every string to be used with that specific score amount
                 }
             }
             element.push(colors);
@@ -178,7 +176,7 @@ export class InfoBoardComponent implements OnInit {
         // ]
 
 
-        // now need to create the style to apply:
+        // Now need to create the style to apply:
 
         // Each iteration of the function requires the old style to be removed, changed, and then added again
         this.removeStyleChildren();
@@ -191,19 +189,19 @@ export class InfoBoardComponent implements OnInit {
         this.style3.innerHTML = '';
         this.style4.innerHTML = '';
 
-        // example style: background: linear-gradient(to right, #ffffff,#ffffff 49.9%, #000000 50.1%, #000000);
+        // Example style: background: linear-gradient(to right, #ffffff,#ffffff 49.9%, #000000 50.1%, #000000);
         let styleCounter = 1;
         for (let i = 0; i < boardStatus.length; i++) {
-            let styleString: string = '';
-            if (styleCounter == 1) {
+            let styleString = '';
+            if (styleCounter === 1) {
                 styleString = this.setStyleString(boardStatus, i);
                 this.style1.innerHTML = styleString;
             }
-            else if (styleCounter == 2) {
+            else if (styleCounter === 2) {
                 styleString = this.setStyleString(boardStatus, i);
                 this.style2.innerHTML = styleString;
             }
-            else if (styleCounter == 3) {
+            else if (styleCounter === 3) {
                 styleString = this.setStyleString(boardStatus, i);
                 this.style3.innerHTML = styleString;
             }
@@ -263,9 +261,9 @@ export class InfoBoardComponent implements OnInit {
         this.counter = this.counter % 40;
     }
 
-    setStyleString(boardStatus: any, i: number): string {// this was such a pain, believe me I coded it... ok with some help, but I still coded it.
+    setStyleString(boardStatus: any, i: number): string {// This method was such a pain, believe me I coded it...
 
-        let styleString = '.order' + boardStatus[i][0] + ' { background: linear-gradient( to right, '; //set beginning of styleString
+        let styleString = '.order' + boardStatus[i][0] + ' { background: linear-gradient( to right, '; // Set beginning of styleString
 
         for (let j = 0; j < boardStatus[i][1].length; j++) {    // for each single color assigned to a score in boardStatus
             let percent = 100 / boardStatus[i][1].length;       // percent that that color occupies in the square based on how many colors are concurrently there
@@ -282,7 +280,7 @@ export class InfoBoardComponent implements OnInit {
     }
 
 
-    randomInt(min, max) {
+    randomInt(min, max) { // Returns a random integer between max and min
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
@@ -290,7 +288,7 @@ export class InfoBoardComponent implements OnInit {
     updateDiscardedCardsStyle() {
         document.getElementsByTagName('info-board')[0].removeChild(this.discardedStyle);
 
-        this.discardedStyle.innerHTML = ''; //resetting before modifying
+        this.discardedStyle.innerHTML = ''; // Resetting before modifying
 
         this.getAngles();
         for (let i = 0; i < this.discardedAngles.length; i++) {
