@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from "@angular/http";
-import {environment} from "../../../environments/environment";
-import {Observable} from "rxjs/Rx";
-import {Obelisk} from "../models/obelisk";
+import {Http, Response} from '@angular/http';
+import {environment} from '../../../environments/environment';
+import {Observable} from 'rxjs/Rx';
+import {Obelisk} from '../models/obelisk';
 
 @Injectable()
 export class ObeliskService {
@@ -21,13 +21,13 @@ export class ObeliskService {
         this.currentObelisk = new Obelisk();
     }
 
-    pollObelisk(gameId: number) {
+    pollObelisk(gameId: number): any {
         return Observable.interval(1500).flatMap(() => {
             return this.getObelisk(gameId);
         });
     }
 
-    getObelisk(gameId: number) {
+    getObelisk(gameId: number): any {
         return this.http.get(this.apiUrl + '/games/' + gameId + '/obelisk')
             .map((response: Response) => response.json());
     }

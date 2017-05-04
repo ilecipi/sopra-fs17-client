@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from "@angular/http";
-import {AuthenticationService} from "./authentication.service";
-import {Observable} from "rxjs/Rx";
-import {environment} from "../../../environments/environment";
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import {environment} from '../../../environments/environment';
 import {Temple} from '../../shared/models/temple';
-import {Stone} from '../../shared/models/stone';
 
 
 @Injectable()
@@ -14,7 +12,7 @@ export class TempleService {
     currentTemple: Temple;
 
     constructor(private http: Http) {
-        //selects correct URL on the basis of the environment mode
+        // selects correct URL on the basis of the environment mode
         this.apiUrl = environment.apiUrl;
     }
 

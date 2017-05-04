@@ -3,6 +3,6 @@ export class BurialRow {
     stones: Stone[];
 
     constructor() {
-        this.stones=[];
+        this.stones = [];
     }
 }

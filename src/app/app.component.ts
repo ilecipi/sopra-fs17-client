@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from './shared/models/user';
 import {UserService} from './shared/services/user.service';
-import {GameService} from './shared/services/game.service'
-import {ShipService} from "./shared/services/ship.service";
+import {GameService} from './shared/services/game.service';
+import {ShipService} from './shared/services/ship.service';
 import {TempleService} from './shared/services/temple.service';
 
 @Component({

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from "@angular/http";
-import {environment} from "../../../environments/environment";
-import {Observable} from "rxjs/Rx";
-import {Pyramid} from "../models/pyramid";
+import {Http, Response} from '@angular/http';
+import {environment} from '../../../environments/environment';
+import {Observable} from 'rxjs/Rx';
+import {Pyramid} from '../models/pyramid';
 
 @Injectable()
 export class PyramidService {
@@ -18,13 +18,13 @@ export class PyramidService {
     }
 
 
-    pollPyramid(gameId: number) {
+    pollPyramid(gameId: number): any {
         return Observable.interval(1500).flatMap(() => {
             return this.getPyramid(gameId);
         });
     }
 
-    getPyramid(gameId: number) {
+    getPyramid(gameId: number): any {
         return this.http.get(this.apiUrl + '/games/' + gameId + '/pyramid')
             .map((response: Response) => response.json());
     }

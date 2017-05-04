@@ -3,7 +3,7 @@ export class Pyramid {
     id: number;
     addedStones: Stone[];
 
-    constructor(){
-        this.addedStones=[];
+    constructor() {
+        this.addedStones = [];
     }
 }

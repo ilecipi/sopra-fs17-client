@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from "@angular/http";
-import {AuthenticationService} from "./authentication.service";
-import {Observable} from "rxjs/Rx";
-import {User} from "../models/user";
-import {environment} from "../../../environments/environment";
+import {Http, Headers, RequestOptions, Response} from '@angular/http';
+import {AuthenticationService} from './authentication.service';
+import {Observable} from 'rxjs/Rx';
+import {User} from '../models/user';
+import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class UserService {
@@ -14,7 +14,7 @@ export class UserService {
 
     constructor(private http: Http,
                 private authenticationService: AuthenticationService) {
-        //selects correct URL on the basis of the environment mode
+        // selects correct URL on the basis of the environment mode
         this.apiUrl = environment.apiUrl;
         this.loggedIn = false;
     }
@@ -22,15 +22,15 @@ export class UserService {
 
     loginUser(user: User): void {
         this.currentUser = user;
-        this.loggedIn=true;
+        this.loggedIn = true;
     }
 
     logoutUser(): void {
         this.currentUser = new User();
     }
 
-    setCurrentUser(user: User):void{
-        this.currentUser=user;
+    setCurrentUser(user: User): void {
+        this.currentUser = user;
     }
 
     getCurrentUser(): User {

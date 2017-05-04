@@ -1,5 +1,5 @@
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs/Observable";
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class NotificationService {
@@ -15,13 +15,11 @@ export class NotificationService {
 
     pollQueue(): void {
         this.queueSubscription = Observable.interval(this.timeResolution).subscribe(() => {
-            if (this.notificationsQueue.length == 0) {
-                //do nothing because queue is empty
-            }
-            else if (this.notificationsQueue.length >= 10) {
+            if (this.notificationsQueue.length === 0) {
+                // Do nothing because queue is empty
+            } else if (this.notificationsQueue.length >= 10) {
                 this.removeItem();
-            }
-            else {
+            } else {
                 this.reduceQueue();
             }
         });
@@ -50,7 +48,10 @@ export class NotificationService {
     }
 
     getNotificationsQueue(index: number): string {
-        if (this.notificationsQueue.length <= index) return '';
-        else return this.notificationsQueue[index];
+        if (this.notificationsQueue.length <= index) {
+            return '';
+        } else {
+            return this.notificationsQueue[index];
+        }
     }
 }

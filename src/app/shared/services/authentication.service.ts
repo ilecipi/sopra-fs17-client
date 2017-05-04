@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Http, Response, Headers, RequestOptions, Jsonp} from "@angular/http";
-import {User} from "../models/user";
+import {Http, Response, Headers, RequestOptions, Jsonp} from '@angular/http';
+import {User} from '../models/user';
 import {Observable} from 'rxjs/Rx';
-import {environment} from "../../../environments/environment";
+import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
@@ -10,7 +10,7 @@ export class AuthenticationService {
     public id; number;
     private apiUrl: string;
 
-    constructor(private http: Http, private jsonp: Jsonp,) {
+    constructor(private http: Http, private jsonp: Jsonp) {
         // set token if saved in local storage
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
@@ -21,7 +21,7 @@ export class AuthenticationService {
 
     login(user: User): Observable<User> {
         let bodyString = JSON.stringify({name: user.name, username: user.username}); // Stringify payload
-        let headers = new Headers({'Content-Type': 'application/json'});// ... Set content type to JSON
+        let headers = new Headers({'Content-Type': 'application/json'}); // ... Set content type to JSON
         let options = new RequestOptions({headers: headers}); // Create a request option
 
         return this.http.post(this.apiUrl + '/users', bodyString, options) // ...using post request
@@ -31,7 +31,7 @@ export class AuthenticationService {
                 if (user) {
                     // set token and property
                     this.token = user.token;
-                    this.id= user.id;
+                    this.id = user.id;
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify({username: user.username, token: this.token, id: this.id}));
                     // return true to indicate successful login
@@ -41,7 +41,7 @@ export class AuthenticationService {
                     return null;
                 }
             }) // ...and calling .json() on the response to return data
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error in creating a user')); //...errors if
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error in creating a user')); // ...errors if
     }
 
     getToken(): string {

@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from "@angular/http";
-import {AuthenticationService} from "./authentication.service";
-import {Observable} from "rxjs/Rx";
-import {Game} from "../models/game";
-import {User} from "../models/user";
-import {environment} from "../../../environments/environment";
-import {Points} from "../models/points";
-import {Card} from "../models/card";
+import {Http, Headers, RequestOptions, Response} from '@angular/http';
+import {AuthenticationService} from './authentication.service';
+import {Observable} from 'rxjs/Rx';
+import {Game} from '../models/game';
+import {User} from '../models/user';
+import {environment} from '../../../environments/environment';
+import {Points} from '../models/points';
 
 @Injectable()
 export class GameService {
@@ -18,7 +17,7 @@ export class GameService {
 
     constructor(private http: Http,
                 private authenticationService: AuthenticationService) {
-        //selects correct URL on the basis of the environment mode
+        // Selects correct URL on the basis of the environment mode
         this.apiUrl = environment.apiUrl;
         this.isTrueGame = false;
 
@@ -42,7 +41,7 @@ export class GameService {
             .map((response) => response.json());
     }
 
-    pollGames(time = 1500) {
+    pollGames(time = 1500):any {
         return Observable.interval(time).flatMap(() => {
             return this.getGames();
 
@@ -61,17 +60,17 @@ export class GameService {
             .map((response: Response) => response.json());
     }
 
-    pollGame(id: number) {
+    pollGame(id: number): any {
         return Observable.interval(1500).flatMap(() => {
             return this.getGame(id);
         });
     }
 
-    setCurrentGame(game: Game) {
+    setCurrentGame(game: Game): any {
         this.currentGame = game;
     }
 
-    getCurrentGame() {
+    getCurrentGame(): any {
         return this.currentGame;
     }
 
@@ -106,15 +105,15 @@ export class GameService {
                 // login successful if there's a jwt token in the response
 
             }) // ...and calling .json() on the response to return data
-            .catch((error: any) => Observable.throw('Server error in creating a user')); //errors
+            .catch((error: any) => Observable.throw('Server error in creating a user')); // errors
     }
 
     isReady(user: User): Observable<string> {
-        let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token});// ... Set access rights.
+        let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token}); // ... Set access rights.
         let options = new RequestOptions({headers: headers}); // Create a request option
 
-        //passed user will have ready state on current game
-        return this.http.put(this.apiUrl + '/games/' + this.currentGame.id + "?token=" + user.token, options)
+        // passed user will have ready state on current game
+        return this.http.put(this.apiUrl + '/games/' + this.currentGame.id + '?token="'+ user.token, options)
             .map(res => res.json());
     }
 
@@ -131,7 +130,7 @@ export class GameService {
     }
 
     startGame(user: User): Observable<string> {
-        let headers = new Headers();// new empty header
+        let headers = new Headers(); // new empty header
         let options = new RequestOptions({headers: headers}); // Create a request option
 
         return this.http.post(this.apiUrl + '/games/' + this.currentGame.id + '/start?playerToken=' + user.token, options)
