@@ -150,13 +150,35 @@ export class LobbyComponent implements OnInit {
     }
 
     startGame(): void {
-        if (this.createdGame) {
-            this.gameService.startGame(this.userService.getCurrentUser())
-                .subscribe();
+        if (this.games[this.index].players.length === 1) {
+            this.notificationService.show('There must be at least two players to start your game');
+        }
+        else if (!this.anyPlayerNotReady(this.index)) {
+            this.notificationService.show('All players in your game must be ready to start it');
         }
         else {
-            this.notificationService.show('Game could not start properly.');
+            if (this.createdGame) {
+                this.gameService.startGame(this.userService.getCurrentUser())
+                    .subscribe();
+            }
+            else {
+                this.notificationService.show('Game could not start properly.');
+            }
         }
+
+    }
+
+    anyPlayerNotReady(index: number): boolean {
+        let allReady = true;
+        for (let i = 0; i < this.games[index].players.length; i++) {
+            console.log(i);
+            console.log(this.games[index].players[i].status);
+            if (this.games[index].players[i].status !== 'IS_READY') {
+                allReady = false;
+            }
+        }
+        console.log(allReady);
+        return allReady;
     }
 
     logout() {
