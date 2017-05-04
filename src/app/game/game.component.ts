@@ -43,7 +43,7 @@ export class GameComponent implements OnInit {
     private showedTurn: boolean;
 
 
-    // subscriptions stored in order to unsubscribe later.
+    // subscriptions stored in order to un-subscribe later.
     private gameSubscription: any;
     private userSubscription: any;
     private templeSubscription: any;
@@ -69,13 +69,20 @@ export class GameComponent implements OnInit {
 
     ngOnInit(): void {
 
+        // Comment following 3 lines for developing purposes:
+
+        // if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
+        //     this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
+        // }
+
+
         // if game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
         // used only for developing purposes
-        // TODO: remove this feature once game is completed.
         if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
             this.gameService.setDummyGame();
             this.userService.setDummyUser();
             console.log('DUMMY GAME AND USER HAVE BEEN SET');
+
         }
         this.shipService.setDummyShips();
         this.templeService.setDummyTemple();
@@ -83,7 +90,6 @@ export class GameComponent implements OnInit {
         this.marketService.setDummyMarket();
         // BurialChamber has no dummy setter because in the html we check if the values exist before displaying them
         // Pyramid has also no dummy setter
-        // TODO: probably need to remove all other dummy setters, but maintain at least user.id and game.id for developing purposes
 
 
         this.currentGame = this.gameService.getCurrentGame();

@@ -113,7 +113,7 @@ export class GameService {
         let options = new RequestOptions({headers: headers}); // Create a request option
 
         // passed user will have ready state on current game
-        return this.http.put(this.apiUrl + '/games/' + this.currentGame.id + '?token="'+ user.token, options)
+        return this.http.put(this.apiUrl + '/games/' + this.currentGame.id + '?token=' + user.token, options)
             .map(res => res.json());
     }
 
@@ -194,8 +194,8 @@ export class GameService {
         dummyGame.name = "Game 1";
         dummyGame.owner = "Player 1";
         dummyGame.status = "RUNNING";
-        dummyGame.currentPlayer = 1;
-        dummyGame.nextPlayer = 2;
+        dummyGame.currentPlayer = 2;
+        dummyGame.nextPlayer = 3;
         dummyGame.rounds = [1];
         dummyGame.players = [dummyUser, opposing1, opposing2, opposing3];
         dummyGame.points = new Points();

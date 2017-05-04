@@ -34,6 +34,13 @@ export class LobbyComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        // Comment following 3 lines for developing purposes:
+
+        // if (!this.userService.getLoggedStatus()) {
+        //     this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
+        // }
+
         this.gameName = '';
 
         // Get all games from the server:
@@ -124,7 +131,6 @@ export class LobbyComponent implements OnInit {
         this.gameService.isReady(this.userService.getCurrentUser())
             .subscribe(
                 (result) => {
-                    this.listenForStart();
                 },
                 (errorData) => {
                 }

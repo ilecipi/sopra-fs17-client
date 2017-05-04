@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 import {UserService} from '../shared/services/user.service';
 import {GameService} from '../shared/services/game.service';
@@ -23,10 +24,18 @@ export class EndGameComponent implements OnInit {
 
 
     constructor(private userService: UserService,
-                private gameService: GameService) {
+                private gameService: GameService,
+                private router: Router) {
     }
 
     ngOnInit(): void {
+        // Comment following 3 lines for developing purposes:
+
+        // if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
+        //     this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
+        // }
+
+
         // If game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
         // used only for developing purposes
         // TODO: remove this feature once game is completed.
