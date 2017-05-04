@@ -1,45 +1,49 @@
-<div class="game-block">
-    <div class="left-column">
-        <div class="gameboard-block">
-            <div class="harbour-column">
-                <harbour [currentShips]="currentShips" [currentGame]="currentGame" [currentUser]="currentUser" ></harbour>
-            </div>
-            <div class="siteboard-column">
+<div class="parent-block">
 
-                <div class="market">
-                    <market-siteboard [currentMarket]="currentMarket" [currentGame]="currentGame" [currentUser]="currentUser"></market-siteboard>
+
+    <div class="game-block">
+        <div class="left-column">
+            <div class="gameboard-block">
+                <div class="harbour-column">
+                    <harbour [currentShips]="currentShips" [currentGame]="currentGame" [currentUser]="currentUser" ></harbour>
                 </div>
-                <div class="pyramid">
-                    <pyramid-siteboard [currentPyramid]="currentPyramid"></pyramid-siteboard>
+                <div class="siteboard-column">
+
+                    <div class="market">
+                        <market-siteboard [currentMarket]="currentMarket" [currentGame]="currentGame" [currentUser]="currentUser"></market-siteboard>
+                    </div>
+                    <div class="pyramid">
+                        <pyramid-siteboard [currentPyramid]="currentPyramid"></pyramid-siteboard>
+                    </div>
+                    <div class="temple">
+                        <temple-siteboard [currentTemple]="currentTemple"></temple-siteboard>
+                    </div>
+                    <div class="burial-chamber">
+                        <burial-chamber-siteboard [currentBurialChamber]="currentBurialChamber"></burial-chamber-siteboard>
+                    </div>
+                    <div class="obelisk">
+                        <obelisk-siteboard [currentObelisk]="currentObelisk"></obelisk-siteboard>
+                    </div>
                 </div>
-                <div class="temple">
-                    <temple-siteboard [currentTemple]="currentTemple"></temple-siteboard>
-                </div>
-                <div class="burial-chamber">
-                    <burial-chamber-siteboard [currentBurialChamber]="currentBurialChamber"></burial-chamber-siteboard>
-                </div>
-                <div class="obelisk">
-                    <obelisk-siteboard [currentObelisk]="currentObelisk"></obelisk-siteboard>
+                <div class="info-board-column">
+                    <info-board [currentGame]="currentGame" [currentShips]="currentShips"></info-board>
                 </div>
             </div>
-            <div class="info-board-column">
-                <info-board [currentGame]="currentGame" [currentShips]="currentShips"></info-board>
+            <div class="currentPlayer-block">
+                <current-player [currentUser]="getUser()" [currentGame]="currentGame" [currentUserCards]="getCurrentUserCards()"></current-player>
             </div>
         </div>
-        <div class="currentPlayer-block">
-            <current-player [currentUser]="getUser()" [currentGame]="currentGame" [currentUserCards]="getCurrentUserCards()"></current-player>
+
+        <div class="opposing-players right-column">
+            <opposing-player *ngFor="let opposingUser of getOpposingPlayers()"
+                             [currentGame]="currentGame"
+                             [opposingUser]="opposingUser"
+                             [opposingUsersCount]="getHowManyOpponents()"
+                             [currentPlayerId]="currentGame.currentPlayer"
+                             [nextPlayerId]="currentGame.nextPlayer">
+
+            </opposing-player>
         </div>
+
     </div>
-
-    <div class="opposing-players right-column">
-        <opposing-player *ngFor="let opposingUser of getOpposingPlayers()"
-                         [currentGame]="currentGame"
-                         [opposingUser]="opposingUser"
-                         [opposingUsersCount]="getHowManyOpponents()"
-                         [currentPlayerId]="currentGame.currentPlayer"
-                         [nextPlayerId]="currentGame.nextPlayer">
-
-        </opposing-player>
-    </div>
-
 </div>
