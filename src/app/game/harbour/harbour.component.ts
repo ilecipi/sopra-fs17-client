@@ -46,6 +46,15 @@ export class HarbourComponent implements OnInit {
 
     // Style required to highlight current selected ship.
     private styleSelectedShip = document.createElement('style');
+    private showLast: boolean;
+    private cachedLast: string;
+    private hideLast: boolean;
+    private stoneTime = 1500; // Show notification of last stone for 1.5 secs
+
+    // Style required to highlight last palced stone.
+    private styleLastStone = document.createElement('style');
+
+
 
     // Style required to position empty ship images at each dock;
     private styleEmptyShipMarket = document.createElement('style');
@@ -62,6 +71,13 @@ export class HarbourComponent implements OnInit {
         // Styles initialization for selection feature
         this.styleSelectedShip.innerHTML = '';
         document.getElementsByTagName('harbour')[0].appendChild(this.styleSelectedShip);
+
+        // Style initialization for last placed stone:
+        this.styleLastStone.innerHTML = '';
+        document.getElementsByTagName('harbour')[0].appendChild(this.styleLastStone);
+        this.showLast = true;
+        this.hideLast = false
+        this.cachedLast = 'none-none';
 
         // Styles initialization for docked and undocked ships position
         this.initStyleShip();
@@ -101,7 +117,6 @@ export class HarbourComponent implements OnInit {
                 (errorData) => {
                     if (errorData.status === 403) {
                         let cuts = errorData._body.split('"');
-                        // let notification= secondCut[0];
                         this.notificationService.show(cuts[15]);
                     }
 
@@ -111,7 +126,6 @@ export class HarbourComponent implements OnInit {
 
     selectDock(siteBoardName: string): void {
         if (this.selectedShip !== -1) {
-            console.log(this.selectedShip);
             let gameId = this.currentGame.id;
             let roundId = this.currentGame.rounds[this.currentGame.rounds.length - 1]; // RoundId is the last number in the rounds array of the game.
             let shipId = this.currentShips[this.selectedShip].id; // Post request requires current ship ID.
@@ -225,8 +239,11 @@ export class HarbourComponent implements OnInit {
         this.styleSubscription = Observable.interval(timeShip).subscribe(x => {
             this.setShipPositions();
         });
-        this.styleSubscription = Observable.interval(timeShip).subscribe(x => {
+        this.styleSubscription = Observable.interval(200).subscribe(x => {
             this.setEmptyShipsPositions();
+        });
+        this.styleSubscription = Observable.interval(200).subscribe(x => {
+            this.setLastStonePlaced();
         });
 
     }
@@ -430,6 +447,29 @@ export class HarbourComponent implements OnInit {
                     this.notificationService.show('Game is fast-forwarding...');
                 },
             );
+    }
+
+    setLastStonePlaced(): void {
+        let last = this.currentGame.lastAddedStone;
+        if (last === 'none-none' || last === undefined || last === null || this.hideLast) {
+            document.getElementsByTagName('harbour')[0].removeChild(this.styleLastStone);
+            this.styleLastStone.innerHTML = '';
+            document.getElementsByTagName('harbour')[0].appendChild(this.styleLastStone);
+            this.hideLast=false;
+        }
+        else { // In this case the variable is a valid input
+            if (this.cachedLast !== last && this.showLast) {
+                this.cachedLast = last;
+                document.getElementsByTagName('harbour')[0].removeChild(this.styleLastStone);
+                this.styleLastStone.innerHTML = '.stone-' + last + '{box-shadow: 0 0 3px 7px var(--turn);}';
+                document.getElementsByTagName('harbour')[0].appendChild(this.styleLastStone);
+
+                this.showLast = false;
+                this.hideLast = false;
+                setTimeout(() => this.showLast = this.hideLast = true, this.stoneTime);
+            }
+
+        }
     }
 
 

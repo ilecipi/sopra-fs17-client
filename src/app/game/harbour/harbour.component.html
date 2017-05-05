@@ -3,7 +3,7 @@
         <div *ngFor="let ship of currentShips;let shipIndex = index" class="ship{{shipIndex + 1}} ship">
             <div class="stones-container">
                 <img class="ship-image image" src="{{getShipSrc(shipIndex)}}" (click)="selectShip(shipIndex)" >
-                <div class="stone btn" *ngFor="let stone of ship.stones;let stoneIndex=index"
+                <div  *ngFor="let stone of ship.stones; let stoneIndex=index" class="stone stone-{{ship.id}}-{{stoneIndex}} btn"
                      (click)="addStone(shipIndex,stoneIndex)"
                      [ngClass]="{
                         empty: stone.color == 'none',
@@ -57,6 +57,7 @@
                     <li>If you have enough stones on your supply sled, you can click on the "+" button on a ship to place there one of your own stones.</li>
                     <li>When a ship becomes selectable, to move it towards a dock you have to first select it and then click on the dock (red dot) of your choosing</li>
                     <li>To play a card you have to double click it.</li>
+                    <li>When a stone is placed, you can see it highlighted in yellow directly on the ship.</li>
                 </ul>
             </span>
         </div>

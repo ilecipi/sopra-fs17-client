@@ -21,6 +21,9 @@ export class Game {
 
     public discardedCardsCounter: number;
 
+    public lastAddedStone: string;  //stores the id of the ship and the position of the stone which was last added.
+    // at the start of game it contains: 'none-none', after some moves the variable could contain something like '3-2'
+
     constructor() {
     }
 }
