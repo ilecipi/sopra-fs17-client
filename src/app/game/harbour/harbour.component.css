@@ -28,7 +28,6 @@ Ships
 .image {
     position: absolute;
     flex-grow: 0;
-    top: 0;
     max-height: 36px;
     min-height: 36px;
     align-self: center;

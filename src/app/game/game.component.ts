@@ -1,28 +1,27 @@
-import {Component, OnInit} from "@angular/core";
-import {Observable} from "rxjs/Rx";
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs/Rx';
+import {Router} from '@angular/router';
 
-import {UserService} from "../shared/services/user.service";
-import {GameService} from "../shared/services/game.service";
-import {TempleService} from "../shared/services/temple.service";
-import {ShipService} from "../shared/services/ship.service";
-import {ObeliskService} from "../shared/services/obelisk.service";
-import {BurialChamberService} from "../shared/services/burial-chamber.service";
-import {MarketService} from "../shared/services/market.service";
-import {PyramidService} from "../shared/services/pyramid.service";
-import {BurialChamber} from "../shared/models/burialChamber";
-import {NotificationService} from "../shared/services/notification.service";
+import {UserService} from '../shared/services/user.service';
+import {GameService} from '../shared/services/game.service';
+import {TempleService} from '../shared/services/temple.service';
+import {ShipService} from '../shared/services/ship.service';
+import {ObeliskService} from '../shared/services/obelisk.service';
+import {BurialChamberService} from '../shared/services/burial-chamber.service';
+import {MarketService} from '../shared/services/market.service';
+import {PyramidService} from '../shared/services/pyramid.service';
+import {NotificationService} from '../shared/services/notification.service';
 
-
-import {User} from "../shared/models/user";
-import {Game} from "../shared/models/game";
-import {Ship} from "../shared/models/ship";
-import {Stone} from "../shared/models/stone";
-import {Temple} from "../shared/models/temple";
-import {Obelisk} from "../shared/models/obelisk";
-import {Pyramid} from "../shared/models/pyramid";
-import {Market} from "../shared/models/market";
-import {Card} from "../shared/models/card";
+import {BurialChamber} from '../shared/models/burialChamber';
+import {User} from '../shared/models/user';
+import {Game} from '../shared/models/game';
+import {Ship} from '../shared/models/ship';
+import {Stone} from '../shared/models/stone';
+import {Temple} from '../shared/models/temple';
+import {Obelisk} from '../shared/models/obelisk';
+import {Pyramid} from '../shared/models/pyramid';
+import {Market} from '../shared/models/market';
+import {Card} from '../shared/models/card';
 
 @Component({
     selector: 'game',
