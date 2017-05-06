@@ -175,7 +175,7 @@ export class GameComponent implements OnInit {
     }
 
     gameManager(): void {
-        let subscription = Observable.interval(300).subscribe(x => {
+        let subscription = Observable.interval(1500).subscribe(x => {
 
             if (this.currentGame.currentPlayer === this.currentUser.id && !this.showedTurn) {
                 this.notificationService.show('It\'s your turn!');

@@ -36,7 +36,7 @@ export class CurrentPlayerComponent implements OnInit {
         this.leverListener();
     }
 
-    triggerAddStones(): void {
+    retrieveStones(): void {
         // Call addStones with correct game and user information
 
         let gameId = this.currentGame.id;
