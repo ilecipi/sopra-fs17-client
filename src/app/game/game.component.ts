@@ -121,6 +121,7 @@ export class GameComponent implements OnInit {
         this.changeSubscription = this.changeService.pollChanges(this.currentGame.id)
             .subscribe(counter => {
                 console.log('Current counter:' + counter);
+                console.log(this.currentGame.status);
                 if (this.currentCounter !== counter) {
                     this.currentCounter = counter;
                     this.retrieveInfo();
@@ -217,7 +218,7 @@ export class GameComponent implements OnInit {
     }
 
     gameManager(): void {
-        let subscription = Observable.interval(1500).subscribe(x => {
+        let subscription = Observable.interval(1500).subscribe(() => {
 
             if (this.currentGame.status === 'FINISHED') {
 
