@@ -6,6 +6,7 @@ import {Game} from '../shared/models/game';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Rx';
 import {NotificationService} from '../shared/services/notification.service';
+import {} from '../../assets/pdf'
 
 @Component({
     selector: 'app-lobby',
@@ -37,9 +38,9 @@ export class LobbyComponent implements OnInit {
 
         // Comment following 3 lines for developing purposes:
 
-        // if (!this.userService.getLoggedStatus()) {
-        //     this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
-        // }
+        if (!this.userService.getLoggedStatus()) {
+            this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
+        }
 
         this.gameName = '';
 
