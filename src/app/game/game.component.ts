@@ -177,7 +177,7 @@ export class GameComponent implements OnInit {
     }
 
     resetCounterChanges(): void {
-        this.resetCounterChangesSubscription = Observable.interval(1000).subscribe(x => {
+        this.resetCounterChangesSubscription = Observable.interval(10000).subscribe(x => {
             this.currentCounter = -1; // Every 10 seconds the counter gets reset so that if anything goes wrong
             // we just need to wait and the game variables are automatically refreshed.
         });
@@ -218,7 +218,7 @@ export class GameComponent implements OnInit {
     }
 
     gameManager(): void {
-        let subscription = Observable.interval(1500).subscribe(() => {
+        let subscription = Observable.interval(300).subscribe(() => {
 
             if (this.currentGame.status === 'FINISHED') {
 
@@ -234,10 +234,20 @@ export class GameComponent implements OnInit {
                 this.pyramidSubscription.unsubscribe();
                 this.marketSubscription.unsubscribe();
 
-                this.router.navigate(['/end-game']);
+                this.finishedGame();
                 subscription.unsubscribe();
             }
         });
+    }
+
+    finishedGame(): void {
+        this.notificationService.show('The game has finished, you will be redirected shortly.');
+        this.notificationService.show('5');
+        setTimeout(() => this.notificationService.show('4'), 1000);
+        setTimeout(() => this.notificationService.show('3'), 2000);
+        setTimeout(() => this.notificationService.show('2'), 3000);
+        setTimeout(() => this.notificationService.show('1'), 4000);
+        setTimeout(() => this.router.navigate(['/end-game']), 5000);
     }
 
     getCurrentUserCards(): Card[] {
