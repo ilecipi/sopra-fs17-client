@@ -37,7 +37,7 @@
     height: 100%;
     width: 36%;
     margin: 0;
-    background-image: url('../../assets/img/ImhotepHarbourWaterNew.png');
+    background-image: url('../../assets/img/ImhotepHarbourWater.png');
     background-size: cover;
 }
 
@@ -55,7 +55,7 @@ Site Boards
 .market {
     height: 34%;
     margin: 0;
-    background-image: url('../../assets/img/ImhotepMarketNew.png');
+    background-image: url('../../assets/img/ImhotepMarket.png');
     background-size: cover;
 }
 

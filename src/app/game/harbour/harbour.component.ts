@@ -76,7 +76,7 @@ export class HarbourComponent implements OnInit {
         this.styleLastStone.innerHTML = '';
         document.getElementsByTagName('harbour')[0].appendChild(this.styleLastStone);
         this.showLast = true;
-        this.hideLast = false
+        this.hideLast = false;
         this.cachedLast = 'none-none';
 
         // Styles initialization for docked and undocked ships position
@@ -135,7 +135,7 @@ export class HarbourComponent implements OnInit {
             this.moveService.sailShipToSiteBoard(gameId, roundId, shipId, siteBoardName, playerToken)
                 .subscribe(
                     (result) => {
-                        // Do nothing because successful
+                        this.unselectShip();
                     },
                     (errorData) => {
                         if (errorData.status == 403) {
@@ -257,7 +257,7 @@ export class HarbourComponent implements OnInit {
             if (!this.currentShips[i].docked) { // Ship not docked means it is still in the water
                 this.removeStyleShip(); // Removing styles before modifications
 
-                let step = Math.PI * 2 / 2000; // Step is going to be a fraction of the whole circle in radians
+                let step = Math.PI * 2 / 1000; // Step is going to be a fraction of the whole circle in radians
                 let omegaHorizontal = 2; // Angular velocity for the ship positions formula (better use whole numbers to avoid stuttering)
                 let omegaVertical = 4; // Angular velocity for the ship positions formula (better use whole numbers to avoid stuttering)
                 let amplitude = 5; // Max positive and negative offset in pixels of the ship positions
@@ -436,6 +436,13 @@ export class HarbourComponent implements OnInit {
         this.selectedShip = index;
         document.getElementsByTagName('harbour')[0].removeChild(this.styleSelectedShip);
         this.styleSelectedShip.innerHTML = '.ship-selector' + (index + 1) + ' {border: 3px solid yellow;}';
+        document.getElementsByTagName('harbour')[0].appendChild(this.styleSelectedShip);
+    }
+
+    unselectShip():void{
+        this.selectedShip = -1;
+        document.getElementsByTagName('harbour')[0].removeChild(this.styleSelectedShip);
+        this.styleSelectedShip.innerHTML = '';
         document.getElementsByTagName('harbour')[0].appendChild(this.styleSelectedShip);
     }
 
