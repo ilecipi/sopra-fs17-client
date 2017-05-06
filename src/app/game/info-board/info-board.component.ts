@@ -33,6 +33,9 @@ export class InfoBoardComponent implements OnInit {
 
     styleSubscription: any;
 
+    checkSubscription: any;
+    alreadySubscribed: boolean = false;
+
 
     constructor() {
     }
@@ -96,12 +99,24 @@ export class InfoBoardComponent implements OnInit {
 
     }
 
-    pollColors(): void {
-        this.styleSubscription = Observable.interval(100).subscribe(x => {
-            if (this.showSnake) {
-                this.setTrackBoardSnake();
+        pollColors(): void {
+        this.checkSubscription = Observable.interval(1500).subscribe(x => {
+            if (this.showSnake) { // Need to show snake and thus refresh of tracking board must be faster
+                if (this.alreadySubscribed) {
+                    this.styleSubscription.unsubscribe();
+                }
+                this.styleSubscription = Observable.interval(100).subscribe(
+                    (x)=> {
+                        this.setTrackBoardSnake();
+                    }
+                );
+                this.alreadySubscribed = true;
             }
             else {
+                if(this.alreadySubscribed){
+                    this.alreadySubscribed = false;
+                    this.styleSubscription.unsubscribe();
+                }
                 this.setTrackBoardCells();
             }
             this.updateDiscardedCardsStyle();
