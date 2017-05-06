@@ -20,7 +20,7 @@
     border-radius: 5px;
     min-width:300px;
     align-self:flex-start;
-    background: rgba(69, 69, 69, 0.9);
+    background-color: rgba(55, 55, 55, 0.8);
     text-align: center;
     height:0;
     padding:0;
@@ -36,7 +36,7 @@
     margin:5px;
     min-width:300px;
     align-self:flex-start;
-    background: rgba(69, 69, 69, 0.9);
+    background-color: rgba(55, 55, 55, 0.8);
     text-align: center;
     padding: 5px;
     height:auto;

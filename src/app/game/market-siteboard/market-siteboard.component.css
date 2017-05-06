@@ -60,12 +60,13 @@ Info Column:
     position: relative;
     left: 25px;
     width: 500px;
-    border: 1px solid white;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(55, 55, 55, 0.8);
     color: white;
     text-align: center;
     z-index:10;
+    padding:10px;
+    font-size:13px;
 }
 
 /***********************************************************************************************************************

@@ -110,8 +110,20 @@
                                  }
                                 ">
                         </div>
-                        <div class="element-order">
-                            {{getElementOrder(i)}}
+                        <div class="element-order" *ngIf="getElementOrder(i) === 1">
+                            1st
+                        </div>
+                        <div class="element-order" *ngIf="getElementOrder(i) === 2">
+                            2nd
+                        </div>
+                        <div class="element-order" *ngIf="getElementOrder(i) === 3">
+                            3rd
+                        </div>
+                        <div class="element-order" *ngIf="getElementOrder(i) === 4">
+                            4th
+                        </div>
+                        <div class="element-order" *ngIf="getElementOrder(i) === 0">
+                            -
                         </div>
                     </div>
 

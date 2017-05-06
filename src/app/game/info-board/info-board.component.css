@@ -182,7 +182,8 @@ Cards Block:
     text-align:center;
     background: rgba(0,0,0,0.3);
     background-image: url(../../../assets/img/card-pattern.png);
-    box-shadow: 3px 3px 20px 6px rgba(0,0,0,0.3);}
+    box-shadow: 3px 3px 20px 6px rgba(0, 0, 0, 0.3);
+}
 
 .shipCard {
     flex-grow: 0;
@@ -190,6 +191,7 @@ Cards Block:
     margin-bottom: 10px;
     height: 20px;
     align-self: center;
+
 }
 
 .discarded-market-cards-container {
@@ -228,6 +230,9 @@ Cards Block:
     min-height: 95px;
     max-height: 95px;
     z-index:2;
+    box-shadow: 3px 3px 20px 6px rgba(0, 0, 0, 0.3);
+    border-radius:5px;
+
 }
 
 .discarded-market-cards-description{

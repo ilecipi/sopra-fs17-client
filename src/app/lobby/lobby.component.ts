@@ -172,13 +172,10 @@ export class LobbyComponent implements OnInit {
     anyPlayerNotReady(index: number): boolean {
         let allReady = true;
         for (let i = 0; i < this.games[index].players.length; i++) {
-            console.log(i);
-            console.log(this.games[index].players[i].status);
             if (this.games[index].players[i].status !== 'IS_READY') {
                 allReady = false;
             }
         }
-        console.log(allReady);
         return allReady;
     }
 
