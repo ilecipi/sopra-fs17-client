@@ -22,6 +22,7 @@ import {BurialChamberService} from './shared/services/burial-chamber.service';
 import {PyramidService} from './shared/services/pyramid.service';
 import {MarketService} from "./shared/services/market.service";
 import {NotificationService} from "./shared/services/notification.service";
+import {ChangeService} from "./shared/services/change.service";
 
 import {routing} from "./app.routing";
 import {AuthenticationService} from "./shared/services/authentication.service";
@@ -70,7 +71,8 @@ import {NotificationComponent} from './notification/notification.component';
         BurialChamberService,
         PyramidService,
         MarketService,
-        NotificationService],
+        NotificationService,
+        ChangeService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

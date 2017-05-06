@@ -11,6 +11,8 @@ import {BurialChamberService} from '../shared/services/burial-chamber.service';
 import {MarketService} from '../shared/services/market.service';
 import {PyramidService} from '../shared/services/pyramid.service';
 import {NotificationService} from '../shared/services/notification.service';
+import {ChangeService} from '../shared/services/change.service';
+
 
 import {BurialChamber} from '../shared/models/burialChamber';
 import {User} from '../shared/models/user';
@@ -30,6 +32,9 @@ import {Card} from '../shared/models/card';
 })
 export class GameComponent implements OnInit {
 
+    private currentCounter = -1;
+    private timeToResetCounter: number;
+
     public currentGame: Game;
     private currentUser: User;
     private currentTemple: Temple;
@@ -43,6 +48,9 @@ export class GameComponent implements OnInit {
 
 
     // subscriptions stored in order to un-subscribe later.
+    private changeSubscription: any;
+    private resetCounterChangesSubscription: any;
+
     private gameSubscription: any;
     private userSubscription: any;
     private templeSubscription: any;
@@ -61,7 +69,8 @@ export class GameComponent implements OnInit {
                 private pyramidService: PyramidService,
                 private marketService: MarketService,
                 private router: Router,
-                private notificationService: NotificationService) {
+                private notificationService: NotificationService,
+                private changeService: ChangeService) {
     }
 
 
@@ -101,46 +110,74 @@ export class GameComponent implements OnInit {
         this.currentMarket = this.marketService.getCurrentMarket();
 
         this.showedTurn = false;
-        this.pollInfo();
+
+        this.timeToResetCounter = 10000;
+        this.pollChanges();
         this.gameManager();
     }
+    pollChanges(): void{
+        this.changeSubscription = this.changeService.pollChanges(this.currentGame.id)
+            .subscribe(counter => {
+                if (this.currentCounter !== counter) {
+                    this.currentCounter = counter;
+                    this.retrieveInfo();
+                }
+            });
+    }
 
-    pollInfo(): void {
-        this.gameSubscription = this.gameService.pollGame(this.currentGame.id)
+    retrieveInfo(): void {
+
+        if (this.currentGame.currentPlayer === this.currentUser.id && !this.showedTurn) {
+            this.notificationService.show('It\'s your turn!');
+            this.showedTurn = true;
+        }
+        if (this.currentGame.nextPlayer === this.currentUser.id && this.showedTurn) {
+            this.showedTurn = false;
+        }
+
+        
+        this.gameSubscription = this.gameService.getGame(this.currentGame.id)
             .subscribe(game => {
                 this.currentGame = game;
                 this.gameService.setCurrentGame(game);
             });
-        this.userSubscription = this.userService.pollUser(this.currentUser.token)
+        this.userSubscription = this.userService.getUser(this.currentUser.token)
             .subscribe(user => {
                 this.currentUser = user;
             });
-        this.templeSubscription = this.templeService.pollTemple(this.currentGame.id)
+        this.templeSubscription = this.templeService.getTemple(this.currentGame.id)
             .subscribe(temple => {
                 this.currentTemple = temple;
             });
-        this.shipsSubscription = this.shipService.pollShips(this.currentGame.id)
+        this.shipsSubscription = this.shipService.getShips(this.currentGame.id)
             .subscribe(ships => {
                 this.setShips(ships);
             });
-        this.obeliskSubscription = this.obeliskService.pollObelisk(this.currentGame.id)
+        this.obeliskSubscription = this.obeliskService.getObelisk(this.currentGame.id)
             .subscribe(obelisk => {
                 this.currentObelisk = obelisk;
             });
-        this.burialChamberSubscription = this.burialChamberService.pollBurialChamber(this.currentGame.id)
+        this.burialChamberSubscription = this.burialChamberService.getBurialChamber(this.currentGame.id)
             .subscribe(burialChamber => {
                 this.currentBurialChamber = burialChamber;
             });
-        this.pyramidSubscription = this.pyramidService.pollPyramid(this.currentGame.id)
+        this.pyramidSubscription = this.pyramidService.getPyramid(this.currentGame.id)
             .subscribe(pyramid => {
                 this.currentPyramid = pyramid;
             });
-        this.marketSubscription = this.marketService.pollMarket(this.currentGame.id)
+        this.marketSubscription = this.marketService.getMarket(this.currentGame.id)
             .subscribe(market => {
                 this.currentMarket = market;
             });
+
     }
 
+    resetCounterChanges(): void {
+        this.resetCounterChangesSubscription = Observable.interval(1000).subscribe(x => {
+            this.currentCounter = -1; // Every 10 seconds the counter gets reset so that if anything goes wrong
+            // we just need to wait and the game variables are automatically refreshed.
+        });
+    }
     setShips(ships: Ship[]): void {
         for (let i = 0; i < ships.length; i++) {
             for (let j = 0; j < ships[i].stones.length; j++) {
@@ -177,15 +214,10 @@ export class GameComponent implements OnInit {
     gameManager(): void {
         let subscription = Observable.interval(1500).subscribe(x => {
 
-            if (this.currentGame.currentPlayer === this.currentUser.id && !this.showedTurn) {
-                this.notificationService.show('It\'s your turn!');
-                this.showedTurn = true;
-            }
-            if (this.currentGame.nextPlayer === this.currentUser.id && this.showedTurn) {
-                this.showedTurn = false;
-            }
-
             if (this.currentGame.status === 'FINISHED') {
+                this.changeSubscription.unsubscribe();
+                this.resetCounterChangesSubscription.unsubscribe();
+
                 this.gameSubscription.unsubscribe();
                 this.userSubscription.unsubscribe();
                 this.templeSubscription.unsubscribe();

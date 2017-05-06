@@ -3,7 +3,6 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs/Rx';
 import {URLSearchParams} from '@angular/http';
-import {NotificationService} from './notification.service';
 
 
 @Injectable()

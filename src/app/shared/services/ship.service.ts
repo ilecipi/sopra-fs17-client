@@ -18,17 +18,20 @@ export class ShipService {
         this.apiUrl = environment.apiUrl;
     }
 
-    pollShips(gameId: number) {
+        pollShips(gameId: number) {
         return Observable.interval(400).flatMap(() => { // faster because the ships are actually the most important components
             let rounds = this.gameService.getCurrentGame().rounds;
             let roundId = rounds[rounds.length - 1];
 
-            return this.getShips(gameId, roundId);
+            return this.getShips(gameId);
         });
     }
 
     // get ships for a round from backend
-    getShips(gameId: number, roundId: number) {
+    getShips(gameId: number) {
+        let rounds = this.gameService.getCurrentGame().rounds;
+        let roundId = rounds[rounds.length - 1];
+
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers});
 
