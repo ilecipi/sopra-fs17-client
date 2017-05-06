@@ -111,13 +111,16 @@ export class GameComponent implements OnInit {
 
         this.showedTurn = false;
 
-        this.timeToResetCounter = 10000;
-        this.pollChanges();
-        this.gameManager();
+        this.pollChanges();  // Checks only the counter of the game, supposedly enough many times, but call is very small
+        this.resetCounterChanges(); // Every not so often (10s) the counter is going to be reset to ensure a minimal amount of updates
+        this.gameManager(); // Checks for example if the game ends and does the corrected methods accordingly.
     }
+
+
     pollChanges(): void{
         this.changeSubscription = this.changeService.pollChanges(this.currentGame.id)
             .subscribe(counter => {
+                console.log('Current counter:' + counter);
                 if (this.currentCounter !== counter) {
                     this.currentCounter = counter;
                     this.retrieveInfo();
@@ -135,7 +138,7 @@ export class GameComponent implements OnInit {
             this.showedTurn = false;
         }
 
-        
+
         this.gameSubscription = this.gameService.getGame(this.currentGame.id)
             .subscribe(game => {
                 this.currentGame = game;
@@ -178,6 +181,8 @@ export class GameComponent implements OnInit {
             // we just need to wait and the game variables are automatically refreshed.
         });
     }
+
+
     setShips(ships: Ship[]): void {
         for (let i = 0; i < ships.length; i++) {
             for (let j = 0; j < ships[i].stones.length; j++) {
@@ -215,6 +220,7 @@ export class GameComponent implements OnInit {
         let subscription = Observable.interval(1500).subscribe(x => {
 
             if (this.currentGame.status === 'FINISHED') {
+
                 this.changeSubscription.unsubscribe();
                 this.resetCounterChangesSubscription.unsubscribe();
 
