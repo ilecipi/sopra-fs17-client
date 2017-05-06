@@ -13,7 +13,7 @@ export class ChangeService {
 
 
     pollChanges(gameId: number) : Observable<number> {
-        return Observable.interval(500).flatMap(() => {
+        return Observable.interval(400).flatMap(() => {
             return this.retrieveCounter(gameId);
         });
     }
