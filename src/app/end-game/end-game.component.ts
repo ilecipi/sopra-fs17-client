@@ -38,7 +38,6 @@ export class EndGameComponent implements OnInit {
 
         // If game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
         // used only for developing purposes
-        // TODO: remove this feature once game is completed.
         if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
             this.gameService.setDummyGame();
             this.userService.setDummyUser();
@@ -110,8 +109,18 @@ export class EndGameComponent implements OnInit {
     }
 
 
-    logout() {
-        this.userService.logoutUser();
+    newGame(): void{
+        this.userSubscription.unsubscribe();
         this.gameSubscription.unsubscribe();
+        this.router.navigate(['/lobby']);
     }
+    
+    quit(): void {
+        this.userService.logoutUser();
+        this.userSubscription.unsubscribe();
+        this.gameSubscription.unsubscribe();
+        this.router.navigate(['/login']);
+    }
+
+
 }

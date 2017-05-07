@@ -20,11 +20,6 @@ export class MarketService {
     this.currentMarket = new Market();
   }
 
-  pollMarket(gameId: number): any {
-    return Observable.interval(1500).flatMap(() => {
-      return this.getMarket(gameId);
-    });
-  }
 
   getMarket(gameId: number): any {
     return this.http.get(this.apiUrl + '/games/' + gameId + '/market')

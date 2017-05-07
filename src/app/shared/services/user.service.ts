@@ -27,6 +27,7 @@ export class UserService {
 
     logoutUser(): void {
         this.currentUser = new User();
+        this.loggedIn = false;
     }
 
     setCurrentUser(user: User): void {

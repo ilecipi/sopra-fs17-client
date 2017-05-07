@@ -18,15 +18,6 @@ export class ShipService {
         this.apiUrl = environment.apiUrl;
     }
 
-        pollShips(gameId: number) {
-        return Observable.interval(400).flatMap(() => { // faster because the ships are actually the most important components
-            let rounds = this.gameService.getCurrentGame().rounds;
-            let roundId = rounds[rounds.length - 1];
-
-            return this.getShips(gameId);
-        });
-    }
-
     // get ships for a round from backend
     getShips(gameId: number) {
         let rounds = this.gameService.getCurrentGame().rounds;

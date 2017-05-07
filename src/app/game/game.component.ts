@@ -124,18 +124,20 @@ export class GameComponent implements OnInit {
                     this.currentCounter = counter;
                     this.retrieveInfo();
                 }
+
+                if (this.currentGame.currentPlayer === this.currentUser.id && !this.showedTurn) {
+                    this.notificationService.show('It\'s your turn!');
+                    this.showedTurn = true;
+                }
+                if (this.currentGame.nextPlayer === this.currentUser.id && this.showedTurn) {
+                    this.showedTurn = false;
+                }
             });
     }
 
     retrieveInfo(): void {
 
-        if (this.currentGame.currentPlayer === this.currentUser.id && !this.showedTurn) {
-            this.notificationService.show('It\'s your turn!');
-            this.showedTurn = true;
-        }
-        if (this.currentGame.nextPlayer === this.currentUser.id && this.showedTurn) {
-            this.showedTurn = false;
-        }
+
 
 
         this.gameSubscription = this.gameService.getGame(this.currentGame.id)
@@ -175,7 +177,7 @@ export class GameComponent implements OnInit {
     }
 
     resetCounterChanges(): void {
-        this.resetCounterChangesSubscription = Observable.interval(10000).subscribe(x => {
+        this.resetCounterChangesSubscription = Observable.interval(3000).subscribe(x => {
             this.currentCounter = -1; // Every 10 seconds the counter gets reset so that if anything goes wrong
             // we just need to wait and the game variables are automatically refreshed.
         });
@@ -216,7 +218,7 @@ export class GameComponent implements OnInit {
     }
 
     gameManager(): void {
-        let subscription = Observable.interval(1000).subscribe(() => {
+        let subscription = Observable.interval(3000).subscribe(() => {
 
             if (this.currentGame.status === 'FINISHED') {
 

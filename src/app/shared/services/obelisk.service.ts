@@ -21,11 +21,6 @@ export class ObeliskService {
         this.currentObelisk = new Obelisk();
     }
 
-    pollObelisk(gameId: number): any {
-        return Observable.interval(1500).flatMap(() => {
-            return this.getObelisk(gameId);
-        });
-    }
 
     getObelisk(gameId: number): any {
         return this.http.get(this.apiUrl + '/games/' + gameId + '/obelisk')

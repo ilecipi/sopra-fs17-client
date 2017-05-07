@@ -17,13 +17,6 @@ export class PyramidService {
         return this.currentPyramid;
     }
 
-
-    pollPyramid(gameId: number): any {
-        return Observable.interval(1500).flatMap(() => {
-            return this.getPyramid(gameId);
-        });
-    }
-
     getPyramid(gameId: number): any {
         return this.http.get(this.apiUrl + '/games/' + gameId + '/pyramid')
             .map((response: Response) => response.json());

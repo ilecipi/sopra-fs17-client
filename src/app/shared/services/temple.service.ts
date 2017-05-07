@@ -35,11 +35,6 @@ export class TempleService {
         this.currentTemple = dummyTemple;
     }
 
-    pollTemple(gameId: number) {
-        return Observable.interval(1500).flatMap(() => {
-            return this.getTemple(gameId);
-        });
-    }
 
     getTemple(gameId: number) {
         return this.http.get(this.apiUrl + '/games/' + gameId + '/temple')

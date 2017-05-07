@@ -22,8 +22,8 @@
                 </div>
             </div>
             <div class="options-column">
-                <button class="button btn-lobby" [routerLink]="['/lobby']">NEW GAME</button>
-                <button class="button btn-login" (click)="logout()" [routerLink]="['/login']">QUIT</button>
+                <button class="button btn-lobby" (click)="newGame()">NEW GAME</button>
+                <button class="button btn-login" (click)="quit()">QUIT</button>
             </div>
         </div>
 </div>
