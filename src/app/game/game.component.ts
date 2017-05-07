@@ -33,7 +33,6 @@ import {Card} from '../shared/models/card';
 export class GameComponent implements OnInit {
 
     private currentCounter = -1;
-    private timeToResetCounter: number;
 
     public currentGame: Game;
     private currentUser: User;

@@ -98,7 +98,6 @@ Info Board:
     background-image: url('../../assets/img/InfoBoard.png');
     background-size:cover;
     /*background-image: -webkit-linear-gradient(top left, var(--colorTwo)30%,var(--colorFour));*/
-    border-left:3px solid rgba(69,69,69,0.8);
 }
 
 /***********************************************************************************************************************

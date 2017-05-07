@@ -14,15 +14,18 @@ Ships
     padding-left:20px;
 }
 
-.ship {
+.absolute-ship {
     cursor: pointer;
-    position: relative;
+    position: absolute;
     flex-grow: 0;
     max-height: 36px;
     min-height: 36px;
     align-self: center;
     width: 210px;
     color: white;
+}
+.ship{
+    position:relative;
 }
 
 .image {

@@ -1,32 +1,28 @@
 <div class="parent-block">
     <div class="undocked-ships">
-        <div *ngFor="let ship of currentShips;let shipIndex = index" class="ship{{shipIndex + 1}} ship">
-            <div class="stones-container">
-                <img class="ship-image image" src="{{getShipSrc(shipIndex)}}" (click)="selectShip(shipIndex)" >
-                <div  *ngFor="let stone of ship.stones; let stoneIndex=index" class="stone stone-{{ship.id}}-{{stoneIndex}} btn"
-                     (click)="addStone(shipIndex,stoneIndex)"
-                     [ngClass]="{
-                        empty: stone.color == 'none',
-                        brown: stone.color == 'brown',
-                        grey: stone.color == 'grey',
-                        black: stone.color == 'black',
-                        white: stone.color == 'white'
-                        }">
+        <div *ngFor="let ship of currentShips;let shipIndex = index" class=" absolute-ship">
+            <div class="ship ship{{shipIndex + 1}}">
+                <div class="stones-container">
+                    <img class="ship-image image" src="{{getShipSrc(shipIndex)}}" (click)="selectShip(shipIndex)">
+                    <div *ngFor="let stone of ship.stones; let stoneIndex=index"
+                         class="stone stone-{{ship.id}}-{{stoneIndex}} btn"
+                         (click)="addStone(shipIndex,stoneIndex)"
+                         [ngClass]="{
+                            empty: stone.color == 'none',
+                            brown: stone.color == 'brown',
+                            grey: stone.color == 'grey',
+                            black: stone.color == 'black',
+                            white: stone.color == 'white'
+                            }">
+                    </div>
                 </div>
-            </div>
-            <div class="ship-selector{{shipIndex + 1}} ship-selector" *ngIf="ship.isReady && !ship.docked"
-                 (click)="selectShip(shipIndex)" >
-
-
-                <!--<div class="selector-button btn" (click)="selectShip(shipIndex)">-->
-                    <!--Select this ship.-->
-                <!--</div>-->
+                <div class="ship-selector{{shipIndex + 1}} ship-selector" *ngIf="ship.isReady && !ship.docked"
+                     (click)="selectShip(shipIndex)">
+                </div>
             </div>
         </div>
     </div>
     <div class="docks">
-            <!--<img src="../../../assets/img/Ship1-75x36.png" style="height:36px;background-attachment: fixed; background-position: right; justify-self: right;">-->
-
         <div class="market-dock dock">
             <img class="empty-image empty-image-market" src="{{getEmptyShipSrc('market')}}">
             <div class="dock-button btn" (click)="selectDock('market')"></div>
@@ -67,10 +63,10 @@
     </div>
     <div class="show-wave btn bottom-btn" (click)="swapWave()">
         <div class="start-swey" *ngIf="!showWave">
-            start swey
+            start sway
         </div>
         <div class="stop-swey" *ngIf="showWave">
-            stop swey
+            stop sway
         </div>
     </div>
 </div>

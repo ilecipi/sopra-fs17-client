@@ -31,12 +31,13 @@ export class HarbourComponent implements OnInit {
     burialchamber = [];
     obelisk = [];
 
-    private waveCounter: number; // Used to let the ship wave around
+    private waveCounter: number; // Used to let the ship sway around
     public showWave: boolean; // Used to show wave
-    private alreadyStarted: boolean;
 
 
-    private styleSubscription: any;
+    private setShipSubscription: any;
+    private setEmptyShipSubscription: any;
+    private setLastStoneSubscription: any;
 
     // Styles required to move each ship in the correct place.
     private styleShip1Position = document.createElement('style');
@@ -89,9 +90,8 @@ export class HarbourComponent implements OnInit {
         // Adding styles for undocked ships
         this.addStyleEmptyShip();
 
-        // Initializations for the swey of the ships
+        // Initializations for the sway of the ships
         this.waveCounter = 0; // initialize waveCounter to 0, it will go up to 2*PI and reset itself later
-        this.alreadyStarted = false;
         this.showWave = false;
 
         // Polling ship positions
@@ -119,7 +119,6 @@ export class HarbourComponent implements OnInit {
                         let cuts = errorData._body.split('"');
                         this.notificationService.show(cuts[15]);
                     }
-
                 }
             );
     }
@@ -219,30 +218,27 @@ export class HarbourComponent implements OnInit {
 
     swapWave(): void {
         this.showWave = !this.showWave;
+        this.setShipSubscription.unsubscribe();
+        this.setEmptyShipSubscription.unsubscribe();
+        this.setLastStoneSubscription.unsubscribe();
         this.pollShipPositions();
     }
 
     pollShipPositions(): void {
         let timeShip: number;
-        if (this.alreadyStarted) { // At component generation this.styleSubscription is not yet subscribed to.
-            this.styleSubscription.unsubscribe();
-        }
-        else {
-            this.alreadyStarted = true;
-        }
         if (this.showWave) {
             timeShip = 32; // Every 32 milliseconds means roughly at 30 fps refresh rate
         }
         else {
             timeShip = 200; // If ships are not moving, then there is no need to refresh very fast
         }
-        this.styleSubscription = Observable.interval(timeShip).subscribe(x => {
+        this.setShipSubscription = Observable.interval(timeShip).subscribe(x => {
             this.setShipPositions();
         });
-        this.styleSubscription = Observable.interval(200).subscribe(x => {
+        this.setEmptyShipSubscription = Observable.interval(200).subscribe(x => {
             this.setEmptyShipsPositions();
         });
-        this.styleSubscription = Observable.interval(200).subscribe(x => {
+        this.setLastStoneSubscription = Observable.interval(200).subscribe(x => {
             this.setLastStonePlaced();
         });
 
@@ -261,34 +257,42 @@ export class HarbourComponent implements OnInit {
                 let omegaHorizontal = 2; // Angular velocity for the ship positions formula (better use whole numbers to avoid stuttering)
                 let omegaVertical = 4; // Angular velocity for the ship positions formula (better use whole numbers to avoid stuttering)
                 let amplitude = 5; // Max positive and negative offset in pixels of the ship positions
+                let omegaScale = 2  ;
+                let amplitudeScale=0.1;
 
                 if (!this.showWave) {
                     amplitude = 0;
+                    amplitudeScale=0;
                 }
                 switch (i + 1) {
                     case 1: {
-                        this.styleShip1Position.innerHTML = '.ship' + (i + 1) + ' {top: ' + (90 + amplitude * Math.sin(this.waveCounter * omegaVertical + 0.8)) + 'px;' +
-                            '  left:' + ( -20 + amplitude * Math.sin(this.waveCounter * omegaHorizontal + 0.8)) + 'px;}';
+                        this.styleShip1Position.innerHTML = '.ship' + (i + 1) + ' {top: ' + (80 + amplitude * Math.sin(this.waveCounter * omegaVertical + 0.8)) + 'px;' +
+                            '  left:' + ( -20 + amplitude * Math.sin(this.waveCounter * omegaHorizontal + 0.8)) + 'px;' +
+                            ' transform: scale(' + (1.0 + amplitudeScale * Math.sin(this.waveCounter * omegaScale + 0.8) )+ ');}';
                         break;
                     }
                     case 2: {
-                        this.styleShip2Position.innerHTML = '.ship' + (i + 1) + ' {top: ' + (180 + amplitude * Math.sin(this.waveCounter * omegaVertical + 2.4)) + 'px;' +
-                            '  left:' + ( -20 + amplitude * Math.sin(this.waveCounter * omegaHorizontal + 2.4)) + 'px;}';
+                        this.styleShip2Position.innerHTML = '.ship' + (i + 1) + ' {top: ' + (220 + amplitude * Math.sin(this.waveCounter * omegaVertical + 2.4)) + 'px;' +
+                            '  left:' + ( -20 + amplitude * Math.sin(this.waveCounter * omegaHorizontal + 2.4)) + 'px;'+
+                            ' transform: scale(' + (1.0 + amplitudeScale * Math.sin(this.waveCounter * omegaScale + 2.4)  )+ ');}';
                         break;
                     }
                     case 3: {
-                        this.styleShip3Position.innerHTML = '.ship' + (i + 1) + ' {top: ' + (270 + amplitude * Math.sin(this.waveCounter * omegaVertical + 1.6)) + 'px;' +
-                            '  left:' + ( -20 + amplitude * Math.sin(this.waveCounter * omegaHorizontal + 1.6)) + 'px;}';
+                        this.styleShip3Position.innerHTML = '.ship' + (i + 1) + ' {top: ' + (360 + amplitude * Math.sin(this.waveCounter * omegaVertical + 1.6)) + 'px;' +
+                            '  left:' + ( -20 + amplitude * Math.sin(this.waveCounter * omegaHorizontal + 1.6)) + 'px;'+
+                            ' transform: scale(' + (1.0 + amplitudeScale * Math.sin(this.waveCounter * omegaScale + 1.6) )+ ');}';
                         break;
                     }
                     case 4: {
-                        this.styleShip4Position.innerHTML = '.ship' + (i + 1) + ' {top: ' + (360 + amplitude * Math.sin(this.waveCounter * omegaVertical + 3.2)) + 'px;' +
-                            '  left:' + ( -20 + amplitude * Math.sin(this.waveCounter * omegaHorizontal + 3.2)) + 'px;}';
+                        this.styleShip4Position.innerHTML = '.ship' + (i + 1) + ' {top: ' + (500 + amplitude * Math.sin(this.waveCounter * omegaVertical + 3.2)) + 'px;' +
+                            '  left:' + ( -20 + amplitude * Math.sin(this.waveCounter * omegaHorizontal + 3.2)) + 'px;'+
+                            ' transform: scale(' + (1.0 + amplitudeScale * Math.sin(this.waveCounter * omegaScale + 3.2)  )+ ');}';
                         break;
                     }
                 }
                 this.addStyleShip(); // Adding styles again after modifications
                 this.waveCounter += step;
+
                 if (this.waveCounter >= Math.PI * 2) {
                     this.waveCounter = 0;
                 }
@@ -462,7 +466,7 @@ export class HarbourComponent implements OnInit {
             document.getElementsByTagName('harbour')[0].removeChild(this.styleLastStone);
             this.styleLastStone.innerHTML = '';
             document.getElementsByTagName('harbour')[0].appendChild(this.styleLastStone);
-            this.hideLast=false;
+            this.hideLast = false;
         }
         else { // In this case the variable is a valid input
             if (this.cachedLast !== last && this.showLast) {
