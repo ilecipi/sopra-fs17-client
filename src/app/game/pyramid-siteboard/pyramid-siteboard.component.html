@@ -135,12 +135,12 @@
             <div class="surplus-points">
                 <div class="surplus-container">
                     <div class="surplus-column">
-                        <div class="block" [ngClass]="{brown:true}">x{{surplusPoints('brown')}}</div>
-                        <div class="block" [ngClass]="{grey:true}">x{{surplusPoints('grey')}}</div>
+                        <div class="block" [ngClass]="{brown: surplusPoints('brown') >= 1}">x{{surplusPoints('brown')}}</div>
+                        <div class="block" [ngClass]="{grey: surplusPoints('grey') >= 1}">x{{surplusPoints('grey')}}</div>
                     </div>
                     <div class="surplus-column">
-                        <div class="block" [ngClass]="{black:true}">x{{surplusPoints('black')}}</div>
-                        <div class="block" [ngClass]="{white:true}">x{{surplusPoints('white')}}</div>
+                        <div class="block" [ngClass]="{black: surplusPoints('black') >= 1}">x{{surplusPoints('black')}}</div>
+                        <div class="block" [ngClass]="{white: surplusPoints('white') >= 1}">x{{surplusPoints('white')}}</div>
                     </div>
                 </div>
             </div>
