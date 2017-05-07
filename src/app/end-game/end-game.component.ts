@@ -31,9 +31,9 @@ export class EndGameComponent implements OnInit {
     ngOnInit(): void {
         // Comment following 3 lines for developing purposes:
 
-        // if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
-        //     this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
-        // }
+        if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
+            this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
+        }
 
 
         // If game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman

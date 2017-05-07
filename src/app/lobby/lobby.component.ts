@@ -38,9 +38,9 @@ export class LobbyComponent implements OnInit {
 
         // Comment following 3 lines for developing purposes:
 
-        // if (!this.userService.getLoggedStatus()) {
-        //     this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
-        // }
+        if (!this.userService.getLoggedStatus()) {
+            this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
+        }
 
         this.gameName = '';
 

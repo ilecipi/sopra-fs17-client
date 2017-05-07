@@ -123,6 +123,7 @@ Action Cards Block:
     align-items: center;
     justify-content: center;
     padding: 5px;
+    font-size: 18px;
 
 
 }
@@ -151,15 +152,16 @@ Action Cards Block:
 }
 
 .reset-selection-button {
-    background-color: darkgrey;
     max-height: 30px;
-    margin: 5px;
+    margin: 2px;
+    font-size:18px;
 }
 
 .confirm-selection-button {
-    background-color: darkgrey;
     max-height: 30px;
-    margin: 5px;
+    margin: 2px;
+    font-size:18px;
+
 }
 
 /***********************************************************************************************************************
@@ -205,4 +207,29 @@ Dynamic styles for quarry, stones and turn highlight:
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     background-color: rgba(55, 55, 55, 0.9);
+}
+/***********************************************************************************************************************
+ Selection Buttons
+**********************************************************************************************************************/
+.selection-button {
+    color: white;
+    border: 0;
+    border-radius:5px;
+    background-image: -webkit-linear-gradient(top,var(--colorFour), #5e2e1a);
+    transition-duration: 0.4s;
+    outline:none;
+    padding:4px;
+}
+
+.selection-button:hover {
+    color: white;
+    border: 0;
+    border-radius:5px;
+    padding:4px;
+    background-image: -webkit-linear-gradient(top, var(--colorFour),rgba(80,80,80,1));
+}
+.selection-button:active{
+    box-shadow: 0 0 16px 10px rgba(200,200,200,0.2), 0 6px 20px 0 rgba(200,200,200,0.19);
+    background-image: -webkit-linear-gradient(top, #5e2e1a,     rgba(80,80,80,1));
+    padding:4px;
 }

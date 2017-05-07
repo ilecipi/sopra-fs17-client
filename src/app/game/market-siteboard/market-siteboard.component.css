@@ -75,17 +75,19 @@ Cards Selector
 
 .cards-selector-block {
     position: relative;
-    width: 200px;
+    width: 250px;
     height: 185px;
     z-index: 3;
-    right: 202px;
-    bottom: 184px;
-    background-color: rgba(0, 0, 0, 0.7);
+    right: 252px;
+    bottom: 190px;
+    background-color: rgba(55, 55, 55, 0.9);
     color: white;
     border: 1px solid white;
     border-radius: 10px;
     text-align: center;
     padding: 10px;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.6);
+
 }
 
 .cards-selector-container {
@@ -96,14 +98,14 @@ Cards Selector
 }
 
 .cards-selector {
-    min-width: 180px;
-    max-width: 180px;
-    min-height: 30px;
-    max-height: 30px;
-    border: 1px solid white;
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 40px;
+    max-height: 40px;
     border-radius:10px;
     line-height:2.2;
     margin: 5px;
+    font-size: 18px;
 }
 
 /***********************************************************************************************************************
@@ -111,19 +113,19 @@ Dynamic styles for stone color in cards-selector window:
 ***********************************************************************************************************************/
 
 .brown {
-    background-color: var(--brownStone);
+    background-image: url(../../../assets/img/brownStone.png);
 }
 
 .grey {
-    background-color: var(--greyStone);
+    background-image: url(../../../assets/img/greyStone.png);
 }
 
 .black {
-    background-color: var(--blackStone);
+    background-image: url(../../../assets/img/blackStone.png);
 }
 
 .white {
     /* If background is white then font color must be black for better readability*/
-    background-color: var(--whiteStone);
+    background-image: url(../../../assets/img/whiteStone.png);
     color: black;
 }

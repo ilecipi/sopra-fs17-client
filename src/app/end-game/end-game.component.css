@@ -22,7 +22,7 @@
 
     color: white;
     /*border: 1px solid white;*/
-    background-color: rgba(55, 55, 55, 0.9);
+    background-color: rgba(55, 55, 55, 0.8);
     text-align: center;
 }
 
@@ -113,22 +113,23 @@
 Dynamic styles stones and highlight for own player:
 ***********************************************************************************************************************/
 .brown {
-    background-color: var(--brownStone);
+    background-image: url(../../assets/img/brownStone.png);
 }
 
 .grey {
-    background-color: var(--greyStone);
+    background-image: url(../../assets/img/greyStone.png);
 }
 
 .black {
-    background-color: var(--blackStone);
+    background-image: url(../../assets/img/blackStone.png);
 }
 
 .white {
     /* If background is white then font color must be black for better readability*/
-    background-color: var(--whiteStone);
+    background-image: url(../../assets/img/whiteStone.png);
     color: black;
 }
+
 
 .highlight {
     outline: 4px solid var(--turn);

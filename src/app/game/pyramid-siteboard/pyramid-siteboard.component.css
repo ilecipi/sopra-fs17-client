@@ -55,7 +55,7 @@
     justify-content: center;
 }
 .surplus-description{
-    color: black;
+    color: white;
 }
 .surplus-points {
     display: flex;
@@ -68,7 +68,7 @@ Info Column:
 ***********************************************************************************************************************/
 
 .info-column {
-    color: black;
+    color: white;
     max-width: 40px;
     display: flex;
     align-items: center;

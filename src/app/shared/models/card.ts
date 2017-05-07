@@ -5,22 +5,6 @@ export class Card {
     color: string; // color is either: 'blue', 'green', 'red' or 'purple'
     id: number; // id of the card, this is useful only in the CurrentPlayer component, since
 
-
-    // Build the imagePath on the component and assign it to a variable, then:
-    // <img [src]="urlVariable" /> in the html file
-
-    // Then to put the cards style into the appropriate component:
-    // @Component({
-    //     selector: 'some-component',
-    //     template: '<div></div>',
-    //     styleUrls: [
-    //         'http://example.com/external.css',
-    //         'app/local.css'
-    //     ],
-    //     encapsulation: ViewEncapsulation.None,
-    // })
-    // export class SomeComponent {}
-
     constructor(nameAndId: string) {
 
         let splittedFields = nameAndId.split('-');
