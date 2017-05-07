@@ -114,7 +114,7 @@ export class EndGameComponent implements OnInit {
         this.gameSubscription.unsubscribe();
         this.router.navigate(['/lobby']);
     }
-    
+
     quit(): void {
         this.userService.logoutUser();
         this.userSubscription.unsubscribe();
