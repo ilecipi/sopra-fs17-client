@@ -78,9 +78,9 @@ export class GameComponent implements OnInit {
 
         // Comment following 3 lines for developing purposes:
 
-        if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
-            this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
-        }
+        // if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
+        //     this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
+        // }
 
 
         // if game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
@@ -220,7 +220,6 @@ export class GameComponent implements OnInit {
         let subscription = Observable.interval(3000).subscribe(() => {
 
             if (this.currentGame.status === 'FINISHED') {
-
                 this.changeSubscription.unsubscribe();
                 this.resetCounterChangesSubscription.unsubscribe();
 
@@ -241,12 +240,12 @@ export class GameComponent implements OnInit {
 
     finishedGame(): void {
         this.notificationService.show('The game has finished, you will be redirected shortly.');
-        this.notificationService.show('5');
-        setTimeout(() => this.notificationService.show('4'), 1000);
-        setTimeout(() => this.notificationService.show('3'), 2000);
-        setTimeout(() => this.notificationService.show('2'), 3000);
-        setTimeout(() => this.notificationService.show('1'), 4000);
-        setTimeout(() => this.router.navigate(['/end-game']), 5000);
+        setTimeout(() => {this.notificationService.removeItem(); this.notificationService.show('5');}, 2000);
+        setTimeout(() => {this.notificationService.removeItem(); this.notificationService.show('4');}, 3000);
+        setTimeout(() => {this.notificationService.removeItem(); this.notificationService.show('3');}, 4000);
+        setTimeout(() => {this.notificationService.removeItem(); this.notificationService.show('2');}, 5000);
+        setTimeout(() => {this.notificationService.removeItem(); this.notificationService.show('1');}, 6000);
+        setTimeout(() => {this.router.navigate(['/end-game']); this.notificationService.removeItem();}, 7000);
     }
 
     getCurrentUserCards(): Card[] {

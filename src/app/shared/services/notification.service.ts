@@ -4,8 +4,11 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class NotificationService {
 
+    // These two queues are updated as a couple.
     private notificationsQueue: string[] = [];
     private timeToLiveQueue: number[] = [];
+
+
     private queueSubscription;
     private timeResolution = 100;
 
@@ -34,7 +37,6 @@ export class NotificationService {
         if (this.timeToLiveQueue.length > 0) {
             for (let i = 0; i < this.timeToLiveQueue.length; i++) {
                 this.timeToLiveQueue[i] -= this.timeResolution;
-
             }
         }
         if (this.timeToLiveQueue[0] <= 0) {
@@ -54,4 +56,5 @@ export class NotificationService {
             return this.notificationsQueue[index];
         }
     }
+
 }

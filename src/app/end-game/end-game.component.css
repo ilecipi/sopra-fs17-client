@@ -22,7 +22,7 @@
 
     color: white;
     /*border: 1px solid white;*/
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(55, 55, 55, 0.9);
     text-align: center;
 }
 
@@ -42,7 +42,7 @@
 
     color: white;
     /*border: 1px solid white;*/
-    background-color: rgba(50,50,50,0.8);
+    background: rgba(69, 69, 69, 0.6);
 }
 
 .ranking-column {
