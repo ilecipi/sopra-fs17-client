@@ -80,7 +80,7 @@ Info Column:
 .info-hover {
     min-width: 25px;
     min-height: 25px;
-    background-image: url("../../../assets/img/info-button.png");
+    background-image: url('/assets/img/info-button.png');
     background-size: cover;
     background-repeat: no-repeat;
     margin: 10px;
@@ -113,19 +113,19 @@ Info Column:
 Dynamic styles for stones:
 ***********************************************************************************************************************/
 .brown {
-    background-image: url(../../../assets/img/brownStone.png);
+    background-image: url('/assets/img/brownStone.png');
 }
 
 .grey {
-    background-image: url(../../../assets/img/greyStone.png);
+    background-image: url('/assets/img/greyStone.png');
 }
 
 .black {
-    background-image: url(../../../assets/img/blackStone.png);
+    background-image: url('/assets/img/blackStone.png');
 }
 
 .white {
     /* If background is white then font color must be black for better readability*/
-    background-image: url(../../../assets/img/whiteStone.png);
+    background-image: url('/assets/img/whiteStone.png');
     color: black;
 }

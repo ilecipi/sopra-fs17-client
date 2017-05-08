@@ -145,7 +145,7 @@ Info Column:
 .info-hover {
     min-width: 25px;
     min-height: 25px;
-    background-image: url(../../../assets/img/info-button.png);
+    background-image: url('/assets/img/info-button.png');
     background-size: cover;
     background-repeat: no-repeat;
     margin: 10px;
@@ -181,14 +181,14 @@ Info Column:
 Dynamic styles for stone colors:
 ***********************************************************************************************************************/
 .brown {
-    background-image: url('../../../assets/img/brownStone.png');
+    background-image: url('/assets/img/brownStone.png');
     border-radius: 2px;
     color: rgba(0, 0, 0, 0);
     overflow:hidden;
 }
 
 .grey {
-    background-image: url('../../../assets/img/greyStone.png');
+    background-image: url('/assets/img/greyStone.png');
     border-radius: 2px;
     color: rgba(0, 0, 0, 0);
     overflow:hidden;
@@ -196,7 +196,7 @@ Dynamic styles for stone colors:
 }
 
 .black {
-    background-image: url('../../../assets/img/blackStone.png');
+    background-image: url('/assets/img/blackStone.png');
     border-radius: 2px;
     color: rgba(0, 0, 0, 0);
     overflow:hidden;
@@ -205,7 +205,7 @@ Dynamic styles for stone colors:
 
 .white {
     /* If background is white then font color must be black for better readability*/
-    background-image: url('../../../assets/img/whiteStone.png');
+    background-image: url('/assets/img/whiteStone.png');
     color: black;
     border-radius: 2px;
     color: rgba(0, 0, 0, 0);
@@ -216,7 +216,7 @@ Dynamic styles for stone colors:
 
 .empty {
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('../../../assets/img/plus-button.png');
+    background-image: url('/assets/img/plus-button.png');
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 2px;
