@@ -36,44 +36,58 @@ export class LobbyComponent implements OnInit {
 
     ngOnInit() {
 
-        // Comment following 3 lines for developing purposes:
-
-        if (!this.userService.getLoggedStatus()) {
+        if (localStorage.getItem('userToken') === null) {
             this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
+            localStorage.clear();
+        }
+        else{
+            // Variables setting on init
+            this.inWaitingRoom = false;
+            this.createdGame = false;
+            this.pressedReady = false;
+            this.index = -1;
+
+
+            // The user has already an account;
+            let oldUser = new User();
+            oldUser.token = localStorage.getItem('userToken');
+                this.userService.setCurrentUser(oldUser);
+            this.currentUser = oldUser;
+
+            this.gameName = '';
+
+
+            // Checks if the user already joined or has created a game or not
+            if (localStorage.getItem('gameId') !== null){
+                let oldGame = new Game;
+                oldGame.id =+ localStorage.getItem('gameId');
+                this.gameService.setCurrentGame(oldGame);
+            }
+
+            // Checks if the user did create a game or not:
+            if(localStorage.getItem('createdGame')!== null){
+                this.createdGame = true;
+                this.inWaitingRoom = true;
+            }
+
+            if(localStorage.getItem('gameIndex') !== null){
+                this.inWaitingRoom = true;
+                this.index = +localStorage.getItem('gameIndex');
+            }
+
+
+            // Get all games from the server:
+            this.gameService.getGames()
+                .subscribe(games => {
+                    this.games = games;
+                });
+
+            // Automatically retrieve users and games list information from server:
+            this.pollInfo();
+            this.listenForStart();
         }
 
-        this.gameName = '';
 
-        // Get all games from the server:
-        this.gameService.getGames()
-            .subscribe(games => {
-                this.games = games;
-            });
-
-
-        // Automatically retrieve currentUser information from UserService:
-        this.loggedIn = this.userService.getLoggedStatus();
-        if (this.loggedIn) {
-            this.currentUser = this.userService.getCurrentUser();
-        }
-        else {
-            // Dummy data if the user is not logged in.
-            // (for example if the page gets refreshed for developing purposes)
-            this.currentUser = new User();
-            this.currentUser.name = 'Player 1 ';
-            this.currentUser.username = 'Player 1';
-            this.currentUser.token = '42';
-            this.currentUser.id = 42;
-        }
-        // Variables setting on init
-        this.inWaitingRoom = false;
-        this.createdGame = false;
-        this.pressedReady = false;
-        this.index = -1;
-
-        // Automatically retrieve users and games list information from server:
-        this.pollInfo();
-        this.listenForStart();
     }
 
     // Calls polling function for games list
@@ -88,9 +102,14 @@ export class LobbyComponent implements OnInit {
                 if (this.currentUser.status === 'IN_A_LOBBY') {
                     this.inWaitingRoom = true;
                 }
-                else if (this.currentUser.status === 'IS_READY') {
+                if (this.currentUser.status === 'IS_READY') {
                     this.pressedReady = true;
                 }
+                console.log(this.currentUser.status);
+                console.log(this.inWaitingRoom);
+                console.log(this.createdGame);
+                console.log(this.index);
+
             });
     }
 
@@ -106,6 +125,7 @@ export class LobbyComponent implements OnInit {
                         this.currentGame = result;
                         this.gameService.setCurrentGame(this.currentGame);
                         this.createdGame = true;
+                        localStorage.setItem('createdGame','yes');
                         let subscription = Observable.interval(100).subscribe((x) => {
 
                             let findIndex = -1;
@@ -115,8 +135,9 @@ export class LobbyComponent implements OnInit {
                                 }
                             }
                             if (findIndex !== -1) {
-
                                 this.index = findIndex;
+                                localStorage.setItem('gameId', '' + this.games[this.index].id);
+                                localStorage.setItem('gameIndex', '' + this.index);
                                 subscription.unsubscribe();
 
                             }
@@ -148,6 +169,9 @@ export class LobbyComponent implements OnInit {
         this.inWaitingRoom = true;
         this.gameService.setCurrentGame(selectedGame); // CurrentGame in gameService is updated
         this.index = index;
+        localStorage.setItem('gameId','' + this.games[index].id);
+        localStorage.setItem('gameIndex', '' + this.index);
+
     }
 
     startGame(): void {
@@ -186,6 +210,7 @@ export class LobbyComponent implements OnInit {
         this.gamesSubscription.unsubscribe();
         this.userSubscription.unsubscribe();
         this.userService.logoutUser();
+        localStorage.clear();
 
     }
 

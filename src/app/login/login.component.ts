@@ -25,6 +25,12 @@ export class LoginComponent implements OnInit {
         this.authenticationService.logout();
         this.user = new User();
 
+        // Checks if the user has already created an account in a previous session.
+        // If so, then it gets redirected to the lobby.
+        if(localStorage.getItem('userToken') && localStorage.getItem('userUsername')){
+            this.notificationService.show('Welcome back ' + localStorage.getItem('userUsername') + '!');
+            this.router.navigate(['/lobby']);
+        }
     }
 
     login(): void{
@@ -45,11 +51,16 @@ export class LoginComponent implements OnInit {
                         this.user.token = this.authenticationService.getToken();
                         this.user.id = this.authenticationService.getId();
                         this.userService.loginUser(this.user); // Saves current user into the service UserService
+
+                        // Saves user token into the browser local storage
+                        localStorage.setItem('userToken', result.token);
+                        localStorage.setItem('userUsername',result.username);
+
                         this.router.navigate(['/lobby']);
                     },
                     (error) => { // fail
-                        if (error._status === 403) {
-                            // this.notificationService.showNotification('Username already exists',2);
+                        if (error._status === 500) {
+                            this.notificationService.show('Username already exists');
                         }
                     },
                     () => { // end of subscription
