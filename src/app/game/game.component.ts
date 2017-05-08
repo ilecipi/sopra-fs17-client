@@ -82,37 +82,38 @@ export class GameComponent implements OnInit {
             this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
         }
 
+        else {
+            // if game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
+            // used only for developing purposes
+            if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
+                this.gameService.setDummyGame();
+                this.userService.setDummyUser();
+                console.log('DUMMY GAME AND USER HAVE BEEN SET');
 
-        // if game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
-        // used only for developing purposes
-        if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
-            this.gameService.setDummyGame();
-            this.userService.setDummyUser();
-            console.log('DUMMY GAME AND USER HAVE BEEN SET');
+            }
+            this.shipService.setDummyShips();
+            this.templeService.setDummyTemple();
+            this.obeliskService.setDummyObelisk();
+            this.marketService.setDummyMarket();
+            // BurialChamber has no dummy setter because in the html we check if the values exist before displaying them
+            // Pyramid has also no dummy setter
 
+
+            this.currentGame = this.gameService.getCurrentGame();
+            this.currentUser = this.userService.getCurrentUser();
+            this.currentTemple = this.templeService.getCurrentTemple();
+            this.currentShips = this.shipService.getCurrentShips();
+            this.currentObelisk = this.obeliskService.getCurrentObelisk();
+            this.currentBurialChamber = this.burialChamberService.getCurrentBurialChamber();
+            this.currentPyramid = this.pyramidService.getCurrentPyramid();
+            this.currentMarket = this.marketService.getCurrentMarket();
+
+            this.showedTurn = false;
+
+            this.pollChanges();  // Checks only the counter of the game, supposedly enough many times, but call is very small
+            this.resetCounterChanges(); // Every not so often (10s) the counter is going to be reset to ensure a minimal amount of updates
+            this.gameManager(); // Checks for example if the game ends and does the corrected methods accordingly.
         }
-        this.shipService.setDummyShips();
-        this.templeService.setDummyTemple();
-        this.obeliskService.setDummyObelisk();
-        this.marketService.setDummyMarket();
-        // BurialChamber has no dummy setter because in the html we check if the values exist before displaying them
-        // Pyramid has also no dummy setter
-
-
-        this.currentGame = this.gameService.getCurrentGame();
-        this.currentUser = this.userService.getCurrentUser();
-        this.currentTemple = this.templeService.getCurrentTemple();
-        this.currentShips = this.shipService.getCurrentShips();
-        this.currentObelisk = this.obeliskService.getCurrentObelisk();
-        this.currentBurialChamber = this.burialChamberService.getCurrentBurialChamber();
-        this.currentPyramid = this.pyramidService.getCurrentPyramid();
-        this.currentMarket = this.marketService.getCurrentMarket();
-
-        this.showedTurn = false;
-
-        this.pollChanges();  // Checks only the counter of the game, supposedly enough many times, but call is very small
-        this.resetCounterChanges(); // Every not so often (10s) the counter is going to be reset to ensure a minimal amount of updates
-        this.gameManager(); // Checks for example if the game ends and does the corrected methods accordingly.
     }
 
 
@@ -176,7 +177,7 @@ export class GameComponent implements OnInit {
     }
 
     resetCounterChanges(): void {
-        this.resetCounterChangesSubscription = Observable.interval(3000).subscribe(x => {
+        this.resetCounterChangesSubscription = Observable.interval(5000).subscribe(x => {
             this.currentCounter = -1; // Every 10 seconds the counter gets reset so that if anything goes wrong
             // we just need to wait and the game variables are automatically refreshed.
         });
@@ -262,6 +263,4 @@ export class GameComponent implements OnInit {
         }
         return cards;
     }
-
-
 }
