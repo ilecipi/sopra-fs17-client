@@ -110,19 +110,19 @@ Info Column:
 Dynamic styles for stones:
 ***********************************************************************************************************************/
 .brown {
-    background-image: url(../../../assets/img/brownStone.png);
+    background-image: url('/assets/img/brownStone.png');
 }
 
 .grey {
-    background-image: url(../../../assets/img/greyStone.png);
+    background-image: url('/assets/img/greyStone.png');
 }
 
 .black {
-    background-image: url(../../../assets/img/blackStone.png);
+    background-image: url('/assets/img/blackStone.png');
 }
 
 .white {
     /* If background is white then font color must be black for better readability*/
-    background-image: url(../../../assets/img/whiteStone.png);
+    background-image: url('/assets/img/whiteStone.png');
     color: black;
 }
