@@ -42,41 +42,38 @@ export class LobbyComponent implements OnInit {
             this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
         }
 
-        else {
+        this.gameName = '';
 
-            this.gameName = '';
-
-            // Get all games from the server:
-            this.gameService.getGames()
-                .subscribe(games => {
-                    this.games = games;
-                });
+        // Get all games from the server:
+        this.gameService.getGames()
+            .subscribe(games => {
+                this.games = games;
+            });
 
 
-            // Automatically retrieve currentUser information from UserService:
-            this.loggedIn = this.userService.getLoggedStatus();
-            if (this.loggedIn) {
-                this.currentUser = this.userService.getCurrentUser();
-            }
-            else {
-                // Dummy data if the user is not logged in.
-                // (for example if the page gets refreshed for developing purposes)
-                this.currentUser = new User();
-                this.currentUser.name = 'Player 1 ';
-                this.currentUser.username = 'Player 1';
-                this.currentUser.token = '42';
-                this.currentUser.id = 42;
-            }
-            // Variables setting on init
-            this.inWaitingRoom = false;
-            this.createdGame = false;
-            this.pressedReady = false;
-            this.index = -1;
-
-            // Automatically retrieve users and games list information from server:
-            this.pollInfo();
-            this.listenForStart();
+        // Automatically retrieve currentUser information from UserService:
+        this.loggedIn = this.userService.getLoggedStatus();
+        if (this.loggedIn) {
+            this.currentUser = this.userService.getCurrentUser();
         }
+        else {
+            // Dummy data if the user is not logged in.
+            // (for example if the page gets refreshed for developing purposes)
+            this.currentUser = new User();
+            this.currentUser.name = 'Player 1 ';
+            this.currentUser.username = 'Player 1';
+            this.currentUser.token = '42';
+            this.currentUser.id = 42;
+        }
+        // Variables setting on init
+        this.inWaitingRoom = false;
+        this.createdGame = false;
+        this.pressedReady = false;
+        this.index = -1;
+
+        // Automatically retrieve users and games list information from server:
+        this.pollInfo();
+        this.listenForStart();
     }
 
     // Calls polling function for games list

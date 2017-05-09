@@ -2,8 +2,8 @@
     <div class="lobby">
         <div class="lobby-heading">
             <div class="name-username">
-                <div class="name-user">Name: {{currentUser.name}}</div>
-                <div class="username-user">Username: {{currentUser.username}}</div>
+                <div class="name-user">Name: {{currentUser?.name}}</div>
+                <div class="username-user">Username: {{currentUser?.username}}</div>
             </div>
         </div>
         <div class="lobby-block">
@@ -148,7 +148,7 @@
             <div class="bottom-buttons">
                 <div class="btn logout-button bottom-button" (click)="logout()" [routerLink]="['/login']">LOGOUT</div>
                 <input type="text" class="form-control name-input" maxlength="20" placeholder="game name"
-                       [(ngModel)]="gameName" *ngIf="!inWaitingRoom">
+                       [(ngModel)]="gameName" *ngIf="!inWaitingRoom" (keyup.enter)="createNewGame()">
                 <div class="btn newgame-button bottom-button" (click)="createNewGame()" *ngIf="!inWaitingRoom">CREATE
                     NEW GAME
                 </div>

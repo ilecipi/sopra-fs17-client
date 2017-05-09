@@ -35,21 +35,17 @@ export class EndGameComponent implements OnInit {
             this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
         }
 
-        else {
-
-            // If game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
-            // used only for developing purposes
-            if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
-                this.gameService.setDummyGame();
-                this.userService.setDummyUser();
-                console.log('DUMMY GAME AND USER HAVE BEEN SET');
-            }
-
-            this.currentGame = this.gameService.getCurrentGame();
-            this.currentUser = this.userService.getCurrentUser();
-
-            this.pollInfo();
+        // If game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
+        // used only for developing purposes
+        if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
+            this.gameService.setDummyGame();
+            this.userService.setDummyUser();
         }
+
+        this.currentGame = this.gameService.getCurrentGame();
+        this.currentUser = this.userService.getCurrentUser();
+
+        this.pollInfo();
     }
 
 
