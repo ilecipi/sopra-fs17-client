@@ -24,17 +24,12 @@ export class LoginComponent implements OnInit {
         // reset login status
         this.authenticationService.logout();
         this.user = new User();
+        this.user.name = 'SuperCoolName';
 
     }
 
     login(): void{
-        if ((this.user.name === undefined || this.user.name === '') && (this.user.username === undefined || this.user.username === '')) {
-            this.notificationService.show('Please insert a valid name and username');
-        }
-        else if (this.user.name === undefined || this.user.name === '') {
-            this.notificationService.show('Please insert a name.');
-        }
-        else if (this.user.username === undefined  || this.user.username === '') {
+        if (this.user.username === undefined  || this.user.username === '') {
             this.notificationService.show('Please insert a username.');
         }
         else { // if user and username fields are not empty
