@@ -129,16 +129,16 @@ export class InfoBoardComponent implements OnInit {
         let pointsArray = [];
         let points = this.currentGame.points;
         // push on the pointsArray every color present in currentGame.points with his respective points
-        if (points.brown !== undefined) {
+        if (points.brown !== undefined && this.findColor('brown')) {
             pointsArray.push(['brown', points.brown % 40, 'var(--brownStone)']);
         }
-        if (points.black !== undefined) {
+        if (points.black !== undefined  && this.findColor('black')) {
             pointsArray.push(['black', points.black % 40, 'var(--blackStone)']);
         }
-        if (points.white !== undefined) {
+        if (points.white !== undefined && this.findColor('white')) {
             pointsArray.push(['white', points.white % 40, 'var(--whiteStone)']);
         }
-        if (points.grey !== undefined) {
+        if (points.grey !== undefined && this. findColor('grey')) {
             pointsArray.push(['grey', points.grey % 40, 'var(--greyStone)']);
         }
 
@@ -255,17 +255,17 @@ export class InfoBoardComponent implements OnInit {
     setTrackBoardSnake(): void {
         this.removeStyleChildren();
 
-        this.style1.innerHTML = '.order' + this.counter + ' {background: radial-gradient(circle,#293f50, #293f50 10%, #648880 20%, rgba(0,0,0,0) );}' +
-            '.order' + (this.counter + 1) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 15%, #648880 25%, rgba(0,0,0,0) );}' +
-            '.order' + (this.counter + 2) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 20%, #648880 30%, rgba(0,0,0,0) );}' +
-            '.order' + (this.counter + 3) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 25%, #648880 35%, rgba(0,0,0,0) );}' +
-            '.order' + (this.counter + 4) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 30%, #648880 40%, rgba(0,0,0,0) );}' +
-            '.order' + (this.counter + 5) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 35%, #648880 45%, rgba(0,0,0,0) );}' +
-            '.order' + (this.counter + 6) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 40%, #648880 50%, rgba(0,0,0,0) );}' +
-            '.order' + (this.counter + 7) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 45%, #648880 55%, rgba(0,0,0,0) );}' +
-            '.order' + (this.counter + 8) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 50%, #648880 60%, rgba(0,0,0,0) );}' +
-            '.order' + (this.counter + 9) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 55%, #648880 65%, rgba(0,0,0,0) );}' +
-            '.order' + (this.counter + 10) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 60%, #648880 70%, rgba(0,0,0,0) );}';
+        this.style1.innerHTML = '.order' + this.counter + ' {background: radial-gradient(circle,#293f50, #293f50 10%, #648880 20%, rgba(0,0,0,0)  30% );}' +
+            '.order' + (this.counter + 1) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 15%, #648880 25%, rgba(0,0,0,0) 35%);}' +
+            '.order' + (this.counter + 2) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 20%, #648880 30%, rgba(0,0,0,0) 40%);}' +
+            '.order' + (this.counter + 3) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 25%, #648880 35%, rgba(0,0,0,0) 45%);}' +
+            '.order' + (this.counter + 4) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 30%, #648880 40%, rgba(0,0,0,0) 50%);}' +
+            '.order' + (this.counter + 5) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 35%, #648880 45%, rgba(0,0,0,0) 55%);}' +
+            '.order' + (this.counter + 6) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 40%, #648880 50%, rgba(0,0,0,0) 60%);}' +
+            '.order' + (this.counter + 7) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 45%, #648880 55%, rgba(0,0,0,0) 65%);}' +
+            '.order' + (this.counter + 8) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 50%, #648880 60%, rgba(0,0,0,0) 70%);}' +
+            '.order' + (this.counter + 9) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 55%, #648880 65%, rgba(0,0,0,0) 75%);}' +
+            '.order' + (this.counter + 10) % 40 + ' {background: radial-gradient(circle,#293f50, #293f50 60%, #648880 70%, rgba(0,0,0,0) 80%);}';
         this.style2.innerHTML = '';
         this.style3.innerHTML = '';
         this.style4.innerHTML = '';
@@ -332,6 +332,15 @@ export class InfoBoardComponent implements OnInit {
         }
 
 
+    }
+
+    findColor(color: string): boolean{
+        for(let i = 0; i<this.currentGame.players.length; i++){
+            if(this.currentGame.players[i].color === color){
+                return true;
+            }
+        }
+        return false;
     }
 
 
