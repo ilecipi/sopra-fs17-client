@@ -42,8 +42,9 @@ Heading
     text-align: center;
     /*border: 1px solid white;*/
     border-radius: 10px;
-    line-height: 6;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     padding: 0;
 }

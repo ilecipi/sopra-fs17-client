@@ -8,6 +8,7 @@ export class User {
     public moves: number[];
     public color: string;
     public supplySled: number;
+    public stoneQuarry: number;
     public cards: string[];
 
     constructor() {
