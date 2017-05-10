@@ -38,17 +38,42 @@ export class LobbyComponent implements OnInit {
 
         // Comment following 3 lines for developing purposes:
 
-        if (!this.userService.getLoggedStatus()) {
-            this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
+        // if (!this.userService.getLoggedStatus()) {
+        //     this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
+        // }
+
+        if(!localStorage.getItem('userToken') || !localStorage.getItem('userUsername')){
+                this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
         }
+        let oldUser= new User();
+        oldUser.username = localStorage.getItem('userUsername');
+        oldUser.token = localStorage.getItem('userToken');
+        this.currentUser = oldUser;
+        this.userService.loginUser(oldUser);
 
         this.gameName = '';
 
-        // Get all games from the server:
-        this.gameService.getGames()
-            .subscribe(games => {
-                this.games = games;
-            });
+        // Variables setting on init
+        this.inWaitingRoom = false;
+        if ( localStorage.getItem('createdGame' )){
+            this.createdGame = true;
+        }
+        else{
+            this.createdGame=false;
+        }
+        this.pressedReady = false;
+        if (localStorage.getItem('gameId')){
+            this.currentGame = new Game();
+            this.currentGame.id = +localStorage.getItem('gameId');
+            this.gameService.setCurrentGame(this.currentGame); // CurrentGame in gameService is updated
+
+        }
+
+        console.log('username:'+ this.currentUser.username);
+        console.log('createdGame:' +this.createdGame);
+        if(this.currentGame!=undefined || this.currentGame!= null){
+            console.log(this.currentGame.id);
+        }
 
 
         // Automatically retrieve currentUser information from UserService:
@@ -65,11 +90,7 @@ export class LobbyComponent implements OnInit {
             this.currentUser.token = '42';
             this.currentUser.id = 42;
         }
-        // Variables setting on init
-        this.inWaitingRoom = false;
-        this.createdGame = false;
-        this.pressedReady = false;
-        this.index = -1;
+
 
         // Automatically retrieve users and games list information from server:
         this.pollInfo();
@@ -90,6 +111,7 @@ export class LobbyComponent implements OnInit {
                 }
                 else if (this.currentUser.status === 'IS_READY') {
                     this.pressedReady = true;
+                    this.inWaitingRoom = true;
                 }
             });
     }
@@ -104,8 +126,10 @@ export class LobbyComponent implements OnInit {
                 .subscribe(
                     (result) => {
                         this.currentGame = result;
+                        localStorage.setItem('gameId', '' + result.id);
                         this.gameService.setCurrentGame(this.currentGame);
                         this.createdGame = true;
+                        localStorage.setItem('createdGame','yes');
                         let subscription = Observable.interval(100).subscribe((x) => {
 
                             let findIndex = -1;
@@ -148,13 +172,23 @@ export class LobbyComponent implements OnInit {
         this.inWaitingRoom = true;
         this.gameService.setCurrentGame(selectedGame); // CurrentGame in gameService is updated
         this.index = index;
+        localStorage.setItem('gameId','' + selectedGame.id);
+        localStorage.setItem('gameIndex','' + index);
     }
 
     startGame(): void {
-        if (this.games[this.index].players.length === 1) {
+        let index=0;
+
+        for(let i = 0; i < this.games.length; i++){
+            if (this.games[i].id === this.currentGame.id){
+                index = i;
+            }
+        }
+        if (this.games[index].players.length === 1) {
             this.notificationService.show('There must be at least two players to start your game');
         }
-        else if (!this.anyPlayerNotReady(this.index)) {
+
+        else if (!this.anyPlayerNotReady(index)) {
             this.notificationService.show('All players in your game must be ready to start it');
         }
         else {
@@ -187,13 +221,17 @@ export class LobbyComponent implements OnInit {
         this.userSubscription.unsubscribe();
         this.userService.logoutUser();
 
+        localStorage.clear();
+
     }
 
     listenForStart(time = 300) {
         let subscription = Observable.interval(time).subscribe((x) => {
-            if (this.index !== -1) {
-                if (this.games[this.index].status === 'RUNNING') {
-                    this.gameService.setCurrentGame(this.games[this.index]);
+            for(let i=0; i < this.games.length; i++)
+            if (this.games[i].id === this.currentGame.id) {
+                if (this.games[i].status === 'RUNNING') {
+                    this.gameService.setCurrentGame(this.games[i]);
+                    this.userService.setCurrentUser(this.currentUser);
                     this.gamesSubscription.unsubscribe();
                     this.userSubscription.unsubscribe();
                     subscription.unsubscribe();
