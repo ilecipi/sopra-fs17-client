@@ -163,11 +163,16 @@ export class LobbyComponent implements OnInit {
         let selectedGame = this.games[index]; // Selects the game from the games list
         let user = this.userService.getCurrentUser(); // Gets currentUser information from userService
         let subscription = this.gameService.joinGame(selectedGame, user) // Join game
-            .subscribe((result) => subscription.unsubscribe());
-        this.inWaitingRoom = true;
-        this.gameService.setCurrentGame(selectedGame); // CurrentGame in gameService is updated
-        this.index = index;
-        sessionStorage.setItem('gameId','' + selectedGame.id);
+            .subscribe(
+                (result) => {
+                    this.inWaitingRoom = true;
+                    this.gameService.setCurrentGame(selectedGame); // CurrentGame in gameService is updated
+                    this.index = index;
+                    sessionStorage.setItem('gameId','' + selectedGame.id);
+                    subscription.unsubscribe();
+                }
+            );
+
         }
 
     startGame(): void {
