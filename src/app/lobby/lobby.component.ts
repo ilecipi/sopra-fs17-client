@@ -42,14 +42,14 @@ export class LobbyComponent implements OnInit {
         //     this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
         // }
 
-        if(!localStorage.getItem('userToken') || !localStorage.getItem('userUsername') || !localStorage.getItem('userId')){
+        if(!sessionStorage.getItem('userToken') || !sessionStorage.getItem('userUsername') || !sessionStorage.getItem('userId')){
                 this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
         }
 
         let oldUser= new User();
-        oldUser.username = localStorage.getItem('userUsername');
-        oldUser.token = localStorage.getItem('userToken');
-        oldUser.id = +localStorage.getItem('userId');
+        oldUser.username = sessionStorage.getItem('userUsername');
+        oldUser.token = sessionStorage.getItem('userToken');
+        oldUser.id = +sessionStorage.getItem('userId');
         this.currentUser = oldUser;
         this.userService.loginUser(oldUser);
 
@@ -57,16 +57,16 @@ export class LobbyComponent implements OnInit {
 
         // Variables setting on init
         this.inWaitingRoom = false;
-        if ( localStorage.getItem('createdGame' )){
+        if ( sessionStorage.getItem('createdGame' )){
             this.createdGame = true;
         }
         else{
             this.createdGame=false;
         }
         this.pressedReady = false;
-        if (localStorage.getItem('gameId')){
+        if (sessionStorage.getItem('gameId')){
             this.currentGame = new Game();
-            this.currentGame.id = +localStorage.getItem('gameId');
+            this.currentGame.id = +sessionStorage.getItem('gameId');
             this.gameService.setCurrentGame(this.currentGame); // CurrentGame in gameService is updated
 
         }
@@ -127,10 +127,10 @@ export class LobbyComponent implements OnInit {
                 .subscribe(
                     (result) => {
                         this.currentGame = result;
-                        localStorage.setItem('gameId', '' + result.id);
+                        sessionStorage.setItem('gameId', '' + result.id);
                         this.gameService.setCurrentGame(this.currentGame);
                         this.createdGame = true;
-                        localStorage.setItem('createdGame','yes');
+                        sessionStorage.setItem('createdGame','yes');
                         let subscription = Observable.interval(100).subscribe((x) => {
 
                             let findIndex = -1;
@@ -173,7 +173,7 @@ export class LobbyComponent implements OnInit {
         this.inWaitingRoom = true;
         this.gameService.setCurrentGame(selectedGame); // CurrentGame in gameService is updated
         this.index = index;
-        localStorage.setItem('gameId','' + selectedGame.id);
+        sessionStorage.setItem('gameId','' + selectedGame.id);
         }
 
     startGame(): void {
@@ -221,7 +221,7 @@ export class LobbyComponent implements OnInit {
         this.userSubscription.unsubscribe();
         this.userService.logoutUser();
 
-        localStorage.clear();
+        sessionStorage.clear();
 
     }
 

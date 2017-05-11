@@ -37,15 +37,15 @@ export class LoginComponent implements OnInit {
             let subscription = this.authenticationService.login(this.user)
                 .subscribe(
                     (result) => { // success
-                        localStorage.clear();
+                        sessionStorage.clear();
                         this.user.token = this.authenticationService.getToken();
                         this.user.id = this.authenticationService.getId();
                         this.userService.loginUser(this.user); // Saves current user into the service UserService
 
-                        localStorage.setItem('userUsername',this.userService.getCurrentUser().username);
-                        localStorage.setItem('userToken',this.userService.getCurrentUser().token);
-                        localStorage.setItem('userId','' + this.userService.getCurrentUser().id);
-                        // Saves user relevant data into the localStorage of browser
+                        sessionStorage.setItem('userUsername',this.userService.getCurrentUser().username);
+                        sessionStorage.setItem('userToken',this.userService.getCurrentUser().token);
+                        sessionStorage.setItem('userId','' + this.userService.getCurrentUser().id);
+                        // Saves user relevant data into the sessionStorage  of browser
 
                         this.router.navigate(['/lobby']);
                     },
