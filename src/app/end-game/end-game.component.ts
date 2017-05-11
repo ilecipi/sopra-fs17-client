@@ -29,18 +29,28 @@ export class EndGameComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // Comment following 3 lines for developing purposes:
 
-        if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
-            this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
+        if(!localStorage.getItem('userToken') || !localStorage.getItem('userUsername') || !localStorage.getItem('gameId') || !localStorage.getItem('userId')){
+            this.router.navigate(['/login']); // Navigate to login because not allowed to stay in game without gameId or userToken.
         }
 
-        // If game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
-        // used only for developing purposes
-        if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
-            this.gameService.setDummyGame();
-            this.userService.setDummyUser();
+        if(localStorage.getItem('userToken') && localStorage.getItem('userUsername') && localStorage.getItem('userId')){
+            let oldToken = localStorage.getItem('userToken');
+            let oldUsername = localStorage.getItem('userUsername');
+            let oldId = +localStorage.getItem('userId');
+            this.userService.setOldUser(oldToken, oldUsername, oldId);
+            this.currentUser = this.userService.getCurrentUser();
+            console.log(this.currentUser)
         }
+
+        if(localStorage.getItem('gameId')){
+            let oldId = +localStorage.getItem('gameId');
+            this.gameService.setOldGame(oldId);
+            this.currentGame = this.gameService.getCurrentGame();
+            console.log(this.currentGame);
+
+        }
+
 
         this.currentGame = this.gameService.getCurrentGame();
         this.currentUser = this.userService.getCurrentUser();
@@ -110,6 +120,8 @@ export class EndGameComponent implements OnInit {
     newGame(): void{
         this.userSubscription.unsubscribe();
         this.gameSubscription.unsubscribe();
+        localStorage.removeItem('createdGame');
+        localStorage.removeItem('gameId');
         this.router.navigate(['/lobby']);
     }
 
@@ -117,6 +129,7 @@ export class EndGameComponent implements OnInit {
         this.userService.logoutUser();
         this.userSubscription.unsubscribe();
         this.gameSubscription.unsubscribe();
+        localStorage.clear();
         this.router.navigate(['/login']);
     }
 

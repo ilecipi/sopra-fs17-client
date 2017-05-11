@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
 
                         localStorage.setItem('userUsername',this.userService.getCurrentUser().username);
                         localStorage.setItem('userToken',this.userService.getCurrentUser().token);
+                        localStorage.setItem('userId','' + this.userService.getCurrentUser().id);
                         // Saves user relevant data into the localStorage of browser
 
                         this.router.navigate(['/lobby']);

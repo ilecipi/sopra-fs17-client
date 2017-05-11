@@ -82,12 +82,34 @@ export class GameComponent implements OnInit {
         //     this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
         // }
 
+        if(!localStorage.getItem('userToken') || !localStorage.getItem('userUsername') || !localStorage.getItem('gameId') || !localStorage.getItem('userId')){
+            this.router.navigate(['/login']); // Navigate to login because not allowed to stay in game without gameId or userToken.
+        }
+
+        if(localStorage.getItem('userToken') && localStorage.getItem('userUsername') && localStorage.getItem('userId')){
+            let oldToken = localStorage.getItem('userToken');
+            let oldUsername = localStorage.getItem('userUsername');
+            let oldId = +localStorage.getItem('userId');
+            this.userService.setOldUser(oldToken, oldUsername, oldId);
+            this.currentUser = this.userService.getCurrentUser();
+            console.log(this.currentUser)
+        }
+
+        if(localStorage.getItem('gameId')){
+            let oldId = +localStorage.getItem('gameId');
+            this.gameService.setOldGame(oldId);
+            this.currentGame = this.gameService.getCurrentGame();
+            console.log(this.currentGame);
+
+        }
+
+
         // if game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
         // used only for developing purposes
-        if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
-            this.gameService.setDummyGame();
-            this.userService.setDummyUser();
-        }
+        // if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
+        //     this.gameService.setDummyGame();
+        //     this.userService.setDummyUser();
+        // }
         this.shipService.setDummyShips();
         this.templeService.setDummyTemple();
         this.obeliskService.setDummyObelisk();
@@ -107,6 +129,7 @@ export class GameComponent implements OnInit {
 
         this.showedTurn = false;
 
+        this.retrieveInfo();
         this.pollChanges();  // Checks only the counter of the game, supposedly enough many times, but call is very small
         this.resetCounterChanges(); // Every not so often (10s) the counter is going to be reset to ensure a minimal amount of updates
         this.gameManager(); // Checks for example if the game ends and does the corrected methods accordingly.
@@ -133,17 +156,16 @@ export class GameComponent implements OnInit {
 
     retrieveInfo(): void {
 
-
-
-
         this.gameSubscription = this.gameService.getGame(this.currentGame.id)
             .subscribe(game => {
                 this.currentGame = game;
                 this.gameService.setCurrentGame(game);
+                console.log(this.gameService.getCurrentGame());
             });
         this.userSubscription = this.userService.getUser(this.currentUser.token)
             .subscribe(user => {
                 this.currentUser = user;
+                console.log(this.currentUser);
             });
         this.templeSubscription = this.templeService.getTemple(this.currentGame.id)
             .subscribe(temple => {

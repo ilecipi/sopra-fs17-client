@@ -80,5 +80,11 @@ export class UserService {
         dummyUser.supplySled = 1;
         this.currentUser=dummyUser;
     }
+    setOldUser(token: string, username: string, id: number): void {
+        this.setDummyUser();
+        this.currentUser.token = token;
+        this.currentUser.username = username;
+        this.currentUser.id = id;
+    }
 
 }

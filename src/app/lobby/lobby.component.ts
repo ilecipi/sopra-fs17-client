@@ -42,12 +42,14 @@ export class LobbyComponent implements OnInit {
         //     this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
         // }
 
-        if(!localStorage.getItem('userToken') || !localStorage.getItem('userUsername')){
+        if(!localStorage.getItem('userToken') || !localStorage.getItem('userUsername') || !localStorage.getItem('userId')){
                 this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
         }
+
         let oldUser= new User();
         oldUser.username = localStorage.getItem('userUsername');
         oldUser.token = localStorage.getItem('userToken');
+        oldUser.id = +localStorage.getItem('userId');
         this.currentUser = oldUser;
         this.userService.loginUser(oldUser);
 
@@ -90,7 +92,6 @@ export class LobbyComponent implements OnInit {
             this.currentUser.token = '42';
             this.currentUser.id = 42;
         }
-
 
         // Automatically retrieve users and games list information from server:
         this.pollInfo();
@@ -173,8 +174,7 @@ export class LobbyComponent implements OnInit {
         this.gameService.setCurrentGame(selectedGame); // CurrentGame in gameService is updated
         this.index = index;
         localStorage.setItem('gameId','' + selectedGame.id);
-        localStorage.setItem('gameIndex','' + index);
-    }
+        }
 
     startGame(): void {
         let index=0;
@@ -227,16 +227,17 @@ export class LobbyComponent implements OnInit {
 
     listenForStart(time = 300) {
         let subscription = Observable.interval(time).subscribe((x) => {
-            for(let i=0; i < this.games.length; i++)
-            if (this.games[i].id === this.currentGame.id) {
-                if (this.games[i].status === 'RUNNING') {
-                    this.gameService.setCurrentGame(this.games[i]);
-                    this.userService.setCurrentUser(this.currentUser);
-                    this.gamesSubscription.unsubscribe();
-                    this.userSubscription.unsubscribe();
-                    subscription.unsubscribe();
-                    this.notificationService.show('Your game is starting, good luck!');
-                    this.router.navigate(['/game']);
+            for(let i=0; i < this.games.length; i++){
+                if (this.currentGame !== undefined && this.currentGame!==null && this.games[i].id === this.currentGame.id) {
+                    if (this.games[i].status === 'RUNNING') {
+                        this.gameService.setCurrentGame(this.games[i]);
+                        this.userService.setCurrentUser(this.currentUser);
+                        this.gamesSubscription.unsubscribe();
+                        this.userSubscription.unsubscribe();
+                        subscription.unsubscribe();
+                        this.notificationService.show('Your game is starting, good luck!');
+                        this.router.navigate(['/game']);
+                    }
                 }
             }
         });
