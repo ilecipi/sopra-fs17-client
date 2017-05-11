@@ -87,6 +87,16 @@ export class LobbyComponent implements OnInit {
             this.currentUser.id = 42;
         }
 
+
+        // Fast request at initialization so that do not need to wait for the data to be loaded in the polling
+        let subscriptionGames = this.gameService.getGames()
+            .subscribe(
+                (result) => {
+                    this.games = result;
+                    subscriptionGames.unsubscribe();
+                }
+            );
+
         // Automatically retrieve users and games list information from server:
         this.pollInfo();
         this.listenForStart();
