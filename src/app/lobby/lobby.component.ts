@@ -167,6 +167,7 @@ export class LobbyComponent implements OnInit {
                 (result) => {
                     this.inWaitingRoom = true;
                     this.gameService.setCurrentGame(selectedGame); // CurrentGame in gameService is updated
+                    this.currentGame = selectedGame;
                     this.index = index;
                     sessionStorage.setItem('gameId','' + selectedGame.id);
                     subscription.unsubscribe();
@@ -224,18 +225,20 @@ export class LobbyComponent implements OnInit {
 
     }
 
-    listenForStart(time = 300) {
-        let subscription = Observable.interval(time).subscribe((x) => {
+    listenForStart() {
+        let subscription = Observable.interval(300)
+            .subscribe(
+            () => {
             for(let i=0; i < this.games.length; i++){
-                if (this.currentGame !== undefined && this.currentGame!==null && this.games[i].id === this.currentGame.id) {
+                if (this.currentGame !== undefined && this.currentGame !== null && this.games[i].id === this.currentGame.id) {
                     if (this.games[i].status === 'RUNNING') {
                         this.gameService.setCurrentGame(this.games[i]);
                         this.userService.setCurrentUser(this.currentUser);
                         this.gamesSubscription.unsubscribe();
                         this.userSubscription.unsubscribe();
-                        subscription.unsubscribe();
                         this.notificationService.show('Your game is starting, good luck!');
                         this.router.navigate(['/game']);
+                        subscription.unsubscribe();
                     }
                 }
             }
