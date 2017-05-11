@@ -30,32 +30,46 @@ export class EndGameComponent implements OnInit {
 
     ngOnInit(): void {
 
-        if(!localStorage.getItem('userToken') || !localStorage.getItem('userUsername') || !localStorage.getItem('gameId') || !localStorage.getItem('userId')){
+        if(!sessionStorage.getItem('userToken') || !sessionStorage.getItem('userUsername') || !sessionStorage.getItem('gameId') || !sessionStorage.getItem('userId')) {
             this.router.navigate(['/login']); // Navigate to login because not allowed to stay in game without gameId or userToken.
         }
+        else {
+            if (sessionStorage.getItem('userToken') && sessionStorage.getItem('userUsername') && sessionStorage.getItem('userId')) {
+                let oldToken = sessionStorage.getItem('userToken');
+                let oldUsername = sessionStorage.getItem('userUsername');
+                let oldId = +sessionStorage.getItem('userId');
+                this.userService.setOldUser(oldToken, oldUsername, oldId);
+                this.currentUser = this.userService.getCurrentUser();
+            }
 
-        if(localStorage.getItem('userToken') && localStorage.getItem('userUsername') && localStorage.getItem('userId')){
-            let oldToken = localStorage.getItem('userToken');
-            let oldUsername = localStorage.getItem('userUsername');
-            let oldId = +localStorage.getItem('userId');
-            this.userService.setOldUser(oldToken, oldUsername, oldId);
-            this.currentUser = this.userService.getCurrentUser();
-            console.log(this.currentUser)
-        }
+            if (sessionStorage.getItem('gameId')) {
+                let oldId = +sessionStorage.getItem('gameId');
+                this.gameService.setOldGame(oldId);
+                this.currentGame = this.gameService.getCurrentGame();
 
-        if(localStorage.getItem('gameId')){
-            let oldId = +localStorage.getItem('gameId');
-            this.gameService.setOldGame(oldId);
+            }
             this.currentGame = this.gameService.getCurrentGame();
-            console.log(this.currentGame);
+            this.currentUser = this.userService.getCurrentUser();
 
+
+            // Fast request at initialization so that do not need to wait for the data to be loaded in the polling
+            let subscriptionGame = this.gameService.getGame(this.currentGame.id)
+                .subscribe(
+                    (result) => {
+                        this.currentGame = result;
+                        subscriptionGame.unsubscribe();
+                    }
+                );
+            let subscriptionUser = this.userService.getUser(this.currentUser.token)
+                .subscribe(
+                    (result) => {
+                        this.currentUser =  result;
+                        subscriptionUser.unsubscribe();
+                    }
+                );
+
+            this.pollInfo();
         }
-
-
-        this.currentGame = this.gameService.getCurrentGame();
-        this.currentUser = this.userService.getCurrentUser();
-
-        this.pollInfo();
     }
 
 
@@ -120,8 +134,8 @@ export class EndGameComponent implements OnInit {
     newGame(): void{
         this.userSubscription.unsubscribe();
         this.gameSubscription.unsubscribe();
-        localStorage.removeItem('createdGame');
-        localStorage.removeItem('gameId');
+        sessionStorage.removeItem('createdGame');
+        sessionStorage.removeItem('gameId');
         this.router.navigate(['/lobby']);
     }
 
@@ -129,7 +143,7 @@ export class EndGameComponent implements OnInit {
         this.userService.logoutUser();
         this.userSubscription.unsubscribe();
         this.gameSubscription.unsubscribe();
-        localStorage.clear();
+        sessionStorage.clear();
         this.router.navigate(['/login']);
     }
 
