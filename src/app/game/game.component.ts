@@ -110,7 +110,6 @@ export class GameComponent implements OnInit {
             // BurialChamber has no dummy setter because in the html we check if the values exist before displaying them
             // Pyramid has also no dummy setter
 
-
             this.currentGame = this.gameService.getCurrentGame();
             this.currentUser = this.userService.getCurrentUser();
             this.currentTemple = this.templeService.getCurrentTemple();

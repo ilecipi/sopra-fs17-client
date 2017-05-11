@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
                         this.userService.loginUser(this.user); // Saves current user into the service UserService
 
                         sessionStorage.clear();
+
                         sessionStorage.setItem('userUsername',this.userService.getCurrentUser().username);
                         sessionStorage.setItem('userToken',this.userService.getCurrentUser().token);
                         sessionStorage.setItem('userId','' + this.userService.getCurrentUser().id);
