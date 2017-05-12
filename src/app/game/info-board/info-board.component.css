@@ -211,7 +211,7 @@ Cards Block:
     min-width: 100px;
     max-width: 100px;
     border-radius: 50px;
-    border: 1px dashed black;
+    border: 1px dashed white;
     text-align: center;
 
     display: flex;

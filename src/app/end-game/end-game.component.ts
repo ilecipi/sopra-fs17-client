@@ -29,23 +29,47 @@ export class EndGameComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // Comment following 3 lines for developing purposes:
 
-        if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
-            this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
+        if(!sessionStorage.getItem('userToken') || !sessionStorage.getItem('userUsername') || !sessionStorage.getItem('gameId') || !sessionStorage.getItem('userId')) {
+            this.router.navigate(['/login']); // Navigate to login because not allowed to stay in game without gameId or userToken.
         }
+        else {
+            if (sessionStorage.getItem('userToken') && sessionStorage.getItem('userUsername') && sessionStorage.getItem('userId')) {
+                let oldToken = sessionStorage.getItem('userToken');
+                let oldUsername = sessionStorage.getItem('userUsername');
+                let oldId = +sessionStorage.getItem('userId');
+                this.userService.setOldUser(oldToken, oldUsername, oldId);
+                this.currentUser = this.userService.getCurrentUser();
+            }
 
-        // If game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
-        // used only for developing purposes
-        if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
-            this.gameService.setDummyGame();
-            this.userService.setDummyUser();
+            if (sessionStorage.getItem('gameId')) {
+                let oldId = +sessionStorage.getItem('gameId');
+                this.gameService.setOldGame(oldId);
+                this.currentGame = this.gameService.getCurrentGame();
+
+            }
+            this.currentGame = this.gameService.getCurrentGame();
+            this.currentUser = this.userService.getCurrentUser();
+
+
+            // Fast request at initialization so that do not need to wait for the data to be loaded in the polling
+            let subscriptionGame = this.gameService.getGame(this.currentGame.id)
+                .subscribe(
+                    (result) => {
+                        this.currentGame = result;
+                        subscriptionGame.unsubscribe();
+                    }
+                );
+            let subscriptionUser = this.userService.getUser(this.currentUser.token)
+                .subscribe(
+                    (result) => {
+                        this.currentUser =  result;
+                        subscriptionUser.unsubscribe();
+                    }
+                );
+
+            this.pollInfo();
         }
-
-        this.currentGame = this.gameService.getCurrentGame();
-        this.currentUser = this.userService.getCurrentUser();
-
-        this.pollInfo();
     }
 
 
@@ -110,6 +134,8 @@ export class EndGameComponent implements OnInit {
     newGame(): void{
         this.userSubscription.unsubscribe();
         this.gameSubscription.unsubscribe();
+        sessionStorage.removeItem('createdGame');
+        sessionStorage.removeItem('gameId');
         this.router.navigate(['/lobby']);
     }
 
@@ -117,6 +143,7 @@ export class EndGameComponent implements OnInit {
         this.userService.logoutUser();
         this.userSubscription.unsubscribe();
         this.gameSubscription.unsubscribe();
+        sessionStorage.clear();
         this.router.navigate(['/login']);
     }
 

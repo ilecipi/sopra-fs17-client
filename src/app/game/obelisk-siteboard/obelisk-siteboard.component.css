@@ -60,7 +60,10 @@ Info Column:
 
 .info-hover {
     min-width: 25px;
+    max-width: 25px;
     min-height: 25px;
+    max-height: 25px;
+    border-radius: 25px;
     background-image: url('/assets/img/info-button.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -68,8 +71,7 @@ Info Column:
 }
 
 .info-hover:hover {
-    background-position: center;
-    background-size: contain;
+    box-shadow: 0 0 10px 5px rgba(255,255, 255, 0.6);
 }
 
 .hover {
@@ -80,6 +82,7 @@ Info Column:
     display: block;
     position: relative;
     left: 25px;
+    bottom: 80px;
     width: 500px;
     border-radius: 10px;
     background-color: rgba(55, 55, 55, 0.8);

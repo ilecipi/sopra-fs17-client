@@ -1,9 +1,9 @@
 <div class="parent-block">
     <div class="heading">
         <div class="player-username-container"
-             [ngClass]="{highlight: currentUser?.id==currentGame?.currentPlayer}">
+             [ngClass]="{highlight: currentUser?.id === currentGame?.currentPlayer}">
             <div class="player-username">
-                {{currentUser.username}}
+                {{currentUser?.username}}
             </div>
         </div>
         <div class="sled-and-quarry">
@@ -11,9 +11,9 @@
                                  {brown: currentUser?.color == 'brown',
                                  grey: currentUser?.color == 'grey',
                                  black: currentUser?.color == 'black',
-                                 white: currentUser?.color == 'white'
+                                 whitehover: currentUser?.color == 'white'
                                  }">
-                Quarry <br> [ {{currentUser.stoneQuarry}} stones left ]
+                Quarry <br> [ {{currentUser?.stoneQuarry}} stones left ]
             </div>
             <div class="supply-sled">
                 <div class="first-row">
@@ -61,7 +61,7 @@
     <div class="cards-block">
         <div class="cards-container" id="scrollable">
             <div class="market-card" *ngFor="let card of currentUserCards">
-                <market-card (click)="useCard(card.id)" [currentCard]="card"></market-card>
+                <market-card (click)="useCard(card?.id)" [currentCard]="card"></market-card>
             </div>
         </div>
     </div>

@@ -68,6 +68,10 @@ Ships
     z-index:0;
 
 }
+.ship-selector:hover{
+    box-shadow: inset 0 0 10px 5px rgba(255,255, 255, 0.6);
+
+}
 
 /***********************************************************************************************************************
 Docks
@@ -91,6 +95,11 @@ Docks
     flex-direction: row;
     z-index: 1;
 }
+
+.dock:hover{
+    box-shadow: 0 0 20px 10px rgba(255,255, 255, 0.6);
+}
+
 .dock-button{
     position:relative;
     min-height:38px; /*40 - 2 px border */
@@ -144,11 +153,19 @@ Info Column:
 
 .info-hover {
     min-width: 25px;
+    max-width: 25px;
     min-height: 25px;
+    max-height: 25px;
+    border-radius: 25px;
     background-image: url('/assets/img/info-button.png');
     background-size: cover;
     background-repeat: no-repeat;
     margin: 10px;
+}
+
+.info-hover:hover {
+    box-shadow: 0 0 10px 5px rgba(255,255, 255, 0.6);
+
 }
 
 .hover {
@@ -164,7 +181,7 @@ Info Column:
 .info-hover:hover span {
     display: block;
     position: relative;
-    bottom: 200px;
+    bottom: 310px;
     right: 137px;
     width: 300px;
     border-radius: 10px;
@@ -222,6 +239,29 @@ Dynamic styles for stone colors:
     border-radius: 2px;
     overflow:hidden;
 }
+
+.brown:hover {
+    cursor: default;
+}
+
+.grey:hover {
+    cursor: default
+}
+
+.black:hover {
+    cursor: default;
+}
+
+.white:hover {
+    cursor: default;
+
+}
+
+.empty:hover {
+    box-shadow: inset 0 0 7px 3px rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
 
 /*FAST FORWARD  AND SHOW WAVE BUTTONS *********************************************************************************/
 

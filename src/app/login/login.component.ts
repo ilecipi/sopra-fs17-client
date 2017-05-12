@@ -40,6 +40,14 @@ export class LoginComponent implements OnInit {
                         this.user.token = this.authenticationService.getToken();
                         this.user.id = this.authenticationService.getId();
                         this.userService.loginUser(this.user); // Saves current user into the service UserService
+
+                        sessionStorage.clear();
+
+                        sessionStorage.setItem('userUsername',this.userService.getCurrentUser().username);
+                        sessionStorage.setItem('userToken',this.userService.getCurrentUser().token);
+                        sessionStorage.setItem('userId','' + this.userService.getCurrentUser().id);
+                        // Saves user relevant data into the sessionStorage  of browser
+
                         this.router.navigate(['/lobby']);
                     },
                     (error) => { // fail
@@ -56,7 +64,6 @@ export class LoginComponent implements OnInit {
     }
 
     clearfields(): void {
-        this.user.name = '';
         this.user.username = '';
     }
 }

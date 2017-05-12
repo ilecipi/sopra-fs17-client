@@ -101,7 +101,13 @@ export class CurrentPlayerComponent implements OnInit {
     }
 
     showActionCardBlock(): boolean {
-        let isCurrentPlayer = this.currentGame.currentPlayer === this.currentUser.id;
+        let isCurrentPlayer : boolean;
+        if(this.currentUser === undefined || this.currentUser === null){
+            isCurrentPlayer = false;
+        }
+        else{
+            isCurrentPlayer = this.currentGame.currentPlayer === this.currentUser.id;
+        }
         let isChisel = this.currentGame.isActionCardChisel !== 0;
         let isSail = this.currentGame.isActionCardSail !== 0;
         let isHammer = this.currentGame.isActionCardHammer === true;

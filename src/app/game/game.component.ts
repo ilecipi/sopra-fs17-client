@@ -82,34 +82,50 @@ export class GameComponent implements OnInit {
         //     this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
         // }
 
-        // if game has not been created manually (in the "correct" way), then fill it with the data of Game 1 from postman
-        // used only for developing purposes
-        if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
-            this.gameService.setDummyGame();
-            this.userService.setDummyUser();
+        if(!sessionStorage.getItem('userToken') || !sessionStorage.getItem('userUsername') || !sessionStorage.getItem('gameId') || !sessionStorage.getItem('userId')){
+            this.router.navigate(['/login']); // Navigate to login because not allowed to stay in game without gameId or userToken.
         }
-        this.shipService.setDummyShips();
-        this.templeService.setDummyTemple();
-        this.obeliskService.setDummyObelisk();
-        this.marketService.setDummyMarket();
-        // BurialChamber has no dummy setter because in the html we check if the values exist before displaying them
-        // Pyramid has also no dummy setter
+        else {
+
+            if (sessionStorage.getItem('userToken') && sessionStorage.getItem('userUsername') && sessionStorage.getItem('userId')) {
+                let oldToken = sessionStorage.getItem('userToken');
+                let oldUsername = sessionStorage.getItem('userUsername');
+                let oldId = +sessionStorage.getItem('userId');
+                this.userService.setOldUser(oldToken, oldUsername, oldId);
+                this.currentUser = this.userService.getCurrentUser();
+            }
+
+            if (sessionStorage.getItem('gameId')) {
+                let oldId = +sessionStorage.getItem('gameId');
+                this.gameService.setOldGame(oldId);
+                this.currentGame = this.gameService.getCurrentGame();
+
+            }
 
 
-        this.currentGame = this.gameService.getCurrentGame();
-        this.currentUser = this.userService.getCurrentUser();
-        this.currentTemple = this.templeService.getCurrentTemple();
-        this.currentShips = this.shipService.getCurrentShips();
-        this.currentObelisk = this.obeliskService.getCurrentObelisk();
-        this.currentBurialChamber = this.burialChamberService.getCurrentBurialChamber();
-        this.currentPyramid = this.pyramidService.getCurrentPyramid();
-        this.currentMarket = this.marketService.getCurrentMarket();
+            this.shipService.setDummyShips();
+            this.templeService.setDummyTemple();
+            this.obeliskService.setDummyObelisk();
+            this.marketService.setDummyMarket();
+            // BurialChamber has no dummy setter because in the html we check if the values exist before displaying them
+            // Pyramid has also no dummy setter
 
-        this.showedTurn = false;
+            this.currentGame = this.gameService.getCurrentGame();
+            this.currentUser = this.userService.getCurrentUser();
+            this.currentTemple = this.templeService.getCurrentTemple();
+            this.currentShips = this.shipService.getCurrentShips();
+            this.currentObelisk = this.obeliskService.getCurrentObelisk();
+            this.currentBurialChamber = this.burialChamberService.getCurrentBurialChamber();
+            this.currentPyramid = this.pyramidService.getCurrentPyramid();
+            this.currentMarket = this.marketService.getCurrentMarket();
 
-        this.pollChanges();  // Checks only the counter of the game, supposedly enough many times, but call is very small
-        this.resetCounterChanges(); // Every not so often (10s) the counter is going to be reset to ensure a minimal amount of updates
-        this.gameManager(); // Checks for example if the game ends and does the corrected methods accordingly.
+            this.showedTurn = false;
+
+            this.retrieveInfo();
+            this.pollChanges();  // Checks only the counter of the game, supposedly enough many times, but call is very small
+            this.resetCounterChanges(); // Every not so often (10s) the counter is going to be reset to ensure a minimal amount of updates
+            this.gameManager(); // Checks for example if the game ends and does the corrected methods accordingly.
+        }
     }
 
 
@@ -131,10 +147,8 @@ export class GameComponent implements OnInit {
             });
     }
 
+
     retrieveInfo(): void {
-
-
-
 
         this.gameSubscription = this.gameService.getGame(this.currentGame.id)
             .subscribe(game => {

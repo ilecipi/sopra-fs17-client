@@ -68,6 +68,7 @@ export class GameService {
 
     setCurrentGame(game: Game): any {
         this.currentGame = game;
+        this.isTrueGame = true;
     }
 
     getCurrentGame(): any {
@@ -205,5 +206,10 @@ export class GameService {
         dummyGame.isActionCardChisel = 0;
         dummyGame.discardedCardsCounter = 0;
         this.currentGame = dummyGame;
+    }
+
+    setOldGame(id: number): void{
+        this.setDummyGame();
+        this.currentGame.id = id;
     }
 }
