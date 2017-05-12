@@ -200,7 +200,14 @@ Dynamic styles for quarry, stones and turn highlight:
     background-image: url('/assets/img/whiteStone.png');
     color: black;
 }
-.white:hover{
+
+.whitehover {
+    /* If background is white then font color must be black for better readability*/
+    background-image: url('/assets/img/whiteStone.png');
+    color: black;
+}
+
+.whitehover:hover{
     color:black;
     box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(0, 0, 0, 0.6);
