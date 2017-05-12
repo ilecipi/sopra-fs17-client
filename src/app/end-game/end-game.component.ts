@@ -29,6 +29,7 @@ export class EndGameComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        // Before starting checks if there is User information in the browser's session storage
 
         if(!sessionStorage.getItem('userToken') || !sessionStorage.getItem('userUsername') || !sessionStorage.getItem('gameId') || !sessionStorage.getItem('userId')) {
             this.router.navigate(['/login']); // Navigate to login because not allowed to stay in game without gameId or userToken.
@@ -72,7 +73,7 @@ export class EndGameComponent implements OnInit {
         }
     }
 
-
+    // Polling requests
     pollInfo(): void {
         this.gameSubscription = this.gameService.pollGame(this.currentGame.id)
             .subscribe(game => {
@@ -84,7 +85,7 @@ export class EndGameComponent implements OnInit {
             });
     }
 
-
+    // sorts players by points
     getRankedPlayers(): User[] {
         let rankedPlayers =  this.currentGame.players;
         let finalPoints: number[] = [];
@@ -130,7 +131,7 @@ export class EndGameComponent implements OnInit {
         }
     }
 
-
+    // Redirects to lobby and clears game information from the session storage
     newGame(): void{
         this.userSubscription.unsubscribe();
         this.gameSubscription.unsubscribe();
@@ -139,6 +140,7 @@ export class EndGameComponent implements OnInit {
         this.router.navigate(['/lobby']);
     }
 
+    // Redirects to login and clears all information from the session storage
     quit(): void {
         this.userService.logoutUser();
         this.userSubscription.unsubscribe();

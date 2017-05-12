@@ -76,12 +76,7 @@ export class GameComponent implements OnInit {
 
     ngOnInit(): void {
 
-        // Comment following 3 lines for developing purposes:
-
-        // if (!this.gameService.getTrueGame() && !this.userService.getLoggedStatus()) {
-        //     this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
-        // }
-
+        // Before starting checks if there is User information in the browser's session storage
         if(!sessionStorage.getItem('userToken') || !sessionStorage.getItem('userUsername') || !sessionStorage.getItem('gameId') || !sessionStorage.getItem('userId')){
             this.router.navigate(['/login']); // Navigate to login because not allowed to stay in game without gameId or userToken.
         }
@@ -128,7 +123,7 @@ export class GameComponent implements OnInit {
         }
     }
 
-
+    // Checks only the counter of the game, supposedly enough many times, but call is very small
     pollChanges(): void{
         this.changeSubscription = this.changeService.pollChanges(this.currentGame.id)
             .subscribe(counter => {
@@ -147,7 +142,7 @@ export class GameComponent implements OnInit {
             });
     }
 
-
+    // This call is done each time a received counter is different than the stored counter
     retrieveInfo(): void {
 
         this.gameSubscription = this.gameService.getGame(this.currentGame.id)
@@ -185,7 +180,7 @@ export class GameComponent implements OnInit {
             });
 
     }
-
+    // Every not so often (5s) the counter is going to be reset to ensure a minimal amount of updates
     resetCounterChanges(): void {
         this.resetCounterChangesSubscription = Observable.interval(5000).subscribe(x => {
             this.currentCounter = -1; // Every 10 seconds the counter gets reset so that if anything goes wrong
@@ -193,7 +188,7 @@ export class GameComponent implements OnInit {
         });
     }
 
-
+    // Sets ships in a 'readable' form for the client
     setShips(ships: Ship[]): void {
         for (let i = 0; i < ships.length; i++) {
             for (let j = 0; j < ships[i].stones.length; j++) {
@@ -204,6 +199,7 @@ export class GameComponent implements OnInit {
         }
         this.currentShips = ships;
     }
+
 
     getOpposingPlayers(): User[] {
         let opposingPlayers: User[] = [];
@@ -227,6 +223,7 @@ export class GameComponent implements OnInit {
         return this.currentGame.players.length - 1;
     }
 
+    // Takes care of end of game as well as proper operations to execute at that moment
     gameManager(): void {
         let subscription = Observable.interval(3000).subscribe(() => {
 
@@ -249,6 +246,7 @@ export class GameComponent implements OnInit {
         });
     }
 
+    // Triggers 5 sec countdown at end of game
     finishedGame(): void {
         this.notificationService.show('The game has finished, you will be redirected shortly.');
         setTimeout(() => {this.notificationService.removeItem(); this.notificationService.show('5');}, 2000);
@@ -259,6 +257,7 @@ export class GameComponent implements OnInit {
         setTimeout(() => {this.router.navigate(['/end-game']); this.notificationService.removeItem();}, 7000);
     }
 
+    
     getCurrentUserCards(): Card[] {
         let cardsNames: string[] = [];
         let userId = this.currentUser.id;

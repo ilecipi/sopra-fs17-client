@@ -41,12 +41,13 @@ export class LoginComponent implements OnInit {
                         this.user.id = this.authenticationService.getId();
                         this.userService.loginUser(this.user); // Saves current user into the service UserService
 
+                        // SessionStorage of browser is cleared when logging in. Otherwise could incur in routing bugs
                         sessionStorage.clear();
+                        // Saves user relevant data into the sessionStorage  of browser
 
                         sessionStorage.setItem('userUsername',this.userService.getCurrentUser().username);
                         sessionStorage.setItem('userToken',this.userService.getCurrentUser().token);
                         sessionStorage.setItem('userId','' + this.userService.getCurrentUser().id);
-                        // Saves user relevant data into the sessionStorage  of browser
 
                         this.router.navigate(['/lobby']);
                     },

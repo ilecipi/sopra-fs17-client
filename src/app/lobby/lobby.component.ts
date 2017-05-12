@@ -36,12 +36,7 @@ export class LobbyComponent implements OnInit {
 
     ngOnInit() {
 
-        // Comment following 3 lines for developing purposes:
-
-        // if (!this.userService.getLoggedStatus()) {
-        //     this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
-        // }
-
+        // Before starting checks if there is User information in the browser's session storage
         if(!sessionStorage.getItem('userToken') || !sessionStorage.getItem('userUsername') || !sessionStorage.getItem('userId')){
                 this.router.navigate(['/login']); // Navigate to login because not allowed to refresh page or to enter the page name in the url
         }
@@ -55,7 +50,7 @@ export class LobbyComponent implements OnInit {
 
         this.gameName = '';
 
-        // Variables setting on init
+        // Variables setting on init, used to switch between buttons in the lobby
         this.inWaitingRoom = false;
         if ( sessionStorage.getItem('createdGame' )){
             this.createdGame = true;
@@ -67,7 +62,7 @@ export class LobbyComponent implements OnInit {
         if (sessionStorage.getItem('gameId')){
             this.currentGame = new Game();
             this.currentGame.id = +sessionStorage.getItem('gameId');
-            this.gameService.setCurrentGame(this.currentGame); // CurrentGame in gameService is updated
+            this.gameService.setCurrentGame(this.currentGame);
 
         }
 
@@ -76,15 +71,6 @@ export class LobbyComponent implements OnInit {
         this.loggedIn = this.userService.getLoggedStatus();
         if (this.loggedIn) {
             this.currentUser = this.userService.getCurrentUser();
-        }
-        else {
-            // Dummy data if the user is not logged in.
-            // (for example if the page gets refreshed for developing purposes)
-            this.currentUser = new User();
-            this.currentUser.name = 'Player 1 ';
-            this.currentUser.username = 'Player 1';
-            this.currentUser.token = '42';
-            this.currentUser.id = 42;
         }
 
 
@@ -121,7 +107,8 @@ export class LobbyComponent implements OnInit {
             });
     }
 
-    // Method called when button is pressed.
+
+
     createNewGame(): void {
         if (this.gameName === undefined || this.gameName === ''){
             this.notificationService.show('Please insert a valid game name');
@@ -130,6 +117,7 @@ export class LobbyComponent implements OnInit {
             this.gameService.createNewGame(this.currentUser, this.gameName)
                 .subscribe(
                     (result) => {
+                        // On success save the game which is contained in result.
                         this.currentGame = result;
                         sessionStorage.setItem('gameId', '' + result.id);
                         this.gameService.setCurrentGame(this.currentGame);
@@ -160,6 +148,7 @@ export class LobbyComponent implements OnInit {
     ready(): void {
         this.gameService.isReady(this.userService.getCurrentUser())
             .subscribe(
+                // No need to do anything because polling takes care of setting important variables
                 (result) => {
                 },
                 (errorData) => {
@@ -213,6 +202,7 @@ export class LobbyComponent implements OnInit {
 
     }
 
+    // Returns true if all players are READY in the game at index
     anyPlayerNotReady(index: number): boolean {
         let allReady = true;
         for (let i = 0; i < this.games[index].players.length; i++) {
@@ -223,6 +213,8 @@ export class LobbyComponent implements OnInit {
         return allReady;
     }
 
+
+    // Redirects to login and clears sessionStorage
     logout() {
         this.notificationService.show('You have been logged out.');
         this.inWaitingRoom = false;
@@ -235,6 +227,7 @@ export class LobbyComponent implements OnInit {
 
     }
 
+    // Listens and takes care of operations when the game is starting
     listenForStart() {
         let subscription = Observable.interval(300)
             .subscribe(
